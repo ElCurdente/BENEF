@@ -4,7 +4,7 @@ import './Form.css';
 
 function App() {
   return (
-    <div className="App">
+    <div className="flex justify-center items-center bg-red-450 box-border h-screen w-full">
       <Form/>
     </div>
   );
