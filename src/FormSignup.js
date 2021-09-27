@@ -20,7 +20,7 @@ const {handleChange, values, handleSubmit, errors} = useForm(submitForm, validat
                     <input id="username" 
                     type="text" 
                     name="username" 
-                    placeholder="Nom d'utilisateur" className="placeholder-red-550 bg-white-150 rounded-full w-4/5 my-2 h-12 text-center focus:outline-none focus:ring focus:ring-black focus:ring-opacity-30 focus:placeholder-transparent"
+                    placeholder="Nom d'utilisateur" className="placeholder-red-550 bg-white-150 p-5 rounded-full w-4/5 my-2 h-12 text-left focus:outline-none focus:ring focus:ring-black focus:ring-opacity-30 focus:placeholder-transparent"
                     value={values.username}
                     onChange={handleChange}
                     />
@@ -34,7 +34,7 @@ const {handleChange, values, handleSubmit, errors} = useForm(submitForm, validat
                     type="date" 
                     name="birth" 
                     placeholder="Date de naissance" 
-                    className=" bg-white-150 rounded-full w-4/5 my-2 h-12 text-center text-red-550 p-5 focus:outline-none focus:ring focus:ring-black focus:ring-opacity-30 focus:placeholder-transparent"
+                    className=" bg-white-150 rounded-full w-4/5 my-2 h-12 text-left text-red-550 p-5 focus:outline-none focus:ring focus:ring-black focus:ring-opacity-30 focus:placeholder-transparent"
                     s={values.birth}
                     onChange={handleChange}/>
                     {errors.birth && <p>{errors.birth}</p>}
@@ -48,7 +48,7 @@ const {handleChange, values, handleSubmit, errors} = useForm(submitForm, validat
                     type="number" 
                     name="postal" 
                     placeholder="Code postal" 
-                    className="placeholder-red-550 bg-white-150 rounded-full w-4/5 my-2 h-12 text-center focus:outline-none focus:ring focus:ring-black focus:ring-opacity-30 focus:placeholder-transparent"
+                    className="placeholder-red-550 bg-white-150 rounded-full w-4/5 my-2 h-12 p-5 text-left focus:outline-none focus:ring focus:ring-black focus:ring-opacity-30 focus:placeholder-transparent"
                     value={values.postal}
                     onChange={handleChange}/>
                     {errors.postal && <p>{errors.postal}</p>}
@@ -62,7 +62,7 @@ const {handleChange, values, handleSubmit, errors} = useForm(submitForm, validat
                     type="email" 
                     name="email" 
                     placeholder="Adresse Email" 
-                    className="placeholder-red-550 bg-white-150 rounded-full w-4/5 my-2 h-12 text-center focus:outline-none focus:ring focus:ring-black focus:ring-opacity-30 focus:placeholder-transparent"
+                    className="placeholder-red-550 bg-white-150 rounded-full w-4/5 my-2 h-12 p-5 text-left focus:outline-none focus:ring focus:ring-black focus:ring-opacity-30 focus:placeholder-transparent"
                     value={values.email}
                     onChange={handleChange}/>
                     {errors.email && <p>{errors.email}</p>}
@@ -76,7 +76,7 @@ const {handleChange, values, handleSubmit, errors} = useForm(submitForm, validat
                     type="password" 
                     name="mdp" 
                     placeholder="Mot de passe" 
-                    className="placeholder-red-550 bg-white-150 rounded-full w-4/5 my-2 h-12 text-center focus:outline-none focus:ring focus:ring-black focus:ring-opacity-30 focus:placeholder-transparent"
+                    className="placeholder-red-550 bg-white-150 rounded-full w-4/5 my-2 h-12 p-5 text-left focus:outline-none focus:ring focus:ring-black focus:ring-opacity-30 focus:placeholder-transparent"
                     value={values.mdp}
                     onChange={handleChange}/>
                     {errors.mdp && <p>{errors.mdp}</p>}
@@ -90,7 +90,7 @@ const {handleChange, values, handleSubmit, errors} = useForm(submitForm, validat
                     type="password" 
                     name="mdpV" 
                     placeholder="Confirmation du mot de passe" 
-                    className="placeholder-red-550 bg-white-150 rounded-full w-4/5 my-2 h-12 text-center focus:outline-none focus:ring focus:ring-black focus:ring-opacity-30 focus:placeholder-transparent"
+                    className="placeholder-red-550 bg-white-150 rounded-full w-4/5 my-2 h-12 p-5 text-left focus:outline-none focus:ring focus:ring-black focus:ring-opacity-30 focus:placeholder-transparent"
                     value={values.mdpV}
                     onChange={handleChange}/>
                     {errors.mdpV && <p>{errors.mdpV}</p>}
