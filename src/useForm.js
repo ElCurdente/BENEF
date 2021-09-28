@@ -8,6 +8,8 @@ const useForm = (callback, validate) => {
     postal:"",
     mdp:"",
     mdpV:"",
+    showPassword: false,
+    showPassword2: false,
   });
   const [errors, setErrors] = useState({});
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -18,6 +20,18 @@ const useForm = (callback, validate) => {
       ...values,
       [name]: value
     });
+  };
+
+  const handleClickShowPassword = () => {
+    setValues({ ...values, showPassword: !values.showPassword });
+  };
+
+  const handleClickShowPassword2 = () => {
+    setValues({ ...values, showPassword2: !values.showPassword2 });
+  };
+
+  const handleMouseDownPassword = (event) => {
+    event.preventDefault();
   };
 
   const handleSubmit = e => {
@@ -36,7 +50,7 @@ const useForm = (callback, validate) => {
     [errors]
   );
 
-  return { handleChange, handleSubmit, values, errors };
+  return { handleChange,handleClickShowPassword,handleClickShowPassword2,handleMouseDownPassword, handleSubmit, values, errors };
 };
 
 export default useForm;
