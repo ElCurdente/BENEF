@@ -131,10 +131,10 @@ const {handleChange,handleClickShowPassword, handleClickShowPassword2 ,handleMou
                     }
                 </div>
                 <div className="flex justify-center items-center my-5">
-                    <button className="block bg-red-650 hover:bg-white-150 hover:text-red-650 h-12 w-40 text-white-150 rounded-full transition duration-300 ease-in-out mt-5" type="submit">S'inscrire</button>
+                    <button className="block text-white-150 bg-red-650 hover:bg-white-150 hover:text-red-650 active:bg-red-200 h-12 w-40  rounded-full transition duration-300 ease-in-out mt-5" type="submit">S'inscrire</button>
                 </div>
                 <div className="flex justify-center items-center">
-                    <span className="text-white-150">Déjà inscrit ? <a href="https://giphy.com/gifs/afv-funny-fail-kid-xTiTncVep2khPGhK1i" target="_blank" className="hover:underline ">Connectez vous</a></span>
+                    <span className="text-white-150">Déjà inscrit ? <a href="https://giphy.com/gifs/afv-funny-fail-kid-xTiTncVep2khPGhK1i" target="_blank" className="hover:underline transition duration-300 ease-in-out">Connectez vous</a></span>
                 </div>
             </form>
         </div>
