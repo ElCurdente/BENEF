@@ -10,15 +10,6 @@ import InputAdornment from "@material-ui/core/InputAdornment";
 import VisibilityOff from "@material-ui/icons/VisibilityOff";
 import Input from "@material-ui/core/Input";
 
-function Afficher() {
-    var input = document.getElementById("mdp");
-    if (input.type === "password") {
-        input.type = "text";
-    }
-    else {
-        input.type = "password";
-    }
-}
 
 const FormSignup = ({submitForm}) => {
 const {handleChange,handleClickShowPassword, handleClickShowPassword2 ,handleMouseDownPassword, values, handleSubmit, errors} = useForm(submitForm, validate);
