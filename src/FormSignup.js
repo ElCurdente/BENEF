@@ -98,7 +98,7 @@ const {handleChange,handleClickShowPassword, handleClickShowPassword2 ,handleMou
                         onClick={handleClickShowPassword}
                         onMouseDown={handleMouseDownPassword}
                      >
-                    {values.showPassword ? <Visibility /> : <VisibilityOff />}
+                    {values.showPassword ? <Visibility style={{color: "white"}}/> : <VisibilityOff style={{color: "white"}}/>}
                     </IconButton>
                     </InputAdornment>
                     }
@@ -125,7 +125,7 @@ const {handleChange,handleClickShowPassword, handleClickShowPassword2 ,handleMou
                         onClick={handleClickShowPassword2}
                         onMouseDown={handleMouseDownPassword}
                      >
-                    {values.showPassword2 ? <Visibility /> : <VisibilityOff />}
+                    {values.showPassword2 ? <Visibility style={{color: "white"}} /> : <VisibilityOff style={{color: "white"}}/>}
                     </IconButton>
                     </InputAdornment>
                     }
