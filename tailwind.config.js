@@ -3,6 +3,7 @@ module.exports = {
   darkMode: 'media', // or 'media' or 'class'
   theme: {
     extend: {
+
       colors: {
         red: {
           450: '#FF5640',
@@ -10,13 +11,15 @@ module.exports = {
           650: '#E00000'
         },
         white: {
-          150:'#FFF9F5'
+          150: '#FFF9F5'
         }
       },
     },
   },
   variants: {
-    extend: {},
+    extend: {
+      backgroundColor: ['active'],
+    },
   },
   plugins: [],
 }
