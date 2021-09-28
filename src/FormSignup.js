@@ -9,6 +9,7 @@ import Visibility from "@material-ui/icons/Visibility";
 import InputAdornment from "@material-ui/core/InputAdornment";
 import VisibilityOff from "@material-ui/icons/VisibilityOff";
 import Input from "@material-ui/core/Input";
+import { pink } from '@material-ui/core/colors';
 
 
 const FormSignup = ({submitForm}) => {
@@ -20,7 +21,7 @@ const {handleChange,handleClickShowPassword, handleClickShowPassword2 ,handleMou
                 <img src={logo} alt="Logo" className="w-64" />
             </div>
             <form className="form" onSubmit={handleSubmit}>
-                <div className="flex justify-center items-center">
+                <div className="flex  relative justify-center items-center">
                     <label htmlFor="username" className="">
                     </label>
 
@@ -32,10 +33,10 @@ const {handleChange,handleClickShowPassword, handleClickShowPassword2 ,handleMou
                         value={values.username}
                         onChange={handleChange}
                     />
-                    {errors.username && <p>{errors.username}</p>}
+                    {errors.username && <p className="absolute -bottom-4 left-10 text-red-900">{errors.username}</p>}
                 </div>
 
-                <div className="flex justify-center items-center">
+                <div className="flex relative justify-center items-center">
                     <label htmlFor="birth" className="form-label">
                     </label>
                     <input id="birth"
@@ -45,10 +46,10 @@ const {handleChange,handleClickShowPassword, handleClickShowPassword2 ,handleMou
                         className=" bg-transparent border-b-2 w-4/5 my-2 h-12 text-left text-white-150  focus:outline-none pt-5 focus:placeholder-transparent"
                         s={values.birth}
                         onChange={handleChange} />
-                    {errors.birth && <p>{errors.birth}</p>}
+                    {errors.birth && <p className="absolute -bottom-4 left-10 text-red-900">{errors.birth}</p>}
                 </div>
 
-                <div className="flex justify-center items-center">
+                <div className="flex relative justify-center items-center">
                     <label htmlFor="postal" className="form-label">
                     </label>
 
@@ -60,10 +61,10 @@ const {handleChange,handleClickShowPassword, handleClickShowPassword2 ,handleMou
                         className="placeholder-white-150 text-white-150 border-b-2 bg-transparent w-4/5 my-2 h-12 text-left focus:outline-none pt-5 focus:placeholder-transparent"
                         value={values.postal}
                         onChange={handleChange} />
-                    {errors.postal && <p>{errors.postal}</p>}
+                    {errors.postal && <p className="absolute -bottom-4 left-10 text-red-900">{errors.postal}</p>}
                 </div>
 
-                <div className="flex justify-center items-center">
+                <div className="flex relative justify-center items-center">
                     <label htmlFor="email" className="form-label">
                     </label>
 
@@ -75,7 +76,7 @@ const {handleChange,handleClickShowPassword, handleClickShowPassword2 ,handleMou
                         className="placeholder-white-150 text-white-150 border-b-2 bg-transparent w-4/5 my-2 h-12 text-left focus:outline-none pt-5 focus:placeholder-transparent"
                         value={values.email}
                         onChange={handleChange} />
-                    {errors.email && <p>{errors.email}</p>}
+                    {errors.email && <p className="absolute -bottom-4 left-10 text-red-900">{errors.email}</p>}
                 </div>
 
                 <div className="flex relative justify-center items-center">
@@ -90,10 +91,10 @@ const {handleChange,handleClickShowPassword, handleClickShowPassword2 ,handleMou
                     className="placeholder-white-150 text-white-150 border-b-2 bg-transparent w-4/5 my-2 h-12 text-left focus:outline-none pt-5 focus:placeholder-transparent"
                     value={values.mdp}
                     onChange={handleChange}/>
-                    {errors.mdp && <p>{errors.mdp}</p>}
+                    {errors.mdp && <p className="absolute -bottom-4 left-10 text-red-900">{errors.mdp}</p>}
                     {
-                    <InputAdornment position="end">
-                    <IconButton
+                    <InputAdornment position="end" className="absolute right-10" color="primary">
+                    <IconButton 
                         onClick={handleClickShowPassword}
                         onMouseDown={handleMouseDownPassword}
                      >
@@ -117,9 +118,9 @@ const {handleChange,handleClickShowPassword, handleClickShowPassword2 ,handleMou
                     className="placeholder-white-150 text-white-150 border-b-2 bg-transparent w-4/5 my-2 h-12 text-left focus:outline-none pt-5 focus:placeholder-transparent"
                     value={values.mdpV}
                     onChange={handleChange}/>
-                    {errors.mdpV && <p>{errors.mdpV}</p>}
+                    {errors.mdpV && <p className="absolute -bottom-4 left-10 text-red-900">{errors.mdpV}</p>}
                     {
-                    <InputAdornment position="end">
+                    <InputAdornment position="end" className="absolute right-10">
                     <IconButton
                         onClick={handleClickShowPassword2}
                         onMouseDown={handleMouseDownPassword}
