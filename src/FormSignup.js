@@ -20,7 +20,8 @@ const {handleChange, values, handleSubmit, errors} = useForm(submitForm, validat
                     <input id="username" 
                     type="text" 
                     name="username" 
-                    placeholder="Nom d'utilisateur" className="placeholder-red-550 bg-white-150 p-5 rounded-full w-4/5 my-2 h-12 text-left focus:outline-none focus:ring focus:ring-black focus:ring-opacity-30 focus:placeholder-transparent"
+                    maxLength="30"
+                    placeholder="Nom d'utilisateur" className="placeholder-white-150 text-white-150 border-b-2 bg-transparent w-4/5 my-2 h-12 pt-5 text-left focus:outline-none  focus:placeholder-transparent"
                     value={values.username}
                     onChange={handleChange}
                     />
@@ -34,7 +35,7 @@ const {handleChange, values, handleSubmit, errors} = useForm(submitForm, validat
                     type="date" 
                     name="birth" 
                     placeholder="Date de naissance" 
-                    className=" bg-white-150 rounded-full w-4/5 my-2 h-12 text-left text-red-550 p-5 focus:outline-none focus:ring focus:ring-black focus:ring-opacity-30 focus:placeholder-transparent"
+                    className=" bg-transparent border-b-2 w-4/5 my-2 h-12 text-left text-white-150  focus:outline-none pt-5 focus:placeholder-transparent"
                     s={values.birth}
                     onChange={handleChange}/>
                     {errors.birth && <p>{errors.birth}</p>}
@@ -46,9 +47,10 @@ const {handleChange, values, handleSubmit, errors} = useForm(submitForm, validat
 
                     <input id="postal" 
                     type="number" 
-                    name="postal" 
+                    name="postal"
+                    maxLength="5" 
                     placeholder="Code postal" 
-                    className="placeholder-red-550 bg-white-150 rounded-full w-4/5 my-2 h-12 p-5 text-left focus:outline-none focus:ring focus:ring-black focus:ring-opacity-30 focus:placeholder-transparent"
+                    className="placeholder-white-150 text-white-150 border-b-2 bg-transparent w-4/5 my-2 h-12 text-left focus:outline-none pt-5 focus:placeholder-transparent"
                     value={values.postal}
                     onChange={handleChange}/>
                     {errors.postal && <p>{errors.postal}</p>}
@@ -60,9 +62,10 @@ const {handleChange, values, handleSubmit, errors} = useForm(submitForm, validat
 
                     <input id="email" 
                     type="email" 
-                    name="email" 
+                    name="email"
+                    maxLength="35" 
                     placeholder="Adresse Email" 
-                    className="placeholder-red-550 bg-white-150 rounded-full w-4/5 my-2 h-12 p-5 text-left focus:outline-none focus:ring focus:ring-black focus:ring-opacity-30 focus:placeholder-transparent"
+                    className="placeholder-white-150 text-white-150 border-b-2 bg-transparent w-4/5 my-2 h-12 text-left focus:outline-none pt-5 focus:placeholder-transparent"
                     value={values.email}
                     onChange={handleChange}/>
                     {errors.email && <p>{errors.email}</p>}
@@ -75,8 +78,10 @@ const {handleChange, values, handleSubmit, errors} = useForm(submitForm, validat
                     <input id="mdp" 
                     type="password" 
                     name="mdp" 
+                    maxLength="30"
+                    minLength="8"
                     placeholder="Mot de passe" 
-                    className="placeholder-red-550 bg-white-150 rounded-full w-4/5 my-2 h-12 p-5 text-left focus:outline-none focus:ring focus:ring-black focus:ring-opacity-30 focus:placeholder-transparent"
+                    className="placeholder-white-150 text-white-150 border-b-2 bg-transparent w-4/5 my-2 h-12 text-left focus:outline-none pt-5 focus:placeholder-transparent"
                     value={values.mdp}
                     onChange={handleChange}/>
                     {errors.mdp && <p>{errors.mdp}</p>}
@@ -89,14 +94,16 @@ const {handleChange, values, handleSubmit, errors} = useForm(submitForm, validat
                     <input id="mdpV" 
                     type="password" 
                     name="mdpV" 
+                    maxLength="30"
+                    minLength="8"
                     placeholder="Confirmation du mot de passe" 
-                    className="placeholder-red-550 bg-white-150 rounded-full w-4/5 my-2 h-12 p-5 text-left focus:outline-none focus:ring focus:ring-black focus:ring-opacity-30 focus:placeholder-transparent"
+                    className="placeholder-white-150 text-white-150 border-b-2 bg-transparent w-4/5 my-2 h-12 text-left focus:outline-none pt-5 focus:placeholder-transparent"
                     value={values.mdpV}
                     onChange={handleChange}/>
                     {errors.mdpV && <p>{errors.mdpV}</p>}
                 </div>
                 <div className="flex justify-center items-center my-5">
-                    <button className="block bg-red-650 hover:bg-red-700 h-12 w-40 text-white-150 rounded-full" type="submit">S'inscrire</button> 
+                    <button className="block bg-red-650 hover:bg-white-150 hover:text-red-650 h-12 w-40 text-white-150 rounded-full transition duration-300 ease-in-out mt-5" type="submit">S'inscrire</button> 
                 </div>
                 <div className="flex justify-center items-center">
                     <span className="text-white-150">Déjà inscrit ? <a href="https://giphy.com/gifs/afv-funny-fail-kid-xTiTncVep2khPGhK1i" target="_blank" className="hover:underline ">Connectez vous</a></span>
