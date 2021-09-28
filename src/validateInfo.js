@@ -31,7 +31,7 @@ export default function validateInfo(values){
     if(!values.mdpV) {
         errors.mdpV = "Mot de passe requis"
     } else if (values.mdpV !== values.mdp){
-        errors.mdpV = "Les mots de passes de correspondent pas"
+        errors.mdpV = "Les mots de passes ne correspondent pas"
     }
 
     return errors

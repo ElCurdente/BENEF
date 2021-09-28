@@ -4,6 +4,7 @@ import validate from './validateInfo'
 import './Form.css';
 import logo from './images/logo/logo_benef.png'
 
+
 const FormSignup = ({submitForm}) => {
 const {handleChange, values, handleSubmit, errors} = useForm(submitForm, validate);
 
@@ -85,6 +86,10 @@ const {handleChange, values, handleSubmit, errors} = useForm(submitForm, validat
                     value={values.mdp}
                     onChange={handleChange}/>
                     {errors.mdp && <p>{errors.mdp}</p>}
+                    <input 
+                    type="checkbox"
+                    onClick="Afficher()"
+                    className="absolute right-56"/> 
                 </div>
                 
                 <div className="flex justify-center items-center">
@@ -101,6 +106,10 @@ const {handleChange, values, handleSubmit, errors} = useForm(submitForm, validat
                     value={values.mdpV}
                     onChange={handleChange}/>
                     {errors.mdpV && <p>{errors.mdpV}</p>}
+                    <input 
+                    type="checkbox"
+                    onClick="Afficher()"
+                    className="absolute right-56"/>
                 </div>
                 <div className="flex justify-center items-center my-5">
                     <button className="block bg-red-650 hover:bg-white-150 hover:text-red-650 h-12 w-40 text-white-150 rounded-full transition duration-300 ease-in-out mt-5" type="submit">S'inscrire</button> 
@@ -111,6 +120,15 @@ const {handleChange, values, handleSubmit, errors} = useForm(submitForm, validat
             </form>
         </div>
     )
+    function Afficher() {
+        var input = document.getElementById("mdp");
+        if (input.type === "password") {
+            input.type = "text";
+        }
+        else {
+            input.type = "password";
+        }
+    }
 }
 
 export default FormSignup
