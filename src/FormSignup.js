@@ -3,10 +3,16 @@ import useForm from './useForm'
 import validate from './validateInfo'
 import './Form.css';
 import logo from './images/logo/logo_benef.png'
+import IconButton from "@material-ui/core/IconButton";
+import InputLabel from "@material-ui/core/InputLabel";
+import Visibility from "@material-ui/icons/Visibility";
+import InputAdornment from "@material-ui/core/InputAdornment";
+import VisibilityOff from "@material-ui/icons/VisibilityOff";
+import Input from "@material-ui/core/Input";
 
 
 const FormSignup = ({submitForm}) => {
-const {handleChange, values, handleSubmit, errors} = useForm(submitForm, validate);
+const {handleChange,handleClickShowPassword, handleClickShowPassword2 ,handleMouseDownPassword, values, handleSubmit, errors} = useForm(submitForm, validate);
 
     return (
         <div className="w-96">
@@ -75,9 +81,11 @@ const {handleChange, values, handleSubmit, errors} = useForm(submitForm, validat
                 <div className="flex justify-center items-center">
                     <label htmlFor="mdp" className="form-label"> 
                     </label>
+
+
  
                     <input id="mdp" 
-                    type="password" 
+                    type={values.showPassword ? "text" : "password"}
                     name="mdp" 
                     maxLength="30"
                     minLength="8"
@@ -86,10 +94,16 @@ const {handleChange, values, handleSubmit, errors} = useForm(submitForm, validat
                     value={values.mdp}
                     onChange={handleChange}/>
                     {errors.mdp && <p>{errors.mdp}</p>}
-                    <input 
-                    type="checkbox"
-                    onClick="Afficher()"
-                    className="absolute right-56"/> 
+                    {
+                    <InputAdornment position="end">
+                    <IconButton
+                        onClick={handleClickShowPassword}
+                        onMouseDown={handleMouseDownPassword}
+                     >
+                    {values.showPassword ? <Visibility /> : <VisibilityOff />}
+                    </IconButton>
+                    </InputAdornment>
+                    }
                 </div>
                 
                 <div className="flex justify-center items-center">
@@ -97,7 +111,7 @@ const {handleChange, values, handleSubmit, errors} = useForm(submitForm, validat
                     </label>
  
                     <input id="mdpV" 
-                    type="password" 
+                    type={values.showPassword2 ? "text" : "password"}
                     name="mdpV" 
                     maxLength="30"
                     minLength="8"
@@ -106,10 +120,16 @@ const {handleChange, values, handleSubmit, errors} = useForm(submitForm, validat
                     value={values.mdpV}
                     onChange={handleChange}/>
                     {errors.mdpV && <p>{errors.mdpV}</p>}
-                    <input 
-                    type="checkbox"
-                    onClick="Afficher()"
-                    className="absolute right-56"/>
+                    {
+                    <InputAdornment position="end">
+                    <IconButton
+                        onClick={handleClickShowPassword2}
+                        onMouseDown={handleMouseDownPassword}
+                     >
+                    {values.showPassword2 ? <Visibility /> : <VisibilityOff />}
+                    </IconButton>
+                    </InputAdornment>
+                    }
                 </div>
                 <div className="flex justify-center items-center my-5">
                     <button className="block bg-red-650 hover:bg-white-150 hover:text-red-650 h-12 w-40 text-white-150 rounded-full transition duration-300 ease-in-out mt-5" type="submit">S'inscrire</button> 
