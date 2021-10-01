@@ -17,10 +17,12 @@ import { pink } from '@material-ui/core/colors';
 const FormSignup = ({ submitForm }) => {
     const { handleChange, handleClickShowPassword, handleClickShowPassword2, handleMouseDownPassword, values, handleSubmit, errors } = useForm(submitForm, validate);
 
+
+
     return (
         <div className="w-96">
             <div className="flex justify-center items-center">
-                <img src={logo} alt="Logo" className="w-64" />
+                <img id="logo_inscription" src={logo}  alt="Logo" className="w-64" />
             </div>
             <form className="form" onSubmit={handleSubmit}>
                 <div className="flex  relative justify-center items-center">
@@ -142,6 +144,15 @@ const FormSignup = ({ submitForm }) => {
         </div>
     )
 
+}
+
+var Logo = document.getElementById("logo_inscription");
+if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+    document.getElementById("logo_inscription").setAttribute('src','./images/logo/logo_benef_dark.png');
+    console.log("yo les copains");
+} else {
+    document.getElementById("logo_inscription").setAttribute('src','{logo}');
+    console.log("yesss");
 }
 
 export default FormSignup
