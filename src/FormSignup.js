@@ -3,6 +3,7 @@ import useForm from './useForm'
 import validate from './validateInfo'
 import './Form.css';
 import logo from './images/logo/logo_benef.png'
+import logo_dark from './images/logo/logo_benef_dark.svg'
 import IconButton from "@material-ui/core/IconButton";
 import InputLabel from "@material-ui/core/InputLabel";
 import Visibility from "@material-ui/icons/Visibility";
@@ -12,13 +13,14 @@ import Input from "@material-ui/core/Input";
 import { pink } from '@material-ui/core/colors';
 
 
-const FormSignup = ({submitForm}) => {
-const {handleChange,handleClickShowPassword, handleClickShowPassword2 ,handleMouseDownPassword, values, handleSubmit, errors} = useForm(submitForm, validate);
+const FormSignup = ({ submitForm }) => {
+    const { handleChange, handleClickShowPassword, handleClickShowPassword2, handleMouseDownPassword, values, handleSubmit, errors } = useForm(submitForm, validate);
 
     return (
         <div className="w-96">
             <div className="flex justify-center items-center">
                 <img src={logo} alt="Logo" className="w-64" />
+
             </div>
             <form className="form" onSubmit={handleSubmit}>
                 <div className="flex  relative justify-center items-center">
@@ -82,25 +84,25 @@ const {handleChange,handleClickShowPassword, handleClickShowPassword2 ,handleMou
                 <div className="flex relative justify-center items-center">
                     <label htmlFor="mdp" className="form-label">
                     </label>
-                    <input id="mdp" 
-                    type={values.showPassword ? "text" : "password"}
-                    name="mdp" 
-                    maxLength="30"
-                    minLength="8"
-                    placeholder="Mot de passe" 
-                    className="placeholder-white-150 text-white-150 border-b-2 bg-transparent w-4/5 my-2 h-12 text-left focus:outline-none pt-5 focus:placeholder-transparent"
-                    value={values.mdp}
-                    onChange={handleChange}/>
+                    <input id="mdp"
+                        type={values.showPassword ? "text" : "password"}
+                        name="mdp"
+                        maxLength="30"
+                        minLength="8"
+                        placeholder="Mot de passe"
+                        className="placeholder-white-150 text-white-150 border-b-2 bg-transparent w-4/5 my-2 h-12 text-left focus:outline-none pt-5 focus:placeholder-transparent"
+                        value={values.mdp}
+                        onChange={handleChange} />
                     {errors.mdp && <p className="absolute -bottom-4 left-10 text-red-900">{errors.mdp}</p>}
                     {
-                    <InputAdornment position="end" className="absolute right-10" color="primary">
-                    <IconButton 
-                        onClick={handleClickShowPassword}
-                        onMouseDown={handleMouseDownPassword}
-                     >
-                    {values.showPassword ? <Visibility style={{color: "white"}}/> : <VisibilityOff style={{color: "white"}}/>}
-                    </IconButton>
-                    </InputAdornment>
+                        <InputAdornment position="end" className="absolute right-10" color="primary">
+                            <IconButton
+                                onClick={handleClickShowPassword}
+                                onMouseDown={handleMouseDownPassword}
+                            >
+                                {values.showPassword ? <Visibility style={{ color: "white" }} /> : <VisibilityOff style={{ color: "white" }} />}
+                            </IconButton>
+                        </InputAdornment>
                     }
 
                 </div>
@@ -108,26 +110,26 @@ const {handleChange,handleClickShowPassword, handleClickShowPassword2 ,handleMou
                 <div className="flex relative justify-center items-center">
                     <label htmlFor="mdpV" className="form-label">
                     </label>
- 
-                    <input id="mdpV" 
-                    type={values.showPassword2 ? "text" : "password"}
-                    name="mdpV" 
-                    maxLength="30"
-                    minLength="8"
-                    placeholder="Confirmation du mot de passe" 
-                    className="placeholder-white-150 text-white-150 border-b-2 bg-transparent w-4/5 my-2 h-12 text-left focus:outline-none pt-5 focus:placeholder-transparent"
-                    value={values.mdpV}
-                    onChange={handleChange}/>
+
+                    <input id="mdpV"
+                        type={values.showPassword2 ? "text" : "password"}
+                        name="mdpV"
+                        maxLength="30"
+                        minLength="8"
+                        placeholder="Confirmation du mot de passe"
+                        className="placeholder-white-150 text-white-150 border-b-2 bg-transparent w-4/5 my-2 h-12 text-left focus:outline-none pt-5 focus:placeholder-transparent"
+                        value={values.mdpV}
+                        onChange={handleChange} />
                     {errors.mdpV && <p className="absolute -bottom-4 left-10 text-red-900">{errors.mdpV}</p>}
                     {
-                    <InputAdornment position="end" className="absolute right-10">
-                    <IconButton
-                        onClick={handleClickShowPassword2}
-                        onMouseDown={handleMouseDownPassword}
-                     >
-                    {values.showPassword2 ? <Visibility style={{color: "white"}} /> : <VisibilityOff style={{color: "white"}}/>}
-                    </IconButton>
-                    </InputAdornment>
+                        <InputAdornment position="end" className="absolute right-10">
+                            <IconButton
+                                onClick={handleClickShowPassword2}
+                                onMouseDown={handleMouseDownPassword}
+                            >
+                                {values.showPassword2 ? <Visibility style={{ color: "white" }} /> : <VisibilityOff style={{ color: "white" }} />}
+                            </IconButton>
+                        </InputAdornment>
                     }
                 </div>
                 <div className="flex justify-center items-center my-5">
