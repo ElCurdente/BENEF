@@ -3,7 +3,8 @@ import useForm from './useForm'
 import validate from './validateInfo'
 import './Form.css';
 import logo from './images/logo/logo_benef.png'
-import logo_dark from './images/logo/logo_benef_dark.svg'
+import logo_dark from './images/logo/logo_benef_dark.png'
+import logo_dark_svg from './images/logo/logo_benef_dark.svg'
 import IconButton from "@material-ui/core/IconButton";
 import InputLabel from "@material-ui/core/InputLabel";
 import Visibility from "@material-ui/icons/Visibility";
