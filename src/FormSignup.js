@@ -22,7 +22,8 @@ const FormSignup = ({ submitForm }) => {
     return (
         <div className="w-96">
             <div className="flex justify-center items-center">
-                <img id="logo_inscription" src={logo}  alt="Logo" className="w-64" />
+                <img id="logo_inscription" src={logo} alt="Logo" className="w-64 dark:hidden" />
+                <img id="logo_inscription" src={logo_dark} alt="Logo" className="w-64 hidden dark:block" />
             </div>
             <form className="form" onSubmit={handleSubmit}>
                 <div className="flex  relative justify-center items-center">
@@ -146,13 +147,13 @@ const FormSignup = ({ submitForm }) => {
 
 }
 
-var Logo = document.getElementById("logo_inscription");
-if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-    document.getElementById("logo_inscription").setAttribute('src','./images/logo/logo_benef_dark.png');
-    console.log("yo les copains");
-} else {
-    document.getElementById("logo_inscription").setAttribute('src','{logo}');
-    console.log("yesss");
-}
+// var Logo = document.getElementById("logo_inscription");
+// if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+//     document.getElementById("logo_inscription").setAttribute('src', '{logo_dark}');
+//     console.log("yo les copains");
+// } else {
+//     document.getElementById("logo_inscription").setAttribute('src', '{logo}');
+//     console.log("yesss");
+// }
 
 export default FormSignup
