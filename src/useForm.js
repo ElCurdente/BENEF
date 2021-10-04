@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 
+
 const useForm = (callback, validate) => {
   const [values, setValues] = useState({
     username:'',
@@ -14,6 +15,7 @@ const useForm = (callback, validate) => {
   const [errors, setErrors] = useState({});
   const [isSubmitting, setIsSubmitting] = useState(false);
 
+
   const handleChange = e => {
     const { name, value } = e.target;
     setValues({
@@ -21,6 +23,8 @@ const useForm = (callback, validate) => {
       [name]: value
     });
   };
+
+  
 
   const handleClickShowPassword = () => {
     setValues({ ...values, showPassword: !values.showPassword });
@@ -41,10 +45,12 @@ const useForm = (callback, validate) => {
     setIsSubmitting(true);
   };
 
+  
+
   useEffect(
     () => {
       if (Object.keys(errors).length === 0 && isSubmitting) {
-        callback();
+        callback && callback();
       }
     },
     [errors]
