@@ -48,7 +48,7 @@ const FormSignup = ({ submitForm }) => {
                             type="text"
                             name="username"
                             maxLength="30"
-                            placeholder="Nom d'utilisateur" className="placeholder-white-150 text-white-150 border-b-2 bg-transparent w-4/5 my-2 h-12 pt-5 text-left focus:outline-none  focus:placeholder-transparent"
+                            placeholder="Nom d'utilisateur" className="placeholder-white-150 text-white-150 border-b-2 bg-transparent w-4/5 my-2 mt-5 h-12 pt-5 text-left focus:outline-none  focus:placeholder-transparent"
                             value={values.username}
                             onChange={handleChange}
                         />
@@ -64,7 +64,7 @@ const FormSignup = ({ submitForm }) => {
                             maxLength="30"
                             minLength="8"
                             placeholder="Mot de passe"
-                            className="placeholder-white-150 text-white-150 border-b-2 bg-transparent w-4/5 my-2 h-12 text-left focus:outline-none pt-5 focus:placeholder-transparent"
+                            className="placeholder-white-150 text-white-150 border-b-2 bg-transparent w-4/5 my-2 mt-5 h-12 text-left focus:outline-none pt-5 focus:placeholder-transparent"
                             value={values.mdp}
                             onChange={handleChange} />
                         {errors.mdp && <p className="absolute -bottom-4 left-10 text-red-900 dark:text-red-650">{errors.mdp}</p>}
