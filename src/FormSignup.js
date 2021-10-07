@@ -80,7 +80,7 @@ const FormSignup = ({ submitForm }) => {
                         }
 
                     </div>
-                    <div className="flex justify-center items-center my-5">
+                    <div className="flex justify-center items-center my-5 mt-10">
                         <button className="block text-white-150 bg-red-650 dark:bg-gray-550 hover:bg-white-150 hover:text-red-650 dark:hover:bg-white-150 dark:hover:text-gray-550 active:bg-red-200 h-12 w-40  rounded-full transition duration-300 ease-in-out mt-5" type="submit">S'inscrire</button>
                     </div>
                     <div className="flex justify-center items-center">
