@@ -23,13 +23,13 @@ const Accueil = () => {
             <Router>
                 <div>
                     <Nav />
-                    <Switch>
-                    <Route path="/" exact component={Home}/>
-                    <Route path="/post" component={Post}/>
-                    <Route path="/recherche" component={Recherche}/>
-                    <Route path="/profil" component={Profil}/>
-                    <Route path="/messagerie" component={Messagerie}/>
-                    </Switch>                  
+                        <Switch>
+                            <Route path="/" exact component={Home}/>
+                            <Route path="/post" component={Post}/>
+                            <Route path="/recherche" component={Recherche}/>
+                            <Route path="/profil" component={Profil}/>
+                            <Route path="/messagerie" component={Messagerie}/>
+                        </Switch>                  
                 </div>
             </Router>   
         </div>

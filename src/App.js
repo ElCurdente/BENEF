@@ -6,8 +6,8 @@ import Accueil from './Accueil'
 function App() {
   return (
     <div className="bg-white-0 h-screen">
-      {/* <Form /> */}
-      <Accueil />
+      <Form />
+      {/* <Accueil /> */}
     </div>
   );
 }

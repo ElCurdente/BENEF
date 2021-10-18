@@ -1,7 +1,6 @@
 import React from 'react'
 import useForm from './useForm'
 import validate from './validateInfo'
-import FormConnexion from './FormConnexion'
 import './Form.css';
 import './index.css';
 import logo from './images/logo/logo_benef.png';
