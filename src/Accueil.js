@@ -3,7 +3,7 @@ import Post from './Post'
 
 const Accueil = () => {
     return (
-        <div>
+        <div className="">
             <h1>Page d'accueil</h1>     
             <Post />    
         </div>

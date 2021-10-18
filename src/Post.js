@@ -4,33 +4,34 @@ import { useState, useEffect } from 'react';
 
 const Post = () => {
     const [values, setValues] = useState({
-        image:'',
-        title:'',
-        desc:'',
-        adress:'',
-        postal:'',
-        expiration:'',
-        certified:'false',
-        cgu:'false',
-      });
+        image: '',
+        title: '',
+        desc: '',
+        adress: '',
+        postal: '',
+        expiration: '',
+        certified: 'false',
+        cgu: 'false',
+    });
 
-      const handleChange = e => {
+    const handleChange = e => {
         const { name, value } = e.target;
         setValues({
-          ...values,
-          [name]: value
+            ...values,
+            [name]: value
         });
-      };
+    };
 
-      const handleSubmit = e => {
+    const handleSubmit = e => {
         e.preventDefault();
-      };
+    };
 
     return (
-        <div>
-             <form className="post" onSubmit={handleSubmit}>
+        <div className="flex justify-center items-center box-border h-screen w-full dark:bg-black">
+            <div className="bg-red-450 rounded-lg shadow-2xl w-96">
+                <form className="post" onSubmit={handleSubmit}>
 
-             <div className="flex  relative justify-center items-center">
+                    <div className="flex  relative justify-center items-center">
                         <label htmlFor="image" className="">
                         </label>
                         <input id="image"
@@ -109,7 +110,7 @@ const Post = () => {
                         />
                     </div>
 
-                    <div className="flex  relative justify-center items-center">Je certifie que ce bon plan existe 
+                    <div className="flex relative justify-left ml-9 items-center text-left">Je certifie que ce bon plan existe
                         <label htmlFor="certified" className="">
                         </label>
                         <input id="certified"
@@ -134,10 +135,11 @@ const Post = () => {
                     </div>
 
                     <div className="flex justify-center items-center my-5">
-                        <button className="block text-white-150 bg-red-650 hover:bg-white-150 hover:text-red-650 dark:hover:bg-white-150 dark:hover:text-gray-550 active:bg-red-200 h-12 w-40 dark:bg-gray-550 rounded-full transition duration-300 ease-in-out mt-5" type="submit">Publier</button>
+                        <button className="block text-white-150 font-bold bg-red-650 hover:bg-white-150 hover:text-red-650 dark:hover:bg-white-150 dark:hover:text-gray-550 active:bg-red-200 h-12 w-40 dark:bg-gray-550 rounded-full transition duration-300 ease-in-out mt-5" type="submit">Publier</button>
                     </div>
 
                 </form>
+            </div>
         </div>
     )
 }
