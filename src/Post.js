@@ -1,5 +1,6 @@
 import React from 'react'
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
+import Accueil from './Accueil'
 
 
 const Post = () => {
@@ -29,7 +30,6 @@ const Post = () => {
     return (
         <div>
              <form className="post" onSubmit={handleSubmit}>
-
              <div className="flex  relative justify-center items-center">
                         <label htmlFor="image" className="">
                         </label>
