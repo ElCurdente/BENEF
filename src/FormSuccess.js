@@ -1,11 +1,10 @@
 import React from 'react'
-
+import { useState } from 'react';
+import Accueil from './Accueil'
 
 const FormSuccess = () => {
     return (
-        <div>
-            <h1>Vous êtes inscrits ! Nique bien ta mère</h1>
-        </div>
+        <Accueil />
     )
 }
 
