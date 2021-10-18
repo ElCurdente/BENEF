@@ -81,7 +81,7 @@ const FormSignup = ({ submitForm }) => {
 
                     </div>
                     <div className="flex justify-center items-center my-5 mt-10">
-                        <button className="block text-white-150 bg-red-650 dark:bg-gray-550 hover:bg-white-150 hover:text-red-650 dark:hover:bg-white-150 dark:hover:text-gray-550 active:bg-red-200 h-12 w-40  rounded-full transition duration-300 ease-in-out mt-5" type="submit">S'inscrire</button>
+                        <button className="block text-white-150 font-bold bg-red-650 dark:bg-gray-550 hover:bg-white-150 hover:text-red-650 dark:hover:bg-white-150 dark:hover:text-gray-550 active:bg-red-200 h-12 w-40  rounded-full transition duration-300 ease-in-out mt-5" type="submit">S'inscrire</button>
                     </div>
                     <div className="flex justify-center items-center">
                         <h3 onClick={handleConnexion2} className="text-white-150 cursor-pointer hover:underline">Pas de compte ? Crée en un !</h3>
@@ -208,7 +208,7 @@ const FormSignup = ({ submitForm }) => {
                         }
                     </div>
                     <div className="flex justify-center items-center my-5">
-                        <button className="block text-white-150 bg-red-650 hover:bg-white-150 hover:text-red-650 dark:hover:bg-white-150 dark:hover:text-gray-550 active:bg-red-200 h-12 w-40 dark:bg-gray-550 rounded-full transition duration-300 ease-in-out mt-5" type="submit">S'inscrire</button>
+                        <button className="block text-white-150 font-bold bg-red-650 hover:bg-white-150 hover:text-red-650 dark:hover:bg-white-150 dark:hover:text-gray-550 active:bg-red-200 h-12 w-40 dark:bg-gray-550 rounded-full transition duration-300 ease-in-out mt-5" type="submit">S'inscrire</button>
                     </div>
                     <div className="flex justify-center items-center">
                         <h3 onClick={handleConnexion} className="text-white-150 hover:underline cursor-pointer">Déjà un compte ? Connecte toi</h3>
