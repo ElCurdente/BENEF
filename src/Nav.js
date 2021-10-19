@@ -14,7 +14,7 @@ const Nav = () => {
                     <ul className="flex justify-around">
                         <Link to="/">
                             <div className="relative top-3">
-                            <li className=""><LocalOfferIcon /></li>
+                            <li className=""><LocalOfferIcon/></li>
                             </div>
                         </Link>
                         <Link to="/recherche">
@@ -23,7 +23,7 @@ const Nav = () => {
                             </div>
                         </Link>
                         <Link to="/post">
-                            <div className="relative bottom-6 flex justify-center items-center h-12 w-12 bg-white-0 rounded-full">
+                            <div className="relative bottom-6 flex justify-center items-center h-16 w-16 bg-white-0 rounded-full">
                             <li ><AddIcon /></li>
                             </div>
                         </Link>

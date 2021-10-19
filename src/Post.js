@@ -79,7 +79,7 @@ const Post = () => {
                             type="text"
                             name="adress"
                             maxLength="30"
-                            placeholder="Addresse" className="placeholder-white-150 text-white-150 border-b-2 bg-transparent w-4/5 my-2 h-12 pt-5 text-left focus:outline-none  focus:placeholder-transparent"
+                            placeholder="Adresse" className="placeholder-white-150 text-white-150 border-b-2 bg-transparent w-4/5 my-2 h-12 pt-5 text-left focus:outline-none  focus:placeholder-transparent"
                             value={values.adress}
                             onChange={handleChange}
                         />
@@ -111,9 +111,7 @@ const Post = () => {
                         />
                     </div>
 
-                    <div className="flex relative justify-left ml-9 items-center text-left">Je certifie que ce bon plan existe
-                        <label htmlFor="certified" className="">
-                        </label>
+                    <div className="flex relative items-center mt-6 ml-3">
                         <input id="certified"
                             type="checkbox"
                             name="certified"
@@ -121,18 +119,23 @@ const Post = () => {
                             value={values.certified}
                             onChange={handleChange}
                         />
+                        <label htmlFor="certified" className="text-white-150 pl-2">Je certifie que ce bon plan existe
+                        </label>
+
                     </div>
 
-                    <div className="flex  relative justify-center items-center">Je certifie avoir pris connaissance des CGU
-                        <label htmlFor="cgu" className="">
-                        </label>
+                    <div className="flex  relative items-center ml-3">
                         <input id="cgu"
                             type="checkbox"
                             name="cgu"
                             maxLength="30"
+                            className=""
                             value={values.cgu}
                             onChange={handleChange}
                         />
+                        <label htmlFor="cgu" className="text-white-150 pl-2">Je certifie avoir pris connaissance des CGU
+                        </label>
+
                     </div>
 
                     <div className="flex justify-center items-center my-5">
@@ -142,7 +145,7 @@ const Post = () => {
                 </form>
             </div>
 
- 
+
         </div>
     )
 }
