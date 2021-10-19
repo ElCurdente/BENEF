@@ -28,8 +28,8 @@ const Post = () => {
     };
 
     return (
-        <div className="flex justify-center items-center box-border h-screen w-full dark:bg-black">
-            <div className="bg-red-450 rounded-lg shadow-2xl w-96">
+        <div className="flex justify-center items-center box-border h-screen mt-3 w-full dark:bg-black">
+            <div className="bg-red-450 h-80vh overflow-y-auto rounded-lg shadow-xl w-95vw">
                 <form className="post" onSubmit={handleSubmit}>
 
                     <div className="flex  relative justify-center items-center">
@@ -141,6 +141,8 @@ const Post = () => {
 
                 </form>
             </div>
+
+ 
         </div>
     )
 }

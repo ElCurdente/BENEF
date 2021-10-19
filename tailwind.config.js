@@ -3,7 +3,16 @@ module.exports = {
   darkMode: 'media', // or 'media' or 'class'
   theme: {
     extend: {
-
+      height: {
+        '10vh': '10vh',
+        '7vh': '7vh',
+        '80vh': '80vh'
+      },
+      width: {
+        '10vw': '10vw',
+        '95vw': '95vw',
+        '100vw': '100vw'
+      },
       colors: {
         red: {
           450: '#FF5640',
