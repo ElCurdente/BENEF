@@ -9,7 +9,7 @@ import LocalOfferIcon from '@material-ui/icons/LocalOffer';
 const Nav = () => {
     return (
         <div className="flex justify-center">
-            <div className="fixed justify-center bottom-0 h-7vh w-100vw bg-red-450 ">
+            <div className="fixed justify-center bottom-0 h-7vh w-100vw bg-red-450 dark:bg-gray-450 rounded-t-lg">
                 <nav className="w-100vw h-7vh">
                     <ul className="flex justify-around">
                         <Link to="/">

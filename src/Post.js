@@ -30,7 +30,7 @@ const Post = () => {
     return (
         <div className="flex justify-center items-center box-border h-screen mt-3 w-full dark:bg-black">
             <div className="bg-red-450 h-80vh overflow-y-auto rounded-lg shadow-xl w-95vw">
-                <form className="post" onSubmit={handleSubmit}>
+                <form className="post h-full flex flex-col justify-center" onSubmit={handleSubmit}>
 
                     <div className="flex  relative justify-center items-center">
                         <label htmlFor="image" className="">
@@ -129,7 +129,7 @@ const Post = () => {
                             type="checkbox"
                             name="cgu"
                             maxLength="30"
-                            className=""
+                            className="appearance-none bg-transparent rounded-sm border-white-0 p-1 border-2 inline-block checked:bg-white-0"
                             value={values.cgu}
                             onChange={handleChange}
                         />
@@ -138,8 +138,8 @@ const Post = () => {
 
                     </div>
 
-                    <div className="flex justify-center items-center my-5">
-                        <button className="block text-white-150 font-bold bg-red-650 hover:bg-white-150 hover:text-red-650 dark:hover:bg-white-150 dark:hover:text-gray-550 active:bg-red-200 h-12 w-40 dark:bg-gray-550 rounded-full transition duration-300 ease-in-out mt-5" type="submit">Publier</button>
+                    <div className="flex justify-end items-center py-5 mr-10">
+                        <button className="block text-red-650 font-bold bg-white-150 hover:bg-white-150 hover:text-red-650 dark:hover:bg-white-150 dark:hover:text-gray-550 active:bg-red-200 h-12 w-32 dark:bg-gray-550 rounded-full transition duration-300 ease-in-out" type="submit">Publier</button>
                     </div>
 
                 </form>
