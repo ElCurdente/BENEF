@@ -105,7 +105,7 @@ const Post = () => {
                             type="date"
                             name="expiration"
                             maxLength="30"
-                            placeholder="Date d'expiration" className="placeholder-white-150 text-white-150 border-b-2 bg-transparent w-4/5 my-2 h-12 pt-5 text-left focus:outline-none  focus:placeholder-transparent"
+                            placeholder="Date d'expiration" className=" placeholder-white-150 text-white-150 border-b-2 bg-transparent w-4/5 my-2 h-12 pt-5 text-left focus:outline-none  focus:placeholder-transparent"
                             value={values.expiration}
                             onChange={handleChange}
                         />
@@ -116,7 +116,7 @@ const Post = () => {
                             type="checkbox"
                             name="certified"
                             maxLength="30"
-                            className="rounded-sm bg-transparent border-white-0 border-2 text-transparent focus:ring-transparent checked:border-white-0"
+                            className="form-checkbox rounded-sm bg-transparent border-white-0 border-2 text-transparent focus:ring-transparent checked:border-white-0"
                             value={values.certified}
                             onChange={handleChange}
                         />
@@ -130,7 +130,7 @@ const Post = () => {
                             type="checkbox"
                             name="cgu"
                             maxLength="30"
-                            className="rounded-sm bg-transparent border-white-0 border-2 text-transparent focus:ring-transparent checked:border-white-0"
+                            className="form-checkbox rounded-sm bg-transparent border-white-0 border-2 text-transparent focus:ring-transparent checked:border-white-0"
                             value={values.cgu}
                             onChange={handleChange}
                         />
