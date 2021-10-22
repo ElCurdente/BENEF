@@ -58,14 +58,16 @@ const Post = () => {
                          onClick={() => {
                              setImage(null);
                          }} 
-                         className="w-100vw h-30vh cursor-pointer rounded-t-md object-cover border-2 border-red-450"/>
+                         className="w-100vw h-30vh cursor-pointer rounded-t-md object-cover "/>
                          ) : (
                         <button onClick={(e) => {
                             e.preventDefault();
                             fileInputRef.current.click();
                             
-                        }} className="w-100vw h-30vh rounded-md border-2 border-red-450 cursor-pointer bg-white-0 text-red-450 text-8xl"> +
+                        }} className="w-100vw h-30vh rounded-md border-2 border-red-450 cursor-pointer bg-white-0 text-red-450 text-8xl"> +  
                         </button> )}
+                        <label htmlFor="image" className="absolute bottom-10 text-2xl font-bold text-red-450"> Ajouter une image
+                        </label>
                         <input id="image"
                             type="file"
                             accept="image/png, image/jpeg"
@@ -147,7 +149,7 @@ const Post = () => {
                             type="date"
                             name="expiration"
                             maxLength="30"
-                            placeholder="Date d'expiration" className=" placeholder-white-150 text-white-150 border-b-2 bg-transparent w-4/5 my-2 h-12 pt-5 text-left focus:outline-none  focus:placeholder-transparent"
+                            placeholder="Date d'expiration" className="appearance-none placeholder-white-150 text-white-150 border-b-2 bg-transparent w-4/5 my-2 h-12 pt-5 text-left focus:outline-none  focus:placeholder-transparent"
                             value={values.expiration}
                             onChange={handleChange}
                         />
