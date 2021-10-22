@@ -1,5 +1,7 @@
 import React from 'react'
 import { useState } from 'react';
+import { useRef } from 'react';
+import { useEffect } from 'react';
 import Accueil from './Accueil'
 
 
@@ -27,22 +29,62 @@ const Post = () => {
         e.preventDefault();
     };
 
+    const [image, setImage] = useState();
+    const [preview, setPreview] = useState();
+    const fileInputRef = useRef();
+
+    useEffect(() => {
+        if (image) {
+            const reader = new FileReader();
+            reader.onloadend = () => {
+                setPreview(reader.result);
+            };
+            reader.readAsDataURL(image);
+                        
+        } else {
+            setPreview(null);
+            console.log("ça marche")
+        }
+    }, [image]);
+
     return (
         <div className="flex justify-center items-center box-border h-screen mt-3 w-full dark:bg-black">
             <div className="bg-red-450 h-80vh overflow-y-auto rounded-lg shadow-xl w-95vw">
-                <form className="post h-full flex flex-col justify-center" onSubmit={handleSubmit}>
-
+                <form className="post flex flex-col justify-center" onSubmit={handleSubmit}>
                     <div className="flex  relative justify-center items-center">
-                        <label htmlFor="image" className="">
-                        </label>
+                        {preview ? (
+
+                         <img src={preview}
+                         onClick={() => {
+                             setImage(null);
+                         }} 
+                         className="w-100vw h-30vh cursor-pointer rounded-t-md object-cover border-2 border-red-450"/>
+                         ) : (
+                        <button onClick={(e) => {
+                            e.preventDefault();
+                            fileInputRef.current.click();
+                            
+                        }} className="w-100vw h-30vh rounded-md border-2 border-red-450 cursor-pointer bg-white-0 text-red-450 text-8xl"> +
+                        </button> )}
                         <input id="image"
                             type="file"
                             accept="image/png, image/jpeg"
                             name="image"
                             maxLength="30"
-                            placeholder="Votre titre" className=" placeholder-white-150 text-white-150 border-b-2 bg-transparent w-4/5 my-2 h-12 pt-5 text-left focus:outline-none  focus:placeholder-transparent"
-                            value={values.title}
-                            onChange={handleChange}
+                            ref={fileInputRef}
+                            onChange={(e) => {
+                                const file = e.target.files[0];
+                                if (file) {
+                                    setImage(file);
+                                    console.log("ça marche pas")
+                                } else {
+                                    setImage(null);
+                                    
+                                }
+                            }}
+                            className="hidden placeholder-white-150 text-white-150 border-b-2 bg-transparent w-4/5 my-2 h-12 pt-5 text-left focus:outline-none  focus:placeholder-transparent"
+                            
+                            
                         />
                     </div>
 
@@ -53,7 +95,7 @@ const Post = () => {
                             type="text"
                             name="title"
                             maxLength="30"
-                            placeholder="Votre titre" className="placeholder-white-150 text-white-150 border-l-transparent border-b-2 bg-transparent w-4/5 my-2 h-12 pt-5 text-left focus:outline-none  focus:placeholder-transparent"
+                            placeholder="Votre titre" className="placeholder-white-150 text-white-150 border-b-2 bg-transparent w-4/5 my-2 h-12 pt-5 text-left focus:outline-none  focus:placeholder-transparent"
                             value={values.title}
                             onChange={handleChange}
                         />
@@ -65,7 +107,7 @@ const Post = () => {
                         <input id="desc"
                             type="text"
                             name="desc"
-                            maxLength="30"
+                            
                             placeholder="Description" className="placeholder-white-150 text-white-150 border-b-2 bg-transparent w-4/5 my-2 h-12 pt-5 text-left focus:outline-none  focus:placeholder-transparent"
                             value={values.desc}
                             onChange={handleChange}
@@ -78,7 +120,7 @@ const Post = () => {
                         <input id="adress"
                             type="text"
                             name="adress"
-                            maxLength="30"
+                            
                             placeholder="Adresse" className="placeholder-white-150 text-white-150 border-b-2 bg-transparent w-4/5 my-2 h-12 pt-5 text-left focus:outline-none  focus:placeholder-transparent"
                             value={values.adress}
                             onChange={handleChange}

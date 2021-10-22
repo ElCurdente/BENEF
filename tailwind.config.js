@@ -5,11 +5,13 @@ module.exports = {
     extend: {
       height: {
         '10vh': '10vh',
+        '30vh': '30vh',
         '7vh': '7vh',
         '80vh': '80vh'
       },
       width: {
         '10vw': '10vw',
+        '80vw': '80vw',
         '95vw': '95vw',
         '100vw': '100vw'
       },
