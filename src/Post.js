@@ -47,6 +47,8 @@ const Post = () => {
         }
     }, [image]);
 
+    var add = document.getElementById("#add")
+
     return (
         <div className="flex justify-center items-center box-border h-screen mt-3 w-full dark:bg-black">
             <div className="bg-red-450 h-80vh overflow-y-auto rounded-lg shadow-xl w-95vw">
@@ -64,9 +66,9 @@ const Post = () => {
                             e.preventDefault();
                             fileInputRef.current.click();
                             
-                        }} className="w-100vw h-30vh rounded-md border-2 border-red-450 cursor-pointer bg-white-0 text-red-450 text-8xl"> +  
+                        }} className="w-100vw h-30vh rounded-t-md border-2 border-red-450 cursor-pointer bg-white-0 text-red-450 text-8xl"> +  
                         </button> )}
-                        <label htmlFor="image" className="absolute bottom-10 text-2xl font-bold text-red-450"> Ajouter une image
+                        <label htmlFor="image" id="add" className="absolute bottom-2 text-2xl font-bold text-red-450"> Ajouter une image
                         </label>
                         <input id="image"
                             type="file"
