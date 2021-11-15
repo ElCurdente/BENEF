@@ -2,10 +2,12 @@ import React from 'react'
 import { useState } from 'react';
 import { useRef } from 'react';
 import { useEffect } from 'react';
-import Accueil from './Accueil'
+import Accueil from './Accueil';
+import plus from './images/icon/icon_plus.svg';
 
 
 const Post = () => {
+
     const [values, setValues] = useState({
         image: '',
         title: '',
@@ -47,13 +49,13 @@ const Post = () => {
         }
     }, [image]);
 
-    var add = document.getElementById("#add")
+    var add = document.getElementsByName("add");
 
     return (
         <div className="flex justify-center items-center box-border h-screen mt-3 w-full dark:bg-black">
             <div className="bg-red-450 h-80vh overflow-y-auto rounded-lg shadow-xl w-95vw">
                 <form className="post flex flex-col justify-center" onSubmit={handleSubmit}>
-                    <div className="flex  relative justify-center items-center">
+                    <div id="imgpost" className="flex  relative justify-center items-center">
                         {preview ? (
 
                          <img src={preview}
@@ -66,9 +68,9 @@ const Post = () => {
                             e.preventDefault();
                             fileInputRef.current.click();
                             
-                        }} className="w-100vw h-30vh rounded-t-md border-2 border-red-450 cursor-pointer bg-white-0 text-red-450 text-8xl"> +  
+                        }} className="w-100vw h-30vh rounded-t-md border-2 border-red-450 cursor-pointer bg-white-0 text-red-450 text-4xl"><img className="h-40px m-auto" src={plus} alt=""/> Ajouter une image
                         </button> )}
-                        <label htmlFor="image" id="add" className="absolute bottom-2 text-2xl font-bold text-red-450"> Ajouter une image
+                        <label htmlFor="image" id="add" name="add" className="absolute bottom-2 text-2xl font-bold text-red-450"> 
                         </label>
                         <input id="image"
                             type="file"
