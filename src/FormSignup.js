@@ -33,7 +33,7 @@ const FormSignup = ({ submitForm }) => {
     if (hasAccount === true) {
         console.log("oui");
         return (
-            <div className="flex justify-center items-center bg-red-450 box-border h-screen w-full dark:bg-black">
+            <div className="flex justify-center items-center bg-red-450 box-border h-screen w-full dark:bg-gray-550">
                 <div className="w-96">
                     <div className="flex justify-center items-center">
                         <img src={logo} alt="Logo" className="w-64 dark:hidden" />

@@ -4,6 +4,7 @@ import { useRef } from 'react';
 import { useEffect } from 'react';
 import Accueil from './Accueil';
 import plus from './images/icon/icon_plus.svg';
+import plusblanc from './images/icon/icon_plus_blanc.svg';
 
 
 const Post = () => {
@@ -52,8 +53,8 @@ const Post = () => {
     var add = document.getElementsByName("add");
 
     return (
-        <div className="flex justify-center items-center box-border h-screen mt-3 w-full dark:bg-black">
-            <div className="bg-red-450 h-80vh overflow-y-auto rounded-lg shadow-xl w-95vw">
+        <div className="flex justify-center items-center box-border h-screen mt-3 w-full bg-white-0 dark:bg-gray-550">
+            <div className="bg-red-450 dark:bg-black h-80vh overflow-y-auto rounded-lg shadow-xl w-95vw">
                 <form className="post flex flex-col justify-center" onSubmit={handleSubmit}>
                     <div id="imgpost" className="flex  relative justify-center items-center">
                         {preview ? (
@@ -68,10 +69,10 @@ const Post = () => {
                             e.preventDefault();
                             fileInputRef.current.click();
                             
-                        }} className="w-100vw h-30vh rounded-t-md border-2 border-red-450 cursor-pointer bg-white-0 text-red-450 text-4xl"><img className="h-40px m-auto" src={plus} alt=""/> Ajouter une image
+                        }} className="w-100vw h-30vh rounded-t-md border-2 border-red-450 cursor-pointer bg-white-0 text-red-450 dark:text-white-0 text-xl leading-loose dark:bg-gray-650 dark:border-black">
+                            <img className="h-40px m-auto dark:hidden" src={plus} alt=""/>
+                            <img className="h-40px m-auto" src={plusblanc} alt=""/> Ajouter une photo
                         </button> )}
-                        <label htmlFor="image" id="add" name="add" className="absolute bottom-2 text-2xl font-bold text-red-450"> 
-                        </label>
                         <input id="image"
                             type="file"
                             accept="image/png, image/jpeg"
@@ -187,8 +188,8 @@ const Post = () => {
 
                     </div>
 
-                    <div className="flex justify-end items-center py-5 mr-10">
-                        <button className="block text-red-650 font-bold bg-white-150 hover:bg-white-150 hover:text-red-650 dark:hover:bg-white-150 dark:hover:text-gray-550 active:bg-red-200 h-12 w-32 dark:bg-gray-550 rounded-full transition duration-300 ease-in-out" type="submit">Publier</button>
+                    <div className="flex justify-end items-center py-5 mr-5">
+                        <button className="block w-24 h-9 text-red-650 text-lg font-bold bg-white-150 hover:bg-white-150 hover:text-red-650 dark:hover:bg-white-150 dark:hover:text-gray-550 active:bg-red-200 dark:bg-white-0 dark:text-black rounded-full transition duration-300 ease-in-out" type="submit">Publier</button>
                     </div>
 
                 </form>
