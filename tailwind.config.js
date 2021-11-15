@@ -2,7 +2,6 @@ module.exports = {
   purge: ['./src/**/*.{js,jsx,ts,tsx}', './public/index.html'],
   darkMode: 'media', // or 'media' or 'class'
   theme: {
-    
     extend: {
       height: {
         '10vh': '10vh',
@@ -35,6 +34,9 @@ module.exports = {
         },
       },
     },
+    boxShadow: {
+      custom: '0px -3px 10px 1px rgba(0, 0, 0, 0.1)'
+    }
   },
   variants: {
     extend: {

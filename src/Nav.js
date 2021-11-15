@@ -29,9 +29,9 @@ const Nav = () => {
                             </div>
                         </Link>
                         <Link to="/post">
-                            <div className="relative bottom-6 flex justify-center items-center h-16 w-16 bg-white-0 rounded-full">
+                            <div className="relative bottom-6 flex justify-center items-center h-16 w-16 bg-white-0 rounded-full shadow-custom">
                             <li ><img className="h-25px dark:hidden" src={plus} alt=""/>
-                            <img className="h-25px" src={plusnoir} alt=""/></li>
+                            <img className="h-25px hidden dark:block" src={plusnoir} alt=""/></li>
                             </div>
                         </Link>
                         <Link to="profil">
