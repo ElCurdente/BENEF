@@ -18,14 +18,14 @@ const Nav = () => {
             <div className="fixed justify-center bottom-0 h-7vh w-100vw bg-red-450 dark:bg-black rounded-t-lg">
                 <nav className="w-100vw h-7vh">
                     <ul className="flex justify-around">
-                        <Link to="/">
+                        <Link to="/actualité">
                             <div className="relative top-3">
-                            <li className=""><LocalOfferIcon/></li>
+                            <li className=""><img className="h-25px" src={etiquette} alt=""/></li>
                             </div>
                         </Link>
                         <Link to="/recherche">
                         <div className="relative top-3">
-                            <li><SearchIcon /></li>
+                            <li><img className="h-25px" src={recherche} alt=""/></li>
                             </div>
                         </Link>
                         <Link to="/post">
@@ -36,12 +36,12 @@ const Nav = () => {
                         </Link>
                         <Link to="profil">
                         <div className="relative top-3">
-                            <li><PersonOutlineIcon /></li>
+                            <li><img className="h-25px" src={message} alt=""/></li>
                             </div>
                         </Link>
                         <Link to="messagerie">
                         <div className="relative top-3">
-                            <li><ChatIcon /></li>
+                            <li><img className="h-25px rounded-xl border-2 border-white" src={profil} alt=""/></li>
                             </div>
                         </Link>
                     </ul>
