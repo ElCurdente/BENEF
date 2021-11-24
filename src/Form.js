@@ -2,6 +2,8 @@
 import FormSignup from './FormSignup'
 import FormSuccess from './FormSuccess'
 import React, {useState} from "react";
+import Accueil from './Accueil'
+
 // import hasAccount as Constants from "./useForm"
 
 const Form = () => {
@@ -17,7 +19,7 @@ const Form = () => {
     return (
         <div>
                 
-                {!isSubmitted ? ( <FormSignup submitForm={submitForm} />) : (<FormSuccess />)}            
+                {!isSubmitted ? ( <FormSignup submitForm={submitForm} />) : (<Accueil />)}            
                 
         </div>
     )

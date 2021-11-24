@@ -8,9 +8,7 @@ module.exports = {
         '10vh': '10vh',
         '30vh': '30vh',
         '7vh': '7vh',
-        '80vh': '80vh',
-        '25px': '25px',
-        '40px': '40px'
+        '80vh': '80vh'
       },
       width: {
         '10vw': '10vw',
