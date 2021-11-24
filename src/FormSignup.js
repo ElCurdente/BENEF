@@ -11,8 +11,31 @@ import InputAdornment from "@material-ui/core/InputAdornment";
 import VisibilityOff from "@material-ui/icons/VisibilityOff";
 import { useState } from 'react';
 
+<<<<<<< Updated upstream
 const FormSignup = ({ submitForm }) => {
     const { handleChange, handleClickShowPassword, handleClickShowPassword2, handleMouseDownPassword, values, handleSubmit, errors } = useForm(submitForm, validate);
+=======
+const FormSignup = ({submitForm}) => {
+const {handleChange, values, handleSubmit, errors} = useForm(submitForm, validate);
+
+    return (
+        <div className="form-content">
+
+            <form className="form" onSubmit={handleSubmit}>
+                <div className="form-inputs">
+                    <label htmlFor="username" className="form-label">  
+                    </label>
+
+                    <input id="username" 
+                    type="text" 
+                    name="username" 
+                    placeholder="Nom d'utilisateur" className="form-input"
+                    value={values.username}
+                    onChange={handleChange}
+                    />
+                    {errors.username && <p>{errors.username}</p>}
+                </div>
+>>>>>>> Stashed changes
 
     const [hasAccount, setHasAccount] = useState(false);
 

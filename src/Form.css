@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 /* :root[data-theme="theme-light"] {
     --primary-color: #FF5640;
     --text-color: #FF5050;
@@ -19,6 +20,19 @@
 }
 
 .form-inputs p {
+=======
+element {
+    --main-color: #FF5640;
+    --error-color : rgb(231, 67, 67);
+}
+
+document.body{
+
+}    background-color : var(--main-color);
+
+
+.form-inputs p{
+>>>>>>> Stashed changes
     color: red;
 }
 
