@@ -2,20 +2,42 @@ module.exports = {
   purge: ['./src/**/*.{js,jsx,ts,tsx}', './public/index.html'],
   darkMode: 'media', // or 'media' or 'class'
   theme: {
+    fill: theme => ({
+      'red': theme('colors.red.450'),
+      'green': theme('colors.green.500'),
+      'blue': theme('colors.blue.500'),
+    }),
+    borderWidth: {
+      DEFAULT: '1px',
+      '0': '0',
+      '2': '2px',
+      '3': '3px',
+      '4': '4px',
+      '6': '6px',
+      '8': '8px',
+    },
     extend: {
       height: {
         '10vh': '10vh',
         '30vh': '30vh',
         '7vh': '7vh',
         '80vh': '80vh',
+        '1px': '1px',
+        '15px': '15px',
         '25px': '25px',
-        '40px': '40px'
+        '30px': '30px',
+        '40px': '40px',
+        '25px': '25px',
+        '100px': '100px',
       },
       width: {
+        '1px': '1px',
         '10vw': '10vw',
+        '30vw': '30vw',
         '80vw': '80vw',
         '95vw': '95vw',
-        '100vw': '100vw'
+        '100vw': '100vw',
+        '100px': '100px',
       },
       colors: {
         red: {
