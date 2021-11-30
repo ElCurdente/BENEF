@@ -1,9 +1,9 @@
-import React from 'react'
+import React from 'react';
 
 const Profil = () => {
     return (
-        <div>
-            <h3>Profil</h3>
+        <div className="flex justify-center items-center h-screen w-screen bg-white">
+            <h3 className="text-white-0">Profil</h3>
         </div>
     )
 }

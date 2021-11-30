@@ -34,12 +34,12 @@ const Nav = () => {
                             <img className="h-25px hidden dark:block" src={plusnoir} alt=""/></li>
                             </div>
                         </Link>
-                        <Link to="profil">
+                        <Link to="/messagerie">
                         <div className="relative top-3">
                             <li><img className="h-25px" src={message} alt=""/></li>
                             </div>
                         </Link>
-                        <Link to="messagerie">
+                        <Link to="/profil">
                         <div className="relative top-3">
                             <li><img className="h-25px rounded-xl border-2 border-white" src={profil} alt=""/></li>
                             </div>

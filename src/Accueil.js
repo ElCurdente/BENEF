@@ -35,10 +35,10 @@ const Accueil = () => {
                     <Nav />
                     <Switch>
                         <Route path="/" exact component={Home} />
-                        <Route path="/post" component={Post} />
                         <Route path="/recherche" component={Recherche} />
-                        <Route path="/profil" component={Profil} />
+                        <Route path="/post" component={Post} />
                         <Route path="/messagerie" component={Messagerie} />
+                        <Route path="/profil" component={Profil} />
                     </Switch>
                 </div>
             </Router>
