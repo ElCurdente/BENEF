@@ -11,10 +11,6 @@ import InputAdornment from "@material-ui/core/InputAdornment";
 import VisibilityOff from "@material-ui/icons/VisibilityOff";
 import { useState } from 'react';
 
-
-
-
-
 const FormSignup = ({ submitForm }) => {
     const { handleChange, handleClickShowPassword, handleClickShowPassword2, handleMouseDownPassword, values, handleSubmit, errors } = useForm(submitForm, validate);
 
@@ -39,7 +35,7 @@ const FormSignup = ({ submitForm }) => {
                         <img src={logo} alt="Logo" className="w-64 dark:hidden" />
                         <img src={logodark} alt="Logo" className="w-64 hidden dark:block" />
                     </div>
-                    <form className="form" onSubmit={handleSubmit}>
+                    <form className="form" action="benef-app.fr" method="POST" onSubmit={handleSubmit}>
                         <div className="flex  relative justify-center items-center">
                             <label htmlFor="username" className="">
                             </label>
