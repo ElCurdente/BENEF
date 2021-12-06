@@ -28,14 +28,14 @@ const Nav = () => {
                             <li><img className="h-25px" src={recherche} alt=""/></li>
                             </div>
                         </Link>
-                        <Link to="/post">
+                        <Link to="/post" className="hover:animate-bounce">
                             <div className="relative bottom-6 flex justify-center items-center h-16 w-16 bg-white-0 rounded-full shadow-custom">
                             <li ><img className="h-25px dark:hidden" src={plus} alt=""/>
                             <img className="h-25px hidden dark:block" src={plusnoir} alt=""/></li>
                             </div>
                         </Link>
                         <Link to="/messagerie">
-                        <div className="relative top-3">
+                        <div className="relative top-3 ">
                             <li><img className="h-25px" src={message} alt=""/></li>
                             </div>
                         </Link>
