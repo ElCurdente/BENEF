@@ -122,14 +122,14 @@ console.log("Error Reading data " + err);
 
 
 
-  // useEffect(
-  //   () => {
-  //     if (Object.keys(errors).length === 0 && isSubmitting) {
-  //       callback && callback();
-  //     }
-  //   },
-  //   [errors]
-  // );
+  useEffect(
+    () => {
+      if (Object.keys(errors).length === 0 && isSubmitting) {
+        callback && callback();
+      }
+    },
+    [errors]
+  );
 
   return {handleChange,handleClickShowPassword,handleClickShowPassword2,handleMouseDownPassword, handleSubmit, handleSubmitConnexion, handleChangeCo, values, valuesConnexion, errors };
 };
