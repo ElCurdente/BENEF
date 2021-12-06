@@ -42,7 +42,7 @@ const Post = () => {
                 setPreview(reader.result);
             };
             reader.readAsDataURL(image);
-                        
+
         } else {
             setPreview(null);
             console.log("ça marche")
@@ -56,20 +56,20 @@ const Post = () => {
                     <div className="flex  relative justify-center items-center">
                         {preview ? (
 
-                         <img src={preview}
-                         onClick={() => {
-                             setImage(null);
-                         }} 
-                         className="w-100vw h-30vh bg-white-0 dark:bg-gray-650 cursor-pointer border-2 border-red-450 dark:border-black rounded-t-md object-contain "/>
-                         ) : (
-                        <button onClick={(e) => {
-                            e.preventDefault();
-                            fileInputRef.current.click();
-                            
-                        }} className="w-100vw h-30vh rounded-t-md border-2 border-red-450 cursor-pointer bg-white-0 text-red-450 dark:text-white-0 text-xl leading-loose dark:bg-gray-650 dark:border-black">
-                            <img className="h-40px m-auto dark:hidden" src={plus} alt=""/>
-                            <img className="h-40px m-auto hidden dark:block" src={plusblanc} alt=""/> Ajouter une photo
-                        </button> )}
+                            <img src={preview}
+                                onClick={() => {
+                                    setImage(null);
+                                }}
+                                className="w-100vw h-30vh bg-white-0 dark:bg-gray-650 cursor-pointer border-2 border-red-450 dark:border-black rounded-t-md object-contain " />
+                        ) : (
+                            <button onClick={(e) => {
+                                e.preventDefault();
+                                fileInputRef.current.click();
+
+                            }} className="w-100vw h-30vh rounded-t-md border-2 border-red-450 cursor-pointer bg-white-0 text-red-450 dark:text-white-0 text-xl leading-loose dark:bg-gray-650 dark:border-black">
+                                <img className="h-40px m-auto dark:hidden" src={plus} alt="" />
+                                <img className="h-40px m-auto hidden dark:block" src={plusblanc} alt="" /> Ajouter une photo
+                            </button>)}
                         <input id="image"
                             type="file"
                             accept="image/png, image/jpeg"
@@ -83,12 +83,12 @@ const Post = () => {
                                     console.log("ça marche pas")
                                 } else {
                                     setImage(null);
-                                    
+
                                 }
                             }}
                             className="hidden placeholder-white-150 text-white-150 border-b-2 bg-transparent w-4/5 my-2 h-12 pt-5 text-left focus:outline-none  focus:placeholder-transparent"
-                            
-                            
+
+
                         />
                     </div>
 
@@ -107,16 +107,16 @@ const Post = () => {
 
                     <div className="flex  relative justify-center items-center">
                         <label htmlFor="desc" className="w-full flex justify-center">
-                        <textarea
-                            id="desc"
-                            type="text"
-                            name="desc"
-                            rows="40"
-                            className=" resize-y placeholder-white-150 text-white-150 border-b-2 bg-transparent w-4/5 my-2 h-24 pt-5 text-left focus:outline-none  focus:placeholder-transparent"
-                            placeholder="Description"
-                            value={values.desc}
-                            onChange={handleChange}
-                        ></textarea>
+                            <textarea
+                                id="desc"
+                                type="text"
+                                name="desc"
+                                rows="40"
+                                className=" resize-y placeholder-white-150 text-white-150 border-b-2 bg-transparent w-4/5 my-2 h-24 pt-5 text-left focus:outline-none  focus:placeholder-transparent"
+                                placeholder="Description"
+                                value={values.desc}
+                                onChange={handleChange}
+                            ></textarea>
                         </label>
                         {/* <input id="desc"
                             type="text"
@@ -133,7 +133,7 @@ const Post = () => {
                         <input id="adress"
                             type="text"
                             name="adress"
-                            
+
                             placeholder="Adresse" className="placeholder-white-150 text-white-150 border-b-2 bg-transparent w-4/5 my-2 h-12 pt-5 text-left focus:outline-none  focus:placeholder-transparent"
                             value={values.adress}
                             onChange={handleChange}
