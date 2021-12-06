@@ -19,7 +19,7 @@ const Accueil = () => {
     }
 
     return (
-        <div className="dark:bg-gray-550">
+        <div>
             
             <div className="flex justify-center">
                 <div className="fixed flex h-10vh w-100vw bg-red-450 dark:bg-black justify-center items-center rounded-b-lg">
@@ -35,10 +35,10 @@ const Accueil = () => {
                     <Nav />
                     <Switch>
                         <Route path="/" exact component={Home} />
-                        <Route path="/recherche" component={Recherche} />
                         <Route path="/post" component={Post} />
-                        <Route path="/messagerie" component={Messagerie} />
+                        <Route path="/recherche" component={Recherche} />
                         <Route path="/profil" component={Profil} />
+                        <Route path="/messagerie" component={Messagerie} />
                     </Switch>
                 </div>
             </Router>

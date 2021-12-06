@@ -12,7 +12,7 @@ import VisibilityOff from "@material-ui/icons/VisibilityOff";
 import { useState } from 'react';
 
 const FormSignup = ({ submitForm }) => {
-    const { handleChange, handleClickShowPassword, handleClickShowPassword2, handleMouseDownPassword, values, handleSubmit, errors } = useForm(submitForm, validate);
+    const { handleChange, handleClickShowPassword, handleClickShowPassword2, handleMouseDownPassword, values, handleSubmit, errors, handleSubmitConnexion, handleChangeCo, valuesConnexion } = useForm(submitForm, validate);
 
     const [hasAccount, setHasAccount] = useState(false);
 
@@ -27,7 +27,6 @@ const FormSignup = ({ submitForm }) => {
     };
 
     if (hasAccount === true) {
-        console.log("oui");
         return (
             <div className="flex justify-center items-center bg-red-450 box-border h-screen w-full dark:bg-black">
                 <div className="w-96">
@@ -35,7 +34,7 @@ const FormSignup = ({ submitForm }) => {
                         <img src={logo} alt="Logo" className="w-64 dark:hidden" />
                         <img src={logodark} alt="Logo" className="w-64 hidden dark:block" />
                     </div>
-                    <form className="form" action="benef-app.fr" method="POST" onSubmit={handleSubmit}>
+                    <form className="form" onSubmit={handleSubmitConnexion}>
                         <div className="flex  relative justify-center items-center">
                             <label htmlFor="username" className="">
                             </label>
@@ -45,8 +44,8 @@ const FormSignup = ({ submitForm }) => {
                                 name="username"
                                 maxLength="30"
                                 placeholder="Nom d'utilisateur" className="placeholder-white-150 text-white-150 border-b-2 bg-transparent w-4/5 my-2 mt-5 h-12 pt-5 text-left focus:outline-none  focus:placeholder-transparent"
-                                value={values.username}
-                                onChange={handleChange}
+                                value={valuesConnexion.username}
+                                onChange={handleChangeCo}
                             />
                             {errors.username && <p className="absolute -bottom-4 left-10 text-red-900 dark:text-red-650">{errors.username}</p>}
                         </div>
@@ -61,8 +60,8 @@ const FormSignup = ({ submitForm }) => {
                                 minLength="8"
                                 placeholder="Mot de passe"
                                 className="placeholder-white-150 text-white-150 border-b-2 bg-transparent w-4/5 my-2 mt-5 h-12 text-left focus:outline-none pt-5 focus:placeholder-transparent"
-                                value={values.mdp}
-                                onChange={handleChange} />
+                                value={valuesConnexion.mdp}
+                                onChange={handleChangeCo} />
                             {errors.mdp && <p className="absolute -bottom-4 left-10 text-red-900 dark:text-red-650">{errors.mdp}</p>}
                             {
                                 <InputAdornment position="end" className="absolute right-10" color="primary">
@@ -77,7 +76,7 @@ const FormSignup = ({ submitForm }) => {
 
                         </div>
                         <div className="flex justify-center items-center my-5 mt-10">
-                            <button className="block text-white-150 font-bold bg-red-650 dark:bg-gray-550 hover:bg-white-150 hover:text-red-650 dark:hover:bg-white-150 dark:hover:text-gray-550 active:bg-red-200 h-12 w-40  rounded-full transition duration-300 ease-in-out mt-5" type="submit">S'inscrire</button>
+                            <button className="block text-white-150 font-bold bg-red-650 dark:bg-gray-550 hover:bg-white-150 hover:text-red-650 dark:hover:bg-white-150 dark:hover:text-gray-550 active:bg-red-200 h-12 w-40  rounded-full transition duration-300 ease-in-out mt-5" type="submit">Se Connecter</button>
                         </div>
                         <div className="flex justify-center items-center">
                             <h3 onClick={handleConnexion2} className="text-white-150 cursor-pointer hover:underline">Pas de compte ? Crée en un !</h3>
@@ -87,7 +86,6 @@ const FormSignup = ({ submitForm }) => {
             </div>
         )
     } else {
-        console.log("non")
         return (
             <div className="flex justify-center items-center bg-red-450 box-border h-screen w-full dark:bg-black">
                 <div className="w-96">
@@ -95,7 +93,7 @@ const FormSignup = ({ submitForm }) => {
                         <img src={logo} alt="Logo" className="w-64 dark:hidden" />
                         <img src={logodark} alt="Logo" className="w-64 hidden dark:block" />
                     </div>
-                    <form className="form" onSubmit={handleSubmit}>
+                    <form className="form" action="api.php" method="GET" onSubmit={handleSubmit}>
                         <div className="flex  relative justify-center items-center">
                             <label htmlFor="username" className="">
                             </label>

@@ -4,8 +4,6 @@ import FormSuccess from './FormSuccess'
 import React, {useState} from "react";
 import Accueil from './Accueil'
 
-// import hasAccount as Constants from "./useForm"
-
 const Form = () => {
     
 
@@ -19,7 +17,7 @@ const Form = () => {
     return (
         <div>
                 
-                {!isSubmitted ? ( <FormSignup submitForm={submitForm} />) : (<Accueil />)}            
+                {!sessionStorage.getItem("isConnected") ? (!isSubmitted ? ( <FormSignup submitForm={submitForm} />) : (<Accueil />)) : (<Accueil/>)}            
                 
         </div>
     )
