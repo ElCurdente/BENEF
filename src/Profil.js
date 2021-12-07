@@ -139,7 +139,7 @@ const Profil = () => {
                                 type="text"
                                 name="title"
                                 maxLength="30"
-                                placeholder="celian.chvr" className="placeholder-gray-500 text-black border-b-2 bg-transparent w-4/5 h-12  text-left focus:outline-none  focus:placeholder-transparent"
+                                placeholder={sessionStorage.getItem("user")} className="placeholder-gray-500 text-black dark:text-white-0 border-b-2 bg-transparent w-4/5 h-12  text-left focus:outline-none  focus:placeholder-transparent"
                                 value={values.title}
                                 onChange={handleChange}
                             />
@@ -153,7 +153,7 @@ const Profil = () => {
                                 type="text"
                                 name="desc"
                                 rows="40"
-                                className=" resize-y pt-3 placeholder-gray-500 text-black border-b-2 bg-transparent w-4/5 h-24 text-left focus:outline-none  focus:placeholder-transparent"
+                                className=" resize-y pt-3 placeholder-gray-500 text-black dark:text-white-0 border-b-2 bg-transparent w-4/5 h-24 text-left focus:outline-none  focus:placeholder-transparent"
                                 placeholder="Description"
                                 value={values.desc}
                                 onChange={handleChange}
