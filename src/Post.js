@@ -12,9 +12,10 @@ const Post = () => {
         image: '',
         title: '',
         desc: '',
-        adress: '',
+        address: '',
         postal: '',
         expiration: '',
+        category:'',
         certified: 'false',
         cgu: 'false',
     });
@@ -29,6 +30,23 @@ const Post = () => {
 
     const handleSubmit = e => {
         e.preventDefault();
+        fetch('http://perso-etudiant.u-pem.fr/~antoine.droyer/api-post.php', {
+  method: "POST",
+  headers: {
+    'Accept' : 'application/json',
+    'Content-Type' : 'application/json'
+  },
+  body: JSON.stringify(values)
+
+})
+.then((response) => response.text())
+.then((result) => {
+  console.log(result)
+}).catch(err => {
+  // Do something for an error here
+  console.log("Error Reading data " + err);
+  
+});
     };
 
     const [image, setImage] = useState();
@@ -96,6 +114,17 @@ const Post = () => {
                     <div className="flex  relative justify-center items-center">
                         <label htmlFor="title" className="">
                         </label>
+                        <select  value={values.category} onChange={handleChange}>
+                            <option value="1">Catégorie 1</option>
+                            <option value="2">Catégorie 2</option>
+                            <option value="3">Catégorie 3</option>
+                            <option value="4">Catégorie 4</option>
+                        </select>
+                    </div>
+
+                    <div className="flex  relative justify-center items-center">
+                        <label htmlFor="title" className="">
+                        </label>
                         <input id="title"
                             type="text"
                             name="title"
@@ -122,11 +151,11 @@ const Post = () => {
                     </div>
 
                     <div className="flex  relative justify-center items-center">
-                        <label htmlFor="adress" className="">
+                        <label htmlFor="address" className="">
                         </label>
-                        <input id="adress"
+                        <input id="address"
                             type="text"
-                            name="adress"
+                            name="d"
 
                             placeholder="Adresse" className="placeholder-white-150 text-white-150 border-b-2 bg-transparent w-4/5 my-2 h-12 pt-5 text-left focus:outline-none  focus:placeholder-transparent"
                             value={values.adress}
