@@ -18,7 +18,7 @@
                 echo "Valeur courante : $v.\n";
             }
             // echo $decoded["username"];
-            $db = new PDO('mysql:db5005161444.hosting-data.io;dbname=dbs4318125', 'dbu1522474', 'lesoussol06092021', array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8"));
+            $db = new PDO('mysql:host=db5005161444.hosting-data.io;dbname=dbs4318125', 'dbu1522474', 'lesoussol06092021', array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8"));
             $requete = "INSERT INTO post (title, description, address, postal, expiration, category) VALUES (:title, :description, :address, :postal, :expiration, :category)";
             $stmt = $db ->prepare($requete);
             $stmt -> execute(array(

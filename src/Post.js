@@ -30,7 +30,7 @@ const Post = () => {
 
     const handleSubmit = e => {
         e.preventDefault();
-        fetch('http://perso-etudiant.u-pem.fr/~antoine.droyer/api-post.php', {
+        fetch('https://benef-app.fr/api-post.php', {
   method: "POST",
   headers: {
     'Accept' : 'application/json',

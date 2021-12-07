@@ -68,7 +68,7 @@ const useForm = (callback, validate) => {
     var test = JSON.stringify(values);
     console.log(test)
     console.log(values);
-  fetch('http://perso-etudiant.u-pem.fr/~antoine.droyer/api.php', {
+  fetch('https://benef-app.fr/api.php', {
   method: "POST",
   headers: {
     'Accept' : 'application/json',
@@ -96,7 +96,7 @@ const handleSubmitConnexion = e => {
   var test = JSON.stringify(valuesConnexion);
   console.log(test)
   console.log(valuesConnexion);
-fetch('http://perso-etudiant.u-pem.fr/~antoine.droyer/api-connexion.php', {
+fetch('https://benef-app.fr/api-connexion.php', {
 method: "POST",
 headers: {
   'Accept' : 'application/json',

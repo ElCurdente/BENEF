@@ -16,14 +16,14 @@
             //     echo "Valeur courante : $v.\n";
             // }
             
-            $db = new PDO('mysql:db5005161444.hosting-data.io;dbname=dbs4318125', 'dbu1522474', 'lesoussol06092021', array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8"));
+            $db = new PDO('mysql:host=db5005161444.hosting-data.io;dbname=dbs4318125', 'dbu1522474', 'lesoussol06092021', array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8"));
             $req = "SELECT * FROM benef_bdd WHERE username='{$decoded['username']}'";
             $stmt=$db->query($req);
 
             if($stmt->rowcount()==1){
 
                 $result=$stmt->fetch(PDO::FETCH_ASSOC);
-                if($decoded["mdp"] == $result["mdp"]){
+                if(password_verify($decoded["mdp"], $result["mdp"])){
                     // echo('C bon');
                     $encoded = json_encode($decoded);
                     echo($encoded);
