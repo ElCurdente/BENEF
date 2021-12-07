@@ -99,7 +99,7 @@ const Profil = () => {
                                     onClick={() => {
                                         setImage(null);
                                     }}
-                                    className="w-100px h-100px bg-red-450 dark:bg-gray-650 cursor-pointer border-3 border-red-450 dark:border-black rounded-full object-cover " />
+                                    className="w-100px h-100px bg-transparent dark:bg-gray-650 cursor-pointer border-3 border-red-450 dark:border-black rounded-full object-cover " />
                             ) : (
                                 <button onClick={(e) => {
                                     e.preventDefault();
