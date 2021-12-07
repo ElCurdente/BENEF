@@ -17,6 +17,20 @@ module.exports = {
       '8': '8px',
     },
     extend: {
+      animation: {
+        wiggle: 'wiggle 1s ease-in-out infinite',
+        bounce2: 'bounce2 1s infinite',
+      },
+      keyframes: {
+        wiggle: {
+          '0%, 100%': { transform: 'rotate(-3deg)' },
+          '50%': { transform: 'rotate(3deg)' },
+        },
+        bounce2: {
+          '0%, 100%': { transform: 'translateY(-15%)' },
+          '50%': { transform: 'translateY(0)' },
+        }
+      },
       height: {
         '10vh': '10vh',
         '30vh': '30vh',
@@ -61,10 +75,12 @@ module.exports = {
     }
   },
   variants: {
+    animation: ['responsive', 'motion-safe', 'motion-reduce'],
     extend: {
       backgroundColor: ['active', 'checked'],
       display: ['dark'],
       borderColor: ['checked'],
+      animation: ['hover', 'focus'],
     },
   },
   plugins: [require('@tailwindcss/forms')({
