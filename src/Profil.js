@@ -62,12 +62,20 @@ const Profil = () => {
         modifbio(false);
     };
 
+
     if (bio === false) {
         return (
             <div className="flex flex-col justify-center items-center h-screen w-screen bg-white">
-                <div id="infos" className="relative flex justify-between items-center w-95vw">
-                    <button onClick={handleConnexion} className="bg-red-450 py-2 px-4 rounded-3xl text-white-0 hover:bg-white-0 hover:text-red-450 hover:border-red-450 border-2 border-red-450">Modifie ton profil</button>
-                    <button className="relative flex items-center text-red-450 hover:underline">Voir mes favoris <img className="pl-1 h-15px fill-current" src={coeur} alt="" /></button>
+                <div id="infos" className="relative grid grid-cols-2 grid-layout w-95vw px-4">
+                    <div className="flex items-center">
+                        <img className="w-100px h-100px bg-red-450 dark:bg-gray-650 cursor-pointer border-3 border-red-450 dark:border-black rounded-full object-cover " />
+                        <h1 className="ml-3 text-xl font-semibold">{sessionStorage.getItem("user")}</h1>
+                    </div>
+                    <p className="col-span-2 mt-2">Jeune passioné de sorties j’adore la vie ahaha comme dirait la chanson française très célèbre je vois la vie en rose mdrrr ! J’adore le cinéma d’auteur, très peu pour moi les blockbusters hollywoodiens (sauf Joker, j’ai a-do-ré).</p>
+                    <div className="flex items-center justify-between col-span-2 h-16 pt-4">
+                        <button onClick={handleConnexion} className="flex items-center h-10 bg-red-450 py-2 px-4 rounded-3xl text-white-0 hover:bg-white-0 hover:text-red-450 hover:border-red-450 border-2 border-red-450">Modifie ton profil</button>
+                        <button className="flex items-center text-red-450 hover:underline">Voir mes favoris <img className="pl-1 h-15px fill-current" src={coeur} alt="" /></button>
+                    </div>
                 </div>
                 <div id="barre1" className="h-1px w-95vw mt-4 bg-gray-200"></div>
                 <div id="badges" className="w-95vw">

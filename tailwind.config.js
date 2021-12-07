@@ -17,6 +17,20 @@ module.exports = {
       '8': '8px',
     },
     extend: {
+      gridTemplateColumns: {
+        // Simple 16 column grid
+       '16': 'repeat(16, minmax(0, 1fr))',
+
+        // Complex site-specific column configuration
+       'footer': '200px minmax(900px, 1fr) 100px',
+      },
+      gridTemplateRows: {
+        // Simple 8 row grid
+       '8': 'repeat(8, minmax(0, 1fr))',
+
+        // Complex site-specific row configuration
+       'layout': '1fr 1fr 100px',
+      },
       animation: {
         wiggle: 'wiggle 1s ease-in-out infinite',
         bounce2: 'bounce2 1s infinite',

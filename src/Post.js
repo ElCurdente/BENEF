@@ -189,7 +189,7 @@ const Post = () => {
                     </div>
 
                     <div className="flex justify-end items-center py-5 mr-5">
-                        <button className="block w-24 h-9 text-red-650 text-lg font-bold bg-white-150 hover:bg-white-150 hover:text-red-650 dark:hover:bg-white-150 dark:hover:text-gray-550 active:bg-red-200 dark:bg-white-0 dark:text-black rounded-full transition duration-300 ease-in-out" type="submit">Publier</button>
+                        <button className="block w-24 h-9 text-red-450 text-lg font-bold border-2 border-white-0 bg-white-0 hover:bg-red-450 hover:text-white-0 hover:border-white-0 dark:hover:bg-white-150 dark:hover:text-gray-550 active:bg-red-200 dark:bg-white-0 dark:text-black rounded-full transition duration-300 ease-in-out" type="submit">Publier</button>
                     </div>
 
                 </form>
