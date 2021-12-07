@@ -68,7 +68,7 @@ const Profil = () => {
             <div className="flex flex-col justify-center items-center h-screen w-screen bg-white">
                 <div id="infos" className="relative grid grid-cols-2 grid-layout w-95vw px-4">
                     <div className="flex items-center">
-                        <img className="w-100px h-100px bg-red-450 dark:bg-gray-650 cursor-pointer border-3 border-red-450 dark:border-black rounded-full object-cover " />
+                        <img className="w-100px h-100px bg-transparent dark:bg-gray-650 border-3 border-red-450 dark:border-black rounded-full object-cover " />
                         <h1 className="ml-3 text-xl font-semibold">{sessionStorage.getItem("user")}</h1>
                     </div>
                     <p className="col-span-2 mt-2">Jeune passioné de sorties j’adore la vie ahaha comme dirait la chanson française très célèbre je vois la vie en rose mdrrr ! J’adore le cinéma d’auteur, très peu pour moi les blockbusters hollywoodiens (sauf Joker, j’ai a-do-ré).</p>
