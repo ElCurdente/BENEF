@@ -41,6 +41,7 @@ const Accueil = () => {
                         <Route path="/post" component={Post} />
                         <Route path="/messagerie" component={Messagerie} />
                         <Route path="/profil" component={Profil} />
+                        <Route path="/parametre" component={Parametre} />
                     </Switch>
                 </div>
             </Router>
