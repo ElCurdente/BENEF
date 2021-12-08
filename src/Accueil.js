@@ -28,8 +28,7 @@ const Accueil = () => {
                 </div>
             </div>
 
-            {/* <button className="post" onClick={handlePost}>+</button>
-            {isPosting ? <Post/> : null}      */}
+            
             <Router>
                 <div>
                     <Nav />
