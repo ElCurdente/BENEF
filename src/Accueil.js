@@ -9,6 +9,7 @@ import logodark from './images/logo/logo_benef_dark.png';
 import parameter from './images/icon/icon_parametres.svg';
 import { useState } from "react"
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import Parametre from './Parametre'
 
 const Accueil = () => {
 
@@ -41,6 +42,7 @@ const Accueil = () => {
                         <Route path="/post" component={Post} />
                         <Route path="/messagerie" component={Messagerie} />
                         <Route path="/profil" component={Profil} />
+                       
                     </Switch>
                 </div>
             </Router>
