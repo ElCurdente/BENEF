@@ -5,6 +5,7 @@ import { useEffect } from 'react';
 import Accueil from './Accueil';
 import plus from './images/icon/icon_plus.svg';
 import plusblanc from './images/icon/icon_plus_blanc.svg';
+import fleche from './images/icon/icon_fleche.svg';
 
 
 const Post = () => {
@@ -15,7 +16,7 @@ const Post = () => {
         address: '',
         postal: '',
         expiration: '',
-        category:'',
+        category: '',
         certified: 'false',
         cgu: 'false',
     });
@@ -31,22 +32,22 @@ const Post = () => {
     const handleSubmit = e => {
         e.preventDefault();
         fetch('https://benef-app.fr/api-post.php', {
-  method: "POST",
-  headers: {
-    'Accept' : 'application/json',
-    'Content-Type' : 'application/json'
-  },
-  body: JSON.stringify(values)
+            method: "POST",
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(values)
 
-})
-.then((response) => response.text())
-.then((result) => {
-  console.log(result)
-}).catch(err => {
-  // Do something for an error here
-  console.log("Error Reading data " + err);
-  
-});
+        })
+            .then((response) => response.text())
+            .then((result) => {
+                console.log(result)
+            }).catch(err => {
+                // Do something for an error here
+                console.log("Error Reading data " + err);
+
+            });
     };
 
     const [image, setImage] = useState();
@@ -111,15 +112,78 @@ const Post = () => {
                         />
                     </div>
 
-                    <div className="flex  relative justify-center items-center">
-                        <label htmlFor="title" className="">
-                        </label>
-                        <select  value={values.category} onChange={handleChange}>
-                            <option value="1">Catégorie 1</option>
-                            <option value="2">Catégorie 2</option>
-                            <option value="3">Catégorie 3</option>
-                            <option value="4">Catégorie 4</option>
-                        </select>
+                    <div className="flex h-100px relative justify-center items-center w-4/5">
+                        <div className="w-600px h-80px flex justify-between items-center">
+                            <button className="" id="btn-scroll-left"><img src={fleche} className="h-25px"></img></button>
+                            <button className="" id="btn-scroll-right"><img src={fleche} className="h-25px transform rotate-180"></img></button>
+                            <div className="">
+                                <input id="cat1"
+                                    type="checkbox"
+                                    name="cat1"
+                                    maxLength="30"
+                                    className="form-checkbox rounded-sm bg-transparent ml-2 border-white-0 border-2 text-transparent focus:ring-transparent checked:border-white-0"
+                                    value={values.category}
+                                    onChange={handleChange}
+                                />
+                                <label htmlFor="cat1" className="text-white-150 pl-2 mr-2">Catégorie 1
+                                </label>
+
+                                <input id="cat2"
+                                    type="checkbox"
+                                    name="cat2"
+                                    maxLength="30"
+                                    className="form-checkbox rounded-sm bg-transparent ml-2 border-white-0 border-2 text-transparent focus:ring-transparent checked:border-white-0"
+                                    value={values.category}
+                                    onChange={handleChange}
+                                />
+                                <label htmlFor="cat2" className="text-white-150 pl-2 mr-2">Catégorie 2
+                                </label>
+
+                                <input id="cat3"
+                                    type="checkbox"
+                                    name="cat3"
+                                    maxLength="30"
+                                    className="form-checkbox rounded-sm bg-transparent ml-2 border-white-0 border-2 text-transparent focus:ring-transparent checked:border-white-0"
+                                    value={values.category}
+                                    onChange={handleChange}
+                                />
+                                <label htmlFor="cat3" className="text-white-150 pl-2 mr-2">Catégorie 3
+                                </label>
+
+                                <input id="cat4"
+                                    type="checkbox"
+                                    name="cat4"
+                                    maxLength="30"
+                                    className="form-checkbox rounded-sm bg-transparent ml-2 border-white-0 border-2 text-transparent focus:ring-transparent checked:border-white-0"
+                                    value={values.category}
+                                    onChange={handleChange}
+                                />
+                                <label htmlFor="cat4" className="text-white-150 pl-2 mr-2">Catégorie 4
+                                </label>
+
+                                <input id="cat5"
+                                    type="checkbox"
+                                    name="cat5"
+                                    maxLength="30"
+                                    className="form-checkbox rounded-sm bg-transparent ml-2 border-white-0 border-2 text-transparent focus:ring-transparent checked:border-white-0"
+                                    value={values.category}
+                                    onChange={handleChange}
+                                />
+                                <label htmlFor="cat5" className="text-white-150 pl-2 mr-2">Catégorie 5
+                                </label>
+
+                                <input id="cat6"
+                                    type="checkbox"
+                                    name="cat6"
+                                    maxLength="30"
+                                    className="form-checkbox rounded-sm bg-transparent ml-2 border-white-0 border-2 text-transparent focus:ring-transparent checked:border-white-0"
+                                    value={values.category}
+                                    onChange={handleChange}
+                                />
+                                <label htmlFor="cat6" className="text-white-150 pl-2">Catégorie 6
+                                </label>
+                            </div>
+                        </div>
                     </div>
 
                     <div className="flex  relative justify-center items-center">

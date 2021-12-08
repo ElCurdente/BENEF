@@ -56,6 +56,7 @@ module.exports = {
         '30px': '30px',
         '40px': '40px',
         '25px': '25px',
+        '80px': '80px',
         '100px': '100px',
       },
       width: {
@@ -66,6 +67,7 @@ module.exports = {
         '95vw': '95vw',
         '100vw': '100vw',
         '100px': '100px',
+        '600px': '600px',
       },
       colors: {
         red: {
