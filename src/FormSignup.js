@@ -204,7 +204,7 @@ const FormSignup = ({ submitForm }) => {
                             }
                         </div>
                         <div className="flex justify-center items-center my-5">
-                            <button className="block text-red-450 font-bold bg-white-0 border-2 border-white-0 hover:bg-red-450 hover:text-white-0 dark:hover:bg-white-150 dark:hover:text-gray-550 active:bg-red-200 h-12 w-40 dark:bg-gray-550 rounded-full transition duration-300 ease-in-out mt-5" type="submit">S'inscrire</button>
+                            <button className="block text-red-450 font-bold border-white-0 hover:bg-red-450 hover:text-white-0 dark:hover:bg-white-150 dark:hover:text-gray-550 active:bg-red-200 h-12 w-40 dark:bg-gray-550 dark:text-white-0 rounded-full transition duration-300 ease-in-out mt-5" type="submit">S'inscrire</button>
                         </div>
                         <div className="flex justify-center items-center">
                             <h3 onClick={handleConnexion} className="text-white-150 hover:underline cursor-pointer">Déjà un compte ? Connecte toi</h3>

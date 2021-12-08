@@ -2,7 +2,7 @@ import React from 'react'
 
 const Recherche = () => {
     return (
-        <div>
+        <div className="flex h-screen w-screen justify-center items-center">
             <h3>Recherche</h3>
         </div>
     )
