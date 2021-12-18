@@ -44,7 +44,6 @@ const Accueil = () => {
                     <Nav />
                     <Switch>
                     <Route path="/" exact component={Home} />
-                    
                         <Route path="/recherche" component={Recherche} />
                         <Route path="/post" component={Post} />
                         <Route path="/messagerie" component={Messagerie} />

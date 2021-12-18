@@ -7,10 +7,10 @@ return (
                 <div id="infos" className="relative grid grid-cols-2 grid-layout w-95vw px-4">
                     
                        
-                        <h1 className="ml-50 text-2xl font-semibold text-blue">Paramètres</h1>
+                        <h1 className="ml-50 text-2xl font-bold">Paramètres</h1>
                        
                     
-                    <p className="col-span-2 mt-2 text-xl ">Compte</p>
+                    <p className="col-span-2 mt-2 text-xl pt-10 font-semibold ">Compte</p>
 
                     <li className='col-span-2 mt-2 list-none'>
                         <ul>Informations du compte</ul>
@@ -19,14 +19,14 @@ return (
                     </li>
                        
                     
-                    <p className="col-span-2 mt-2 text-xl ">Confidentialité</p>
+                    <p className="col-span-2 mt-2 text-xl pt-10 font-semibold ">Confidentialité</p>
 
                     <li className='col-span-2 mt-2 list-none'>
                         <ul>Utilisateurs bloqués</ul> 
                     </li>
 
 
-                    <p className="col-span-2 mt-2 text-xl ">Affichage</p>
+                    <p className="col-span-2 mt-2 text-xl pt-10 font-semibold">Affichage</p>
 
                     <li className='col-span-2 mt-2 list-none'>
                         <ul>Utilisateurs bloqués<input type="checkbox" class="form-checkbox h-5 w-5 text-green-600 ml-20" unchecked></input></ul> 
@@ -36,7 +36,7 @@ return (
                 </li>
 
 
-                <p className="col-span-2 mt-2 text-xl ">Notifications</p>
+                <p className="col-span-2 mt-2 text-xl pt-10 font-semibold ">Notifications</p>
 
                 <li className='col-span-1 mt-2 list-none'>
                         <ul>Messages privés
