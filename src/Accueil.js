@@ -28,14 +28,11 @@ const Accueil = () => {
             <div className="flex justify-center">
                 <div className="fixed flex h-10vh w-100vw bg-red-450 dark:bg-black justify-center items-center rounded-b-lg">
                     <img src={logo} alt="Logo" className="w-36 dark:hidden" />
-                    <img src={logodark} alt="Logo" className="w-36 hidden dark:block" />
-                   
-                    
-                    
+                    <img src={logodark} alt="Logo" className="w-36 hidden dark:block" />                   
                 </div>
             </div>
 
-            
+
             <Router>
             <Link to="/parametre">
                     <img src={parameter} alt="Paramètres" className="absolute w-9 right-10 top-7" />
