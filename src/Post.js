@@ -112,7 +112,7 @@ const Post = () => {
                         />
                     </div>
 
-                    <div className="flex h-100px relative justify-center items-center w-4/5">
+                    {/* <div className="flex h-100px relative justify-center items-center w-4/5">
                         <div className="w-600px h-80px flex justify-between items-center">
                             <button className="" id="btn-scroll-left"><img src={fleche} className="h-25px"></img></button>
                             <button className="" id="btn-scroll-right"><img src={fleche} className="h-25px transform rotate-180"></img></button>
@@ -184,7 +184,7 @@ const Post = () => {
                                 </label>
                             </div>
                         </div>
-                    </div>
+                    </div> */}
 
                     <div className="flex  relative justify-center items-center">
                         <label htmlFor="title" className="">
