@@ -61,6 +61,7 @@ function Recherche() {
     return <div>Chargement...</div>;
   } else {
     return (
+      <div className="h-screen w-screen flex justify-center items-center">
       <ul>
         {items.map(item => (
           <li key={item.title}>
@@ -68,6 +69,7 @@ function Recherche() {
           </li>
         ))}
       </ul>
+      </div>
     );
   }
 }
