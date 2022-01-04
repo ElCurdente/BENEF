@@ -1,5 +1,8 @@
 import React from 'react'
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import { Link } from 'react-router-dom'
 import Nav from './Nav'
+import Parametre from './Parametre'
 import Post from './Post'
 import Messagerie from './Messagerie'
 import Profil from './Profil'
@@ -8,8 +11,7 @@ import logo from './images/logo/logo_benef.png';
 import logodark from './images/logo/logo_benef_dark.png';
 import parameter from './images/icon/icon_parametres.svg';
 import { useState } from "react"
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import Parametre from './Parametre'
+
 
 const Accueil = () => {
 
@@ -27,12 +29,17 @@ const Accueil = () => {
                 <div className="fixed flex h-10vh w-100vw bg-red-450 dark:bg-black justify-center items-center rounded-b-lg">
                     <img src={logo} alt="Logo" className="w-36 dark:hidden" />
                     <img src={logodark} alt="Logo" className="w-36 hidden dark:block" />
-                    <img src={parameter} alt="Paramètres" className="absolute white w-8 right-10" />
+                   
+                    
+                    
                 </div>
             </div>
 
             
             <Router>
+            <Link to="/parametre">
+                    <img src={parameter} alt="Paramètres" className="absolute w-9 right-10 top-7" />
+                    </Link>
                 <div>
                     <Nav />
                     <Switch>
@@ -41,7 +48,7 @@ const Accueil = () => {
                         <Route path="/post" component={Post} />
                         <Route path="/messagerie" component={Messagerie} />
                         <Route path="/profil" component={Profil} />
-                       
+                        <Route path="/parametre" component={Parametre} />
                     </Switch>
                 </div>
             </Router>
