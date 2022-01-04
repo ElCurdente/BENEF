@@ -5,6 +5,7 @@ import Nav from './Nav'
 import Parametre from './Parametre'
 import Post from './Post'
 import Messagerie from './Messagerie'
+import Home from './Home'
 import Profil from './Profil'
 import Recherche from './Recherche'
 import logo from './images/logo/logo_benef.png';
@@ -40,7 +41,7 @@ const Accueil = () => {
                 <div>
                     <Nav />
                     <Switch>
-                    <Route path="/" exact component={Home} />
+                    <Route path="/home" exact component={Home} />
                         <Route path="/recherche" component={Recherche} />
                         <Route path="/post" component={Post} />
                         <Route path="/messagerie" component={Messagerie} />
@@ -54,11 +55,11 @@ const Accueil = () => {
 
 }
 
-const Home = () => (
-    <div>
-        <h1>Page d'accueil</h1>
-    </div>
-)
+// const Home = () => (
+//     <div>
+//         <h1>Page d'accueil</h1>
+//     </div>
+// )
 
 
 export default Accueil
