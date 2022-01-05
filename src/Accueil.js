@@ -36,7 +36,7 @@ const Accueil = () => {
 
             <Router>
             <Link to="/parametre">
-                    <img src={parameter} alt="Paramètres" className="absolute w-9 right-10 top-7" />
+                    <img src={parameter} alt="Paramètres" className="absolute h-25px right-6 top-6" />
                     </Link>
                 <div>
                     <Nav />
