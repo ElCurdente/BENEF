@@ -219,7 +219,7 @@ const Post = () => {
                         </label>
                         <input id="address"
                             type="text"
-                            name="d"
+                            name="address"
 
                             placeholder="Adresse" className="placeholder-white-150 text-white-150 border-b-2 bg-transparent w-4/5 my-2 h-12 pt-5 text-left focus:outline-none  focus:placeholder-transparent"
                             value={values.adress}

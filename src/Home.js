@@ -45,7 +45,7 @@ function Home() {
               </div>
               <div>
                 <li key={item.title}>
-                  <h1 className="text-lg font-semibold">{item.title}</h1> {item.description}
+                  <h1 className="text-lg font-semibold">{item.title}</h1> {item.address}
                 </li>
               </div>
             </div>
