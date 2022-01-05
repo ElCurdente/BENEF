@@ -36,20 +36,21 @@ function Home() {
   } else {
     return (
       <div className="h-screen w-screen flex justify-center overflow-auto items-center">
-
-        <ul className="h-full mt-40">
-          {items.map(item => (
-            <div className="w-95vw h-300px bg-red-450 dark:bg-black rounded-lg text-white-0 mb-2">
-              <div className="w-full h-75% ">
-                <img className="object-cover rounded-t-lg h-full w-full" src={profil} alt=""/>
+        <ul className="h-full">
+          <div className="mt-20 pb-12">
+            {items.map(item => (
+              <div className="w-95vw h-300px bg-red-450 dark:bg-black rounded-lg text-white-0 mb-2">
+                <div className="w-full h-75% ">
+                  <img className="object-cover rounded-t-lg h-full w-full" src={profil} alt="" />
+                </div>
+                <div>
+                  <li key={item.title}>
+                    <h1 className="text-lg font-semibold">{item.title}</h1> {item.description}
+                  </li>
+                </div>
               </div>
-              <div>
-                <li key={item.title}>
-                  <h1 className="text-lg font-semibold">{item.title}</h1> {item.description}
-                </li>
-              </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </ul>
       </div >
     );
