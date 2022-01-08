@@ -13,7 +13,7 @@ const Parametre = () => {
 
                 <h2 className=" text-base pt-6 font-bold ">E-mail</h2>
                 <li className='mt-2 list-none'>
-                    <ul className="pb-2"><a className="opacity-95 font-light text-base">{sessionStorage.getItem("mail")}</a></ul>
+                    <ul><a className="opacity-95 font-light text-base">{sessionStorage.getItem("mail")}</a></ul>
                 </li>
 
 
