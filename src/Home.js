@@ -2,6 +2,7 @@ import React from 'react'
 import { useState } from 'react';
 import { useEffect } from 'react';
 import profil from './images/profil-gaelle.png';
+import Upvote from './Upvote'
 
 function Home() {
   const [error, setError] = useState(null);
@@ -44,6 +45,7 @@ function Home() {
                   <img className="object-cover rounded-t-lg h-full w-full" src={profil} alt="" />
                 </div>
                 <div>
+                <Upvote/>
                   <li key={item.title}>
                     <h1 className="text-lg font-semibold">{item.title}</h1> {item.address}
                   </li>
