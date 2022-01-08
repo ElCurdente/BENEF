@@ -13,19 +13,19 @@ const Parametre = () => {
 
                 <h2 className=" text-base pt-6 font-bold ">E-mail</h2>
                 <li className='mt-2 list-none'>
-                    <ul className="pb-2"><a className="opacity-95 font-light text-base">Insérer l'email ici</a></ul>
+                    <ul className="pb-2"><a className="opacity-95 font-light text-base">{sessionStorage.getItem("mail")}</a></ul>
                 </li>
 
 
                 <h2 className="mt-2 text-base pt-7 font-bold ">Code postal</h2>
                 <li className=' mt-2 list-none'>
-                    <ul><a className="opacity-95 font-light text-base">Insérer le code postal ici</a></ul>
+                    <ul><a className="opacity-95 font-light text-base">{sessionStorage.getItem("postal")}</a></ul>
                 </li>
 
 
                 <h2 className="mt-2 text-base pt-7 font-bold">Date de naissance</h2>
                 <li className=' mt-2 list-none'>
-                    <ul className="w-full flex justify-between items-center opacity-95 font-light text-base">Insérer la date de naissance ici</ul>
+                    <ul className="w-full flex justify-between items-center opacity-95 font-light text-base">{sessionStorage.getItem("birth")}</ul>
                 </li>
 
 
