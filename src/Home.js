@@ -2,7 +2,8 @@ import React from 'react'
 import { useState } from 'react';
 import { useEffect } from 'react';
 import profil from './images/profil-gaelle.png';
-import Upvote from './Upvote'
+import adresse from './images/icon/adress.svg';
+import Upvote from './Upvote';
 
 function Home() {
   const [error, setError] = useState(null);
@@ -40,14 +41,20 @@ function Home() {
         <ul className="h-full">
           <div className="mt-20 pb-12">
             {items.map(item => (
-              <div className="w-95vw h-300px bg-red-450 dark:bg-black rounded-lg text-white-0 mb-2">
-                <div className="w-full h-75% ">
+              <div className="w-92vw h-300px relative bg-red-450 dark:bg-black rounded-lg text-white-0 mb-2">
+                <div className="w-full h-75% relative">
                   <img className="object-cover rounded-t-lg h-full w-full" src={profil} alt="" />
+                  <div className="absolute bottom-5 -left-1.5">
+                    <Upvote />
+                  </div>
                 </div>
-                <div>
-                <Upvote/>
-                  <li key={item.title}>
-                    <h1 className="text-lg font-semibold">{item.title}</h1> {item.address}
+                <div className="w-full h-25%">
+
+                  <li key={item.title} className="mt-1 w-92vw">
+                    <h1 className="text-lg font-semibold mx-2">{item.title}</h1>
+                    <div className="flex mt-2 text-sm w-92vw">
+                      <img src={adresse} className="ml-2 mr-1 w-3.5"></img> {item.address}  <div className="absolute right-3">{item.postal}</div>
+                    </div>
                   </li>
                 </div>
               </div>

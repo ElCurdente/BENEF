@@ -26,7 +26,7 @@ const Accueil = () => {
     return (
         <div className="dark:bg-gray-550">
 
-            <div className="flex justify-center">
+            <div className="flex justify-center z-50 relative">
                 <div className="fixed flex h-10vh w-100vw bg-red-450 dark:bg-black justify-center items-center rounded-b-lg">
                     <img src={logo} alt="Logo" className="w-36 dark:hidden" />
                     <img src={logodark} alt="Logo" className="w-36 hidden dark:block" />                   
@@ -36,7 +36,7 @@ const Accueil = () => {
 
             <Router>
             <Link to="/parametre">
-                    <img src={parameter} alt="Paramètres" className="absolute h-25px right-6 top-6" />
+                    <img src={parameter} alt="Paramètres" className="absolute h-25px right-6 top-6 z-50" />
                     </Link>
                 <div>
                     <Nav />
