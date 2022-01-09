@@ -43,7 +43,7 @@ function Home() {
             {items.map(item => (
               <div className="w-92vw h-300px relative bg-red-450 dark:bg-black rounded-lg text-white-0 mb-2">
                 <div className="w-full h-75% relative">
-                  <img className="object-cover rounded-t-lg h-full w-full" src={profil} alt="" />
+                  <img className="object-cover rounded-t-lg h-full w-full" src={item.image} alt="" />
                   <div className="absolute bottom-5 -left-1.5">
                     <Upvote />
                   </div>

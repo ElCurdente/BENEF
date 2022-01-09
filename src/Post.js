@@ -6,9 +6,12 @@ import Accueil from './Accueil';
 import plus from './images/icon/icon_plus.svg';
 import plusblanc from './images/icon/icon_plus_blanc.svg';
 import fleche from './images/icon/icon_fleche.svg';
+import axios from 'axios';
 
 
 const Post = () => {
+
+    const url = "https://benef-app.fr/api-post.php";
     const [values, setValues] = useState({
         image: '',
         title: '',
@@ -27,10 +30,28 @@ const Post = () => {
             ...values,
             [name]: value
         });
+        console.log(value);
     };
+
+    var postForm = document.getElementById('post_form');
+    const img_form = document.getElementById('image');
+
+    const onFileChange = (e) => {
+        const file = e.target.files[0];
+        if (file) {
+            setImage(file);
+            console.log("ça marche pas")
+        } else {
+            setImage(null);
+        }
+
+        console.log(file)
+    }
 
     const handleSubmit = e => {
         e.preventDefault();
+        // const formData = new FormData();
+        const formData = new FormData(postForm);
         fetch('https://benef-app.fr/api-post.php', {
             method: "POST",
             headers: {
@@ -48,6 +69,78 @@ const Post = () => {
                 console.log("Error Reading data " + err);
 
             });
+        // formData = new FormData(postForm);
+        // axios.post(url,{formData})
+        //     .then(res =>{
+        //         console.log(res);
+        //     })
+        //     .catch(err =>{
+        //         console.log("Error Reading data " + err);
+        //     })
+
+        // const file = this.state.file;
+        // formData.append('image',file);
+        // formData.append('title', values.title)
+
+        // const formData = new FormData();
+        //         formData.append('image', image);
+        //         formData.append('title', values.title);
+        //         formData.append('desc', values.desc);
+        //         formData.append('address', values.address);
+        //         formData.append('postal', values.postal);
+        //         formData.append('expiration', values.expiration);
+        //         formData.append('category', values.category);
+        //         formData.append('certified', values.certified);
+        //         formData.append('cgu', values.cgu);
+
+        //         axios({
+        //             url: 'https://benef-app.fr/api-post.php',
+        //             method: 'POST',
+        //             headers: {
+        //                         'Content-Type': 'multipart/form-data'
+        //                     },
+        //             body: JSON.stringify(formData),
+        //         }).then((res)=>{
+        //             console.log(res.desc);
+        //         }).catch(err => {
+        //                         // Do something for an error here
+        //                         console.log("Error Reading data " + err);
+
+        //         });
+
+        //         const config = {
+        //             headers: {'content-type': 'multipart/form-data'}
+        //         }
+        // axios.post(url, formData, config)
+        // .then(res => {
+        //     console.log(res.desc);
+        // }).catch(err => {
+        //             // Do something for an error here
+        //             console.log("Error Reading data " + err);
+
+        // });
+
+        // formData = new FormData(postForm);
+
+
+        // console.log(formData);
+        // fetch('https://benef-app.fr/api-post.php', {
+        //     method: "POST",
+        //     headers: {
+        //        'Accept': 'application/json',
+        //         'Content-Type': 'application/json'
+        //     },
+        //     body: JSON.stringify(values)
+
+        // })
+        //     .then((response) => response.text())
+        //     .then((result) => {
+        //         console.log(result)
+        //     }).catch(err => {
+        //         // Do something for an error here
+        //         console.log("Error Reading data " + err);
+
+        //     });
     };
 
     const [image, setImage] = useState();
@@ -71,8 +164,8 @@ const Post = () => {
     return (
         <div className="flex justify-center items-center box-border h-screen mt-3 w-full bg-white-0 dark:bg-gray-550">
             <div className="bg-red-450 dark:bg-black h-80vh overflow-y-auto rounded-lg shadow-xl w-95vw">
-                <form className="post flex flex-col justify-center" onSubmit={handleSubmit}>
-                    <div className="flex  relative justify-center items-center">
+                <form className="post flex flex-col justify-center" onSubmit={handleSubmit} id="post_form">
+                    <div className="flex relative justify-center items-center">
                         {preview ? (
 
                             <img src={preview}
@@ -96,17 +189,8 @@ const Post = () => {
                             name="image"
                             maxLength="30"
                             ref={fileInputRef}
-                            onChange={(e) => {
-                                const file = e.target.files[0];
-                                if (file) {
-                                    setImage(file);
-                                    console.log("ça marche pas")
-                                } else {
-                                    setImage(null);
-
-                                }
-                                console.log(file)
-                            }}
+                            value={values.image}
+                            onChange={onFileChange}
                             className="hidden placeholder-white-150 text-white-150 border-b-2 bg-transparent w-4/5 my-2 h-12 pt-5 text-left focus:outline-none  focus:placeholder-transparent"
 
 
@@ -292,6 +376,7 @@ const Post = () => {
 
         </div>
     )
+
 }
 
 export default Post
