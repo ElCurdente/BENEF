@@ -8,6 +8,8 @@ import Messagerie from './Messagerie'
 import Home from './Home'
 import Profil from './Profil'
 import Recherche from './Recherche'
+import Infos from './Infos'
+import Bloque from './Bloque'
 import logo from './images/logo/logo_benef.png';
 import logodark from './images/logo/logo_benef_dark.png';
 import parameter from './images/icon/icon_parametres.svg';
@@ -47,6 +49,8 @@ const Accueil = () => {
                         <Route path="/messagerie" component={Messagerie} />
                         <Route path="/profil" component={Profil} />
                         <Route path="/parametre" component={Parametre} />
+                            <Route path="/infos" component={Infos} />
+                            <Route path="/bloque" component={Bloque} />
                     </Switch>
                 </div>
             </Router>

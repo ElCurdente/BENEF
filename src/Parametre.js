@@ -1,5 +1,5 @@
 import React from 'react';
-
+import { Link } from 'react-router-dom'
 const Parametre = () => {
 
     return (
@@ -9,11 +9,13 @@ const Parametre = () => {
             <div id="infos" className="overflow-y-auto w-95vw h-full mt-20">
 
 
-                <h1 className="text-center text-2xl font-bold">Paramètres</h1>
+                <h1 className="text-center text-2xl font-bold pt-7">Paramètres</h1>
 
                 <h2 className=" text-xl pt-6 font-semibold ">Compte</h2>
                 <li className='mt-2 list-none'>
+                <Link to="/Infos">
                     <ul className="pb-2"><a className="cursor-pointer opacity-95 font-light">Informations du compte</a></ul>
+                </Link>
                     <ul className="pb-2"><a className="cursor-pointer opacity-95 font-light">Changer son mot de passe</a></ul>
                     <ul><a className="cursor-pointer opacity-95 font-light">Bons plans enregistrés</a></ul>
                 </li>
@@ -21,7 +23,9 @@ const Parametre = () => {
 
                 <h2 className="mt-2 text-xl pt-7 font-semibold ">Confidentialité</h2>
                 <li className=' mt-2 list-none'>
+                <Link to="/Bloque">
                     <ul><a className="cursor-pointer opacity-95 font-light">Utilisateurs bloqués</a></ul>
+                    </Link>
                 </li>
 
 
@@ -43,6 +47,9 @@ const Parametre = () => {
                         <input type="checkbox" class="form-checkbox w-10 h-5 text-green-600 mr-2 rounded-full" unchecked></input>
                     </ul>
                 </li>
+                <h2 className="mt-2 text-base pt-10 font-semibold cursor-pointer ">Aide</h2>
+                <h2 className="mt-2 text-base font-semibold cursor-pointer ">Déconnexion</h2>
+                <h2 className="mt-2 text-base font-semibold text-red-500 cursor-pointer">Supprimer le compte</h2>
             </div>
         </div>
     )
