@@ -33,7 +33,7 @@ const Post = () => {
         console.log(value);
     };
 
-    var postForm = document.getElementById('post_form');
+    
     const img_form = document.getElementById('image');
 
     const onFileChange = (e) => {
@@ -48,10 +48,24 @@ const Post = () => {
         console.log(file)
     }
 
+    const myForm = useRef(null);
+
     const handleSubmit = e => {
         e.preventDefault();
         // const formData = new FormData();
-        const formData = new FormData(postForm);
+        // const postForm = myForm.current;
+        // const formData = new FormData();
+        //         formData.append('image', image);
+        //         formData.append('title', values.title);
+        //         formData.append('desc', values.desc);
+        //         formData.append('address', values.address);
+        //         formData.append('postal', values.postal);
+        //         formData.append('expiration', values.expiration);
+        //         formData.append('category', values.category);
+        //         formData.append('certified', values.certified);
+        //         formData.append('cgu', values.cgu);
+        // console.log(postForm);
+        // console.log(formData);
         fetch('https://benef-app.fr/api-post.php', {
             method: "POST",
             headers: {
@@ -59,7 +73,6 @@ const Post = () => {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify(values)
-
         })
             .then((response) => response.text())
             .then((result) => {
@@ -161,10 +174,11 @@ const Post = () => {
         }
     }, [image]);
 
+
     return (
         <div className="flex justify-center items-center box-border h-screen mt-3 w-full bg-white-0 dark:bg-gray-550">
             <div className="bg-red-450 dark:bg-black h-80vh overflow-y-auto rounded-lg shadow-xl w-95vw">
-                <form className="post flex flex-col justify-center" onSubmit={handleSubmit} id="post_form">
+                <form className="post flex flex-col justify-center" onSubmit={(e) => handleSubmit(e)} id="post_form" ref={myForm}>
                     <div className="flex relative justify-center items-center">
                         {preview ? (
 
