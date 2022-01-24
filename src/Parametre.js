@@ -44,7 +44,6 @@ const Parametre = () => {
                         <input type="checkbox" class="form-checkbox w-10 h-5 text-green-600 mr-2 rounded-full" unchecked></input>
                     </ul>
                     <ul className="w-full flex justify-between items-center opacity-95 font-light">Autres
-                        <input type="checkbox" class="form-checkbox w-10 h-5 text-green-600 mr-2 rounded-full" unchecked></input>
                     </ul>
                 </li>
                 <h2 className="mt-2 text-base pt-10 font-semibold cursor-pointer ">Aide</h2>
