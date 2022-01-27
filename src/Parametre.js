@@ -1,54 +1,54 @@
 import React from 'react';
-
+import { Link } from 'react-router-dom'
 const Parametre = () => {
 
     return (
 
 
         <div className="flex flex-col justify-center items-center h-screen w-screen bg-white dark:text-white-0">
-            <div id="infos" className="grid grid-cols-2 grid-layout overflow-y-auto w-95vw px-4">
+            <div id="infos" className="overflow-y-auto w-95vw h-full mt-20">
 
 
-                <h1 className="ml-50 text-2xl font-bold">Paramètres</h1>
+                <h1 className="text-center text-2xl font-bold pt-7">Paramètres</h1>
 
-
-                <p className="col-span-2 mt-2 text-xl pt-10 font-semibold ">Compte</p>
-
-                <li className='col-span-2 mt-2 list-none'>
-                    <ul>Informations du compte</ul>
-                    <ul>Changer son mot de passe</ul>
-                    <ul>Bons plans enregistrés</ul>
+                <h2 className=" text-xl pt-6 font-semibold ">Compte</h2>
+                <li className='mt-2 list-none'>
+                <Link to="/Infos">
+                    <ul className="pb-2"><a className="cursor-pointer opacity-95 font-light">Informations du compte</a></ul>
+                </Link>
+                    <ul className="pb-2"><a className="cursor-pointer opacity-95 font-light">Changer son mot de passe</a></ul>
+                    <ul><a className="cursor-pointer opacity-95 font-light">Bons plans enregistrés</a></ul>
                 </li>
 
 
-                <p className="col-span-2 mt-2 text-xl pt-10 font-semibold ">Confidentialité</p>
-
-                <li className='col-span-2 mt-2 list-none'>
-                    <ul>Utilisateurs bloqués</ul>
+                <h2 className="mt-2 text-xl pt-7 font-semibold ">Confidentialité</h2>
+                <li className=' mt-2 list-none'>
+                <Link to="/Bloque">
+                    <ul><a className="cursor-pointer opacity-95 font-light">Utilisateurs bloqués</a></ul>
+                    </Link>
                 </li>
 
 
-                <p className="col-span-2 mt-2 text-xl pt-10 font-semibold">Affichage</p>
-
-                <li className='col-span-2 mt-2 list-none'>
-                    <ul>Utilisateurs bloqués<input type="checkbox" class="form-checkbox w-10 h-5 text-green-600 ml-20 rounded-full" unchecked></input></ul>
+                <h2 className="mt-2 text-xl pt-7 font-semibold">Affichage</h2>
+                <li className=' mt-2 list-none'>
+                    <ul className="w-full flex justify-between items-center opacity-95 font-light">Mode sombre<input type="checkbox" class="form-checkbox w-10 h-5 text-green-600 mr-2 rounded-full" unchecked></input></ul>
                 </li>
 
 
-                <p className="col-span-2 mt-2 text-xl pt-10 font-semibold ">Notifications</p>
-
-                <li className='col-span-1 mt-2 list-none'>
-                    <ul>Messages privés
-                        <input type="checkbox" class="form-checkbox w-10 h-5 text-green-600 ml-20 rounded-full" unchecked></input>
+                <h2 className="mt-2 text-xl pt-7 font-semibold ">Notifications</h2>
+                <li className='mt-2 list-none'>
+                    <ul className="w-full flex justify-between items-center opacity-95 font-light pb-2">Messages privés
+                        <input type="checkbox" class="form-checkbox w-10 h-5 text-green-600 mr-2 rounded-full" unchecked></input>
                     </ul>
-                    <ul>UpVotes sur un post publié
-                        <input type="checkbox" class="form-checkbox w-10 h-5 text-green-600 ml-20 rounded-full" unchecked></input>
+                    <ul className="w-full flex justify-between items-center opacity-95 font-light pb-2">"UpVotes" sur un post publié
+                        <input type="checkbox" class="form-checkbox w-10 h-5 text-green-600 mr-2 rounded-full" unchecked></input>
                     </ul>
-                    <ul>Autres
-                        <input type="checkbox" class="form-checkbox w-10 h-5 text-green-600 ml-20 rounded-full" unchecked></input>
-
+                    <ul className="w-full flex justify-between items-center opacity-95 font-light">Autres
                     </ul>
                 </li>
+                <h2 className="mt-2 text-base pt-10 font-semibold cursor-pointer ">Aide</h2>
+                <h2 className="mt-2 text-base font-semibold cursor-pointer ">Déconnexion</h2>
+                <h2 className="mt-2 text-base font-semibold text-red-500 cursor-pointer">Supprimer le compte</h2>
             </div>
         </div>
     )

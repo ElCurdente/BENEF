@@ -19,9 +19,10 @@
             }
             // echo $decoded["username"];
             $db = new PDO('mysql:host=db5005161444.hosting-data.io;dbname=dbs4318125', 'dbu1522474', 'lesoussol06092021', array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8"));
-            $requete = "INSERT INTO post (title, description, address, postal, expiration, category) VALUES (:title, :description, :address, :postal, :expiration, :category)";
+            $requete = "INSERT INTO post (image, title, description, address, postal, expiration, category) VALUES (:image, :title, :description, :address, :postal, :expiration, :category)";
             $stmt = $db ->prepare($requete);
             $stmt -> execute(array(
+              ":image" => $decoded['image'],
               ":title" => $decoded['title'],
               ":description" => $decoded['desc'],
               ":address" => $decoded['address'],
@@ -37,6 +38,6 @@
           }
         }else{
             echo "{'answer' : 'test'}";
-            var_dump($_GET);
+            var_dump($_POST);
         }
         ?>
