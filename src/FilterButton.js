@@ -8,8 +8,16 @@ const FilterButton = () => {
     const [values, setValues] = useState({
         category: '',
         postal: '',
-        filter: '',
+        filter_by: '',
     })
+
+    const handleReset = () => {
+        setValues({
+            category:'select',
+            postal:'',
+            filter_by:'',
+        })
+    }
 
     const handleChange = e => {
         const { name, value } = e.target;
@@ -29,10 +37,10 @@ const FilterButton = () => {
 
     </div>
     <div className="flex  relative justify-center items-center">
-        <label htmlFor="cat" className="">Catégorie</label>
-    <select name="cat" id="cat">
-            <option value="">--Please choose an option--</option>
-            <option value="0">Toutes catégories</option>
+        <label htmlFor="cat" className="">{values.category}</label>
+    <select name="category" id="category" onChange={handleChange}>
+            <option value="select">--Please choose an option--</option>
+            <option value="all">Toutes catégories</option>
             <option value="1">Catégorie 1</option>
             <option value="2">Catégorie 2</option>
             <option value="3">Catégorie 3</option>
@@ -69,29 +77,37 @@ const FilterButton = () => {
     </div>
 
     <div className="flex relative items-center mt-6 ml-3">
-    <label htmlFor="certified" className="text-white-150 pl-2">Trier par :
-    </label>
+    <h4 className="text-white-150 pl-2">{values.filter_by}</h4>
+    <label htmlFor="certified" className="text-white-150 pl-2">
         <input id="filter_by_date"
             type="radio"
-            name="filter_by_date"
+            name="filter_by"
             maxLength="30"
             className=""
-            value={values.certified}
+            value="date"
             onChange={handleChange}
         />
+        Upvotes
+        </label>
+        </div>
+        <div className="flex relative items-center mt-6 ml-3">
+        <label className="text-white-150 pl-2">
          <input id="filter_by_upvote"
             type="radio"
-            name="filter_by_upvote"
+            name="filter_by"
             maxLength="30"
             className=""
-            value={values.certified}
+            value="upvote"
             onChange={handleChange}
         />
-        
+    Récent
+    </label>
     </div>
-
     <div className="flex justify-end items-center py-5 mr-5">
-        <button className="block w-24 h-9 text-red-450 text-lg font-bold border-2 border-white-0 bg-white-0 hover:bg-red-450 hover:text-white-0 hover:border-white-0 dark:hover:bg-white-150 dark:hover:text-gray-550 active:bg-red-200 dark:bg-white-0 dark:text-black rounded-full transition duration-300 ease-in-out" type="submit">Publier</button>
+        <button className="block w-24 h-9 text-red-450 text-lg font-bold border-2 border-white-0 bg-white-0 hover:bg-red-450 hover:text-white-0 hover:border-white-0 dark:hover:bg-white-150 dark:hover:text-gray-550 active:bg-red-200 dark:bg-white-0 dark:text-black rounded-full transition duration-300 ease-in-out" type="submit">Appliquer</button>
+    </div>
+    <div className="flex justify-end items-center py-5 mr-5">
+        <button onClick={handleReset} className="block  h-9 text-red-450 text-lg font-bold border-2 border-white-0 bg-white-0 hover:bg-red-450 hover:text-white-0 hover:border-white-0 dark:hover:bg-white-150 dark:hover:text-gray-550 active:bg-red-200 dark:bg-white-0 dark:text-black rounded-full transition duration-300 ease-in-out">Réinitialiser</button>
     </div>
 
 </form>
