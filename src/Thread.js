@@ -71,12 +71,12 @@ console.log("Error Reading data " + err);
       return <div>Chargement...</div>;
     } else {
       return (
-        <div className="h-screen w-screen flex justify-center overflow-auto items-center">
+        <div className="h-screen xl:bg-gray-200 w-screen flex justify-center xl:justify-start xl:ml-72 overflow-auto items-center">
           <button></button>
-          <ul className="h-full">
-            <div className="mt-20 pb-12">
+          <ul className="h-full xl:w-2/6 xl:bg-gray-50">
+            <div className="mt-32 ml-6 mr-6 pb-12">
               {items.map(item => (
-                <div className="w-92vw h-300px relative bg-red-450 dark:bg-black rounded-lg text-white-0 mb-2">
+                <div className="w-92vw xl:w-full h-300px xl:h-96 relative bg-red-450 dark:bg-black rounded-lg text-white-0 mb-2 xl:mb-5">
                   <div className="w-full h-75% relative">
                     <img className="object-cover rounded-t-lg h-full w-full" src={profil} alt="" />
                     <div className="absolute bottom-5 -left-1.5">
