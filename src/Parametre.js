@@ -13,9 +13,12 @@ const Parametre = () => {
 
                 <h2 className=" text-xl pt-6 font-semibold ">Compte</h2>
                 <li className='mt-2 list-none'>
-                <Link to="/Infos">
-                    <ul className="pb-2"><a className="cursor-pointer opacity-95 font-light">Informations du compte</a></ul>
-                </Link>
+                
+                    <ul className="pb-2">
+                        <Link to="/Infos">
+                            <a className="cursor-pointer opacity-95 font-light">Informations du compte</a>
+                        </Link>
+                    </ul>
                     <ul className="pb-2"><a className="cursor-pointer opacity-95 font-light">Changer son mot de passe</a></ul>
                     <ul><a className="cursor-pointer opacity-95 font-light">Bons plans enregistrés</a></ul>
                 </li>
@@ -23,9 +26,9 @@ const Parametre = () => {
 
                 <h2 className="mt-2 text-xl pt-7 font-semibold ">Confidentialité</h2>
                 <li className=' mt-2 list-none'>
-                <Link to="/Bloque">
-                    <ul><a className="cursor-pointer opacity-95 font-light">Utilisateurs bloqués</a></ul>
-                    </Link>
+               <ul> <Link to="/Bloque">
+                    <a className="cursor-pointer opacity-95 font-light">Utilisateurs bloqués</a>
+                    </Link></ul>
                 </li>
 
 
@@ -45,10 +48,12 @@ const Parametre = () => {
                     </ul>
                     <ul className="w-full flex justify-between items-center opacity-95 font-light">Autres
                     </ul>
+                    
                 </li>
-                <h2 className="mt-2 text-base pt-10 font-semibold cursor-pointer ">Aide</h2>
+                <h2 className="mt-2 p-0 text-base pt-10 font-semibold cursor-pointer ">Aide</h2>
                 <h2 className="mt-2 text-base font-semibold cursor-pointer ">Déconnexion</h2>
                 <h2 className="mt-2 text-base font-semibold text-red-500 cursor-pointer">Supprimer le compte</h2>
+                
             </div>
         </div>
     )
