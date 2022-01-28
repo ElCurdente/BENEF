@@ -44,6 +44,7 @@ body: JSON.stringify(this)
 .catch(err => {
 console.log("Error Reading data " + err);
 });
+this.upvote++;
 }
 
 function handleDownvote () {
@@ -64,7 +65,7 @@ console.log(data);
 console.log("Error Reading data " + err);
 });
 }
-  
+
     if (error) {
       return <div>Erreur : {error.message}</div>;
     } else if (!isLoaded) {
@@ -90,7 +91,7 @@ console.log("Error Reading data " + err);
                                       <img src={upvoteHaut} className=""></img>
                                       </button>
                                   }
-                                <span className="px-2 upvote">{item.upvote}</span>
+                                <span id='nb_upvote' className="px-2 upvote">{item.upvote}</span>
                                 {<button onClick={handleDownvote.bind(item)} className="pr-2">
                                   <img src={upvoteBas} className=""></img>
                                 </button>}
@@ -109,5 +110,4 @@ console.log("Error Reading data " + err);
         </div >
       );
     }};
-
 export default Thread;
