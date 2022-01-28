@@ -87,8 +87,6 @@ const useForm = (callback, validate) => {
 });
 };
 
-
-
 const handleSubmitConnexion = e => {
   e.preventDefault();
   // setErrors(validate(values));

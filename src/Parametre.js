@@ -1,10 +1,27 @@
 import React from 'react';
-import { Link } from 'react-router-dom'
+import { useEffect } from 'react';
+import { useState } from 'react';
+import { Link } from 'react-router-dom';
 const Parametre = () => {
+    //DarkMode;
+    const [theme, setTheme] = useState("light");
+    const colorTheme = theme == "dark" ? "light" : 'dark';
+    useEffect(() => {
+        const root = window.document.documentElement;
+
+        root.classList.remove(colorTheme);
+        root.classList.add(theme);
+    }, [theme, colorTheme]);
+
+    const checkbox = document.querySelector('#toggle_light_mode');
+    const html = document.querySelector('html');
+    const toggleDarkMode = function () {
+        checkbox.checked ? html.classList.add("dark") : html.classList.remove("dark");
+        toggleDarkMode();
+        checkbox.addEventListener("click", toggleDarkMode);
+    }
 
     return (
-
-
         <div className="flex flex-col justify-center items-center h-screen w-screen bg-white dark:text-white-0">
             <div id="infos" className="overflow-y-auto w-95vw h-full mt-20">
 
@@ -34,7 +51,9 @@ const Parametre = () => {
 
                 <h2 className="mt-2 text-xl pt-7 font-semibold">Affichage</h2>
                 <li className=' mt-2 list-none'>
-                    <ul className="w-full flex justify-between items-center opacity-95 font-light">Mode sombre<input type="checkbox" class="form-checkbox w-10 h-5 text-green-600 mr-2 rounded-full" unchecked></input></ul>
+                    <ul className="w-full flex justify-between items-center opacity-95 font-light">Mode sombre
+                        <input type="checkbox" onClick={() => setTheme(colorTheme)} id="toggle_light_mode" class="form-checkbox w-10 h-5 text-green-600 mr-2 rounded-full" unchecked></input>
+                    </ul>
                 </li>
 
 
