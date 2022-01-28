@@ -15,7 +15,7 @@ import plusnoir from './images/icon/icon_plus_noir.svg';
 const Nav = () => {
     return (
         <div className="flex justify-center z-50 relative xl:hidden">
-            <div className="fixed justify-center bottom-0 h-7vh w-100vw bg-red-450 dark:bg-black rounded-t-lg">
+            <div className="fixed justify-center bottom-0 h-7vh w-100vw bg-red-450 dark:bg-black rounded-t-lg transition duration-500">
                 <nav className="w-100vw h-7vh">
                     <ul className="flex justify-around">
                         <Link to="/home">

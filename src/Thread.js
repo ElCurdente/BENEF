@@ -6,6 +6,9 @@ import adresse from './images/icon/adress.svg';
 import Upvote from './Upvote';
 import upvoteBas from './images/icon/upvote.svg';
 import upvoteHaut from './images/icon/upvote2.svg';
+import upvoteHautplein from './images/icon/icon_vote_fill.svg';
+import upvoteorange from './images/icon/icon_vote_orange.svg';
+import upvoteorangeplein from './images/icon/icon_vote_fill_orange.svg';
 
 const Thread = () => {
     const [error, setError] = useState(null);
@@ -87,14 +90,16 @@ console.log("Error Reading data " + err);
                     <li key={item.id_post}  className="mt-1 w-92vw">
                                         <div>
                               <div className="bg-white-0 text-black absolute top-44 text-xl font-bold flex w-max py-1 rounded-lg">
-                                      {<button onClick={handleUpvote.bind(item)} className="pl-2">
-                                      <img src={upvoteHaut} className=""></img>
+                                      <button onClick={handleUpvote.bind(item)} className="pl-2 relative">
+                                      <img src={upvoteHaut} className="opacity-0"></img>
+                                      <img src={upvoteorange} className="absolute top-0 h-30px dark:opacity-0"></img>
                                       </button>
-                                  }
-                                <span id='nb_upvote' className="px-2 upvote">{item.upvote}</span>
-                                {<button onClick={handleDownvote.bind(item)} className="pr-2">
-                                  <img src={upvoteBas} className=""></img>
-                                </button>}
+                                  
+                                <span id='nb_upvote' className="px-2 upvote text-red-450 dark:text-black">{item.upvote}</span>
+                                <button onClick={handleDownvote.bind(item)} className="pr-2 relative">
+                                  <img src={upvoteBas} className="opacity-0 dark:opacity-100"></img>
+                                  <img src={upvoteorange} className="transform rotate-180 absolute top-0 h-30px dark:opacity-0"></img>
+                                </button>
                               </div>
                             </div>
                       <h1 className="text-lg font-semibold mx-2">{item.title}</h1>
