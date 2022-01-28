@@ -85,7 +85,7 @@ console.log("Error Reading data " + err);
                   <div className="w-full h-25%">
                     <li key={item.id_post}  className="mt-1 w-92vw">
                                         <div>
-                              <div className="bg-white-0 text-black text-xl font-bold flex w-max py-1 rounded-lg">
+                              <div className="bg-white-0 text-black absolute top-44 text-xl font-bold flex w-max py-1 rounded-lg">
                                       {<button onClick={handleUpvote.bind(item)} className="pl-2">
                                       <img src={upvoteHaut} className=""></img>
                                       </button>
