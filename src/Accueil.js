@@ -29,7 +29,7 @@ const Accueil = () => {
     }
 
     return (
-        <div className="dark:bg-gray-550">
+        <div className="dark:bg-gray-550 xl:bg-gray-200 xl:overflow-x-hidden">
 
             <div className="flex justify-center z-50 relative">
                 <div className="fixed flex h-10vh w-100vw bg-red-450 dark:bg-black xl:justify-start justify-center items-center rounded-b-lg">
