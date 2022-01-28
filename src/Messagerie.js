@@ -1,10 +1,9 @@
 import React from 'react'
+import FilterButton from './FilterButton'
 
 const Messagerie = () => {
     return (
-        <div>
-            <h3>Messagerie</h3>
-        </div>
+        <FilterButton/>
     )
 }
 
