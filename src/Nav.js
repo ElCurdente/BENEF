@@ -26,7 +26,7 @@ const Nav = () => {
                             <div className="relative top-3 ">
                                 <li className=""><img className="h-25px xl:hidden " src={etiquette} alt="" /></li>
                                 <img src={logo} alt="Logo" className="w-36 dark:hidden xl:ml-96 xl:block hidden" />
-                                <img src={logodark} alt="Logo" className="w-36 hidden sm:dark:hidden dark:hidden xl:dark:block" />  
+                                <img src={logodark} alt="Logo" className="w-36 hidden xl:ml-96 sm:dark:hidden dark:hidden xl:dark:block" />  
                             </div>
                             
                         </Link>
@@ -51,19 +51,19 @@ const Nav = () => {
                            
                         </Link>
                         <Link to="/post" className="hover:animate-bounce">
-                            <div className="relative xl:bottom-0 xl:top-4 bottom-6 flex justify-center xl:p-0 items-center h-16 w-16 bg-white-0 rounded-full shadow-custom">
+                            <div className="relative xl:bottom-0 xl:top-4 bottom-6 flex justify-center items-center h-16 w-16 bg-white-0 rounded-full shadow-custom">
                             <li ><img className="h-25px dark:hidden" src={plus} alt=""/>
                             <img className="h-25px hidden dark:block" src={plusnoir} alt=""/></li>
                             </div>
                         </Link>
-                        <Link to="/messagerie">
+                        {/* <Link to="/messagerie">
                         <div className="relative top-3 hidden xl:hidden">
                             <li><img className="h-25px" src={message} alt=""/></li>
                             </div>
-                        </Link>
+                        </Link> */}
                         <Link to="/profil">
-                        <div className="relative top-3 xl:top-4">
-                            <li><img className="h-25px xl:h-16 xl:w-16 xl:mr-32 xl:rounded-full rounded-xl border-2 border-white" src={profil} alt=""/></li>
+                        <div className="relative top-3 xl:top-4 xl:mr-64">
+                            <li><img className="h-25px xl:h-16 xl:w-16 xl:rounded-full rounded-xl border-2 border-white" src={profil} alt=""/></li>
                             </div>
                         </Link>
                         <Link to="/Parametre">
