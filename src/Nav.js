@@ -26,7 +26,7 @@ const Nav = () => {
                             <div className="relative top-3 ">
                                 <li className=""><img className="h-25px xl:hidden " src={etiquette} alt="" /></li>
                                 <img src={logo} alt="Logo" className="w-36 dark:hidden xl:ml-96 xl:block hidden" />
-                    <img src={logodark} alt="Logo" className="w-36 hidden dark:block sm:hidden" />  
+                                <img src={logodark} alt="Logo" className="w-36 hidden sm:dark:hidden dark:hidden xl:dark:block" />  
                             </div>
                             
                         </Link>
