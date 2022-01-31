@@ -19,8 +19,8 @@ const Parametre = () => {
 
 
     return (
-        <div className="flex flex-col justify-center items-center h-screen w-screen bg-white dark:text-white-0">
-            <div id="infos" className="overflow-y-auto w-95vw h-full mt-20">
+        <div className="flex flex-col justify-center items-center h-screen w-screen bg-gray-50 dark:text-white-0">
+            <div id="infos" className="overflow-y-auto w-95vw h-full mt-20 xl:bg-gray-200 xl:w-1/3 xl:p-5 xl:mr-72 ">
 
 
                 <h1 className="text-center text-2xl font-bold pt-7">Paramètres</h1>
