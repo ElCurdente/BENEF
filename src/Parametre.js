@@ -1,7 +1,10 @@
 import React from 'react';
+import ToggleBtn from './toggleBtn';
+import ToggleBtn2 from './toggleBtn_2';
 import { useEffect } from 'react';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
+import './index.css';
 const Parametre = () => {
     //DarkMode;
     const [theme, setTheme] = useState(localStorage.theme);
@@ -14,23 +17,14 @@ const Parametre = () => {
         localStorage.setItem('theme', theme);
     }, [theme, colorTheme]);
 
-    const checkboxLight = document.querySelector('#toggle_light_mode');
+    const checkboxLight = document.querySelector('._3maKS');
     const html = document.querySelector('html');
-    const toggleDarkMode = function () {
-        checkboxLight.checked ? html.classList.add("dark") : html.classList.remove("dark");
-        toggleDarkMode();
-        checkboxLight.addEventListener("click", toggleDarkMode);
-    }
+    const toggleDot = document.querySelector('#toggle_dot');
 
-    
-        // if (html.classList.contains("dark")) {
-        //     checkboxLight.checked = true;
-        //     console.log("ouuii");
-        // } else {
-        //     checkboxLight.checked = false;
-        //     console.log("nooon");
-        // }
-        const [checked, setChecked] = React.useState(true);
+
+    const [checked, setChecked] = React.useState(true);
+    const [checked2, setChecked2] = React.useState(true);
+    const [checked3, setChecked3] = React.useState(true);
 
 
     return (
@@ -42,7 +36,7 @@ const Parametre = () => {
 
                 <h2 className=" text-xl pt-6 font-semibold ">Compte</h2>
                 <li className='mt-2 list-none'>
-                
+
                     <ul className="pb-2">
                         <Link to="/Infos">
                             <a className="cursor-pointer opacity-95 font-light">Informations du compte</a>
@@ -55,8 +49,8 @@ const Parametre = () => {
 
                 <h2 className="mt-2 text-xl pt-7 font-semibold ">Confidentialité</h2>
                 <li className=' mt-2 list-none'>
-               <ul> <Link to="/Bloque">
-                    <a className="cursor-pointer opacity-95 font-light">Utilisateurs bloqués</a>
+                    <ul> <Link to="/Bloque">
+                        <a className="cursor-pointer opacity-95 font-light">Utilisateurs bloqués</a>
                     </Link></ul>
                 </li>
 
@@ -64,8 +58,7 @@ const Parametre = () => {
                 <h2 className="mt-2 text-xl pt-7 font-semibold">Affichage</h2>
                 <li className=' mt-2 list-none'>
                     <ul className="w-full flex justify-between items-center opacity-95 font-light">Mode sombre
-                        <input type="checkbox" onClick={() => setTheme(colorTheme)} id="toggle_light_mode" class="form-checkbox w-10 h-5 text-green-600 mr-2 rounded-full" checked={checked}
-        onChange={() => setChecked(!checked)} ></input>
+                        <ToggleBtn id='toggleBtn1' />
                     </ul>
                 </li>
 
@@ -73,19 +66,26 @@ const Parametre = () => {
                 <h2 className="mt-2 text-xl pt-7 font-semibold ">Notifications</h2>
                 <li className='mt-2 list-none'>
                     <ul className="w-full flex justify-between items-center opacity-95 font-light pb-2">Messages privés
-                        <input type="checkbox" class="form-checkbox w-10 h-5 text-green-600 mr-2 rounded-full" unchecked></input>
+                        <ToggleBtn2 id='2' />
                     </ul>
                     <ul className="w-full flex justify-between items-center opacity-95 font-light pb-2">"UpVotes" sur un post publié
-                        <input type="checkbox" class="form-checkbox w-10 h-5 text-green-600 mr-2 rounded-full" unchecked></input>
+                        {/* <input type="checkbox" id="toggle_btn_3" class="hidden w-10 h-5 text-green-600 mr-2 rounded-full" checked={checked3}
+                            onChange={() => setChecked3(!checked3)} ></input>
+                        <label for="toggle_btn_3">
+                            <div className="container-toggle-dot flex w-9 h-5 items-center bg-gray-300 rounded-full p-1 mr-2 transform transition duration-300">
+                                <div id="toggle_dot_3" className="toggle-dot-3 w-4 h-4 bg-white-0 rounded-full shadow-md transform transition duration-300"></div>
+                            </div>
+                        </label> */}
+                        <ToggleBtn2 id='3' />
                     </ul>
                     <ul className="w-full flex justify-between items-center opacity-95 font-light">Autres
                     </ul>
-                    
+
                 </li>
                 <h2 className="mt-2 p-0 text-base pt-10 font-semibold cursor-pointer ">Aide</h2>
                 <h2 className="mt-2 text-base font-semibold cursor-pointer ">Déconnexion</h2>
                 <h2 className="mt-2 text-base font-semibold text-red-500 cursor-pointer">Supprimer le compte</h2>
-                
+
             </div>
         </div>
     )
