@@ -16,11 +16,17 @@ const Thread = () => {
   const upvoteHaut1 = document.querySelector("#upvote_haut");
   const upvoteBas1 = document.querySelector("#upvote_bas");
 
-  if (html.classList.contains('dark')) {
-    upvoteHaut1.src = upvoteHaut;
-  } else {
-    upvoteHaut1.src = upvoteOrange;
-  }
+  // const toggleImg = () => {
+  //   if (html.classList.contains('dark')) {
+  //   upvoteHaut1.src = upvoteHaut;
+  // } else {
+  //   upvoteHaut1.src = upvoteOrange;
+  // }
+
+  // toggleImg();
+  // }
+
+  
 
   const [error, setError] = useState(null);
   const [isLoaded, setIsLoaded] = useState(false);
@@ -164,4 +170,5 @@ const Thread = () => {
     );
   }
 };
+
 export default Thread;
