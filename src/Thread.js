@@ -8,10 +8,20 @@ import upvoteBas from './images/icon/upvote.svg';
 import upvoteHaut from './images/icon/upvote2.svg';
 import upvoteHautplein from './images/icon/icon_vote_fill.svg';
 import upvoteBasplein from './images/icon/icon_vote_fill_r.svg';
-import upvoteorange from './images/icon/icon_vote_orange.svg';
+import upvoteOrange from './images/icon/icon_vote_orange.svg';
 import upvoteorangeplein from './images/icon/icon_vote_fill_orange.svg';
 
 const Thread = () => {
+  const html = document.querySelector('html');
+  const upvoteHaut1 = document.querySelector("#upvote_haut");
+  const upvoteBas1 = document.querySelector("#upvote_bas");
+
+  if (html.classList.contains('dark')) {
+    upvoteHaut1.src = upvoteHaut;
+  } else {
+    upvoteHaut1.src = upvoteOrange;
+  }
+
   const [error, setError] = useState(null);
   const [isLoaded, setIsLoaded] = useState(false);
   const [items, setItems] = useState([]);
@@ -56,6 +66,7 @@ const Thread = () => {
       upvoteHaut1.src = upvoteHaut;
     } else {
       upvoteHaut1.src = upvoteHautplein;
+      upvoteBas1.src = upvoteBas;
     }
 
   }
@@ -78,12 +89,15 @@ const Thread = () => {
         console.log("Error Reading data " + err);
       });
 
-    upvoteBas1.src = upvoteHautplein;
-  }
+    const srcUpvoteBas1 = upvoteBas1.getAttribute('src');
 
-  const html = document.querySelector('html');
-  const upvoteHaut1 = document.querySelector("#upvote_haut");
-  const upvoteBas1 = document.querySelector("#upvote_bas");
+    if (srcUpvoteBas1 == upvoteBasplein) {
+      upvoteBas1.src = upvoteBas;
+    } else {
+      upvoteBas1.src = upvoteBasplein;
+      upvoteHaut1.src = upvoteHaut;
+    }
+  }
 
 
   // function img1() {
