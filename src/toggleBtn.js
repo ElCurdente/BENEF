@@ -13,16 +13,24 @@ const ToggleBtn = () => {
 
     const toggleDarkMode = function () {
         if (checked) {
-           html.classList.add("dark"); 
+           html.classList.remove("dark");
+           localStorage.setItem('theme', "dark"); 
         } else {
-            html.classList.remove("dark");
+            html.classList.add("dark");
+            localStorage.setItem('theme', "light");
         }
-        
-        // toggleDot.setAttribute('className', 'toggle-dot relative w-4 h-4 bg-white-0 rounded-full shadow-md transform translate-x-3');
-        console.log("haziuazfbazbngkl");
-        // document.querySelector('._2-ZbH').addEventListener("click", toggleDarkMode);
-
     }
+
+    //DarkMode;
+    // const [theme, setTheme] = useState(localStorage.theme);
+    // const colorTheme = theme == "light" ? "dark" : 'light';
+    // useEffect(() => {
+    //     const root = window.document.documentElement;
+
+    //     root.classList.remove(colorTheme);
+    //     root.classList.add(theme);
+    //     localStorage.setItem('theme', theme);
+    // }, [theme, colorTheme]);
 
     // const [button, setButton] = useState({
     //     id:props.id, 
@@ -34,6 +42,17 @@ const ToggleBtn = () => {
     // }
 
     const [checked, setChecked] = useState(false);
+
+    // let coche = false;
+
+    // if (html.classList.contains('dark')) {
+    //     coche = true;
+    // } else {
+    //     coche = false;
+    // }
+    // if (html.classList.contains('dark')) {
+        
+    // }
         
         return (
             // <div>

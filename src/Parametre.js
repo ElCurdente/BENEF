@@ -5,17 +5,8 @@ import { useEffect } from 'react';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import './index.css';
-const Parametre = () => {
-    //DarkMode;
-    const [theme, setTheme] = useState(localStorage.theme);
-    const colorTheme = theme == "dark" ? "light" : 'dark';
-    useEffect(() => {
-        const root = window.document.documentElement;
 
-        root.classList.remove(colorTheme);
-        root.classList.add(theme);
-        localStorage.setItem('theme', theme);
-    }, [theme, colorTheme]);
+const Parametre = () => {
 
     const checkboxLight = document.querySelector('._3maKS');
     const html = document.querySelector('html');
