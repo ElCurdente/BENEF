@@ -36,7 +36,7 @@ const Filter = () => {
         const regexp = new RegExp(input, 'i');
         const filterByName = items.filter(x => regexp.test(x.title));
       return (
-        <div className="h-screen w-screen flex justify-center overflow-auto items-center">
+        <div className="h-screen w-screen bg-white-150 flex justify-center overflow-auto items-center">
           <button></button>
           <ul className="h-full">
             <div className="mt-20 pb-12">
