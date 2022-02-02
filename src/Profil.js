@@ -154,7 +154,7 @@ const Profil = () => {
                                 name="desc"
                                 rows="40"
                                 className=" resize-y pt-3 placeholder-gray-500 text-black dark:text-white-0 border-b-2 bg-transparent w-4/5 h-24 text-left focus:outline-none  focus:placeholder-transparent"
-                                placeholder="Description"
+                                placeholder={sessionStorage.getItem("desc")}
                                 value={values.desc}
                                 onChange={handleChange}
                             ></textarea>

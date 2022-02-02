@@ -15,6 +15,7 @@ import logo from './images/logo/logo_benef.png';
 import logodark from './images/logo/logo_benef_dark.png';
 import Parametre from './Parametre'
 import parameter from './images/icon/icon_parametres.svg';
+import { motion } from 'framer-motion/dist/framer-motion';
 
 const Nav = () => {
     return (
@@ -23,16 +24,16 @@ const Nav = () => {
                 <nav className="w-100vw h-7vh">
                     <ul className="flex justify-around">
                         <Link to="/home">
-                            <div className="relative top-3 ">
+                            <motion.div whileHover={{ scale: 1.2}} className="relative top-3 ">
                                 <li className=""><img className="h-25px xl:hidden " src={etiquette} alt="" /></li>
                                 <img src={logo} alt="Logo" className="w-36 dark:hidden xl:ml-96 xl:block hidden" />
                                 <img src={logodark} alt="Logo" className="w-36 hidden xl:ml-96 sm:dark:hidden dark:hidden xl:dark:block" />  
-                            </div>
+                            </motion.div>
                             
                         </Link>
                         <Link to="/recherche">
                             
-                        <div className="relative top-3 xl:top-5">
+                        <motion.div whileHover={{ scale: 1.2}} className="relative top-3 xl:top-5">
                                 <li><img className="h-25px xl:hidden" src={recherche} alt="" /></li>
                                 
     <div class="relative text-gray-600 focus-within:text-gray-400 sm:hidden hidden xl:block">
@@ -47,14 +48,14 @@ const Nav = () => {
                                 
                             </div>     
   
-                            </div>
+                            </motion.div>
                            
                         </Link>
-                        <Link to="/post" className="hover:animate-bounce">
-                            <div className="relative xl:bottom-0 xl:top-4 bottom-6 flex justify-center items-center h-16 w-16 bg-white-0 rounded-full shadow-custom">
+                        <Link to="/post" >
+                            <motion.div whileHover={{y:-10}} className="relative xl:bottom-0 xl:top-4 bottom-6 flex justify-center items-center h-16 w-16 bg-white-0 rounded-full shadow-custom">
                             <li ><img className="h-25px dark:hidden" src={plus} alt=""/>
                             <img className="h-25px hidden dark:block" src={plusnoir} alt=""/></li>
-                            </div>
+                            </motion.div>
                         </Link>
                         {/* <Link to="/messagerie">
                         <div className="relative top-3 hidden xl:hidden">
@@ -62,9 +63,9 @@ const Nav = () => {
                             </div>
                         </Link> */}
                         <Link to="/profil">
-                        <div className="relative top-3 xl:top-4 xl:mr-64">
+                        <motion.div whileHover={{ scale: 1.2}} className="relative top-3 xl:top-4 xl:mr-64">
                             <li><img className="h-25px xl:h-16 xl:w-16 xl:rounded-full rounded-xl border-2 border-white" src={profil} alt=""/></li>
-                            </div>
+                            </motion.div>
                         </Link>
                         <Link to="/Parametre">
                             <div className="relative xl:block hidden top-3 xl:top-5 xl:mr-5">
