@@ -19,8 +19,8 @@ const Parametre = () => {
 
 
     return (
-        <div className="flex flex-col justify-center items-center h-screen w-screen dark:bg-gray-550 bg-gray-50 dark:text-white-0">
-            <div id="infos" className="overflow-y-auto w-95vw h-full mt-20 dark:bg-gray-550 xl:bg-gray-200 xl:w-1/3 xl:p-5 xl:mr-72 ">
+        <div className="flex flex-col justify-center items-center h-screen w-screen dark:bg-gray-550 bg-gray-100 xl:bg-gray-150 dark:text-white-0">
+            <div id="infos" className="overflow-y-auto w-95vw h-full mt-20 dark:bg-gray-550 xl:bg-gray-50 xl:w-1/3 xl:p-5">
 
 
                 <h1 className="text-center text-2xl font-bold pt-7">Paramètres</h1>
@@ -30,18 +30,18 @@ const Parametre = () => {
 
                     <ul className="pb-2">
                         <Link to="/Infos">
-                            <a className="cursor-pointer opacity-95 font-light">Informations du compte</a>
+                            <a className="cursor-pointer opacity-95 font-light xl:hover:text-red-500">Informations du compte</a>
                         </Link>
                     </ul>
-                    <ul className="pb-2"><a className="cursor-pointer opacity-95 font-light">Changer son mot de passe</a></ul>
-                    <ul><a className="cursor-pointer opacity-95 font-light">Bons plans enregistrés</a></ul>
+                    <ul className="pb-2"><a className="cursor-pointer opacity-95 font-light xl:hover:text-red-500">Changer son mot de passe</a></ul>
+                    <ul><a className="cursor-pointer opacity-95 font-light xl:hover:text-red-500">Bons plans enregistrés</a></ul>
                 </li>
 
 
                 <h2 className="mt-2 text-xl pt-7 font-semibold ">Confidentialité</h2>
                 <li className=' mt-2 list-none'>
                     <ul> <Link to="/Bloque">
-                        <a className="cursor-pointer opacity-95 font-light">Utilisateurs bloqués</a>
+                        <a className="cursor-pointer opacity-95 font-light xl:hover:text-red-500">Utilisateurs bloqués</a>
                     </Link></ul>
                 </li>
 
@@ -69,7 +69,7 @@ const Parametre = () => {
                         </label> */}
                         <ToggleBtn2 id='3' />
                     </ul>
-                    <ul className="w-full flex justify-between items-center opacity-95 font-light">Autres
+                    <ul className="w-full flex justify-between items-center opacity-95 font-light xl:hover:text-red-500">Autres
                     </ul>
 
                 </li>
