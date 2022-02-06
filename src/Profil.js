@@ -65,10 +65,10 @@ const Profil = () => {
 
     if (bio === false) {
         return (
-            <div className="flex flex-col justify-center items-center h-screen w-screen bg-white dark:text-white-0">
-                <div id="infos" className="relative grid grid-cols-2 grid-layout w-95vw px-4">
+            <div className="flex flex-col justify-center items-center h-screen w-screen bg-white-0 dark:text-white-0">
+                <div id="infos" className="relative grid grid-cols-2 grid-layout xl:w-2/6 w-95vw px-4 xl:-px-0">
                     <div className="flex items-center">
-                        <img className="w-100px h-100px bg-transparent dark:bg-gray-650 border-3 border-red-450 dark:border-black rounded-full object-cover " />
+                        <img className="w-100px h-100px bg-transparent dark:bg-gray-650 border-3 border-red-450 dark:border-black rounded-full object-cover" />
                         <h1 className="ml-3 text-xl font-semibold">{sessionStorage.getItem("user")}</h1>
                     </div>
                     <p className="col-span-2 mt-2">Jeune passioné de sorties j’adore la vie ahaha comme dirait la chanson française très célèbre je vois la vie en rose mdrrr ! J’adore le cinéma d’auteur, très peu pour moi les blockbusters hollywoodiens (sauf Joker, j’ai a-do-ré).</p>
@@ -77,13 +77,13 @@ const Profil = () => {
                         <button className="flex items-center text-red-450 dark:text-white-0 hover:underline">Voir mes favoris <img className="pl-1 h-15px fill-current" src={coeur} alt="" /></button>
                     </div>
                 </div>
-                <div id="barre1" className="h-1px w-95vw mt-4 bg-gray-200"></div>
-                <div id="badges" className="w-95vw">
+                <div id="barre1" className="h-1px w-95vw xl:w-2/6 mt-4 bg-gray-200"></div>
+                <div id="badges" className="w-95vw xl:w-2/6">
                     <h3 className="font-semibold pt-4 pl-4">Badges</h3>
                 </div>
-                <div id="barre1" className="h-1px w-95vw mt-4 bg-gray-200"></div>
-                <div id="bp_perso" className="w-95vw">
-                    <h3 className="font-semibold pt-4 pl-4">Bons plans publiés</h3>
+                <div id="barre1" className="h-1px w-95vw mt-4 bg-gray-200 xl:w-2/6"></div>
+                <div id="bp_perso" className="w-95vw xl:w-2/6">
+                    <h3 className="font-semibold pt-4 pl-4 ">Bons plans publiés</h3>
                 </div>
             </div>
         )

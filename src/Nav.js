@@ -20,11 +20,11 @@ import { motion } from 'framer-motion/dist/framer-motion';
 const Nav = () => {
     return (
         <div className="flex justify-center z-50 relative">
-            <div className="fixed justify-center xl:top-0 xl:h-10vh xl:w-100vw xl:justify-start bottom-0 h-7vh w-100vw bg-red-450 dark:bg-black rounded-t-lg transition duration-500">
+            <div className="fixed justify-center xl:-top-1 xl:h-10vh xl:w-100vw xl:justify-start bottom-0 h-7vh w-100vw bg-red-450 dark:bg-black rounded-t-lg transition duration-500">
                 <nav className="w-100vw h-7vh">
                     <ul className="flex justify-around">
                         <Link to="/home">
-                            <motion.div whileHover={{ scale: 1.2}} className="relative top-3 ">
+                            <motion.div whileHover={{ scale: 1.1}} className="relative top-3 ">
                                 <li className=""><img className="h-25px xl:hidden " src={etiquette} alt="" /></li>
                                 <img src={logo} alt="Logo" className="w-36 dark:hidden xl:ml-96 xl:block hidden" />
                                 <img src={logodark} alt="Logo" className="w-36 hidden xl:ml-96 sm:dark:hidden dark:hidden xl:dark:block" />  
@@ -33,7 +33,7 @@ const Nav = () => {
                         </Link>
                         <Link to="/recherche">
                             
-                        <motion.div whileHover={{ scale: 1.2}} className="relative top-3 xl:top-5">
+                        <motion.div whileHover={{ scale: 1.1}} className="relative top-3 xl:top-5">
                                 <li><img className="h-25px xl:hidden" src={recherche} alt="" /></li>
                                 
     <div class="relative text-gray-600 focus-within:text-gray-400 sm:hidden hidden xl:block">
