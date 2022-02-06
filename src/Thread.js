@@ -115,26 +115,15 @@ const Thread = () => {
     // }
   }
 
-  function refreshPage() {
-
+  function compare( a, b ) {
+    if ( parseInt(a.upvote) < parseInt(b.upvote) ){
+      return 1;
+    }
+    if ( parseInt(a.upvote) > parseInt(b.upvote) ){
+      return -1;
+    }
+    return 0;
   }
-
-
-  // function img1() {
-  //   if (html.classList.contains('dark')) {
-  //        upvoteHaut1.src = './images/icon/upvote2.svg';
-  //     } else {
-  //       upvoteHaut1.src = './images/icon/icon_vote_orange.svg';
-  //     }
-
-  //   img1();
-  // }
-  // if (html.classList.contains('dark')) {
-  //   src1 = './images/icon/upvote2.svg';
-  // } else {
-  //   src1 = './images/icon/icon_vote_orange.svg';
-  // }
-
 
 
   if (error) {
@@ -148,7 +137,7 @@ const Thread = () => {
         <ul className="h-full xl:w-2/6 bg-white-150  xl:dark:bg-gray-550 ">
           <div className="mt-32 ml-6 mr-6 pb-12 xl:dark:bg-gray-550">
 
-            {items.sort((a, b) => (a > b) ? 1 : -1).map(item => (
+            {items.sort(compare).map(item => (
               <motion.div className="w-92vw xl:w-full h-300px xl:h-96 relative bg-red-450 dark:bg-black rounded-lg text-white-0 mb-2 xl:mb-5"
                 whileHover={{ scale: 1.01 }}>
                 <div className="w-full h-75% relative">
@@ -165,7 +154,7 @@ const Thread = () => {
                           {/* <img src={upvoteorange} className="absolute top-0 h-30px dark:opacity-0"></img> */}
                         </button>
 
-                        <span id='nb_upvote' ref={nbUpvote} onChange={refreshPage} className="px-2 upvote text-red-450 dark:text-black">{item.upvote}</span>
+                        <span id='nb_upvote' ref={nbUpvote} className="px-2 upvote text-red-450 dark:text-black">{item.upvote}</span>
                         <button onClick={handleDownvote.bind(item)} className="pr-2 relative">
                           <motion.img whileTap={{ scale: 0.85 }} id="upvote_bas" src={upvoteBas} className="opacity-100 dark:opacity-100 h-28px"></motion.img>
                           {/* <img src={upvoteorange} className="transform rotate-180 absolute top-0 h-30px dark:opacity-0"></img> */}
