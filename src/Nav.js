@@ -11,8 +11,8 @@ import plus from './images/icon/icon_plus.svg';
 import message from './images/icon/icon_message.svg';
 import profil from './images/profil-gaelle.png';
 import plusnoir from './images/icon/icon_plus_noir.svg';
-import logo from './images/logo/logo_benef.png';
-import logodark from './images/logo/logo_benef_dark.png';
+import logo from './images/logo/logo_benef.svg';
+import logodark from './images/logo/logo_benef_dark.svg';
 import Parametre from './Parametre'
 import parameter from './images/icon/icon_parametres.svg';
 import { motion } from 'framer-motion/dist/framer-motion';
