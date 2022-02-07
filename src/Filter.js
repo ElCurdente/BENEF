@@ -113,21 +113,21 @@ const Filter = () => {
     </div>
 
     <div className="flex  relative justify-center items-center">
-        <label htmlFor="expiration" className="">
+        <label htmlFor="expiration" className="text-black">
         </label>
         <input id="expiration"
             type="date"
             name="expiration"
             maxLength="30"
-            placeholder="Date d'expiration" className="appearance-none placeholder-white-150 text-white-150 border-b-2 bg-transparent w-4/5 my-2 h-12 pt-5 text-left focus:outline-none  focus:placeholder-transparent"
+            placeholder="Date d'expiration" className="appearance-none placeholder-black text-white-150 border-b-2 bg-transparent w-4/5 my-2 h-12 pt-5 text-left focus:outline-none  focus:placeholder-transparent"
             value={filters.expiration}
             onChange={handleChange}
         />
     </div>
 
     <div className="flex relative items-center mt-6 ml-3">
-    <h4 className="text-white-150 pl-2">{filters.filter_by}</h4>
-    <label htmlFor="certified" className="text-white-150 pl-2">
+    <h4 className="text-black pl-2">{filters.filter_by}</h4>
+    <label htmlFor="certified" className="text-black pl-2">
         <input id="filter_by_date"
             type="radio"
             name="filter_by"
@@ -140,7 +140,7 @@ const Filter = () => {
         </label>
         </div>
         <div className="flex relative items-center mt-6 ml-3">
-        <label className="text-white-150 pl-2">
+        <label className="text-black pl-2">
          <input id="filter_by_upvote"
             type="radio"
             name="filter_by"
@@ -166,8 +166,8 @@ const Filter = () => {
           {(filters.filtered ?
           
           filterByFilters.map(item => (
-            <div className="w-92vw h-300px relative bg-red-450 dark:bg-black rounded-lg text-white-0 mb-2">
-              <div className="w-full h-75% relative">
+            <div className="w-92vw h-100px relative bg-red-450 dark:bg-black rounded-lg text-white-0 mb-2">
+              <div className="w-20% h-75% relative">
                 <img className="object-cover rounded-t-lg h-full w-full" src={profil} alt="" />
                 <div className="absolute bottom-5 -left-1.5">
                 </div>
@@ -189,21 +189,17 @@ const Filter = () => {
           ))
           :
           filterByName.map(item => (
-            <div className="w-92vw h-300px relative bg-red-450 dark:bg-black rounded-lg text-white-0 mb-2">
-              <div className="w-full h-75% relative">
-                <img className="object-cover rounded-t-lg h-full w-full" src={profil} alt="" />
-                <div className="absolute bottom-5 -left-1.5">
-                </div>
+            <div className="w-92vw h-150px relative flex justify-between items-center bg-red-450 dark:bg-black rounded-lg text-white-0 mb-5 shadow-customm">
+              <div className="h-full w-150px flex justify-center items-center relative">
+                <img className="w-90% h-90%  object-cover rounded-lg" src={profil} alt="" />
               </div>
-              <div className="w-full h-25%">
+              <div className="w-60% justify-self-end flex relative justify-center items-center h-full">
                 <li key={item.id_post}  className="mt-1 w-92vw">
-                                    <div>
-                          <div className="bg-white-0 text-black text-xl font-bold flex w-max py-1 rounded-lg">
+                          <div className="bg-white-0 text-black text-xl font-bold absolute right-3 top-3 w-max py-1 rounded-lg">
                             <span className="px-2 upvote">{item.upvote}</span>
                           </div>
-                        </div>
                   <h1 className="text-lg font-semibold mx-2">{item.title}</h1>
-                  <div className="flex mt-2 text-sm w-92vw">
+                  <div className="flex mt-2 text-sm">
                     <img src={adresse} className="ml-2 mr-1 w-3.5"></img> {item.address} <div className="absolute right-3">{item.postal}</div>
                   </div>
                 </li>
