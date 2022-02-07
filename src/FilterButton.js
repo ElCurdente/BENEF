@@ -1,5 +1,6 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
+import Filter from './Filter'
 import plus from './images/icon/icon_plus.svg';
 import plusblanc from './images/icon/icon_plus_blanc.svg';
 import fleche from './images/icon/icon_fleche.svg';
@@ -27,12 +28,8 @@ const FilterButton = () => {
         });
       };
 
-      const handleSubmit = e => {
-          e.preventDefault();
-      }
-
   return (
-    <form className="post flex flex-col justify-center" onSubmit={(e) => handleSubmit(e)} id="filter_form">
+    <form className="post flex flex-col justify-center" onSubmit={(e) => Filter.handleSubmitFiltered(e)} id="filter_form">
     <div className="flex h-100px relative justify-center items-center w-4/5">
 
     </div>
