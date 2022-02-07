@@ -8,7 +8,7 @@ import React, {useState} from "react";
 function App() {
  
   return (
-    <div className=" bg-white-0 dark:bg-gray-550 h-screen overflow-y-hidden">
+    <div className=" bg-white-0 dark:bg-gray-550 h-screen overflow-y-hidden transition ease-in-out duration-500">
       {!sessionStorage.getItem("isConnected") ? ( <Form/>) : (<Accueil />)}            
 {/* 
       <Form />
