@@ -1,4 +1,5 @@
 import React from 'react';
+import fleche from './images/icon/icon_fleche_noire.svg';
 import ToggleBtn from './toggleBtn';
 import ToggleBtn2 from './toggleBtn_2';
 import { useEffect } from 'react';
@@ -30,25 +31,38 @@ const Parametre = () => {
 
                     <ul className="pb-2">
                         <Link to="/Infos">
-                            <a className="cursor-pointer opacity-95 font-light xl:hover:text-red-500">Informations du compte</a>
+                            <a className="flex justify-between cursor-pointer font-light hover:text-red-500">
+                            Informations du compte
+                            <img src={fleche} alt="fleche" className="w-2 transform rotate-180"/>
+                            </a>
                         </Link>
                     </ul>
-                    <ul className="pb-2"><a className="cursor-pointer opacity-95 font-light xl:hover:text-red-500">Changer son mot de passe</a></ul>
-                    <ul><a className="cursor-pointer opacity-95 font-light xl:hover:text-red-500">Bons plans enregistrés</a></ul>
+                    <ul className="pb-2">
+                        <a className="flex justify-between cursor-pointer font-light xl:hover:text-red-500">
+                            Changer son mot de passe
+                            <img src={fleche} alt="fleche" className="w-2 transform rotate-180"/>
+                        </a>
+                    </ul>
+                    <ul>
+                        <a className="flex justify-between cursor-pointer opacity-95 font-light xl:hover:text-red-500">
+                            Bons plans enregistrés
+                            <img src={fleche} alt="fleche" className="w-2 transform rotate-180"/>
+                        </a>
+                    </ul>
                 </li>
 
 
                 <h2 className="mt-2 text-xl pt-7 font-semibold ">Confidentialité</h2>
                 <li className=' mt-2 list-none'>
                     <ul> <Link to="/Bloque">
-                        <a className="cursor-pointer opacity-95 font-light xl:hover:text-red-500">Utilisateurs bloqués</a>
+                        <a className="cursor-pointer font-light xl:hover:text-red-500">Utilisateurs bloqués</a>
                     </Link></ul>
                 </li>
 
 
                 <h2 className="mt-2 text-xl pt-7 font-semibold">Affichage</h2>
                 <li className=' mt-2 list-none'>
-                    <ul className="w-full flex justify-between items-center opacity-95 font-light">Mode sombre
+                    <ul className="w-full flex justify-between items-center font-light">Mode sombre
                         <ToggleBtn id='toggleBtn1' />
                     </ul>
                 </li>
@@ -56,10 +70,10 @@ const Parametre = () => {
 
                 <h2 className="mt-2 text-xl pt-7 font-semibold ">Notifications</h2>
                 <li className='mt-2 list-none'>
-                    <ul className="w-full flex justify-between items-center opacity-95 font-light pb-2">Messages privés
+                    <ul className="w-full flex justify-between items-center font-light pb-2">Messages privés
                         <ToggleBtn2 id='2' />
                     </ul>
-                    <ul className="w-full flex justify-between items-center opacity-95 font-light pb-2">"UpVotes" sur un post publié
+                    <ul className="w-full flex justify-between items-center font-light pb-2">"UpVotes" sur un post publié
                         {/* <input type="checkbox" id="toggle_btn_3" class="hidden w-10 h-5 text-green-600 mr-2 rounded-full" checked={checked3}
                             onChange={() => setChecked3(!checked3)} ></input>
                         <label for="toggle_btn_3">
@@ -69,7 +83,7 @@ const Parametre = () => {
                         </label> */}
                         <ToggleBtn2 id='3' />
                     </ul>
-                    <ul className="w-full flex justify-between items-center opacity-95 font-light xl:hover:text-red-500">Autres
+                    <ul className="w-full flex justify-between items-center font-light xl:hover:text-red-500">Autres
                     </ul>
 
                 </li>

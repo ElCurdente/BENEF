@@ -134,7 +134,7 @@ const Thread = () => {
     return (
       <div className=" h-screen w-screen flex justify-center xl:justify-center overflow-x-hidden overflow-auto items-center">
         <button></button>
-        <ul className="h-full xl:w-2/6 bg-white-150  xl:dark:bg-gray-550 ">
+        <ul className="h-full xl:w-2/6 bg-white-150 xl:dark:bg-gray-550 ">
           <div className="mt-32 ml-6 mr-6 pb-12 xl:dark:bg-gray-550">
 
             {items.sort(compare).map(item => (
@@ -145,7 +145,7 @@ const Thread = () => {
                   <div className="absolute bottom-5 -left-1.5">
                   </div>
                 </div>
-                <div className="w-full h-25%">
+                <div className="w-full h-25% md:cursor-pointer">
                   <li key={item.id_post} className="mt-1 w-92vw">
                     <div>
                       <div className="bg-white-0 text-black absolute top-44 text-xl font-bold flex w-max py-1 rounded-lg">
