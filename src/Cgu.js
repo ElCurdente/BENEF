@@ -8,7 +8,7 @@ const Cgu = () => {
             <div id="infos" className="overflow-y-auto w-95vw h-full mt-20 dark:bg-gray-550 xl:bg-gray-50 xl:w-1/3 xl:p-5">
 
 
-                <h1 className="text-center text-2xl font-bold pt-7">Conditions générales d'utilisation</h1>
+                <h1 className="text-center text-2xl font-bold pt-7">Conditions générales <br></br> & CGU </h1>
 
                 <h2 className=" text-xl pt-10 font-semibold ">Présentation de BENEF</h2>
                 <li className='mt-2 list-none'>
@@ -53,26 +53,31 @@ Vous n’êtes pas autorisés à :<br></br>
                 </li>
 
 
-                <h2 className="mt-2 text-xl pt-7 font-semibold ">Notifications</h2>
+                <h2 className="mt-2 text-2xl  text-center pt-10 font-semibold ">Conditions générales</h2>
                 <li className='mt-2 list-none'>
-                    <ul className="w-full flex justify-between items-center opacity-95 font-light pb-2">Messages privés
-                      
+                    <ul className="w-full flex justify-between items-center opacity-95 font-light">
+                        Le Service peut inclure des liens vers des sites web tiers qui n’appartiennent pas à BENEF. Nous déclinons toute responsabilité quant à l’utilisation de ces sites.
                     </ul>
-                    <ul className="w-full flex justify-between items-center opacity-95 font-light pb-2">"UpVotes" sur un post publié
-                        {/* <input type="checkbox" id="toggle_btn_3" class="hidden w-10 h-5 text-green-600 mr-2 rounded-full" checked={checked3}
-                            onChange={() => setChecked3(!checked3)} ></input>
-                        <label for="toggle_btn_3">
-                            <div className="container-toggle-dot flex w-9 h-5 items-center bg-gray-300 rounded-full p-1 mr-2 transform transition duration-300">
-                                <div id="toggle_dot_3" className="toggle-dot-3 w-4 h-4 bg-white-0 rounded-full shadow-md transform transition duration-300"></div>
-                            </div>
-                        </label> */}
-                        
-                    </ul>
-                    <ul className="w-full flex justify-between items-center opacity-95 font-light xl:hover:text-red-500">Autres
-                    </ul>
-
                 </li>
-                
+
+                <h2 className="mt-2 text-xl pt-7 font-semibold ">Le règlement général sur la protection des données</h2>
+                <li className='mt-2 list-none'>
+                    <ul className="w-full flex justify-between items-center opacity-95 font-light pb-2"><p>
+                        Les informations recueillies sur le formulaire d’inscription sont enregistrées dans notre base de données informatisée par nos développeurs. Ces informations permettent de créer votre compte et profil BENEF.<br></br>
+Les données collectées seront communiquées aux seuls destinataires suivants: <strong>Célian Chevereau, Antoine Droyer, Gaspard Freyssinet, Merwan Jaudally et Jules Mesnil</strong>.<br></br>
+Les données sont conservées jusqu’à la suppression souhaitée par l’utilisateur ou par les administrateurs.<br></br>
+Vous pouvez accéder aux données vous concernant, les rectifier, demander leur effacement ou exercer votre droit à la limitation du traitement de vos données. Vous pouvez retirer à tout moment votre consentement au traitement de vos données. Vous pouvez également vous opposer au traitement de vos données. Vous pouvez également exercer votre droit à la portabilité de vos données. Consultez le site du CNIL pour plus d’informations sur vos droits.<br></br>
+Pour la moindre question sur le traitement de vos données dans BENEF, vous pouvez contacter <strong>benef.app@gmail.com</strong> .<br></br>
+Si après nous avoir contacté, vous estimez que vos droits “Informatique et Libertés” ne sont pas respectés, vous pouvez adresser une réclamation à la CNIL.<br></br>
+</p>
+                    </ul>
+                </li>
+                <h2 className="mt-2 text-2xl  text-center pt-10 font-semibold ">Conditions générales d'utilisations</h2>
+                <li className='mt-2 list-none'>
+                    <ul className="w-full flex justify-between items-center opacity-95 font-light">
+                        Le Service peut inclure des liens vers des sites web tiers qui n’appartiennent pas à BENEF. Nous déclinons toute responsabilité quant à l’utilisation de ces sites.
+                    </ul>
+                </li>
 
             </div>
         </div>
