@@ -6,8 +6,44 @@ import { useRef } from 'react';
 import { useEffect } from 'react';
 import plus from './images/icon/icon_plus.svg';
 import plusblanc from './images/icon/icon_plus_blanc.svg';
+import ToggleLike from './toggle-like.js';
+import lottie from 'lottie-web';
 
 const Profil = () => {
+
+    const container = useRef(null)
+
+    useEffect(() => {
+        lottie.loadAnimation({
+            container: container.current,
+            renderer: 'svg',
+            loop: false,
+            autoplay: false,
+            animationData: require('./like.json')
+        })
+    }, [])
+
+    const [etat, setEtat] = useState({
+        isStopped: true,
+        isPaused: false,
+        speed: 1,
+        direction: 1,
+        isLiked: false,
+    });
+
+    const clickHandler = () => {
+        if (!etat.isStopped) {
+            setEtat({
+                ...etat,
+                direction: etat.direction * -1
+            });
+        }
+        setEtat({
+            ...etat,
+            isStopped: false,
+            isLike: !etat.isLike
+        });
+    }
 
     const [values, setValues] = useState({
         image: '',
@@ -84,6 +120,8 @@ const Profil = () => {
                 <div id="barre1" className="h-1px w-95vw mt-4 bg-gray-200 xl:w-2/6"></div>
                 <div id="bp_perso" className="w-95vw xl:w-2/6">
                     <h3 className="font-semibold pt-4 pl-4 ">Bons plans publiés</h3>
+                    {/* <ToggleLike /> */}
+                    <button ref={container} onClick={clickHandler}></button>
                 </div>
             </div>
         )
