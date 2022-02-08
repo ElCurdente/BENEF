@@ -18,7 +18,7 @@ const Filter = () => {
       filtered:false,
       category: '',
       postal: '',
-      filter_by: '',
+      filter_by: 'upvote',
   })
 
   const handleReset = () => {
@@ -60,6 +60,26 @@ const Filter = () => {
         filtered:true
       }));
   }
+
+  function compareUpvote( a, b ) {
+    if ( parseInt(a.upvote) < parseInt(b.upvote) ){
+      return 1;
+    }
+    if ( parseInt(a.upvote) > parseInt(b.upvote) ){
+      return -1;
+    }
+    return 0;
+  }
+
+  function compareDate( a, b ) {
+    if ( parseInt(a.id_post) < parseInt(b.id_post) ){
+      return 1;
+    }
+    if ( parseInt(a.id_post) > parseInt(b.id_post) ){
+      return -1;
+    }
+    return 0;
+  }
   
     if (error) {
       return <div>Erreur : {error.message}</div>;
@@ -67,9 +87,19 @@ const Filter = () => {
       return <div>Chargement...</div>;
     } else {
         const regexp = new RegExp(input, 'i');
+        const regexp_postal = new RegExp(filters.postal, 'i');
+        const regexp_category = new RegExp(filters.category, 'i');
+
         const filterByName = items.filter(x => regexp.test(x.title));
         console.log(filters.postal);
-        filterByFilters = items.filter(item => item.postal === filters.postal);
+        filterByFilters = items.filter(item => regexp_postal.test(item.postal));
+        const filter100= filterByFilters.filter(item => regexp_category.test(item.category))
+        const filter1000 = filter100.filter(x => regexp.test(x.title));
+        if(filters.filter_by === "upvote"){
+          filterByFilters.sort(compareUpvote);
+        }else if(filters.filter_by === "date"){
+          filterByFilters.sort(compareDate);
+        }
         console.log(filterByFilters);
 
       return (
@@ -126,8 +156,8 @@ const Filter = () => {
     </div>
 
     <div className="flex relative items-center mt-6 ml-3">
-    <h4 className="text-white-150 pl-2">{filters.filter_by}</h4>
-    <label htmlFor="certified" className="text-white-150 pl-2">
+    <h4 className="text-black pl-2">{filters.filter_by}</h4>
+    <label htmlFor="certified" className="text-black pl-2">
         <input id="filter_by_date"
             type="radio"
             name="filter_by"
@@ -140,7 +170,7 @@ const Filter = () => {
         </label>
         </div>
         <div className="flex relative items-center mt-6 ml-3">
-        <label className="text-white-150 pl-2">
+        <label className="text-black pl-2">
          <input id="filter_by_upvote"
             type="radio"
             name="filter_by"
@@ -165,7 +195,7 @@ const Filter = () => {
           <input value={input} onChange={event => setInput(event.target.value)}/>
           {(filters.filtered ?
           
-          filterByFilters.map(item => (
+          filter1000.map(item => (
             <div className="w-92vw h-300px relative bg-red-450 dark:bg-black rounded-lg text-white-0 mb-2">
               <div className="w-full h-75% relative">
                 <img className="object-cover rounded-t-lg h-full w-full" src={profil} alt="" />
