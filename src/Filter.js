@@ -195,15 +195,9 @@ const Filter = () => {
           <input value={input} onChange={event => setInput(event.target.value)}/>
           {(filters.filtered ?
           
-<<<<<<< HEAD
           filter1000.map(item => (
             <div className="w-92vw h-300px relative bg-red-450 dark:bg-black rounded-lg text-white-0 mb-2">
               <div className="w-full h-75% relative">
-=======
-          filterByFilters.map(item => (
-            <div className="w-92vw h-100px relative bg-red-450 dark:bg-black rounded-lg text-white-0 mb-2">
-              <div className="w-20% h-75% relative">
->>>>>>> 90e96049a5f6a64568b5b60882797db88aeef01a
                 <img className="object-cover rounded-t-lg h-full w-full" src={profil} alt="" />
                 <div className="absolute bottom-5 -left-1.5">
                 </div>
