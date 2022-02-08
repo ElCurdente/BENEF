@@ -43,8 +43,10 @@ Vous n’êtes pas autorisés à :<br></br>
 • usurper l’identité d’autrui <br></br>
 • accéder au Service par le biais de procédés automatisés <br></br>
 • abuser des options de signalements <br></br>
-• recueillir ou utiliser toute information permettant d’identifier une personne <br></br>
-• diffuser du contenu obscène, vulgaire, offensant </p>
+• recueillir ou utiliser toute information permettant d’identifier une personne<br></br>
+                            • diffuser du contenu obscène, vulgaire, offensant <br></br><br></br>
+                            Les conditions générales d’utilisation rappellent aux internautes que les éléments du site tels que le texte et les images
+                            sont protégés par le droit d’auteur et que leur utilisation sans autorisation préalable expresse est interdite.</p>
 
                        
                     </ul>
@@ -70,9 +72,7 @@ Vous n’êtes pas autorisés à :<br></br>
                     </ul>
 
                 </li>
-                <h2 className="mt-2 p-0 text-base pt-10 font-semibold cursor-pointer ">Aide</h2>
-                <h2 className="mt-2 text-base font-semibold cursor-pointer ">Déconnexion</h2>
-                <h2 className="mt-2 text-base font-semibold text-red-500 cursor-pointer">Supprimer le compte</h2>
+                
 
             </div>
         </div>
