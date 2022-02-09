@@ -10,8 +10,9 @@ import Profil from './Profil'
 import Recherche from './Recherche'
 import Infos from './Infos'
 import Bloque from './Bloque'
-import logo from './images/logo/logo_benef.svg';
-import logodark from './images/logo/logo_benef_dark.svg';
+import Cgu from './Cgu'
+import logo from './images/logo/logo_benef.png';
+import logodark from './images/logo/logo_benef_dark.png';
 import parameter from './images/icon/icon_parametres.svg';
 import plus from './images/icon/icon_plus.svg';
 import plusnoir from './images/icon/icon_plus_noir.svg';
@@ -81,6 +82,7 @@ const Accueil = () => {
                         <Route path="/parametre" component={Parametre} />
                         <Route path="/infos" component={Infos} />
                         <Route path="/bloque" component={Bloque} />
+                        <Route path="/cgu" component={Cgu} />
                     </Switch>
                 </div>
             </Router>
