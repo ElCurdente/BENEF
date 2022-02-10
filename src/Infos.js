@@ -1,4 +1,5 @@
 import React from 'react';
+import fleche from './images/icon/icon_fleche_noire.svg';
 
 const Parametre = () => {
 
@@ -9,7 +10,9 @@ const Parametre = () => {
             <div id="infos" className="overflow-y-auto w-95vw h-full mt-20">
 
 
-                <h1 className="text-center text-2xl font-bold pt-7">Informations du compte</h1>
+                <div className="grid justify-items-stretch content-center mt-7">
+                    <h1 className="text-center text-2xl font-bold"><img src={fleche} alt="fleche" className="w-4"/>Informations du compte</h1>
+                </div>
 
                 <h2 className=" text-base pt-6 font-bold ">E-mail</h2>
                 <li className='mt-2 list-none'>
