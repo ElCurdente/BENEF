@@ -3,11 +3,13 @@ import { useState } from 'react';
 import { useEffect } from 'react';
 import profil from './images/profil-gaelle.png';
 import adresse from './images/icon/adress.svg';
+import filtre from './images/icon/icon_filtre.svg';
 import FilterButton from './FilterButton'
 import Upvote from './Upvote';
 import upvoteBas from './images/icon/upvote.svg';
 import upvoteHaut from './images/icon/upvote2.svg';
 import recherche from './images/icon/icon_recherche.svg';
+import Modal from './Modal'
 
 const Filter = () => {
   const [error, setError] = useState(null);
@@ -22,22 +24,9 @@ const Filter = () => {
     filter_by: 'upvote',
   })
 
-  const handleReset = () => {
-    setFilters({
-      filtered: false,
-      category: 'select',
-      postal: '',
-      filter_by: '',
-    })
-  }
+  const [openModal, setOpenModal] = useState(false);
 
-  const handleChange = e => {
-    const { name, value } = e.target;
-    setFilters({
-      ...filters,
-      [name]: value
-    });
-  };
+  
 
   useEffect(() => {
     fetch("https://benef-app.fr/api-post-render.php")
@@ -104,7 +93,7 @@ const Filter = () => {
     console.log(filterByFilters);
 
     return (
-      <div className="h-screen w-screen bg-white-150 flex justify-center overflow-auto items-center">
+      <div className="h-screen w-screen relative bg-white-150 flex justify-center overflow-auto items-center">
         <ul className="h-full">
           <div className="mt-14 pb-12">
             <form className="post flex flex-col justify-center" onSubmit={(e) => handleSubmitFiltered(e)} id="filter_form">
@@ -116,83 +105,6 @@ const Filter = () => {
                   <input value={input} className=" required:w-65% px-6 bg-white-150 placeholder-black focus:outline-none" placeholder="Rechercher..." onChange={event => setInput(event.target.value)} />
                   <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1" viewBox="0 0 20 20" className="w-5 h-5 mt-1 mr-3"><path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
                 </div>
-              </div>
-              <div className="flex  relative justify-center items-center">
-                <label htmlFor="cat" className="">{filters.category}</label>
-                <select name="category" id="category" onChange={handleChange}>
-                  <option value="select">--Please choose an option--</option>
-                  <option value="all">Toutes catégories</option>
-                  <option value="1">Catégorie 1</option>
-                  <option value="2">Catégorie 2</option>
-                  <option value="3">Catégorie 3</option>
-                  <option value="4">Catégorie 4</option>
-                  <option value="5">Catégorie 5</option>
-                  <option value="6">Catégorie 6</option>
-                </select>
-              </div>
-
-              <div className="flex  relative justify-center items-center">
-                <label htmlFor="postal" className="">
-                </label>
-                <select name="postal" id="postal" onChange={handleChange}>
-                  <option value="select">--Choisissez une région--</option>
-                  <option value="all">Tous</option>
-                  <option value="75">75</option>
-                  <option value="78">78</option>
-                  <option value="91">91</option>
-                  <option value="92">92</option>
-                  <option value="93">93</option>
-                  <option value="94">94</option>
-                  <option value="95">95</option>
-                  <option value="77">77</option>
-                </select>
-              </div>
-
-              <div className="flex  relative justify-center items-center">
-                <label htmlFor="expiration" className="text-black">
-                </label>
-                <input id="expiration"
-                  type="date"
-                  name="expiration"
-                  maxLength="30"
-                  placeholder="Date d'expiration" className="appearance-none placeholder-black text-white-150 border-b-2 bg-transparent w-4/5 my-2 h-12 pt-5 text-left focus:outline-none  focus:placeholder-transparent"
-                  value={filters.expiration}
-                  onChange={handleChange}
-                />
-              </div>
-
-              <div className="flex relative items-center mt-6 ml-3">
-                <h4 className="text-black pl-2">{filters.filter_by}</h4>
-                <label htmlFor="certified" className="text-black pl-2">
-                  <input id="filter_by_date"
-                    type="radio"
-                    name="filter_by"
-                    maxLength="30"
-                    className=""
-                    value="date"
-                    onChange={handleChange}
-                  />
-                  Upvotes
-                </label>
-              </div>
-              <div className="flex relative items-center mt-6 ml-3">
-                <label className="text-black pl-2">
-                  <input id="filter_by_upvote"
-                    type="radio"
-                    name="filter_by"
-                    maxLength="30"
-                    className=""
-                    value="upvote"
-                    onChange={handleChange}
-                  />
-                  Récent
-                </label>
-              </div>
-              <div className="flex justify-end items-center py-5 mr-5">
-                <button className="block w-24 h-9 text-red-450 text-lg font-bold border-2 border-white-0 bg-white-0 hover:bg-red-450 hover:text-white-0 hover:border-white-0 dark:hover:bg-white-150 dark:hover:text-gray-550 active:bg-red-200 dark:bg-white-0 dark:text-black rounded-full transition duration-300 ease-in-out" type="submit">Appliquer</button>
-              </div>
-              <div className="flex justify-end items-center py-5 mr-5">
-                <button onClick={handleReset} className="block  h-9 text-red-450 text-lg font-bold border-2 border-white-0 bg-white-0 hover:bg-red-450 hover:text-white-0 hover:border-white-0 dark:hover:bg-white-150 dark:hover:text-gray-550 active:bg-red-200 dark:bg-white-0 dark:text-black rounded-full transition duration-300 ease-in-out">Réinitialiser</button>
               </div>
 
             </form>
@@ -239,6 +151,10 @@ const Filter = () => {
 
           </div>
         </ul>
+        <button className="fixed bottom-24 right-5 flex justify-center items-center w-16 h-16 text-lg font-bold border-2 border-white-0 bg-orange-450 hover:bg-red-450 hover:text-white-0 hover:border-white-0 dark:hover:bg-white-150 dark:hover:text-gray-550 active:bg-red-200 dark:bg-white-0 dark:text-black rounded-full transition duration-300 ease-in-out shadow-customm" onClick={() => {
+          setOpenModal(true);
+        }}><img src={filtre} className="h-6" /></button>
+        {openModal && <Modal closeModal={setOpenModal}/>}
       </div >
     );
 

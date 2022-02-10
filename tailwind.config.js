@@ -105,6 +105,9 @@ module.exports = {
           150: '#FFF9F5',
           0: '#FFFFFF'
         },
+        orange: {
+          450: '#FF964B'
+        },
         gray: {
           550: '#2A2A2A',
           450: '#636363',
