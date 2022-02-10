@@ -114,9 +114,9 @@ const Filter = () => {
     const filter100 = filterByFilters.filter(item => regexp_category.test(item.category))
     const filter1000 = filter100.filter(x => regexp.test(x.title));
     if (filters.filter_by === "upvote") {
-      filterByFilters.sort(compareUpvote);
+      filter1000.sort(compareUpvote);
     } else if (filters.filter_by === "date") {
-      filterByFilters.sort(compareDate);
+      filter1000.sort(compareDate);
     }
     console.log(filterByFilters);
 
@@ -205,7 +205,7 @@ const Filter = () => {
                               name="filter_by"
                               maxLength="30"
                               className=""
-                              value="date"
+                              value="upvote"
                               onChange={handleChange}
                             />
                             Upvotes
@@ -218,7 +218,7 @@ const Filter = () => {
                               name="filter_by"
                               maxLength="30"
                               className=""
-                              value="upvote"
+                              value="date"
                               onChange={handleChange}
                             />
                             Récent
