@@ -40,7 +40,8 @@ const Filter = () => {
       category: '',
       postal: '',
       filter_by: '',
-    })
+    });
+    setOpenModal(false);
   }
 
   const handleChange = e => {
@@ -137,7 +138,6 @@ const Filter = () => {
               <div id="containerModal" className={openModal ? " block" : "hidden"}>
                 <div id="modal" ref={modal} className="flex w-screen h-screen bg-black bg-opacity-30 fixed bottom-0 left-0 justify-center z-50 items-end">
                   <div className="w-full h-75% mb-10 relative flex flex-col justify-start items-center rounded-t-3xl bg-white-0">
-                    <button className="absolute top-5 right-7 text-lg" onClick={() => setOpenModal(false)}>X</button>
                     <div className="mb-5">
                       <h1 className="text-center text-2xl font-bold pt-7">Filtrer</h1>
                     </div>
