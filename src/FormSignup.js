@@ -205,7 +205,7 @@ const FormSignup = ({ submitForm }) => {
                             }
                         </div>
 
-                        <div className="flex  relative items-center ml-3 mt-8">
+                        <div className="flex justify-center relative items-center mt-8">
                         <input id="cgu"
                             type="checkbox"
                             name="cgu"
