@@ -23,7 +23,8 @@ const Nav = () => {
         <div className="flex justify-center z-50 relative">
             <div className="fixed flex justify-center items-center xl:-top-0 xl:h-10vh xl:justify-start bottom-0 w-100vw rounded-t-lg transition duration-500">
                 <nav className="w-100vw">
-                    <ul className="flex justify-around items-center h-7vh xl:h-10vh bg-red-450 dark:bg-black">
+                    <ul className="flex justify-around xl:justify-evenly xl:grid xl:grid-cols-nav xl:pr-32 xl:pl-32 items-center h-7vh xl:h-10vh bg-red-450 dark:bg-black">
+                        
                         <Link to="/home">
                             <motion.div whileHover={{ scale: 1.1}}>
                                 <li><img className="h-25px xl:hidden" src={etiquette} alt="" /></li>
@@ -32,7 +33,7 @@ const Nav = () => {
                             </motion.div>
                         </Link>
 
-                        <Link to="/recherche">
+                        <Link to="/recherche" className="justify-self-center">
                             <motion.div whileHover={{ scale: 1.1}}>
                                 <li><img className="h-25px xl:hidden" src={recherche} alt=""/></li>
                                     
@@ -50,25 +51,34 @@ const Nav = () => {
                             </motion.div>
                         </Link>
 
-                        <Link to="/post">
-                            <motion.div whileHover={{scale: 1.1}} className="relative xl:bottom-0 bottom-6 flex justify-center items-center h-16 w-16 xl:h-12 xl:w-12 bg-white-0 rounded-full shadow-custom">
+                        <Link to="/post" className="xl:justify-self-end">
+                            <motion.div whileHover={{scale: 1.1}} className="relative xl:bottom-0 bottom-6 flex justify-center items-center h-16 w-16 xl:h-12 xl:w-12 bg-white-0 rounded-full shadow-custom ">
                             <li ><img className="h-25px dark:hidden" src={plus} alt=""/>
                             <img className="h-25px hidden dark:block" src={plusnoir} alt=""/></li>
                             </motion.div>
                         </Link>
-                        <Link to="/favoris">
+
+                        <Link to="/favoris" className="xl:justify-self-end">
                             <motion.div whileHover={{scale: 1.1}}>
                             <li><img className="h-24px xl:h-12 xl:w-12" src={favoris} alt=""/></li>
                             </motion.div>
                         </Link>
+
                         {/* <Link to="/messagerie">
                         <div className="relative top-3 hidden xl:hidden">
                             <li><img className="h-25px" src={message} alt=""/></li>
                             </div>
                         </Link> */}
-                        <Link to="/profil">
+
+                        <Link to="/profil" className="xl:justify-self-end">
                             <motion.div whileHover={{ scale: 1.1}}>
                             <li><img className="h-25px xl:border-3 xl:h-12 xl:w-12 xl:rounded-full rounded-xl border-2 border-white" src={profil} alt=""/></li>
+                            </motion.div>
+                        </Link>
+
+                        <Link to="/parametre" className="hidden xl:block xl:justify-self-end">
+                            <motion.div whileHover={{ scale: 1.1}}>
+                            <li><img className="h-25px xl:h-12 xl:w-12" src={parameter} alt=""/></li>
                             </motion.div>
                         </Link>
 
