@@ -212,16 +212,19 @@ const Post = () => {
                     </div>
 
                     <div className="flex h-100px relative justify-center items-center w-4/5">
-                        <div className="w-600px h-80px flex justify-between items-center">
-                        <select name="category" id="category" onChange={handleChange}>
-                            <option value="select">--Please choose an option--</option>
-                            <option value="1">Catégorie 1</option>
-                            <option value="2">Catégorie 2</option>
-                            <option value="3">Catégorie 3</option>
-                            <option value="4">Catégorie 4</option>
-                            <option value="5">Catégorie 5</option>
-                            <option value="6">Catégorie 6</option>
+                        <div className="w-full h-80px flex justify-center items-center">
+                        <select name="category" id="category" onChange={handleChange} className="block appearance-none bg-red-450 text-white-0 border-gray-400 hover:border-gray-500 px-4 py-2 pr-12 ml-12 shadow leading-tight focus:outline-none focus:shadow-outline">
+                            <option value="select">--Choisissez une catégorie--</option>
+                            <option value="1" className="bg-white-0 text-red-450">Catégorie 1</option>
+                            <option value="2" className="bg-white-0 text-red-450">Catégorie 2</option>
+                            <option value="3" className="bg-white-0 text-red-450">Catégorie 3</option>
+                            <option value="4" className="bg-white-0 text-red-450">Catégorie 4</option>
+                            <option value="5" className="bg-white-0 text-red-450">Catégorie 5</option>
+                            <option value="6" className="bg-white-0 text-red-450">Catégorie 6</option>
                         </select>
+                        </div>
+                        <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+                          <svg className="fill-white h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" /></svg>
                         </div>
                     </div>
 
