@@ -2,7 +2,8 @@ import React from 'react'
 import { useState } from 'react';
 import { useEffect } from 'react';
 import { useRef } from 'react';
-import { BrowserRouter as Router, Switch, Route, Link, useHistory} from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import profil from './images/profil-gaelle.png';
 import adresse from './images/icon/adress.svg';
 import Upvote from './Upvote';
@@ -18,7 +19,7 @@ const Thread = () => {
   const html = document.querySelector('html');
   const upvoteHaut1 = document.querySelector("#upvote_haut");
   const upvoteBas1 = document.querySelector("#upvote_bas");
-  let history= useHistory();
+
   // const toggleImg = () => {
   //   if (html.classList.contains('dark')) {
   //   upvoteHaut1.src = upvoteHaut;
@@ -38,6 +39,7 @@ const Thread = () => {
   const [refreshKey, setRefreshKey] = useState(0);
 
   const nbUpvote = useRef(null);
+  let history = useHistory();
 
   useEffect(() => {
     fetch("https://benef-app.fr/api-post-render.php")
@@ -67,7 +69,6 @@ const Thread = () => {
       .then((response) => response.json())
       .then((data) => {
         console.log(data);
-        history.push("/recherche")
         // setRefreshKey(oldKey => oldKey + 1)
       })
       .catch(err => {
@@ -117,11 +118,11 @@ const Thread = () => {
     // }
   }
 
-  function compare( a, b ) {
-    if ( parseInt(a.upvote) < parseInt(b.upvote) ){
+  function compare(a, b) {
+    if (parseInt(a.upvote) < parseInt(b.upvote)) {
       return 1;
     }
-    if ( parseInt(a.upvote) > parseInt(b.upvote) ){
+    if (parseInt(a.upvote) > parseInt(b.upvote)) {
       return -1;
     }
     return 0;
@@ -151,13 +152,31 @@ const Thread = () => {
                   <li key={item.id_post} className="mt-1 w-92vw">
                     <div>
                       <div className="bg-white-0 text-black absolute top-44 text-xl font-bold flex w-max py-1 rounded-lg">
-                        <button onClick={handleUpvote.bind(item)} className="pl-2 relative">
+                        <button onClick={() => {
+                          handleUpvote.bind(item); const srcUpvoteHaut1 = upvoteHaut1.getAttribute('src');
+
+                          if (srcUpvoteHaut1 == upvoteHautplein) {
+                            upvoteHaut1.src = upvoteHaut;
+                          } else {
+                            upvoteHaut1.src = upvoteHautplein;
+                            upvoteBas1.src = upvoteBas;
+                          }
+                        }} className="pl-2 relative">
                           <motion.img whileTap={{ scale: 0.85 }} id="upvote_haut" src={upvoteHaut} className="opacity-100 h-28px"></motion.img>
                           {/* <img src={upvoteorange} className="absolute top-0 h-30px dark:opacity-0"></img> */}
                         </button>
 
                         <span id='nb_upvote' ref={nbUpvote} className="px-2 upvote text-red-450 dark:text-black">{item.upvote}</span>
-                        <button onClick={handleDownvote.bind(item)} className="pr-2 relative">
+                        <button onClick={() => {
+                          handleDownvote.bind(item); const srcUpvoteBas1 = upvoteBas1.getAttribute('src');
+
+                          if (srcUpvoteBas1 == upvoteBasplein) {
+                            upvoteBas1.src = upvoteBas;
+                          } else {
+                            upvoteBas1.src = upvoteBasplein;
+                            upvoteHaut1.src = upvoteHaut;
+                          }
+                        }} className="pr-2 relative">
                           <motion.img whileTap={{ scale: 0.85 }} id="upvote_bas" src={upvoteBas} className="opacity-100 dark:opacity-100 h-28px"></motion.img>
                           {/* <img src={upvoteorange} className="transform rotate-180 absolute top-0 h-30px dark:opacity-0"></img> */}
                         </button>
