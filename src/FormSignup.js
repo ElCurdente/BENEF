@@ -12,7 +12,7 @@ import VisibilityOff from "@material-ui/icons/VisibilityOff";
 import { useState } from 'react';
 
 const FormSignup = ({ submitForm }) => {
-    const { handleChange, handleClickShowPassword, handleClickShowPassword2, handleMouseDownPassword, values, handleSubmit, errors, handleSubmitConnexion, handleChangeCo, valuesConnexion } = useForm(submitForm, validate);
+    const { handleChange, handleClickShowPassword, handleClickShowPassword2, handleMouseDownPassword, values, handleSubmit, errors, handleSubmitConnexion, handleChangeCo, valuesConnexion, handleStayConnected, stayConnected } = useForm(submitForm, validate);
 
     const [hasAccount, setHasAccount] = useState(false);
 
@@ -75,6 +75,19 @@ const FormSignup = ({ submitForm }) => {
                             }
 
                         </div>
+                        <div className="flex justify-center relative items-center mt-8">
+                        <input id="stayConnected"
+                            type="checkbox"
+                            name="stayConnected"
+                            maxLength="30"
+                            className="form-checkbox rounded-sm bg-transparent border-white-0 border-2 text-transparent focus:ring-transparent checked:border-white-0"
+                            value={stayConnected}
+                            onChange={handleStayConnected}
+                        />
+                        <label htmlFor="cgu" className="text-white-150 pl-2">Rester connecté
+                        </label>
+
+                    </div>
 
                         <div className="flex justify-center items-center my-5 mt-10">
                             <button className="block h-12 w-40 text-red-450 font-bold bg-white-0 text-lg border-2 border-white-0  hover:bg-red-450 hover:text-white-0 hover:border-white-0 dark:hover:bg-white-150 dark:hover:text-gray-550 active:bg-red-200 dark:bg-white-0 dark:text-black rounded-full transition duration-300 ease-in-out" type="submit">Se Connecter</button>

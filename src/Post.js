@@ -8,10 +8,14 @@ import plusblanc from './images/icon/icon_plus_blanc.svg';
 import fleche from './images/icon/icon_fleche.svg';
 import axios from 'axios';
 import { BrowserRouter as Router, Switch, Route, Link, useHistory} from 'react-router-dom';
+import validate from './validateInfo'
 
 
 
-const Post = () => {
+const Post = (callback, validate) => {
+
+    const [errors, setErrors] = useState({});
+    const [isSubmitting, setIsSubmitting] = useState(false);
 
     const [values, setValues] = useState({
         image: '',
@@ -54,6 +58,8 @@ const Post = () => {
 
     const handleSubmit = e => {
         e.preventDefault();
+        setErrors(validate(values));
+        setIsSubmitting(true);
         // const formData = new FormData();
         // const postForm = myForm.current;
         // const formData = new FormData();
@@ -178,6 +184,15 @@ const Post = () => {
         }
     }, [image]);
 
+    useEffect(
+        () => {
+          if (Object.keys(errors).length === 0 && isSubmitting) {
+            callback && callback();
+          }
+        },
+        [errors]
+      );
+
 
     return (
         <div className="flex justify-center items-center h-screen mt-3 w-full bg-white-0 dark:bg-gray-550 ">
@@ -284,6 +299,7 @@ const Post = () => {
                             value={values.postal}
                             onChange={handleChange}
                         />
+                        {errors.postal && <p className="absolute -bottom-4 left-10 text-red-900 dark:text-red-650">{errors.postal}</p>}
                     </div>
 
                     <div className="flex  relative justify-center items-center">
