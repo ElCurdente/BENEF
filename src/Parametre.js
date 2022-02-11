@@ -51,15 +51,6 @@ const Parametre = () => {
                     </ul>
                 </li>
 
-
-                <h2 className="mt-2 text-xl pt-7 font-semibold ">Confidentialité</h2>
-                <li className=' mt-2 list-none'>
-                    <ul> <Link to="/Bloque">
-                        <a className="cursor-pointer font-normal">Utilisateurs bloqués</a>
-                    </Link></ul>
-                </li>
-
-
                 <h2 className="mt-2 text-xl pt-7 font-semibold">Affichage</h2>
                 <li className=' mt-2 list-none'>
                     <ul className="w-full flex justify-between items-center font-normal">Mode sombre
