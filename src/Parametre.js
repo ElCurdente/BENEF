@@ -64,12 +64,13 @@ const Parametre = () => {
                     
                     <ul className="w-full flex justify-between items-center font-normal pb-2">
                         <Link to="/Cgu">
-                            <a className="cursor-pointer font-normal">Conditions d'utilisations générales</a>
+                           
+                           <a className="cursor-pointer font-normal">Conditions d'utilisations générales</a>
                         </Link>
                         </ul>
                         
-                    <ul className="w-full flex justify-between items-center font-normal pb-2">
-                    Contact
+                <ul className="w-full flex justify-between items-center font-normal pb-2">
+                     <a className="cursor-pointer font-normal" HREF="mailto:admin@benef-app.fr">Contact</a>
                     </ul>
 
                 </li>

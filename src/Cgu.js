@@ -67,7 +67,7 @@ Vous n’êtes pas autorisés à :<br></br>
 Les données collectées seront communiquées aux seuls destinataires suivants: <strong>Célian Chevereau, Antoine Droyer, Gaspard Freyssinet, Merwan Jaudally et Jules Mesnil</strong>.<br></br>
 Les données sont conservées jusqu’à la suppression souhaitée par l’utilisateur ou par les administrateurs.<br></br>
 Vous pouvez accéder aux données vous concernant, les rectifier, demander leur effacement ou exercer votre droit à la limitation du traitement de vos données. Vous pouvez retirer à tout moment votre consentement au traitement de vos données. Vous pouvez également vous opposer au traitement de vos données. Vous pouvez également exercer votre droit à la portabilité de vos données. Consultez le site du CNIL pour plus d’informations sur vos droits.<br></br>
-Pour la moindre question sur le traitement de vos données dans BENEF, vous pouvez contacter <strong>benef.app@gmail.com</strong> .<br></br>
+Pour la moindre question sur le traitement de vos données dans BENEF, vous pouvez contacter <strong>admin@benef-app.fr</strong> .<br></br>
 Si après nous avoir contacté, vous estimez que vos droits “Informatique et Libertés” ne sont pas respectés, vous pouvez adresser une réclamation à la CNIL.<br></br>
 </p>
                     </ul>

@@ -122,8 +122,8 @@ const Filter = () => {
     console.log(filterByFilters);
 
     return (
-      <div className="h-screen w-screen fixed bg-white-150 flex justify-center overflow-auto items-center">
-        <ul className="h-full">
+      <div className="h-screen w-screenfixed bg-white-150 flex justify-center overflow-auto items-center">
+        <ul className="h-full bg-white-150 xl:dark:bg-gray-550  xl:w-2/3">
           <div className="mt-14 pb-12">
             <form className="post flex flex-col justify-center" onSubmit={(e) => handleSubmitFiltered(e)} id="filter_form">
               <div className="flex h-100px relative justify-center items-center w-full">
