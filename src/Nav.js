@@ -25,13 +25,13 @@ const Nav = () => {
                 <nav className="w-100vw">
                     <ul className="flex justify-around xl:justify-evenly xl:grid xl:grid-cols-nav xl:pr-32 xl:pl-32 items-center h-7vh xl:h-10vh bg-red-450 dark:bg-black">
                         
-                        <Link to="/home">
-                            <motion.div whileHover={{ scale: 1.1}}>
+                            <motion.div whileHover={{ scale: 1.1}} className="justify-self-start">
+                                <Link to="/home">
                                 <li><img className="h-25px xl:hidden" src={etiquette} alt="" /></li>
                                 <img src={logo} alt="Logo" className="w-36 dark:hidden xl:block hidden"/>
                                 <img src={logodark} alt="Logo" className="w-36 hidden sm:dark:hidden dark:hidden xl:dark:block"/>
+                                </Link>
                             </motion.div>
-                        </Link>
 
                         <Link to="/recherche" className="justify-self-center">
                             <motion.div whileHover={{ scale: 1.1}}>
