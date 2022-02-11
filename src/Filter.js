@@ -122,11 +122,11 @@ const Filter = () => {
     console.log(filterByFilters);
 
     return (
-      <div className="h-screen w-screenfixed bg-white-150 flex justify-center overflow-auto items-center">
-        <ul className="h-full bg-white-150 xl:dark:bg-gray-550  xl:w-2/3">
+      <div className="h-screen w-screen  bg-white-150 flex justify-center overflow-auto items-center">
+        <ul className="h-full bg-white-150 xl:w-2/6 xl:dark:bg-gray-550">
           <div className="mt-14 pb-12">
             <form className="post flex flex-col justify-center" onSubmit={(e) => handleSubmitFiltered(e)} id="filter_form">
-              <div className="flex h-100px relative justify-center items-center w-full">
+              <div className="flex h-100px relative justify-center items-center w-full ">
                 <h1 className="text-center text-2xl font-bold pt-7">Recherche</h1>
               </div>
               <div className="flex relative justify-center items-center w-full ">
@@ -266,7 +266,7 @@ const Filter = () => {
               ))
               :
               filterByName.map(item => (
-                <div className="w-92vw h-150px relative flex justify-between items-center bg-red-450 dark:bg-black rounded-lg text-white-0 mb-5 shadow-customm">
+                <div className="w-92vw h-150px relative flex justify-between items-center bg-red-450 xl:w-full dark:bg-black rounded-lg text-white-0 mb-5 shadow-customm">
                   <div className="h-full w-35% flex justify-center items-center relative">
                     <img className="w-90% h-90%  object-cover rounded-lg" src={profil} alt="" />
                   </div>
