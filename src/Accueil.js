@@ -11,8 +11,8 @@ import Recherche from './Recherche'
 import Infos from './Infos'
 import Bloque from './Bloque'
 import Cgu from './Cgu'
-import logo from './images/logo/logo_benef.png';
-import logodark from './images/logo/logo_benef_dark.png';
+import logo from './images/logo/logo_benef.svg';
+import logodark from './images/logo/logo_benef_dark.svg';
 import parameter from './images/icon/icon_parametres.svg';
 import plus from './images/icon/icon_plus.svg';
 import plusnoir from './images/icon/icon_plus_noir.svg';
