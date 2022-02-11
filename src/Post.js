@@ -7,11 +7,12 @@ import plus from './images/icon/icon_plus.svg';
 import plusblanc from './images/icon/icon_plus_blanc.svg';
 import fleche from './images/icon/icon_fleche.svg';
 import axios from 'axios';
+import { BrowserRouter as Router, Switch, Route, Link, useHistory} from 'react-router-dom';
+
 
 
 const Post = () => {
 
-    const url = "https://benef-app.fr/api-post.php";
     const [values, setValues] = useState({
         image: '',
         title: '',
@@ -34,6 +35,8 @@ const Post = () => {
     };
     
     const img_form = document.getElementById('image');
+    let history = useHistory();
+
 
     const onFileChange = (e) => {
         const file = e.target.files[0];
@@ -76,6 +79,7 @@ const Post = () => {
             .then((response) => response.text())
             .then((result) => {
                 console.log(result)
+                history.push("/home");
             }).catch(err => {
                 // Do something for an error here
                 console.log("Error Reading data " + err);
@@ -212,16 +216,19 @@ const Post = () => {
                     </div>
 
                     <div className="flex h-100px relative justify-center items-center w-4/5">
-                        <div className="w-600px h-80px flex justify-between items-center">
-                        <select name="category" id="category" onChange={handleChange}>
-                            <option value="select">--Please choose an option--</option>
-                            <option value="1">Catégorie 1</option>
-                            <option value="2">Catégorie 2</option>
-                            <option value="3">Catégorie 3</option>
-                            <option value="4">Catégorie 4</option>
-                            <option value="5">Catégorie 5</option>
-                            <option value="6">Catégorie 6</option>
+                        <div className="w-full h-80px flex justify-center items-center">
+                        <select name="category" id="category" onChange={handleChange} className="block appearance-none bg-red-450 text-white-0 border-gray-400 hover:border-gray-500 px-4 py-2 pr-12 ml-12 shadow leading-tight focus:outline-none focus:shadow-outline">
+                            <option value="select">--Choisissez une catégorie--</option>
+                            <option value="1" className="bg-white-0 text-red-450">Catégorie 1</option>
+                            <option value="2" className="bg-white-0 text-red-450">Catégorie 2</option>
+                            <option value="3" className="bg-white-0 text-red-450">Catégorie 3</option>
+                            <option value="4" className="bg-white-0 text-red-450">Catégorie 4</option>
+                            <option value="5" className="bg-white-0 text-red-450">Catégorie 5</option>
+                            <option value="6" className="bg-white-0 text-red-450">Catégorie 6</option>
                         </select>
+                        </div>
+                        <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+                          <svg className="fill-white h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" /></svg>
                         </div>
                     </div>
 
@@ -319,10 +326,9 @@ const Post = () => {
                         </label>
 
                     </div>
-
-                    <div className="flex justify-end items-center py-5 mr-5">
+                        <div className="flex justify-end items-center py-5 mr-5">
                         <button className="block w-24 h-9 text-red-450 text-lg font-bold border-2 border-white-0 bg-white-0 hover:bg-red-450 hover:text-white-0 hover:border-white-0 dark:hover:bg-white-150 dark:hover:text-gray-550 active:bg-red-200 dark:bg-white-0 dark:text-black rounded-full transition duration-300 ease-in-out" type="submit">Publier</button>
-                    </div>
+                    </div>                    
 
                 </form>
             </div>
