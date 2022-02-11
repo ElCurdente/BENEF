@@ -131,8 +131,8 @@ const Filter = () => {
               </div>
               <div className="flex relative justify-center items-center w-full ">
                 <div className="flex border-b-2 border-black required:w-65% h-8 mt-5 mb-20">
-                  <input value={input} className=" required:w-65% px-6 bg-white-150 placeholder-black focus:outline-none" placeholder="Rechercher..." onChange={event => setInput(event.target.value)} />
-                  <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1" viewBox="0 0 20 20" className="w-5 h-5 mt-1 mr-3"><path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+                  <input value={input} className=" required:w-65% px-6 bg-white-150 placeholder-black focus:outline-none xl:hidden" placeholder="Rechercher..." onChange={event => setInput(event.target.value)} />
+                  <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1" viewBox="0 0 20 20" className="w-5 h-5 mt-1 mr-3 xl:hidden"><path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
                 </div>
               </div>
 
