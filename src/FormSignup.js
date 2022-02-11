@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import useForm from './useForm'
 import validate from './validateInfo'
 import './Form.css';
@@ -227,9 +228,10 @@ const FormSignup = ({ submitForm }) => {
                             value={values.cgu}
                             onChange={handleChange}
                             required
-                        />
+                            />
+                            <Link to="/Cgu">
                         <label htmlFor="cgu" className="text-white-150 pl-2">Je certifie avoir pris connaissance des CGU
-                        </label>
+                        </label></Link>
 
                     </div>
 

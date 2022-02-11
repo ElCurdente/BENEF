@@ -19,7 +19,7 @@ module.exports = {
     extend: {
       gridTemplateColumns: {
         // Simple 16 column grid
-       '16': 'repeat(16, minmax(0, 1fr))',
+       'nav': '4fr 6fr repeat(4, 1fr)',
 
         // Complex site-specific column configuration
        'footer': '200px minmax(900px, 1fr) 100px',
@@ -59,6 +59,7 @@ module.exports = {
         '95%': '95%',
         '1px': '1px',
         '15px': '15px',
+        '24px': '24px',
         '25px': '25px',
         '28px': '28px',
         '30px': '30px',

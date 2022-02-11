@@ -122,17 +122,17 @@ const Filter = () => {
     console.log(filterByFilters);
 
     return (
-      <div className="h-screen w-screen fixed bg-white-150 flex justify-center overflow-auto items-center">
-        <ul className="h-full">
+      <div className="h-screen w-screen  bg-white-150 flex justify-center overflow-auto items-center">
+        <ul className="h-full bg-white-150 xl:w-2/6 xl:dark:bg-gray-550">
           <div className="mt-14 pb-12">
             <form className="post flex flex-col justify-center" onSubmit={(e) => handleSubmitFiltered(e)} id="filter_form">
-              <div className="flex h-100px relative justify-center items-center w-full">
+              <div className="flex h-100px relative justify-center items-center w-full ">
                 <h1 className="text-center text-2xl font-bold pt-7">Recherche</h1>
               </div>
               <div className="flex relative justify-center items-center w-full ">
                 <div className="flex border-b-2 border-black required:w-65% h-8 mt-5 mb-20">
-                  <input value={input} className=" required:w-65% px-6 bg-white-150 placeholder-black focus:outline-none" placeholder="Rechercher..." onChange={event => setInput(event.target.value)} />
-                  <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1" viewBox="0 0 20 20" className="w-5 h-5 mt-1 mr-3"><path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+                  <input value={input} className=" required:w-65% px-6 bg-white-150 placeholder-black focus:outline-none xl:hidden" placeholder="Rechercher..." onChange={event => setInput(event.target.value)} />
+                  <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1" viewBox="0 0 20 20" className="w-5 h-5 mt-1 mr-3 xl:hidden"><path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
                 </div>
               </div>
 
@@ -247,7 +247,7 @@ const Filter = () => {
             {(filters.filtered ?
 
               filter1000.map(item => (
-                <div className="w-92vw h-150px relative flex justify-between items-center bg-red-450 dark:bg-black rounded-lg text-white-0 mb-5 shadow-customm">
+                <div className="w-92vw h-150px relative flex justify-between items-center bg-red-450 xl:w-full dark:bg-black rounded-lg text-white-0 mb-5 shadow-customm">
                   <div className="h-full w-35% flex justify-center items-center relative">
                     <img className="w-90% h-90%  object-cover rounded-lg" src={profil} alt="" />
                   </div>
@@ -266,7 +266,7 @@ const Filter = () => {
               ))
               :
               filterByName.map(item => (
-                <div className="w-92vw h-150px relative flex justify-between items-center bg-red-450 dark:bg-black rounded-lg text-white-0 mb-5 shadow-customm">
+                <div className="w-92vw h-150px relative flex justify-between items-center bg-red-450 xl:w-full dark:bg-black rounded-lg text-white-0 mb-5 shadow-customm">
                   <div className="h-full w-35% flex justify-center items-center relative">
                     <img className="w-90% h-90%  object-cover rounded-lg" src={profil} alt="" />
                   </div>
