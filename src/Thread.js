@@ -135,9 +135,9 @@ const Thread = () => {
     return <div>Chargement...</div>;
   } else {
     return (
-      <div className=" h-screen w-screen flex justify-center xl:justify-center overflow-x-hidden overflow-auto items-center">
+      <div className=" h-screen w-screen bg-white-0 flex justify-center xl:justify-center overflow-x-hidden overflow-auto items-center">
         <button></button>
-        <ul className="h-full xl:w-2/6 bg-white-150 xl:dark:bg-gray-550 ">
+        <ul className="h-full xl:w-2/6 bg-white-0 xl:dark:bg-gray-550 ">
           <div className="mt-32 ml-6 mr-6 pb-12 xl:dark:bg-gray-550">
 
             {items.sort(compare).map(item => (
