@@ -135,10 +135,12 @@ const Thread = () => {
     return <div>Chargement...</div>;
   } else {
     return (
-      <div className=" h-screen w-screen bg-white-0 flex justify-center xl:justify-center overflow-x-hidden overflow-auto items-center">
-        <button></button>
-        <ul className="h-full xl:w-2/6 bg-white-0 xl:dark:bg-gray-550 ">
-          <div className="mt-32 ml-6 mr-6 pb-12 xl:dark:bg-gray-550">
+      <div className=" h-screen w-screen flex justify-center xl:justify-center overflow-x-hidden overflow-auto items-center">
+        {/* <motion.div className="">
+          <img src={upvoteHautplein} />
+        </motion.div> */}
+        <ul className="h-full xl:w-2/6 bg-white-150 xl:dark:bg-gray-550 ">
+          <div className="mt-24 ml-6 mr-6 pb-12 xl:dark:bg-gray-550">
 
             {items.sort(compare).map(item => (
               <motion.div className="w-92vw xl:w-full h-300px xl:h-96 relative bg-red-450 dark:bg-black rounded-lg text-white-0 mb-2 xl:mb-5"
@@ -152,31 +154,13 @@ const Thread = () => {
                   <li key={item.id_post} className="mt-1 w-92vw">
                     <div>
                       <div className="bg-white-0 text-black absolute top-44 text-xl font-bold flex w-max py-1 rounded-lg">
-                        <button onClick={() => {
-                          handleUpvote.bind(item); const srcUpvoteHaut1 = upvoteHaut1.getAttribute('src');
-
-                          if (srcUpvoteHaut1 == upvoteHautplein) {
-                            upvoteHaut1.src = upvoteHaut;
-                          } else {
-                            upvoteHaut1.src = upvoteHautplein;
-                            upvoteBas1.src = upvoteBas;
-                          }
-                        }} className="pl-2 relative">
+                        <button onClick={handleUpvote.bind(item)} className="pl-2 relative">
                           <motion.img whileTap={{ scale: 0.85 }} id="upvote_haut" src={upvoteHaut} className="opacity-100 h-28px"></motion.img>
                           {/* <img src={upvoteorange} className="absolute top-0 h-30px dark:opacity-0"></img> */}
                         </button>
 
                         <span id='nb_upvote' ref={nbUpvote} className="px-2 upvote text-red-450 dark:text-black">{item.upvote}</span>
-                        <button onClick={() => {
-                          handleDownvote.bind(item); const srcUpvoteBas1 = upvoteBas1.getAttribute('src');
-
-                          if (srcUpvoteBas1 == upvoteBasplein) {
-                            upvoteBas1.src = upvoteBas;
-                          } else {
-                            upvoteBas1.src = upvoteBasplein;
-                            upvoteHaut1.src = upvoteHaut;
-                          }
-                        }} className="pr-2 relative">
+                        <button onClick={handleDownvote.bind(item)} className="pr-2 relative">
                           <motion.img whileTap={{ scale: 0.85 }} id="upvote_bas" src={upvoteBas} className="opacity-100 dark:opacity-100 h-28px"></motion.img>
                           {/* <img src={upvoteorange} className="transform rotate-180 absolute top-0 h-30px dark:opacity-0"></img> */}
                         </button>
