@@ -247,7 +247,7 @@ const Filter = () => {
             {(filters.filtered ?
 
               filter1000.map(item => (
-                <div className="w-92vw h-150px relative flex justify-between items-center bg-red-450 dark:bg-black rounded-lg text-white-0 mb-5 shadow-customm">
+                <div className="w-92vw h-150px relative flex justify-between items-center bg-red-450 xl:w-full dark:bg-black rounded-lg text-white-0 mb-5 shadow-customm">
                   <div className="h-full w-35% flex justify-center items-center relative">
                     <img className="w-90% h-90%  object-cover rounded-lg" src={profil} alt="" />
                   </div>
