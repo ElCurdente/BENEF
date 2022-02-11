@@ -72,13 +72,50 @@ Si après nous avoir contacté, vous estimez que vos droits “Informatique et L
 </p>
                     </ul>
                 </li>
-                <h2 className="mt-2 text-2xl  text-center pt-10 font-semibold ">Conditions générales d'utilisations</h2>
+                <h2 className="mt-2 text-2xl  text-center pt-10 font-semibold ">Conditions générales d'utilisation</h2>
+                
+<h2 className="mt-2 text-xl pt-7 font-semibold ">Compte</h2>
                 <li className='mt-2 list-none'>
-                    <ul className="w-full flex justify-between items-center opacity-95 font-light">
-                        Le Service peut inclure des liens vers des sites web tiers qui n’appartiennent pas à BENEF. Nous déclinons toute responsabilité quant à l’utilisation de ces sites.
+                    <ul className="w-full flex justify-between items-center opacity-95 font-light pb-2"><p>
+                        Il faut forcément être connecté pour accéder au Service et Contenu. La création d’un compte comporte plusieurs exigences: un nom d’utilisateur, une date de naissance, un code postal, une adresse mail ainsi qu’un mot de passe. Une fois connecté, il est possible à l'utilisateur de rajouter une photo de profil et une biographie à son profil. Il est interdit d’avoir un nom d’utilisateur, une photo de profil ou une biographie obscène, vulgaire, offensante ou haineux. <br></br><br></br>
+                        Il n’est pas possible de trouver un utilisateur par la fonction recherche.<br></br><br></br>
+
+Il est possible d’accéder au compte d’un utilisateur en cliquant sur sa photo de profil ou sur son nom d’utilisateur depuis un bon plan posté.<br></br><br></br>
+Sur le compte d’un autre utilisateur sera visible uniquement son nom d’utilisateur, sa photo de profil, sa biographie et les bons plans qu’il a déjà postés. L’adresse mail, la date de naissance et le code postal ne sont visibles que par les administrateurs de BENEF.<br></br><br></br>
+
+Les administrateurs se gardent le droit de supprimer de façon unilatérale et sans justification le compte de toute personne ne respectant pas les règles.<br></br>
+
+</p>
                     </ul>
                 </li>
 
+                <h2 className="mt-2 text-xl pt-7 font-semibold ">Bons plans</h2>
+                <li className='mt-2 list-none'>
+                    <ul className="w-full flex justify-between items-center opacity-95 font-light pb-2"><p>
+                        Dans BENEF, un bon plan est une sortie ou une activité dont le prix a subi une réduction, est gratuit ou est bas (ou plus bas que la moyenne).<br></br><br></br>
+ 
+Est un bon plan: une exposition, une galerie d’art, un restaurant, un fast-food, un food-truck, un bar, une boîte de nuit, une soirée, une soirée étudiante, un festival, un workshop…<br></br><br></br>
+
+N’est pas un bon plan: tout produit physique achetable, par exemple des vêtements, des courses, du matériel informatique, électronique…<br></br><br></br>
+/!\ A noter que cela n’inclut pas la nourriture des restaurants<br></br>
+
+</p>
+                    </ul>
+                </li>
+
+                <h2 className="mt-2 text-xl pt-7 font-semibold ">Signalement</h2>
+                <li className='mt-2 list-none'>
+                    <ul className="w-full flex justify-between items-center opacity-95 font-light pb-2"><p>
+                        Dans BENEF, un bon plan est une sortie ou une activité dont le prix a subi une réduction, est gratuit ou est bas (ou plus bas que la moyenne).<br></br><br></br>
+ 
+Est un bon plan: une exposition, une galerie d’art, un restaurant, un fast-food, un food-truck, un bar, une boîte de nuit, une soirée, une soirée étudiante, un festival, un workshop…<br></br><br></br>
+
+N’est pas un bon plan: tout produit physique achetable, par exemple des vêtements, des courses, du matériel informatique, électronique…<br></br><br></br>
+/!\ A noter que cela n’inclut pas la nourriture des restaurants<br></br>
+
+</p>
+                    </ul>
+                </li>
             </div>
         </div>
     )
