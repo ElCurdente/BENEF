@@ -2,6 +2,7 @@ import React from 'react'
 import { useState } from 'react';
 import { useEffect } from 'react';
 import { useRef } from 'react';
+import { BrowserRouter as Router, Switch, Route, Link, useHistory} from 'react-router-dom';
 import profil from './images/profil-gaelle.png';
 import adresse from './images/icon/adress.svg';
 import Upvote from './Upvote';
@@ -17,7 +18,7 @@ const Thread = () => {
   const html = document.querySelector('html');
   const upvoteHaut1 = document.querySelector("#upvote_haut");
   const upvoteBas1 = document.querySelector("#upvote_bas");
-
+  let history= useHistory();
   // const toggleImg = () => {
   //   if (html.classList.contains('dark')) {
   //   upvoteHaut1.src = upvoteHaut;
@@ -66,6 +67,7 @@ const Thread = () => {
       .then((response) => response.json())
       .then((data) => {
         console.log(data);
+        history.push("/recherche")
         // setRefreshKey(oldKey => oldKey + 1)
       })
       .catch(err => {
