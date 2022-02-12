@@ -229,9 +229,9 @@ const FormSignup = ({ submitForm }) => {
                             onChange={handleChange}
                             required
                             />
-                            <Link to="/Cgu">
+                            
                         <label htmlFor="cgu" className="text-white-150 pl-2">Je certifie avoir pris connaissance des CGU
-                        </label></Link>
+                        </label>
 
                     </div>
 
