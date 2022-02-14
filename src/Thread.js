@@ -135,7 +135,7 @@ const Thread = () => {
     return <div>Chargement...</div>;
   } else {
     return (
-      <div className=" h-screen w-screen flex justify-center xl:justify-center overflow-x-hidden overflow-auto items-center">
+      <div className=" h-screen w-screen flex justify-center xl:justify-center overflow-x-hidden overflow-auto items-center xl:dark:bg-gray-550">
         {/* <motion.div className="">
           <img src={upvoteHautplein} />
         </motion.div> */}
