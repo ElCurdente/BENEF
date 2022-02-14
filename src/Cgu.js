@@ -54,7 +54,8 @@ const Cgu = () => {
                 <h2 className="mt-2 text-2xl  text-center pt-10 font-semibold ">Conditions générales</h2>
                 <li className='mt-2 list-none'>
                     <ul className="w-full flex justify-between items-center opacity-95 font-normal">
-                        Le Service peut inclure des liens vers des sites web tiers qui n’appartiennent pas à BENEF. Nous déclinons toute responsabilité quant à l’utilisation de ces sites.
+                        Les présentes conditions générales régissent votre utilisation de BENEF.<br></br>
+                        Le service peut inclure des liens vers des sites web tiers qui n’appartiennent pas à BENEF. Nous déclinons toute responsabilité quant à l’utilisation de ces sites.
                     </ul>
                 </li>
 
@@ -72,6 +73,12 @@ const Cgu = () => {
                 </li>
                 <h2 className="mt-2 text-2xl  text-center pt-10 font-semibold ">Conditions générales d'utilisation</h2>
                 
+                <li className='mt-2 list-none'>
+                    <ul className="w-full flex justify-between items-center opacity-95 font-normal pb-2"><p>
+                        Les présentes conditions générales d’utilisation régissent votre utilisation de BENEF.<br></br>
+                        </p>
+                    </ul>
+                </li>
                 <h2 className="mt-2 text-xl pt-7 font-semibold ">Compte</h2>
                 <li className='mt-2 list-none'>
                     <ul className="w-full flex justify-between items-center opacity-95 font-normal pb-2"><p>
@@ -95,8 +102,12 @@ const Cgu = () => {
                         Est un bon plan: une exposition, une galerie d’art, un restaurant, un fast-food, un food-truck, un bar, une boîte de nuit, une soirée, une soirée étudiante, un festival, un workshop…<br></br><br></br>
 
                         N’est pas un bon plan: tout produit physique achetable, par exemple des vêtements, des courses, du matériel informatique, électronique…<br></br><br></br>
-                        /!\ À noter que cela n’inclut pas la nourriture des restaurants<br></br>
+                        /!\ À noter que cela n’inclut pas la nourriture des restaurants.<br></br><br></br>
+Les utilisateurs s’engagent à partager des lieux et activités répertoriés et légaux.<br></br><br></br>
 
+                        BENEF se dégage de toute responsabilité si l’activité ou la sortie ne respecte pas les règles citées précédemment.<br></br><br></br>
+
+                        Vous engagez aussi votre responsabilité pour les droits d’auteur des images que vous utilisez pour présenter le bon plan publié. BENEF se dégage aussi de toute responsabilité sur ce point<br></br><br></br>
                         </p>
                     </ul>
                 </li>
@@ -104,12 +115,14 @@ const Cgu = () => {
                 <h2 className="mt-2 text-xl pt-7 font-semibold ">Signalement</h2>
                 <li className='mt-2 list-none'>
                     <ul className="w-full flex justify-between items-center opacity-95 font-normal pb-2"><p>
-                        Dans BENEF, un bon plan est une sortie ou une activité dont le prix a subi une réduction, est gratuit ou est bas (ou plus bas que la moyenne).<br></br><br></br>
- 
-                        Est un bon plan: une exposition, une galerie d’art, un restaurant, un fast-food, un food-truck, un bar, une boîte de nuit, une soirée, une soirée étudiante, un festival, un workshop…<br></br><br></br>
+                        Le signalement permet aux utilisateurs de signaler aux administrateurs du site qu’un Contenu ou un utilisateur ne respectent pas les Conditions Générales d’Utilisation de BENEF.<br></br><br></br>
 
-                        N’est pas un bon plan: tout produit physique achetable, par exemple des vêtements, des courses, du matériel informatique, électronique…<br></br><br></br>
-                        /!\ À noter que cela n’inclut pas la nourriture des restaurants<br></br>
+Les administrateurs se gardent le droit de supprimer de façon unilatérale et sans justification le bon plan de toute personne ne respectant pas les règles.<br></br><br></br>
+
+Si un utilisateur abuse des fonctions de signalement (spam, signalement de contenus respectant les CGU…) les administratifs de BENEF se gardent le droit de suspendre de manière indéterminée le compte de l’utilisateur.
+<br></br>
+                        
+
 
                         </p>
                     </ul>
