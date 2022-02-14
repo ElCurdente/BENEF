@@ -18,6 +18,8 @@ import parameter from './images/icon/icon_parametres.svg';
 import favoris from './images/icon/icon_coeur.svg';
 import { motion } from 'framer-motion/dist/framer-motion';
 
+
+
 const Nav = () => {
     return (
         <div className="flex justify-center z-50 relative">

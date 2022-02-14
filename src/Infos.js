@@ -40,7 +40,7 @@ const Parametre = () => {
     return (
 
 
-        <div className="flex flex-col justify-center items-center h-screen w-screen bg-white dark:text-white-0">
+        <div className="flex flex-col justify-center items-center h-screen w-screen bg-white-0 xl:dark:text-gray-50 dark:bg-gray-550 dark:text-white-0">
             <div id="infos" className="overflow-y-auto w-95vw h-full mt-20">
 
 
