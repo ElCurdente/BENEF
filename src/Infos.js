@@ -50,24 +50,24 @@ const Parametre = () => {
 
                 <h2 className=" text-base pt-6 font-bold ">Username</h2>
                 <li className='mt-2 list-none'>
-                    <ul><a className="opacity-95 font-light text-base">{user.username}</a></ul>
+                    <ul><a className="opacity-95 text-base">{user.username}</a></ul>
                 </li>
 
                 <h2 className=" text-base pt-6 font-bold ">E-mail</h2>
                 <li className='mt-2 list-none'>
-                    <ul><a className="opacity-95 font-light text-base">{user.email}</a></ul>
+                    <ul><a className="opacity-95 text-base">{user.email}</a></ul>
                 </li>
 
 
                 <h2 className="mt-2 text-base pt-7 font-bold ">Code postal</h2>
                 <li className=' mt-2 list-none'>
-                    <ul><a className="opacity-95 font-light text-base">{user.postal}</a></ul>
+                    <ul><a className="opacity-95 text-base">{user.postal}</a></ul>
                 </li>
 
 
                 <h2 className="mt-2 text-base pt-7 font-bold">Date de naissance</h2>
                 <li className=' mt-2 list-none'>
-                    <ul className="w-full flex justify-between items-center opacity-95 font-light text-base">{user.birth}</ul>
+                    <ul className="w-full flex justify-between items-center opacity-95 text-base">{user.birth}</ul>
                 </li>
 
 
