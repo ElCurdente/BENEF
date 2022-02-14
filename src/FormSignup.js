@@ -4,8 +4,8 @@ import useForm from './useForm'
 import validate from './validateInfo'
 import './Form.css';
 import './index.css';
-import logo from './images/logo/logo_benef.png';
-import logodark from './images/logo/logo_benef_dark.png'
+import logo from './images/logo/logo_benef.svg';
+import logodark from './images/logo/logo_benef_dark.svg'
 import IconButton from "@material-ui/core/IconButton";
 import Visibility from "@material-ui/icons/Visibility";
 import InputAdornment from "@material-ui/core/InputAdornment";
@@ -31,12 +31,13 @@ const FormSignup = ({ submitForm }) => {
         return (
             <div className="flex justify-center items-center bg-red-450 box-border h-screen w-full dark:bg-black">
                 <div className="w-96">
-                    <div className="flex justify-center items-center">
+                    <div className="flex justify-center items-center mb-5">
                         <img src={logo} alt="Logo" className="w-64 dark:hidden" />
                         <img src={logodark} alt="Logo" className="w-64 hidden dark:block" />
                     </div>
+
                     <form className="form" onSubmit={handleSubmitConnexion}>
-                        <div className="flex  relative justify-center items-center">
+                        <div className="flex relative justify-center items-center">
                             <label htmlFor="username" className="">
                             </label>
 
@@ -73,7 +74,7 @@ const FormSignup = ({ submitForm }) => {
                                     </IconButton>
                                 </InputAdornment>
                             }
-                        {errorsConnexion.wrongEntries && <p className="absolute -bottom-4 left-10 text-red-900 dark:text-red-650">Nom d'utilisateur ou mot de passe erroné</p>}
+                        {errorsConnexion.wrongEntries && <p className="absolute -bottom-4 left-10 text-red-900 dark:text-red-650">Mauvais nom d'utilisateur ou mot de passe</p>}
                         </div>
                         <div className="flex justify-center relative items-center mt-8">
                         <input id="stayConnected"
@@ -90,7 +91,7 @@ const FormSignup = ({ submitForm }) => {
                     </div>
 
                         <div className="flex justify-center items-center my-5 mt-10">
-                            <button className="block h-12 w-40 text-red-450 font-bold bg-white-0 text-lg border-2 border-white-0  hover:bg-red-450 hover:text-white-0 hover:border-white-0 dark:hover:bg-white-150 dark:hover:text-gray-550 active:bg-red-200 dark:bg-white-0 dark:text-black rounded-full transition duration-300 ease-in-out" type="submit">Se Connecter</button>
+                            <button className="block h-12 w-40 text-red-450 font-bold bg-white-0 text-lg border-2 border-white-0  hover:bg-red-450 hover:text-white-0 hover:border-white-0 dark:hover:bg-white-150 dark:hover:text-gray-550 active:bg-red-200 dark:bg-white-0 dark:text-black rounded-full transition duration-300 ease-in-out" type="submit">Se connecter</button>
                         </div>
                         <div className="flex justify-center items-center">
                             <h3 onClick={handleConnexion2} className="text-white-150 cursor-pointer hover:underline">Pas de compte ? Crée en un !</h3>
@@ -103,7 +104,7 @@ const FormSignup = ({ submitForm }) => {
         return (
             <div className="flex justify-center items-center bg-red-450 box-border h-screen w-full dark:bg-black">
                 <div className="w-96">
-                    <div className="flex justify-center items-center">
+                    <div className="flex justify-center items-center mb-5">
                         <img src={logo} alt="Logo" className="w-64 dark:hidden" />
                         <img src={logodark} alt="Logo" className="w-64 hidden dark:block" />
                     </div>
@@ -159,7 +160,7 @@ const FormSignup = ({ submitForm }) => {
                                 type="email"
                                 name="email"
                                 maxLength="35"
-                                placeholder="Adresse Email"
+                                placeholder="Email"
                                 className="placeholder-white-150 text-white-150 border-b-2 bg-transparent w-4/5 my-2 h-12 text-left focus:outline-none pt-5 focus:placeholder-transparent"
                                 value={values.email}
                                 onChange={handleChange} />
@@ -238,7 +239,7 @@ const FormSignup = ({ submitForm }) => {
                             <button className="block h-10 w-36 text-red-450 font-bold bg-white-0 text-lg border-2 border-white-0  hover:bg-red-450 hover:text-white-0 hover:border-white-0 dark:hover:bg-white-150 dark:hover:text-gray-550 active:bg-red-200 dark:bg-white-0 dark:text-black rounded-full transition duration-300 ease-in-out" type="submit">S'inscrire</button>
                         </div>
                         <div className="flex justify-center items-center">
-                            <h3 onClick={handleConnexion} className="text-white-150 hover:underline cursor-pointer">Déjà un compte ? Connecte toi</h3>
+                            <h3 onClick={handleConnexion} className="text-white-150 hover:underline cursor-pointer">Déjà un compte ? Connecte-toi</h3>
                         </div>
                     </form>
                 </div>
