@@ -24,6 +24,12 @@ const useForm = (callback, validate) => {
   const [errors, setErrors] = useState({});
   const [isSubmitting, setIsSubmitting] = useState(false);
 
+  const [errorsConnexion, setErrorsConnexion] = useState({
+    emptyUsername : false,
+    emptyPassword : false,
+    wrongEntries : false,
+  });
+
   const [valuesConnexion, setValuesConnexion] = useState({
     username:'',
     mdp:"",
@@ -117,6 +123,7 @@ body: JSON.stringify(valuesConnexion)
     sessionStorage.setItem("user", data.username);
   }
 sessionStorage.setItem("isConnected", true);
+sessionStorage.setItem("id_user", data.id_user)
 console.log(stayConnected)
 console.log(sessionStorage.getItem("user"))
 if(localStorage.getItem("isConnected")){
@@ -124,13 +131,18 @@ if(localStorage.getItem("isConnected")){
 }else 
 if(sessionStorage.getItem("isConnected")){
   console.log("oui il est bien connecté là")
-  window.location.reload();
+  // window.location.reload();
   console.log(stayConnected)
 }
 })
 .catch(err => {
 console.log("Error Reading data " + err);
-console.log(stayConnected)
+console.log(stayConnected);
+setErrorsConnexion({
+  ...errorsConnexion,
+    wrongEntries : true
+});
+console.log(errorsConnexion);
 });
 };
 
@@ -145,7 +157,7 @@ console.log(stayConnected)
     [errors]
   );
 
-  return {handleChange,handleClickShowPassword,handleClickShowPassword2,handleMouseDownPassword, handleSubmit, handleSubmitConnexion, handleChangeCo, values, valuesConnexion, errors, handleStayConnected, stayConnected };
+  return {handleChange,handleClickShowPassword,handleClickShowPassword2,handleMouseDownPassword, handleSubmit, handleSubmitConnexion, handleChangeCo, values, valuesConnexion, errors, errorsConnexion, handleStayConnected, stayConnected };
 };
 
 export default useForm ;
