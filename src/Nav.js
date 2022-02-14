@@ -57,8 +57,8 @@ const Nav = () => {
                                     <img className="h-25px hidden dark:block" src={plusnoir} alt="" /></li>
                             </motion.div>
                         </Link>
-                        <Link to="/testImage">
-                            <motion.div whileHover={{ scale: 1.1 }} className="relative top-3 xl:top-3 xl:mr-64">
+                        <Link to="/testImage" className="xl:justify-self-end">
+                            <motion.div whileHover={{ scale: 1.1 }} className="">
                                 <li><img className="h-24px xl:h-16 xl:w-16" src={favoris} alt="" /></li>
                             </motion.div>
                         </Link>
