@@ -3,6 +3,23 @@ import fleche from './images/icon/icon_fleche_noire.svg';
 
 const Parametre = () => {
 
+    fetch('https://benef-app.fr/api-infos-utilisateur.php', {
+      method: "POST",
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(sessionStorage.getItem("id_user"))
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data);
+        // setRefreshKey(oldKey => oldKey + 1)
+      })
+      .catch(err => {
+        console.log("Error Reading data " + err);
+      });
+
     return (
 
 
@@ -11,7 +28,7 @@ const Parametre = () => {
 
 
                 <div className="grid justify-items-stretch content-center mt-7">
-                    <h1 className="text-center text-2xl font-bold"><img src={fleche} alt="fleche" className="w-4"/>Informations du compte</h1>
+                    <h1 className="text-center text-2xl font-bold"><a href="/parametre"><img src={fleche} alt="fleche" className="w-4"/></a>Informations du compte</h1>
                 </div>
 
                 <h2 className=" text-base pt-6 font-bold ">E-mail</h2>

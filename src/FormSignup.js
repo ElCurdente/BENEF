@@ -13,7 +13,7 @@ import VisibilityOff from "@material-ui/icons/VisibilityOff";
 import { useState } from 'react';
 
 const FormSignup = ({ submitForm }) => {
-    const { handleChange, handleClickShowPassword, handleClickShowPassword2, handleMouseDownPassword, values, handleSubmit, errors, handleSubmitConnexion, handleChangeCo, valuesConnexion, handleStayConnected, stayConnected } = useForm(submitForm, validate);
+    const { handleChange, handleClickShowPassword, handleClickShowPassword2, handleMouseDownPassword, values, handleSubmit, errors, handleSubmitConnexion, handleChangeCo, valuesConnexion, handleStayConnected, stayConnected, errorsConnexion } = useForm(submitForm, validate);
 
     const [hasAccount, setHasAccount] = useState(false);
 
@@ -48,7 +48,7 @@ const FormSignup = ({ submitForm }) => {
                                 value={valuesConnexion.username}
                                 onChange={handleChangeCo}
                             />
-                            {errors.username && <p className="absolute -bottom-4 left-10 text-red-900 dark:text-red-650">{errors.username}</p>}
+                          
                         </div>
 
                         <div className="flex relative justify-center items-center">
@@ -63,7 +63,6 @@ const FormSignup = ({ submitForm }) => {
                                 className="placeholder-white-150 text-white-150 border-b-2 bg-transparent w-4/5 my-2 mt-5 h-12 text-left focus:outline-none pt-5 focus:placeholder-transparent"
                                 value={valuesConnexion.mdp}
                                 onChange={handleChangeCo} />
-                            {errors.mdp && <p className="absolute -bottom-4 left-10 text-red-900 dark:text-red-650">{errors.mdp}</p>}
                             {
                                 <InputAdornment position="end" className="absolute right-10" color="primary">
                                     <IconButton
@@ -74,7 +73,7 @@ const FormSignup = ({ submitForm }) => {
                                     </IconButton>
                                 </InputAdornment>
                             }
-
+                        {errorsConnexion.wrongEntries && <p className="absolute -bottom-4 left-10 text-red-900 dark:text-red-650">Nom d'utilisateur ou mot de passe erroné</p>}
                         </div>
                         <div className="flex justify-center relative items-center mt-8">
                         <input id="stayConnected"

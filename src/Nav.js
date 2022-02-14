@@ -61,7 +61,7 @@ const Nav = () => {
                         </Link>
                         <Link to="/testImage" className="xl:justify-self-end">
                             <motion.div whileHover={{ scale: 1.1 }} className="">
-                                <li><img className="h-24px xl:h-16 xl:w-16" src={favoris} alt="" /></li>
+                                <li><img className="h-24px xl:h-12 xl:w-12" src={favoris} alt="" /></li>
                             </motion.div>
                         </Link>
 

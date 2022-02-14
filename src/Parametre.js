@@ -18,6 +18,10 @@ const Parametre = () => {
     const [checked2, setChecked2] = React.useState(true);
     const [checked3, setChecked3] = React.useState(true);
 
+    function handleDeconnexion() {
+        sessionStorage.clear();
+        window.location.reload();
+    }
 
     return (
         <div className="flex flex-col justify-center items-center h-screen w-screen dark:bg-gray-550 bg-gray-100 xl:bg-white-0 dark:text-white-0">
@@ -74,8 +78,8 @@ const Parametre = () => {
                     </ul>
 
                 </li>
-                <h2 className="mt-2  pt-7 text-base font-semibold cursor-pointer ">Déconnexion</h2>
-                <h2 className="mt-2 text-base font-semibold text-red-500 cursor-pointer">Supprimer le compte</h2>
+                <h2 onClick={handleDeconnexion} className="mt-2  pt-7 text-base font-semibold cursor-pointer ">Déconnexion</h2>
+                <h2 onClick={handleDeconnexion} className="mt-2 text-base font-semibold text-red-500 cursor-pointer">Supprimer le compte</h2>
 
             </div>
         </div>

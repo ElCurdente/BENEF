@@ -25,7 +25,7 @@
                 $result=$stmt->fetch(PDO::FETCH_ASSOC);
                 if(password_verify($decoded["mdp"], $result["mdp"])){
                     // echo('C bon');
-                    $encoded = json_encode($decoded);
+                    $encoded = json_encode($result);
                     echo($encoded);
                     
                 } else{

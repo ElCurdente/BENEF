@@ -3,10 +3,6 @@ import { Redirect } from 'react-router';
 import { useHistory } from "react-router-dom";
 
 
-
-
-
-
 const useForm = (callback, validate) => {
   
   let history = useHistory();
@@ -23,6 +19,12 @@ const useForm = (callback, validate) => {
   });
   const [errors, setErrors] = useState({});
   const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const [errorsConnexion, setErrorsConnexion] = useState({
+    emptyUsername : false,
+    emptyPassword : false,
+    wrongEntries : false,
+  });
 
   const [valuesConnexion, setValuesConnexion] = useState({
     username:'',
@@ -117,6 +119,7 @@ body: JSON.stringify(valuesConnexion)
     sessionStorage.setItem("user", data.username);
   }
 sessionStorage.setItem("isConnected", true);
+sessionStorage.setItem("id_user", data.id_user)
 console.log(stayConnected)
 console.log(sessionStorage.getItem("user"))
 if(localStorage.getItem("isConnected")){
@@ -130,7 +133,12 @@ if(sessionStorage.getItem("isConnected")){
 })
 .catch(err => {
 console.log("Error Reading data " + err);
-console.log(stayConnected)
+console.log(stayConnected);
+setErrorsConnexion({
+  ...errorsConnexion,
+    wrongEntries : true
+});
+console.log(errorsConnexion);
 });
 };
 
@@ -145,7 +153,7 @@ console.log(stayConnected)
     [errors]
   );
 
-  return {handleChange,handleClickShowPassword,handleClickShowPassword2,handleMouseDownPassword, handleSubmit, handleSubmitConnexion, handleChangeCo, values, valuesConnexion, errors, handleStayConnected, stayConnected };
+  return {handleChange,handleClickShowPassword,handleClickShowPassword2,handleMouseDownPassword, handleSubmit, handleSubmitConnexion, handleChangeCo, values, valuesConnexion, errors, errorsConnexion, handleStayConnected, stayConnected };
 };
 
 export default useForm ;
