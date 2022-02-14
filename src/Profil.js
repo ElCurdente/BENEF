@@ -106,7 +106,7 @@ const Profil = () => {
 
     if (bio === false) {
         return (
-            <div className="flex flex-col justify-center items-center h-screen w-screen bg-white-0 xl:dark:bg-gray-550 dark:text-white-0">
+            <div className="flex flex-col justify-center items-center xl:mt-20 h-screen w-screen bg-white-0 xl:dark:bg-gray-550 dark:text-white-0">
                 <div id="infos" className="relative grid grid-cols-2 grid-layout xl:w-2/6 w-95vw px-4 xl:-px-0">
                     <div className="flex items-center">
                         <img className="w-100px h-100px bg-transparent dark:bg-gray-650 border-3 border-red-450 dark:border-black rounded-full object-cover" />

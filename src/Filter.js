@@ -287,7 +287,7 @@ const Filter = () => {
 
           </div>
         </ul>
-        <button className="fixed bottom-24 right-5 flex justify-center items-center w-16 h-16 text-lg font-bold border-2 border-white-0 bg-orange-450 hover:bg-red-450 hover:text-white-0 hover:border-white-0 dark:hover:bg-white-150 dark:hover:text-gray-550 active:bg-red-200 dark:bg-white-0 dark:text-black rounded-full transition duration-300 ease-in-out shadow-customm"
+        <button className="fixed bottom-24 xl:bottom-5 right-5 flex justify-center items-center w-16 h-16 text-lg font-bold  bg-orange-450 hover:bg-red-450 hover:text-white-0 hover:border-white-0 dark:hover:bg-white-150 dark:hover:text-gray-550 active:bg-red-200 dark:bg-white-0 dark:text-black rounded-full transition duration-300 ease-in-out shadow-customm"
           onClick={() => {
             setOpenModal(true);
           }}><img src={filtre} className="h-6 dark:hidden" /><img src={filtreNoir} className="h-6 hidden dark:block" /></button>
