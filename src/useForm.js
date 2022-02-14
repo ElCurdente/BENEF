@@ -3,10 +3,6 @@ import { Redirect } from 'react-router';
 import { useHistory } from "react-router-dom";
 
 
-
-
-
-
 const useForm = (callback, validate) => {
   
   let history = useHistory();
@@ -131,7 +127,7 @@ if(localStorage.getItem("isConnected")){
 }else 
 if(sessionStorage.getItem("isConnected")){
   console.log("oui il est bien connecté là")
-  // window.location.reload();
+  window.location.reload();
   console.log(stayConnected)
 }
 })
