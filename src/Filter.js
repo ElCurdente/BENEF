@@ -12,11 +12,10 @@ import upvoteBas from './images/icon/upvote.svg';
 import upvoteHaut from './images/icon/upvote2.svg';
 import recherche from './images/icon/icon_recherche.svg';
 
-const Filter = () => {
+const Filter = ({ searchValue, setSearchValue }) => {
   const [error, setError] = useState(null);
   const [isLoaded, setIsLoaded] = useState(false);
   const [items, setItems] = useState([]);
-  const [input, setInput] = useState("");
   let filterByFilters;
   const [filters, setFilters] = useState({
     filtered: false,
@@ -105,7 +104,7 @@ const Filter = () => {
   } else if (!isLoaded) {
     return <div>Chargement...</div>;
   } else {
-    const regexp = new RegExp(input, 'i');
+    const regexp = new RegExp(searchValue, 'i');
     const regexp_postal = new RegExp(filters.postal, 'i');
     const regexp_category = new RegExp(filters.category, 'i');
 
@@ -129,9 +128,9 @@ const Filter = () => {
               <div className="flex h-100px relative justify-center items-center w-full ">
                 <h1 className="text-center text-2xl font-bold pt-7 dark:text-gray-50">Recherche</h1>
               </div>
-              <div className="flex relative justify-center items-center w-full ">
+              <div className="flex relative justify-center items-center w-full xl:hidden">
                 <div className="flex border-b-2 border-black required:w-65% h-8 mt-5 mb-20">
-                  <input value={input} className=" required:w-65% px-6 bg-white-150 placeholder-black focus:outline-none" placeholder="Rechercher..." onChange={event => setInput(event.target.value)} />
+                  <input value={searchValue} className=" required:w-65% px-6 bg-white-150 placeholder-black focus:outline-none" placeholder="Rechercher..." onChange={event => setSearchValue(event.target.value)} />
                   <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1" viewBox="0 0 20 20" className="w-5 h-5 mt-1 mr-3 xl:hidden"><path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
                 </div>
               </div>

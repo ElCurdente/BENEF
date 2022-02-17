@@ -20,7 +20,7 @@ import { motion } from 'framer-motion/dist/framer-motion';
 
 
 
-const Nav = () => {
+const Nav = ({ searchValue, setSearchValue }) => {
     return (
         <div className="flex justify-center z-50 relative">
             <div className="fixed flex justify-center items-center xl:-top-0 xl:h-10vh xl:justify-start bottom-0 w-100vw rounded-t-lg transition duration-500">
@@ -46,7 +46,7 @@ const Nav = () => {
                                         </button>
                                     </span>
                                     <input type="search" name="q" class="py-2 text-sm text-white xl:bg-white h-12 rounded-lg pl-10 focus:outline-none focus:bg-white focus:text-gray-900"
-                                        placeholder="Recherche" autocomplete="off">
+                                        placeholder="Recherche" autocomplete="off" value={searchValue} onChange={event => setSearchValue(event.target.value)}>
                                     </input>
                                 </div>
 

@@ -19,9 +19,10 @@ import plusnoir from './images/icon/icon_plus_noir.svg';
 import { useState } from "react"
 
 
-const Accueil = () => {
+const Accueil = ({testProps}) => {
 
     const [isPosting, setIsPosting] = useState(false);
+    const [searchValue, setSearchValue] = useState("");
 
     function handlePost(e) {
         e.preventDefault();
@@ -71,10 +72,15 @@ const Accueil = () => {
                     <img src={parameter} alt="Paramètres" className="absolute xl:w-14 xl:h-14 xl:mr-96 h-25px right-6 top-4 z-50" />
                 </Link>
                 <div>
-                    <Nav />
+                    <Nav searchValue={searchValue} setSearchValue={setSearchValue} />
                     <Switch>
                         <Route path="/home" exact component={Home} />
-                        <Route path="/recherche" component={Recherche} />
+                        <Route path="/recherche">
+                            <Recherche
+                                searchValue={searchValue}
+                                setSearchValue={setSearchValue}
+                            />
+                        </Route>
                         <Route path="/post" component={Post} />
                         <Route path="/messagerie" component={Messagerie} />
                         <Route path="/profil" component={Profil} />
