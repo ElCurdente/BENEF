@@ -96,7 +96,7 @@ const Cgu = () => {
 
                 <h2 className="mt-2 text-xl pt-7 font-semibold ">Bons plans</h2>
                 <li className='mt-2 list-none'>
-                    <ul className="w-full flex justify-between items-center opacity-95 font-normal pb-2"><p>
+                    <ul className="w-full flex justify-between items-center opacity-95 font-normal"><p>
                         Dans BENEF, un bon plan est une sortie ou une activité dont le prix a subi une réduction, est gratuit ou est bas (ou plus bas que la moyenne).<br></br><br></br>
  
                         Est un bon plan: une exposition, une galerie d’art, un restaurant, un fast-food, un food-truck, un bar, une boîte de nuit, une soirée, une soirée étudiante, un festival, un workshop…<br></br><br></br>
