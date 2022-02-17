@@ -151,10 +151,10 @@ const Post = () => {
                         <div className="w-full h-80px flex justify-center items-center">
                             <select name="category" id="category" onChange={handleChange} className="block appearance-none bg-red-450 text-white-0 border-gray-400 hover:border-gray-500 px-4 py-2 pr-12 ml-12 shadow leading-tight focus:outline-none focus:shadow-outline">
                                 <option value="select">--Choisissez une catégorie--</option>
-                                <option value="1" className="bg-white-0 text-red-450">Catégorie 1</option>
-                                <option value="2" className="bg-white-0 text-red-450">Catégorie 2</option>
-                                <option value="3" className="bg-white-0 text-red-450">Catégorie 3</option>
-                                <option value="4" className="bg-white-0 text-red-450">Catégorie 4</option>
+                                <option value="1" className="bg-white-0 text-red-450">Restaurant</option>
+                                <option value="2" className="bg-white-0 text-red-450">Bar</option>
+                                <option value="3" className="bg-white-0 text-red-450">Musée / Expo</option>
+                                <option value="4" className="bg-white-0 text-red-450">Festival</option>
                                 <option value="5" className="bg-white-0 text-red-450">Catégorie 5</option>
                                 <option value="6" className="bg-white-0 text-red-450">Catégorie 6</option>
                             </select>
