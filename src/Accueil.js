@@ -11,6 +11,7 @@ import Recherche from './Recherche'
 import Infos from './Infos'
 import Cgu from './Cgu'
 import LandingPage from './testImage'
+import Favoris from './Favoris'
 import logo from './images/logo/logo_benef.svg';
 import logodark from './images/logo/logo_benef_dark.svg';
 import parameter from './images/icon/icon_parametres.svg';
@@ -88,6 +89,8 @@ const Accueil = ({testProps}) => {
                         <Route path="/infos" component={Infos} />
                         <Route path="/cgu" component={Cgu} />
                         <Route path="/testImage" component={LandingPage} />
+                        <Route path="/favoris" component={Favoris} />
+
                     </Switch>
                 </div>
             </Router>
