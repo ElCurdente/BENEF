@@ -170,7 +170,7 @@ const Thread = () => {
                   </div>
                 </div>
                 <div className="w-full h-25% md:cursor-pointer">
-                  <li key={item.id_post} className="mt-1 w-92vw">
+                  <li key={item.id_post} className="mt-1 w-92vw max-w-md">
                     <div>
                     <div className="bg-white-0 text-black absolute text-xl font-bold flex top-0 w-max py-1 rounded-lg">
                     <span onClick={handleFav.bind(item.id_post)} className="px-2 upvote text-red-450 dark:text-black">Fav</span>
@@ -188,8 +188,8 @@ const Thread = () => {
                         </button>
                       </div>
                     </div>
-                    <h1 className="text-lg font-semibold mx-2">{item.title}</h1>
-                    <div className="flex mt-2 text-sm w-92vw">
+                    <h1 className="text-lg font-semibold mx-2 max-w-md	">{item.title}</h1>
+                    <div className="flex mt-2 text-sm w-92vw max-w-md	">
                       <img src={adresse} className="ml-2 mr-1 w-3.5"></img> {item.address} <div className="absolute right-3">{item.postal}</div>
                     </div>
                   </li>
