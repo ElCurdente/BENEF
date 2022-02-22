@@ -128,6 +128,9 @@ const Thread = () => {
     return 0;
   }
 
+  function Alert() { alert('Le message à été supprimé'); };
+  function DelayAlert() { setInterval(Alert, 2000); }
+
 
   if (error) {
     return <div>Erreur : {error.message}</div>;

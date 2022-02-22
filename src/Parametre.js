@@ -74,7 +74,7 @@ const Parametre = () => {
                         </ul>
                         
                 <ul className="w-full flex justify-between items-center font-normal pb-2">
-                     <a className="cursor-pointer font-normal" HREF="mailto:admin@benef-app.fr">Contact</a>
+                     <a className="cursor-pointer font-normal" HREF="mailto:admin@benef-app.fr">Nous contacter</a>
                     </ul>
 
                 </li>
