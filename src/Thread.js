@@ -185,8 +185,8 @@ const Thread = () => {
                 <div className="w-full h-25% md:cursor-pointer">
                   <li key={item.id_post} className="mt-1 w-92vw max-w-md">
                     <div>
-                      <div className="bg-white-0 text-black absolute text-xl font-bold flex top-0 w-max py-1 rounded-lg">
-                        <button className="px-2 upvote text-red-450 cursor-pointer dark:text-black"
+                      <div className="bg-white-0 px-2 py-2 text-black absolute flex justify-center items-center top-3 right-2 rounded-full">
+                        <button className="upvote text-red-450 cursor-pointer dark:text-black"
                           onClick={
                             // () => {
                             // setState(!state);
@@ -194,7 +194,7 @@ const Thread = () => {
                           // }
                         }
                         >
-                          {state ? "cacher" : <img className='pl-1 h-15px fill-current' src={coeur} alt='' />}
+                          {state ? "cacher" : <img className='h-15px fill-current' src={coeur} alt='' />}
                         </button>
                         {/* <div> */}
                         {state && <Lottie options={defaultOptions} height={40} width={40} />}
