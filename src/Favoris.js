@@ -163,7 +163,7 @@ function Favoris() {
                       <li key={item.id_post} className="mt-1 w-92vw max-w-md">
                         <div>
                         <div className="bg-white-0 text-black absolute top-0 text-xl font-bold flex w-max py-1 rounded-lg">
-                        <span onClick={handleFav.bind(item.id_post)} className="px-2 upvote text-red-450 dark:text-black">Fav</span>
+                        <button onClick={handleFav.bind(item.id_post)} className="px-2 upvote text-red-450 dark:text-black">Fav</button>
                           </div>
                           <div className="bg-white-0 text-black absolute top-44 text-xl font-bold flex w-max py-1 rounded-lg">
                             <button onClick={handleUpvote.bind(item)} className="pl-2 relative">

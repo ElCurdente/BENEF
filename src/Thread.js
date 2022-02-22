@@ -14,11 +14,21 @@ import upvoteBasplein from './images/icon/icon_vote_fill_r.svg';
 import upvoteOrange from './images/icon/icon_vote_orange.svg';
 import upvoteorangeplein from './images/icon/icon_vote_fill_orange.svg';
 import { motion } from 'framer-motion/dist/framer-motion';
+import Lottie from 'react-lottie';
+import animationData from './like.json';
+import coeur from './images/icon/heart_contour.svg';
 
 const Thread = () => {
-  const html = document.querySelector('html');
-  const upvoteHaut1 = document.querySelector("#upvote_haut");
-  const upvoteBas1 = document.querySelector("#upvote_bas");
+
+  const [state, setState] = useState(false);
+  const defaultOptions = {
+    loop: false,
+    autoplay: true,
+    animationData: animationData,
+    rendererSettings: {
+      preserveAspectRatio: 'xMidYMid slice'
+    }
+  };
 
   // const toggleImg = () => {
   //   if (html.classList.contains('dark')) {
@@ -57,22 +67,22 @@ const Thread = () => {
   }, [])
 
   function handleFav() {
-    console.log({id_user : sessionStorage.getItem('id_user'), id_post : this});
+    console.log({ id_user: sessionStorage.getItem('id_user'), id_post: this });
     fetch('https://benef-app.fr/api-favoris.php', {
-            method: "POST",
-            headers: {
-              'Accept': 'application/json',
-              'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({id_user : sessionStorage.getItem('id_user'), id_post : this})
-          })
-            .then((response) => response.json())
-            .then((data) => {
-              console.log(data);
-            })
-            .catch(err => {
-              console.log("Error Reading data " + err);
-            });
+      method: "POST",
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ id_user: sessionStorage.getItem('id_user'), id_post: this })
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data);
+      })
+      .catch(err => {
+        console.log("Error Reading data " + err);
+      });
   }
 
   function handleUpvote() {
@@ -175,8 +185,19 @@ const Thread = () => {
                 <div className="w-full h-25% md:cursor-pointer">
                   <li key={item.id_post} className="mt-1 w-92vw max-w-md">
                     <div>
-                    <div className="bg-white-0 text-black absolute text-xl font-bold flex top-0 w-max py-1 rounded-lg">
-                    <span onClick={handleFav.bind(item.id_post)} className="px-2 upvote text-red-450 dark:text-black">Fav</span>
+                      <div className="bg-white-0 text-black absolute text-xl font-bold flex top-0 w-max py-1 rounded-lg">
+                        <button className="px-2 upvote text-red-450 cursor-pointer dark:text-black"
+                          onClick={() => {
+                            setState(!state);
+                            handleFav.bind(item.id_post);
+                          }}
+                        >
+                          {state ? "cacher" : <img className='pl-1 h-15px fill-current' src={coeur} alt='' />}
+                        </button>
+                        {/* <div> */}
+                        {state && <Lottie options={defaultOptions} height={40} width={40} />}
+                        {/* </div> */}
+                        {/* <button onClick={handleFav.bind(item.id_post)} className="px-2 upvote text-red-450 cursor-pointer dark:text-black">Fav</button> */}
                       </div>
                       <div className="bg-white-0 text-black absolute top-44 text-xl font-bold flex w-max py-1 rounded-lg">
                         <button onClick={handleUpvote.bind(item)} className="pl-2 relative">
