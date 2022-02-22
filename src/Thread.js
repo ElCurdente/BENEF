@@ -5,6 +5,8 @@ import { useRef } from 'react';
 import { useHistory } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import profil from './images/profil-gaelle.png';
+import resto from './images/resto.jpg';
+import musee from './images/musee.jpg';
 import adresse from './images/icon/adress.svg';
 import Upvote from './Upvote';
 import upvoteBas from './images/icon/upvote.svg';
@@ -178,7 +180,7 @@ const Thread = () => {
               <motion.div className="w-92vw xl:w-full h-300px xl:h-96 relative bg-red-450 dark:bg-black rounded-lg text-white-0 mb-2 xl:mb-5"
                 whileHover={{ scale: 1.01 }}>
                 <div className="w-full h-75% relative">
-                  <img className="object-cover rounded-t-lg h-full w-full" src={profil} alt="" />
+                  <img className="object-cover rounded-t-lg h-full w-full" src={resto} alt="" />
                   <div className="absolute bottom-5 -left-1.5">
                   </div>
                 </div>
