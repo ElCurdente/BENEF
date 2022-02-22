@@ -56,6 +56,25 @@ const Thread = () => {
       )
   }, [])
 
+  function handleFav() {
+    console.log({id_user : sessionStorage.getItem('id_user'), id_post : this});
+    fetch('https://benef-app.fr/api-favoris.php', {
+            method: "POST",
+            headers: {
+              'Accept': 'application/json',
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({id_user : sessionStorage.getItem('id_user'), id_post : this})
+          })
+            .then((response) => response.json())
+            .then((data) => {
+              console.log(data);
+            })
+            .catch(err => {
+              console.log("Error Reading data " + err);
+            });
+  }
+
   function handleUpvote() {
     console.log(this)
     fetch('https://benef-app.fr/api-upvote.php', {
@@ -154,8 +173,11 @@ const Thread = () => {
                   </div>
                 </div>
                 <div className="w-full h-25% md:cursor-pointer">
-                  <li key={item.id_post} className="mt-1 w-92vw">
+                  <li key={item.id_post} className="mt-1 w-92vw max-w-md">
                     <div>
+                    <div className="bg-white-0 text-black absolute text-xl font-bold flex top-0 w-max py-1 rounded-lg">
+                    <span onClick={handleFav.bind(item.id_post)} className="px-2 upvote text-red-450 dark:text-black">Fav</span>
+                      </div>
                       <div className="bg-white-0 text-black absolute top-44 text-xl font-bold flex w-max py-1 rounded-lg">
                         <button onClick={handleUpvote.bind(item)} className="pl-2 relative">
                           <motion.img whileTap={{ scale: 0.85 }} id="upvote_haut" src={upvoteHaut} className="opacity-100 h-28px"></motion.img>
@@ -169,8 +191,8 @@ const Thread = () => {
                         </button>
                       </div>
                     </div>
-                    <h1 className="text-lg font-semibold mx-2">{item.title}</h1>
-                    <div className="flex mt-2 text-sm w-92vw">
+                    <h1 className="text-lg font-semibold mx-2 max-w-md	">{item.title}</h1>
+                    <div className="flex mt-2 text-sm w-92vw max-w-md	">
                       <img src={adresse} className="ml-2 mr-1 w-3.5"></img> {item.address} <div className="absolute right-3">{item.postal}</div>
                     </div>
                   </li>

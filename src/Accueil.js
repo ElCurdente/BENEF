@@ -11,6 +11,7 @@ import Recherche from './Recherche'
 import Infos from './Infos'
 import Cgu from './Cgu'
 import LandingPage from './testImage'
+import Favoris from './Favoris'
 import logo from './images/logo/logo_benef.svg';
 import logodark from './images/logo/logo_benef_dark.svg';
 import parameter from './images/icon/icon_parametres.svg';
@@ -19,9 +20,10 @@ import plusnoir from './images/icon/icon_plus_noir.svg';
 import { useState } from "react"
 
 
-const Accueil = () => {
+const Accueil = ({testProps}) => {
 
     const [isPosting, setIsPosting] = useState(false);
+    const [searchValue, setSearchValue] = useState("");
 
     function handlePost(e) {
         e.preventDefault();
@@ -71,10 +73,15 @@ const Accueil = () => {
                     <img src={parameter} alt="Paramètres" className="absolute xl:w-14 xl:h-14 xl:mr-96 h-25px right-6 top-4 z-50" />
                 </Link>
                 <div>
-                    <Nav />
+                    <Nav searchValue={searchValue} setSearchValue={setSearchValue} />
                     <Switch>
                         <Route path="/home" exact component={Home} />
-                        <Route path="/recherche" component={Recherche} />
+                        <Route path="/recherche">
+                            <Recherche
+                                searchValue={searchValue}
+                                setSearchValue={setSearchValue}
+                            />
+                        </Route>
                         <Route path="/post" component={Post} />
                         <Route path="/messagerie" component={Messagerie} />
                         <Route path="/profil" component={Profil} />
@@ -82,6 +89,8 @@ const Accueil = () => {
                         <Route path="/infos" component={Infos} />
                         <Route path="/cgu" component={Cgu} />
                         <Route path="/testImage" component={LandingPage} />
+                        <Route path="/favoris" component={Favoris} />
+
                     </Switch>
                 </div>
             </Router>
