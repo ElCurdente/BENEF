@@ -187,10 +187,12 @@ const Thread = () => {
                     <div>
                       <div className="bg-white-0 text-black absolute text-xl font-bold flex top-0 w-max py-1 rounded-lg">
                         <button className="px-2 upvote text-red-450 cursor-pointer dark:text-black"
-                          onClick={() => {
-                            setState(!state);
-                            handleFav.bind(item.id_post);
-                          }}
+                          onClick={
+                            // () => {
+                            // setState(!state);
+                            handleFav.bind(item.id_post)
+                          // }
+                        }
                         >
                           {state ? "cacher" : <img className='pl-1 h-15px fill-current' src={coeur} alt='' />}
                         </button>
