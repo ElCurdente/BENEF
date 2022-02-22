@@ -48,7 +48,7 @@ function Favoris() {
 
       function handleFav() {
         console.log({id_user : sessionStorage.getItem('id_user'), id_post : this});
-        fetch('https://benef-app.fr/api-favoris.php', {
+        fetch('https://benef-app.fr/api-favoris-sup.php', {
                 method: "POST",
                 headers: {
                   'Accept': 'application/json',
