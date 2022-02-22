@@ -64,10 +64,6 @@ const Accueil = ({testProps}) => {
                 </div>
             </div>
 
-
-
-
-
             <Router>
                 <Link to="/parametre">
                     <img src={parameter} alt="Paramètres" className="absolute xl:w-14 xl:h-14 xl:mr-96 h-25px right-6 top-4 z-50" />

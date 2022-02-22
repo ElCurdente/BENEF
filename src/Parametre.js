@@ -23,6 +23,28 @@ const Parametre = () => {
         window.location.reload();
     }
 
+    function handleSuppression() {
+        
+        fetch('https://benef-app.fr/api-suppression.php', {
+      method: "POST",
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ id_user: sessionStorage.getItem('id_user')})
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data);
+        sessionStorage.clear();
+        window.location.reload();
+      })
+      .catch(err => {
+        console.log("Error Reading data " + err);
+      });
+  }
+    
+
     return (
         <div className="flex flex-col justify-center items-center h-screen w-screen dark:bg-gray-550 bg-gray-100 xl:bg-white-0 dark:text-white-0">
             <div id="infos" className="overflow-y-auto w-95vw h-full mt-20 dark:bg-gray-550 xl:bg-white-0 xl:w-1/3 xl:p-5">
@@ -79,7 +101,7 @@ const Parametre = () => {
 
                 </li>
                 <h2 onClick={handleDeconnexion} className="mt-2  pt-7 text-base font-semibold cursor-pointer ">Déconnexion</h2>
-                <h2 onClick={handleDeconnexion} className="mt-2 text-base font-semibold text-red-500 cursor-pointer">Supprimer le compte</h2>
+                <h2 onClick={handleSuppression} className="mt-2 text-base font-semibold text-red-500 cursor-pointer">Supprimer le compte</h2>
 
             </div>
         </div>
