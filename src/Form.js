@@ -17,8 +17,8 @@ const Form = () => {
     return (
         <div>
                 
-                {!sessionStorage.getItem("isConnected") ? (!isSubmitted ? ( <FormSignup submitForm={submitForm} />) : (<Accueil />)) : (<Accueil/>)}            
-                
+            {!sessionStorage.getItem("isConnected") ? <FormSignup submitForm={submitForm} /> : (<Accueil />)}            
+    
         </div>
     )
 }
