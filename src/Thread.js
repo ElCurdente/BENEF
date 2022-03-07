@@ -74,7 +74,7 @@ const Thread = () => {
         console.log("Error Reading data " + err);
       });
 
-      setState(!state);
+    setState(!state);
   }
 
   function handleUpvote() {
@@ -171,22 +171,20 @@ const Thread = () => {
                 whileHover={{ scale: 1.01 }}>
                 <div className="w-full h-75% relative">
                   <img className="object-cover rounded-t-lg h-full w-full" src={resto} alt="" />
-                  <div className="absolute bottom-5 -left-1.5">
-                  </div>
                 </div>
                 <div className="w-full h-25% md:cursor-pointer">
                   <li key={item.id_post} className="mt-1 w-92vw max-w-md">
                     <div>
-                      <div className="bg-white-0 px-2 py-2 text-black absolute flex justify-center items-center top-3 right-2 rounded-full">
+                      <div className="bg-white-0 h-7 w-7 text-black absolute flex justify-center items-center top-3 right-2 rounded-full">
                         <button className="upvote text-red-450 dark:text-black"
                           onClick={
                             // () => {
                             // setState(!state);
                             handleFav.bind(item.id_post)
-                          // }
-                        }
+                            // }
+                          }
                         >
-                          {state ? state && <Lottie options={defaultOptions} height={17} width={17} id={item.id_post} /> : <img className='h-15px fill-current cursor-pointer' src={coeur} alt='' />}
+                          {state ? state && <Lottie options={defaultOptions} height={19} width={18} id={item.id_post} /> : <img className='h-15px fill-current cursor-pointer' src={coeur} alt='' />}
                         </button>
                         {/* <div> */}
                         {/* {state && <Lottie options={defaultOptions} height={40} width={40} />} */}
