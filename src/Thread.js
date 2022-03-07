@@ -152,6 +152,17 @@ const Thread = () => {
   function Alert() { alert('Le message à été supprimé'); };
   function DelayAlert() { setInterval(Alert, 2000); }
 
+const [openModal, setOpenModal] = useState(false);
+
+  const btnOuvrir = () => {
+    setOpenModal(true);
+  }
+
+  const btnFermer = () => {
+    setOpenModal(false);
+  }
+  const modal = useRef(null);
+
 
   if (error) {
     return <div>Erreur : {error.message}</div>;
@@ -166,13 +177,37 @@ const Thread = () => {
         <ul className="h-full xl:w-2/6 bg-white-0 xl:dark:bg-gray-550 ">
           <div className="mt-24 ml-6 mr-6 pb-12 xl:dark:bg-gray-550">
 
+
+<div id="containerModal" className={openModal ? "block" : "hidden"}>
+            <div id="modal" ref={modal} className="flex w-screen h-screen bg-black bg-opacity-30 fixed bottom-0 left-0 justify-center z-50 items-end">
+               
+            <div className="w-3/4 h-90% mb-10 relative flex flex-col justify-start items-center rounded-t-3xl bg-white-0">
+            <div className="mb-5">
+            <h1 className="text-lg font-semibold mx-2 max-w-md mt-1	">Titre du bon plan</h1>
+            <div className="flex w-full justify-evenly mb-10">
+                      <button onClick={() => setOpenModal(false)} className="block px-5 py-2 text-white-0 text-lg font-semibold bg-red-450 hover:bg-white-0 hover:text-red-450 hover:border-red-450 border-2 border-red-450 dark:hover:bg-white-150 dark:hover:text-gray-550 active:bg-red-200 dark:bg-white-0 dark:text-black rounded-full transition duration-300 ease-in-out" type="submit">Fermer</button>
+                       
+              </div>
+              </div>
+              </div>
+              </div>
+              </div>
+
             {items.sort(compare).map(item => (
               <motion.div className="w-92vw xl:w-full h-300px xl:h-96 relative bg-red-450 dark:bg-black rounded-lg text-white-0 mb-4 xl:mb-5 shadow-customm"
                 whileHover={{ scale: 1.01 }}>
                 <div className="w-full h-75% relative">
                   <img className="object-cover rounded-t-lg h-full w-full" src={resto} alt="" />
                 </div>
-                <div className="w-full h-25% md:cursor-pointer">
+                <div className="w-full h-25% md:cursor-pointer" onClick={() => {
+            setOpenModal(true);
+                }} >
+                  <h1 className="text-lg font-semibold mx-2 max-w-md mt-1	">{item.title}</h1>
+                    <div className="flex mt-2 text-sm w-92vw max-w-md 	">
+                      <img src={adresse} className="ml-2 mr-1 w-3.5"></img> {item.address} <div className="absolute right-3">{item.postal}</div>
+                    </div>
+
+          </div>
                   <li key={item.id_post} className="mt-1 w-92vw max-w-md">
                     <div>
                       <div className="bg-white-0 h-7 w-7 text-black absolute flex justify-center items-center top-3 right-2 rounded-full">
@@ -180,6 +215,7 @@ const Thread = () => {
                           onClick={
                             // () => {
                             // setState(!state);
+                            
                             handleFav.bind(item.id_post)
                             // }
                           }
@@ -204,18 +240,19 @@ const Thread = () => {
                         </button>
                       </div>
                     </div>
-                    <h1 className="text-lg font-semibold mx-2 max-w-md	">{item.title}</h1>
-                    <div className="flex mt-2 text-sm w-92vw max-w-md	">
-                      <img src={adresse} className="ml-2 mr-1 w-3.5"></img> {item.address} <div className="absolute right-3">{item.postal}</div>
-                    </div>
+                    
+
+
                   </li>
-                </div>
+           
+                
               </motion.div>
             ))}
 
           </div>
         </ul>
       </div >
+      
     );
   }
 };
