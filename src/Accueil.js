@@ -1,5 +1,6 @@
 import React from 'react'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import {AnimationPresence, motion} from 'framer-motion/dist/framer-motion';
 import { Link } from 'react-router-dom'
 import Nav from './Nav'
 import Parametre from './Parametre'
@@ -20,7 +21,7 @@ import plusnoir from './images/icon/icon_plus_noir.svg';
 import { useState } from "react"
 
 
-const Accueil = ({testProps}) => {
+const Accueil = () => {
 
     const [isPosting, setIsPosting] = useState(false);
     const [searchValue, setSearchValue] = useState("");
@@ -63,13 +64,13 @@ const Accueil = ({testProps}) => {
                     </div>
                 </div>
             </div>
-
             <Router>
                 <Link to="/parametre">
                     <img src={parameter} alt="Paramètres" className="absolute xl:w-14 xl:h-14 xl:mr-96 h-25px right-6 top-4 z-50" />
                 </Link>
                 <div>
                     <Nav searchValue={searchValue} setSearchValue={setSearchValue} />
+                    
                     <Switch>
                         <Route path="/home" exact component={Home} />
                         <Route path="/recherche">
@@ -88,6 +89,7 @@ const Accueil = ({testProps}) => {
                         <Route path="/favoris" component={Favoris} />
 
                     </Switch>
+                    
                 </div>
             </Router>
         </div>
@@ -102,4 +104,4 @@ const Accueil = ({testProps}) => {
 // )
 
 
-export default Accueil
+export default Accueil;

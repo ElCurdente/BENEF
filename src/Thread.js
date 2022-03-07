@@ -177,7 +177,7 @@ const Thread = () => {
           <div className="mt-24 ml-6 mr-6 pb-12 xl:dark:bg-gray-550">
 
             {items.sort(compare).map(item => (
-              <motion.div className="w-92vw xl:w-full h-300px xl:h-96 relative bg-red-450 dark:bg-black rounded-lg text-white-0 mb-2 xl:mb-5"
+              <motion.div className="w-92vw xl:w-full h-300px xl:h-96 relative bg-red-450 dark:bg-black rounded-lg text-white-0 mb-4 xl:mb-5 shadow-customm"
                 whileHover={{ scale: 1.01 }}>
                 <div className="w-full h-75% relative">
                   <img className="object-cover rounded-t-lg h-full w-full" src={resto} alt="" />
