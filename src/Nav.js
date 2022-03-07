@@ -15,8 +15,8 @@ import logo from './images/logo/logo_benef.svg';
 import logodark from './images/logo/logo_benef_dark.svg';
 import Parametre from './Parametre'
 import parameter from './images/icon/icon_parametres.svg';
-import favoris from './images/icon/icon_coeur.svg';
-import { motion } from 'framer-motion/dist/framer-motion';
+import favoris from './images/icon/icon_coeur_b.svg';
+import {AnimationPresence, motion } from 'framer-motion/dist/framer-motion';
 
 
 
@@ -59,6 +59,7 @@ const Nav = ({ searchValue, setSearchValue }) => {
                                     <img className="h-25px hidden dark:block" src={plusnoir} alt="" /></li>
                             </motion.div>
                         </Link>
+
                         <Link to="/favoris" className="xl:justify-self-end">
                             <motion.div whileHover={{ scale: 1.1 }} className="">
                                 <li><img className="h-24px xl:h-12 xl:w-12" src={favoris} alt="" /></li>

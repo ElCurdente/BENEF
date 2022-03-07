@@ -17,8 +17,8 @@ import upvoteOrange from './images/icon/icon_vote_orange.svg';
 import upvoteorangeplein from './images/icon/icon_vote_fill_orange.svg';
 import { motion } from 'framer-motion/dist/framer-motion';
 import Lottie from 'react-lottie';
-import animationData from './like.json';
-import coeur from './images/icon/heart_contour.svg';
+import animationData from './images/animation/like.json';
+import coeur from './images/icon/icon_coeur.svg';
 
 const Thread = () => {
 
@@ -31,18 +31,6 @@ const Thread = () => {
       preserveAspectRatio: 'xMidYMid slice'
     }
   };
-
-  // const toggleImg = () => {
-  //   if (html.classList.contains('dark')) {
-  //   upvoteHaut1.src = upvoteHaut;
-  // } else {
-  //   upvoteHaut1.src = upvoteOrange;
-  // }
-
-  // toggleImg();
-  // }
-
-
 
   const [error, setError] = useState(null);
   const [isLoaded, setIsLoaded] = useState(false);
@@ -85,6 +73,8 @@ const Thread = () => {
       .catch(err => {
         console.log("Error Reading data " + err);
       });
+
+      setState(!state);
   }
 
   function handleUpvote() {
@@ -204,7 +194,7 @@ const [openModal, setOpenModal] = useState(false);
               </div>
 
             {items.sort(compare).map(item => (
-              <motion.div className="w-92vw xl:w-full h-300px xl:h-96 relative bg-red-450 dark:bg-black rounded-lg text-white-0 mb-2 xl:mb-5"
+              <motion.div className="w-92vw xl:w-full h-300px xl:h-96 relative bg-red-450 dark:bg-black rounded-lg text-white-0 mb-4 xl:mb-5 shadow-customm"
                 whileHover={{ scale: 1.01 }}>
                 <div className="w-full h-75% relative">
                   <img className="object-cover md:cursor-pointer rounded-t-lg h-full w-full" src={resto} alt="" />
@@ -223,7 +213,7 @@ const [openModal, setOpenModal] = useState(false);
                   <li key={item.id_post} className="mt-1 w-92vw max-w-md">
                     <div>
                       <div className="bg-white-0 px-2 py-2 text-black absolute flex justify-center items-center top-3 right-2 rounded-full">
-                        <button className="upvote text-red-450 cursor-pointer dark:text-black"
+                        <button className="upvote text-red-450 dark:text-black"
                           onClick={
                             // () => {
                             // setState(!state);
@@ -232,10 +222,10 @@ const [openModal, setOpenModal] = useState(false);
                           // }
                         }
                         >
-                          {state ? "cacher" : <img className='h-15px fill-current' src={coeur} alt='' />}
+                          {state ? state && <Lottie options={defaultOptions} height={17} width={17} id={item.id_post} /> : <img className='h-15px fill-current cursor-pointer' src={coeur} alt='' />}
                         </button>
                         {/* <div> */}
-                        {state && <Lottie options={defaultOptions} height={40} width={40} />}
+                        {/* {state && <Lottie options={defaultOptions} height={40} width={40} />} */}
                         {/* </div> */}
                         {/* <button onClick={handleFav.bind(item.id_post)} className="px-2 upvote text-red-450 cursor-pointer dark:text-black">Fav</button> */}
                       </div>
