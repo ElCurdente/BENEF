@@ -31,6 +31,8 @@
                 } else{
                    echo('Mdp pas bon');
                 }
+             }else{
+              echo "{'answer' : 'Cet utilisateur a des doublons'}";
              }
 
           } else {

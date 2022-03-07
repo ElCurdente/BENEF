@@ -15,20 +15,25 @@
         //   If json_decode failed, the JSON is invalid.
           if(is_array($decoded)) {
             $hash = password_hash($decoded['mdp'], PASSWORD_DEFAULT);
-            foreach ($decoded as $v) {
-                echo "Valeur courante : $v.\n";
-            }
-            echo $decoded["username"];
+            
             $db = new PDO('mysql:host=db5005161444.hosting-data.io;dbname=dbs4318125', 'dbu1522474', 'lesoussol06092021', array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8"));
-            $requete = "INSERT INTO benef_bdd (username, email, birth, postal, mdp) VALUES (:username, :email, :birth, :postal, :mdp)";
-            $stmt = $db ->prepare($requete);
-            $stmt -> execute(array(
+            $req = "SELECT * FROM benef_bdd WHERE username='{$decoded['username']}'";
+            $stmt=$db->query($req);
+            if($stmt->rowcount()==0){
+              $requete = "INSERT INTO benef_bdd (username, email, birth, postal, mdp) VALUES (:username, :email, :birth, :postal, :mdp)";
+            $stmt2 = $db ->prepare($requete);
+            $stmt2 -> execute(array(
               ":username" => $decoded['username'],
               ":email" => $decoded['email'],
               ":birth" => $decoded['birth'],
               ":postal" => $decoded['postal'],
               ":mdp" => $hash,
             ));
+            echo '{"doublon" : false}';
+           }else{
+            echo '{"doublon" : true}';
+           }
+           
 
           } else {
             // Send error back to user.

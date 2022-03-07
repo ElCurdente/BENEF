@@ -19,7 +19,7 @@ const useForm = (callback, validate) => {
   });
   const [errors, setErrors] = useState({});
   const [isSubmitting, setIsSubmitting] = useState(false);
-
+  const [errorDoublon, setErrorDoublon] = useState(false);
   const [errorsConnexion, setErrorsConnexion] = useState({
     emptyUsername : false,
     emptyPassword : false,
@@ -73,26 +73,12 @@ const useForm = (callback, validate) => {
     e.preventDefault();
     setErrors(validate(values));
     setIsSubmitting(true);
-    var test = JSON.stringify(values);
-    console.log(test)
-    console.log(values);
-  fetch('https://benef-app.fr/api.php', {
-  method: "POST",
-  headers: {
-    'Accept' : 'application/json',
-    'Content-Type' : 'application/json'
-  },
-  body: JSON.stringify(values)
-
-})
-.then((response) => response.text())
-.then((result) => {
-  console.log(result)
-}).catch(err => {
-  // Do something for an error here
-  console.log("Error Reading data " + err);
+    if (Object.keys(errors).length === 0 && isSubmitting) {
+      console.log("pas d'erreur");
+    }else{
+      console.log("pleins d'erreurs")
+    }
   
-});
 };
 
 const handleSubmitConnexion = e => {
@@ -143,17 +129,52 @@ console.log(errorsConnexion);
 };
 
 
-
   useEffect(
     () => {
       if (Object.keys(errors).length === 0 && isSubmitting) {
-        callback && callback();
+        callback && callback();      
+      fetch('https://benef-app.fr/api.php', {
+        method: "POST",
+        headers: {
+          'Accept' : 'application/json',
+          'Content-Type' : 'application/json'
+        },
+        body: JSON.stringify(values)
+      
+      })
+      .then((response) => response.json())
+      .then((result) => {
+        console.log(result);
+        if(result.doublon == true){
+          console.log("Utilisateur doublon");
+          setErrorDoublon(true)
+        }else{
+          fetch('https://benef-app.fr/api-connexion.php', {
+            method: "POST",
+            headers: {
+              'Accept' : 'application/json',
+              'Content-Type' : 'application/json'
+            },
+            body: JSON.stringify(values)
+            })
+            .then((response) => response.json())
+            .then((data) => {
+              console.log(data);
+              sessionStorage.setItem("isConnected", true);
+              sessionStorage.setItem("id_user", data.id_user);
+              window.location.reload();
+          })
+        } 
+      }).catch(err => {
+        // Do something for an error here
+        console.log("Error Reading data " + err);
+      });
       }
     },
     [errors]
   );
 
-  return {handleChange,handleClickShowPassword,handleClickShowPassword2,handleMouseDownPassword, handleSubmit, handleSubmitConnexion, handleChangeCo, values, valuesConnexion, errors, errorsConnexion, handleStayConnected, stayConnected };
+  return {handleChange,handleClickShowPassword,handleClickShowPassword2,handleMouseDownPassword, handleSubmit, handleSubmitConnexion, handleChangeCo, values, valuesConnexion, errors, errorsConnexion, errorDoublon, handleStayConnected, stayConnected };
 };
 
 export default useForm ;
