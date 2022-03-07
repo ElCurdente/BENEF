@@ -15,7 +15,7 @@ import logo from './images/logo/logo_benef.svg';
 import logodark from './images/logo/logo_benef_dark.svg';
 import Parametre from './Parametre'
 import parameter from './images/icon/icon_parametres.svg';
-import favoris from './images/icon/icon_coeur.svg';
+import favoris from './images/icon/icon_coeur_b.svg';
 import {AnimationPresence, motion } from 'framer-motion/dist/framer-motion';
 
 

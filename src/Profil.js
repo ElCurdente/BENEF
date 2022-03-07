@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom'
-import coeur from './images/icon/heart_contour.svg';
-import coeurplein from './images/icon/heart_rempli.svg';
+import coeur from './images/icon/icon_coeur.svg';
+import coeurplein from './images/icon/icon_coeur_rempli.svg';
 import { useState } from 'react';
 import { useRef } from 'react';
 import { useEffect } from 'react';
@@ -10,7 +10,7 @@ import plusblanc from './images/icon/icon_plus_blanc.svg';
 import ToggleLike from './toggle-like.js';
 import lottie from 'lottie-web';
 import Lottie from 'react-lottie';
-import animationData from './like.json';
+import animationData from './images/animation/like.json';
 
 const Profil = () => {
 
@@ -148,10 +148,10 @@ const Profil = () => {
                             setState(!state);
                         }}
                         >
-                            {state ? "cacher" : "montrer"}
+                            {state ? state && <Lottie options={defaultOptions} height={18} width={18} /> : <img className='h-15px fill-current cursor-pointer' src={coeur}/>}
                     </button>
                     <div>
-                        {state && <Lottie options={defaultOptions} height={40} width={40} />}
+                        {/* {state && <Lottie options={defaultOptions} height={40} width={40} />} */}
                     </div>
                 </div>
             </div>
