@@ -39,13 +39,13 @@ const Nav = ({ searchValue, setSearchValue }) => {
                             <motion.div whileHover={{ scale: 1.03 }}>
                                 <li><img className="h-25px xl:hidden" src={recherche} alt="" /></li>
 
-                                <div className="relative text-gray-600 focus-within:text-gray-400 sm:hidden hidden xl:block">
+                                <div className="relative text-gray-650 focus-within:text-gray-650 sm:hidden hidden xl:block">
                                     <span className="absolute inset-y-0 left-0 flex items-center pl-2">
                                         <button type="submit" className="p-1 focus:outline-none focus:shadow-outline">
-                                            <svg fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24" className="w-6 h-6"><path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+                                            <svg fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 25 25" className="w-6 h-6"><path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
                                         </button>
                                     </span>
-                                    <input type="search" name="q" className="py-2 text-sm text-white xl:bg-white h-12 rounded-lg pl-10 focus:outline-none focus:bg-white focus:text-gray-900"
+                                    <input type="text" name="q" className="py-2 text-sm text-gray-650 xl:bg-white h-10 rounded-lg pl-12 focus:outline-none focus:bg-white focus:text-gray-550"
                                         placeholder="Recherche" autoComplete="off" value={searchValue} onChange={event => setSearchValue(event.target.value)}>
                                     </input>
                                 </div>
