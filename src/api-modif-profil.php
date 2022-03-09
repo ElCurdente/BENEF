@@ -11,30 +11,18 @@
         
           $decoded = json_decode($content, true);
 
-
-        //   If json_decode failed, the JSON is invalid.
           if(is_array($decoded)) {
-            $hash = password_hash($decoded['mdp'], PASSWORD_DEFAULT);
-            
+            foreach ($decoded as $v) {
+                echo "Valeur courante : $v.\n";
+            }
+            // $newUpvote =  $decoded["upvote"] - 1;
+            // echo $newUpvote;
             $db = new PDO('mysql:host=db5005161444.hosting-data.io;dbname=dbs4318125', 'dbu1522474', 'lesoussol06092021', array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8"));
-            $req = "SELECT * FROM benef_bdd WHERE username='{$decoded['username']}'";
-            $stmt=$db->query($req);
-            if($stmt->rowcount()==0){
-              $requete = "INSERT INTO benef_bdd (username, email, birth, postal, mdp, bio) VALUES (:username, :email, :birth, :postal, :mdp, :bio)";
-            $stmt2 = $db ->prepare($requete);
-            $stmt2 -> execute(array(
-              ":username" => $decoded['username'],
-              ":email" => $decoded['email'],
-              ":birth" => $decoded['birth'],
-              ":postal" => $decoded['postal'],
-              ":mdp" => $hash,
-              ":bio" => ''
+            $requete = "UPDATE benef_bdd SET bio = :bio WHERE username =".$decoded['username']."";
+            $stmt = $db ->prepare($requete);
+            $stmt -> execute(array(
+              ":bio" => $decoded['bio'],
             ));
-            echo '{"doublon" : false}';
-           }else{
-            echo '{"doublon" : true}';
-           }
-           
 
           } else {
             // Send error back to user.

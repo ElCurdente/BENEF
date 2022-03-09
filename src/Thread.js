@@ -183,7 +183,7 @@ const [openModal, setOpenModal] = useState(false);
 
 
 <div id="containerModal" className={openModal ? "block" : "hidden"}>
-            <div id="modal" ref={modal} className="flex w-screen h-screen bg-black bg-opacity-30 fixed bottom-0 left-0 justify-center z-50 items-end">
+            <div id="modal" ref={modal} className="flex w-screen h-screen bg-black bg-opacity-30 fixed bottom-0 left-0 justify-center z-40 items-end">
                
             <div className="w-3/4 h-90% mb-10 relative flex flex-col justify-start items-center rounded-t-3xl bg-white-0">
             <div className="mb-5">
