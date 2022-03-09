@@ -37,9 +37,9 @@ const Thread = () => {
   const [items, setItems] = useState([]);
   const [upvote, setUpvote] = useState();
   const [refreshKey, setRefreshKey] = useState(0);
-
   const nbUpvote = useRef(null);
   let history = useHistory();
+  const [modalItem,setModalItem] = useState([])
 
   useEffect(() => {
     fetch("https://benef-app.fr/api-post-render.php")
@@ -162,6 +162,11 @@ const [openModal, setOpenModal] = useState(false);
   }
   const modal = useRef(null);
 
+  function handleModal() {
+    setOpenModal(true);
+    setModalItem(this);
+    console.log(modalItem)
+  }
 
   if (error) {
     return <div>Erreur : {error.message}</div>;
@@ -182,7 +187,7 @@ const [openModal, setOpenModal] = useState(false);
                
             <div className="w-3/4 h-90% mb-10 relative flex flex-col justify-start items-center rounded-t-3xl bg-white-0">
             <div className="mb-5">
-            <h1 className="text-lg font-semibold mx-2 max-w-md mt-1	">Titre du bon plan</h1>
+            <h1 className="text-lg font-semibold mx-2 max-w-md mt-1	">{modalItem.title}</h1>
             <div className="flex w-full justify-evenly mb-10">
                       <button onClick={() => setOpenModal(false)} className="block px-5 py-2 text-white-0 text-lg font-semibold bg-red-450 hover:bg-white-0 hover:text-red-450 hover:border-red-450 border-2 border-red-450 dark:hover:bg-white-150 dark:hover:text-gray-550 active:bg-red-200 dark:bg-white-0 dark:text-black rounded-full transition duration-300 ease-in-out" type="submit">Fermer</button>
                        
@@ -198,9 +203,7 @@ const [openModal, setOpenModal] = useState(false);
                 <div className="w-full h-75% relative">
                   <img className="object-cover rounded-t-lg h-full w-full" src={resto} alt="" />
                 </div>
-                <div className="w-full h-25% md:cursor-pointer" onClick={() => {
-            setOpenModal(true);
-                }} >
+                <div className="w-full h-25% md:cursor-pointer" onClick={handleModal.bind(item)} >
                   <h1 className="text-lg font-semibold mx-2 max-w-md mt-1	">{item.title}</h1>
                     <div className="flex mt-2 text-sm w-92vw max-w-md 	">
                       <img src={adresse} className="ml-2 mr-1 w-3.5"></img> {item.address} <div className="absolute right-3">{item.postal}</div>
