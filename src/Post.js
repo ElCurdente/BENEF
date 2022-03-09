@@ -60,20 +60,7 @@ const Post = () => {
         e.preventDefault();
         setErrors(validate(values));
         setIsSubmitting(true);
-        // const formData = new FormData();
-        // const postForm = myForm.current;
-        // const formData = new FormData();
-        //         formData.append('image', image);
-        //         formData.append('title', values.title);
-        //         formData.append('desc', values.desc);
-        //         formData.append('address', values.address);
-        //         formData.append('postal', values.postal);
-        //         formData.append('expiration', values.expiration);
-        //         formData.append('category', values.category);
-        //         formData.append('certified', values.certified);
-        //         formData.append('cgu', values.cgu);
-        // console.log(postForm);
-        // console.log(formData);
+    
         console.log('fetch');
         const data = await fetch('https://benef-app.fr/api-post.php', {
             method: "POST",
