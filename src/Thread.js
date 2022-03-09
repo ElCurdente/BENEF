@@ -73,7 +73,6 @@ const Thread = () => {
       .catch(err => {
         console.log("Error Reading data " + err);
       });
-
       setState(!state);
   }
 
@@ -186,7 +185,7 @@ const Thread = () => {
                           // }
                         }
                         >
-                          {state ? state && <Lottie options={defaultOptions} height={17} width={17} id={item.id_post} /> : <img className='h-15px fill-current cursor-pointer' src={coeur} alt='' />}
+                          {state ? state && <Lottie options={defaultOptions} height={17} width={17} id={item.id_post} /> : <img className='h-15px fill-current cursor-pointer' id={item.id_post} src={coeur} alt='' />}
                         </button>
                         {/* <div> */}
                         {/* {state && <Lottie options={defaultOptions} height={40} width={40} />} */}
