@@ -33,7 +33,7 @@ const Accueil = () => {
 
     return (
 
-        <div className="dark:bg-gray-550 xl:bg-gray-200 xl:overflow-x-hidden">
+        <div className="dark:bg-gray-550 xl:bg-white-0 xl:overflow-x-hidden">
 
             <div className="flex justify-center z-50 relative xl:hidden">
                 <div className="fixed flex h-7vh w-100vw bg-red-450 dark:bg-black xl:justify-start justify-center items-center rounded-b-lg transition duration-500">
@@ -65,9 +65,7 @@ const Accueil = () => {
                 </div>
             </div>
             <Router>
-                <Link to="/parametre">
-                    <img src={parameter} alt="Paramètres" className="absolute xl:w-14 xl:h-14 xl:mr-96 h-25px right-6 top-4 z-50" />
-                </Link>
+                
                 <div>
                     <Nav searchValue={searchValue} setSearchValue={setSearchValue} />
                     
