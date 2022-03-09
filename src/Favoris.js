@@ -13,6 +13,8 @@ import upvoteBasplein from './images/icon/icon_vote_fill_r.svg';
 import upvoteOrange from './images/icon/icon_vote_orange.svg';
 import upvoteorangeplein from './images/icon/icon_vote_fill_orange.svg';
 import { motion } from 'framer-motion/dist/framer-motion';
+import coeur from './images/icon/icon_coeur.svg';
+import coeurPlein from './images/icon/icon_coeur_rempli.svg';
 
 function Favoris() {
 
@@ -162,9 +164,11 @@ function Favoris() {
                     <div className="w-full h-25% md:cursor-pointer">
                       <li key={item.id_post} className="mt-1 w-92vw max-w-md">
                         <div>
-                        <div className="bg-white-0 text-black absolute top-0 right-0 text-xl font-bold flex w-max py-1 rounded-lg">
-                        <button onClick={handleFav.bind(item.id_post)} className="px-2 upvote text-red-450 dark:text-black">Fav</button>
-                          </div>
+                        <div className="bg-white-0 h-7 w-7 text-black absolute flex justify-center items-center top-3 right-2 rounded-full">
+                        <button onClick={handleFav.bind(item.id_post)} className="upvote text-red-450 dark:text-black">
+                        <img className='h-15px fill-current cursor-pointer' src={coeurPlein} alt='' />
+                        </button>
+                        </div>
                           <div className="bg-white-0 text-black absolute top-44 text-xl font-bold flex w-max py-1 rounded-lg">
                             <button onClick={handleUpvote.bind(item)} className="pl-2 relative">
                               <motion.img whileTap={{ scale: 0.85 }} id="upvote_haut" src={upvoteHaut} className="opacity-100 h-28px"></motion.img>
