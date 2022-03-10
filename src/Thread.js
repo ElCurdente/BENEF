@@ -206,14 +206,14 @@ const Thread = () => {
             <div id="containerModal" className={openModal ? "block" : "hidden"}>
               <div id="modal" ref={modal} className="flex w-screen h-screen bg-black bg-opacity-30 fixed bottom-0 left-0 justify-center z-40 items-end">
 
-                <div className="w-full xl:w-2/6 h-90% mb-10 xl:mb-0 relative flex flex-col justify-start items-center rounded-t-3xl bg-white-0 overflow-auto">
+                <div className="w-full xl:w-2/6 h-90% mb-10 xl:mb-0 relative flex flex-col justify-start items-center rounded-t-3xl bg-white-0 overflow-auto dark:bg-gray-550 dark:text-white-0">
                   <div className="mb-5 mt-7 mx-3 flex flex-col">
                     <div className="w-full h-250px relative">
                       <img className="object-cover rounded-t-lg h-full w-full" src={modalItem.image} alt="" />
                     </div>
                     {/* <h1 className="text-lg xl:text-xl font-semibold mx-2 max-w-md">{modalItem.image}</h1> */}
                     <h1 className="text-lg xl:text-xl font-semibold max-w-md mt-2">{modalItem.title}</h1>
-                    <h1 className="text-base xl:text-lg px-4 max-w-max py-1 text-red-450 rounded-full border-2 border-red-450 font-semibold mt-4">{modalItem.category}</h1>
+                    <h1 className="text-base xl:text-lg px-4 max-w-max py-1 text-red-450 dark:text-white-0 rounded-full border-2 border-red-450 dark:border-white-0 font-semibold mt-4">{modalItem.category}</h1>
 
                     <div className="flex w-92vw max-w-md mt-4">
                       <motion.img animate={{ y: ["-10%", "-40%"] }} transition={{ yoyo: Infinity, duration: 0.4, ease: "easeOut", repeatDelay: 1 }} id="loca" src={localisation} className="opacity-100 h-20px"></motion.img><div className='ml-6'>{modalItem.address}{", "}{modalItem.postal}</div>
@@ -228,7 +228,7 @@ const Thread = () => {
                     <h1 className="self-end text-sm mt-4"> Posté par <span className="font-semibold">{modalItem.user_pseudo}</span></h1>
 
                     <div className="flex w-full justify-evenly mt-10 mb-10">
-                      <button onClick={() => setOpenModal(false)} className="block px-4 font-semibold py-2 bg-red-450 hover:bg-white-0 hover:text-red-450 hover:border-red-450 border-2 border-red-450 dark:hover:bg-white-150 dark:hover:text-gray-550 active:bg-red-200 dark:bg-white-0 dark:text-black rounded-full transition duration-300 ease-in-out text-white-0" type="submit">Fermer</button>
+                      <button onClick={() => setOpenModal(false)} className="block px-4 font-semibold py-2 bg-red-450 hover:bg-white-0 hover:text-red-450 hover:border-red-450 border-2 border-red-450 dark:hover:bg-white-150 dark:hover:text-gray-550 active:bg-red-200 dark:bg-white-0 dark:border-black dark:text-black rounded-full transition duration-300 ease-in-out text-white-0" type="submit">Fermer</button>
 
                     </div>
                   </div>
