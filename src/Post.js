@@ -56,28 +56,28 @@ const Post = () => {
 
     const myForm = useRef(null);
 
-    const handleSubmit = async (e) => {
-        e.preventDefault();
-        setErrors(validate(values));
-        setIsSubmitting(true);
+    // const handleSubmit = async (e) => {
+    //     e.preventDefault();
+    //     // setErrors(validate(values));
+    //     setIsSubmitting(true);
     
-        console.log('fetch');
-        const data = await fetch('https://benef-app.fr/api-post.php', {
-            method: "POST",
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(values)
-        })
-        const response = await data.json();
-        if (response) {
-            console.log("ok");
-        } else {
-            console.log("not ok");
-        }
+    //     console.log('fetch');
+    //     const data = await fetch('https://benef-app.fr/api-post.php', {
+    //         method: "POST",
+    //         headers: {
+    //             'Accept': 'application/json',
+    //             'Content-Type': 'application/json'
+    //         },
+    //         body: JSON.stringify(values)
+    //     })
+    //     const response = await data.json();
+    //     if (response) {
+    //         console.log("ok");
+    //     } else {
+    //         console.log("not ok");
+    //     }
        
-    };
+    // };
 
     const [image, setImage] = useState();
     const [preview, setPreview] = useState();
@@ -96,6 +96,75 @@ const Post = () => {
             console.log("ça marche")
         }
     }, [image]);
+
+    const [picture, setPicture] = useState({});
+
+    const uploadPicture = (e) => {
+        const file = e.target.files[0];
+        if (file) {
+            setImage(file);
+            console.log("ça marche pas")
+        } else {
+            setImage(null);
+        }
+
+        console.log(file)
+        setPicture({
+            /* contains the preview, if you want to show the picture to the user
+                 you can access it with this.state.currentPicture
+             */
+            picturePreview: URL.createObjectURL(e.target.files[0]),
+            /* this contains the file we want to send */
+            pictureAsFile: e.target.files[0],
+        });
+    };
+
+    const handleSubmit = async (event) => {
+        event.preventDefault();
+        const formData = new FormData();
+        formData.append("file", picture.pictureAsFile);
+        formData.append('title', values.title);
+        formData.append('desc', values.desc);
+        formData.append('address', values.address);
+        formData.append('postal', values.postal);
+        formData.append('expiration', values.expiration);
+        formData.append('category', values.category);
+        formData.append('certified', values.certified);
+        formData.append('cgu',  values.cgu);
+        formData.append('id_user', sessionStorage.getItem('id_user'));
+
+        console.log(picture.pictureAsFile);
+
+        for (var key of formData.entries()) {
+            console.log(key[0] + ", " + key[1]);
+        }
+        console.log(formData)
+        const data = await fetch("https://benef-app.fr/api-post.php", {
+            method: "post",
+            // headers: { "Content-Type": "multipart/form-data" },
+            body: formData,
+        });
+    //     fetch('https://benef-app.fr/api-post.php', {
+    //     method: "POST",
+    //     headers: {
+    //       'Accept' : 'application/json',
+    //       'Content-Type' : 'application/json'
+    //     },
+    //     body: JSON.stringify(values)
+      
+    //   })
+    //   .then((response) => response.json())
+    //   .then((result) => {
+    //     console.log(result);
+    //   })
+        const uploadedImage = await data.json();
+        if (uploadedImage) {
+            console.log("Successfully uploaded image");
+            console.log(data);
+        } else {
+            console.log("Error Found");
+        }
+    };
 
 
     return (
@@ -127,7 +196,7 @@ const Post = () => {
                             maxLength="30"
                             ref={fileInputRef}
                             value={values.image}
-                            onChange={onFileChange}
+                            onChange={uploadPicture}
                             className="hidden placeholder-white-150 text-white-150 border-b-2 bg-transparent w-4/5 my-2 h-12 pt-5 text-left focus:outline-none  focus:placeholder-transparent"
 
 

@@ -208,7 +208,7 @@ const Thread = () => {
                 <div className="w-full xl:w-2/6 h-90% mb-10 xl:mb-0 relative flex flex-col justify-start items-center rounded-t-3xl bg-white-0">
                   <div className="mb-5 mt-7 mx-3">
                     <div className="w-full h-250px relative">
-                      <img className="object-cover rounded-t-lg h-full w-full" src={resto} alt="" />
+                      <img className="object-cover rounded-t-lg h-full w-full" src={modalItem.image} alt="" />
                     </div>
                     {/* <h1 className="text-lg xl:text-xl font-semibold mx-2 max-w-md">{modalItem.image}</h1> */}
                     <h1 className="text-lg xl:text-xl font-semibold max-w-md mt-2">{modalItem.title}</h1>
@@ -237,7 +237,7 @@ const Thread = () => {
               <motion.div className="w-92vw xl:w-full relative bg-red-450 dark:bg-black rounded-lg text-white-0 mb-4 xl:mb-5 shadow-customm"
                 whileHover={{ scale: 1.01 }}>
                 <div className="w-full h-250px relative">
-                  <img className="object-cover rounded-t-lg h-full w-full" src={resto} alt="" />
+                  <img className="object-cover rounded-t-lg h-full w-full" src={item.image} alt="" />
                 </div>
                 <div className="w-full min-h-max pb-4 md:cursor-pointer" onClick={handleModal.bind(item)} >
                   <h1 className="text-lg font-semibold mx-2 max-w-md mt-2	">{item.title}</h1>
