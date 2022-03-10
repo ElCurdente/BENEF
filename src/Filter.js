@@ -11,6 +11,7 @@ import Upvote from './Upvote';
 import upvoteBas from './images/icon/upvote.svg';
 import upvoteHaut from './images/icon/upvote2.svg';
 import recherche from './images/icon/icon_recherche.svg';
+import { motion } from 'framer-motion/dist/framer-motion';
 
 const Filter = ({ searchValue, setSearchValue }) => {
   const [error, setError] = useState(null);
@@ -246,7 +247,8 @@ const Filter = ({ searchValue, setSearchValue }) => {
             {(filters.filtered ?
 
               filter1000.map(item => (
-                <div className="w-92vw h-150px relative flex justify-between items-center bg-red-450 xl:w-full dark:bg-black rounded-lg text-white-0 mb-5 shadow-customm">
+                <motion.div className="w-92vw h-150px relative flex justify-between items-center bg-red-450 xl:w-full dark:bg-black rounded-lg text-white-0 mb-5 shadow-customm"
+                  whileHover={{ scale: 1.01 }}>
                   <div className="h-full w-35% flex justify-center items-center relative">
                     <img className="w-90% h-90%  object-cover rounded-lg" src={item.image} alt="" />
                   </div>
@@ -261,11 +263,12 @@ const Filter = ({ searchValue, setSearchValue }) => {
                       </div>
                     </li>
                   </div>
-                </div>
+                </motion.div>
               ))
               :
               filterByName.map(item => (
-                <div className="w-92vw h-150px relative flex justify-between items-center bg-red-450 xl:w-full dark:bg-black rounded-lg text-white-0 mb-5 shadow-customm">
+                <motion.div className="w-92vw h-150px relative flex justify-between items-center bg-red-450 xl:w-full dark:bg-black rounded-lg text-white-0 mb-5 shadow-customm"
+                whileHover={{ scale: 1.01 }} >
                   <div className="h-full w-35% flex justify-center items-center relative">
                     <img className="w-90% h-90%  object-cover rounded-lg" src={item.image} alt="" />
                   </div>
@@ -280,7 +283,7 @@ const Filter = ({ searchValue, setSearchValue }) => {
                       </div>
                     </li>
                   </div>
-                </div>
+                </motion.div>
               ))
             )}
 
