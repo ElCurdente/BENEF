@@ -9,15 +9,6 @@ import './index.css';
 
 const Parametre = () => {
 
-    const checkboxLight = document.querySelector('._3maKS');
-    const html = document.querySelector('html');
-    const toggleDot = document.querySelector('#toggle_dot');
-
-
-    const [checked, setChecked] = React.useState(true);
-    const [checked2, setChecked2] = React.useState(true);
-    const [checked3, setChecked3] = React.useState(true);
-
     function handleDeconnexion() {
         sessionStorage.clear();
         window.location.reload();
@@ -56,21 +47,21 @@ const Parametre = () => {
                 <li className='mt-2 list-none'>
 
                     <ul className="pb-2">
-                        <Link to="/Infos">
-                            <a className="flex justify-between cursor-pointer font-normal hover:font-semibold">
+                        <Link to="/Infos" className="flex justify-between cursor-pointer font-normal hover:font-semibold">
+                            
                             Informations du compte
                             <img src={fleche} alt="fleche" className="w-2 transform rotate-180 mr-2"/>
-                            </a>
+                            
                         </Link>
                     </ul>
                     <ul className="pb-2">
-                        <a className="flex justify-between cursor-pointer font-normal">
+                        <a className="flex justify-between cursor-pointer font-normal" href>
                             Changer son mot de passe
                             <img src={fleche} alt="fleche" className="w-2 transform rotate-180 mr-2"/>
                         </a>
                     </ul>
                     <ul>
-                        <a className="flex justify-between cursor-pointer font-normal">
+                        <a className="flex justify-between cursor-pointer font-normal" href='#'>
                             Bons plans enregistrés
                             <img src={fleche} alt="fleche" className="w-2 transform rotate-180 mr-2"/>
                         </a>
@@ -93,11 +84,11 @@ const Parametre = () => {
                            
                            <a className="cursor-pointer font-normal">Conditions d'utilisations générales</a>
                         </Link>
-                        </ul>
+                    </ul>
                         
                 <ul className="w-full flex justify-between items-center font-normal pb-2">
-                     <a className="cursor-pointer font-normal" HREF="mailto:admin@benef-app.fr">Nous contacter</a>
-                    </ul>
+                     <a className="cursor-pointer font-normal" href="mailto:admin@benef-app.fr">Nous contacter</a>
+                </ul>
 
                 </li>
                 <h2 onClick={handleDeconnexion} className="mt-2  pt-7 text-base font-semibold cursor-pointer ">Déconnexion</h2>
