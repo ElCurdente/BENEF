@@ -234,7 +234,7 @@ const [openModal, setOpenModal] = useState(false);
                   <img className="object-cover rounded-t-lg h-full w-full" src={resto} alt="" />
                 </div>
                 <div className="w-full min-h-max pb-4 md:cursor-pointer" onClick={handleModal.bind(item)} >
-                  <h1 className="text-lg font-semibold mx-2 max-w-md mt-1	">{item.title}</h1>
+                  <h1 className="text-lg font-semibold mx-2 max-w-md mt-2	">{item.title}</h1>
                     <div className="flex mt-2 text-sm w-92vw max-w-md">
                       <img src={adresse} className="ml-2 mr-1 w-3.5"></img> {item.address} <div className="absolute right-3">{item.postal}</div>
                     </div>
