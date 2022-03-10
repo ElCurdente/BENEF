@@ -257,7 +257,7 @@ const Thread = () => {
                 </div>
                 <li key={item.id_post} className="mt-1 w-92vw max-w-md">
                   <div>
-                    <div className="bg-white-0 h-7 w-7 text-black absolute flex justify-center items-center top-3 right-2 rounded-full">
+                    <div className="bg-white-0 h-10 w-10 text-black absolute flex justify-center items-center top-3 right-2 rounded-full">
                       <button className="upvote text-red-450 dark:text-black"
                         onClick={
                           // () => {
@@ -267,7 +267,7 @@ const Thread = () => {
                           // }
                         }
                       >
-                        {state ? state && <Lottie options={defaultOptions} height={17} width={17} id={item.id_post} /> : <img className='h-15px fill-current cursor-pointer' id={item.id_post} src={coeur} alt='' />}
+                        {state ? state && <Lottie options={defaultOptions} height={17} width={17} id={item.id_post} /> : <img className='h-20px fill-current cursor-pointer' id={item.id_post} src={coeur} alt='' />}
                       </button>
                       {/* <div> */}
                       {/* {state && <Lottie options={defaultOptions} height={40} width={40} />} */}
