@@ -207,16 +207,16 @@ const [openModal, setOpenModal] = useState(false);
                
             <div className="w-3/4 xl:w-2/6 h-90% mb-10 xl:mb-0 relative flex flex-col justify-start items-center rounded-t-3xl bg-white-0">
             <div className="mb-5">
-            <h1 className="text-lg xl:text-xl font-semibold mx-2 max-w-md mt-10">{modalItem.image}</h1>
-            <h1 className="text-lg xl:text-xl font-semibold mx-2 max-w-md mt-10">{modalItem.title}</h1>
-            <h1 className="text-lg xl:text-lg px-5 w-full py-1 text-red-450 rounded-full border-2 border-red-450 w-auto font-semibold mx-2 max-w-md mt-10">{modalItem.category}</h1>
+            <h1 className="text-lg font-semibold mx-2 max-w-md mt-10">{modalItem.image}</h1>
+            <h1 className="text-lg font-semibold mx-2 max-w-md mt-10">{modalItem.title}</h1>
+            <h1 className="text-lg px-5 w-full py-1 text-red-450 rounded-full border-2 border-red-450 w-auto font-semibold mx-2 max-w-md mt-10">{modalItem.category}</h1>
             <div className="flex w-92vw max-w-md mt-10">
             <motion.img animate={{ y: ["-10%", "-50%"] }} transition={{ yoyo: Infinity, duration: 0.4, ease: "easeOut", repeatDelay: 1  }} id="loca" src={localisation} className="opacity-100 h-20px"></motion.img><div className='ml-10'>{modalItem.address}{", "}{modalItem.postal}</div>
             </div>
             <div className="flex mt-2 w-92vw max-w-md">
             <motion.img animate={{ rotate: 180 }} transition={{ repeat: Infinity, duration: 0.4, ease: "easeOut", repeatDelay: 1 }} id="sablier" src={sablier} className="opacity-100 h-20px "></motion.img><div className='ml-10'>{modalItem.expiration}</div>
             </div>
-            <h1 className="text-sm xl:text-sm mx-2 max-w-md mt-10">{modalItem.description}</h1>
+            <h1 className="text-sm mx-2 max-w-md mt-10">{modalItem.description}</h1>
     
             <div className="flex w-full justify-evenly mt-20 mb-10">
                       <button onClick={() => setOpenModal(false)} className="block px-5 py-2 text-white-0 text-lg font-semibold bg-red-450 hover:bg-white-0 hover:text-red-450 hover:border-red-450 border-2 border-red-450 dark:hover:bg-white-150 dark:hover:text-gray-550 active:bg-red-200 dark:bg-white-0 dark:text-black rounded-full transition duration-300 ease-in-out" type="submit">Fermer</button>
