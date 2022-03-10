@@ -9,6 +9,7 @@ import resto from './images/resto.jpg';
 import musee from './images/musee.jpg';
 import adresse from './images/icon/adress.svg';
 import Upvote from './Upvote';
+import sablier from './images/icon/icon_sablier.svg';
 import upvoteBas from './images/icon/upvote.svg';
 import upvoteHaut from './images/icon/upvote2.svg';
 import upvoteHautplein from './images/icon/icon_vote_fill.svg';
@@ -205,7 +206,13 @@ const [openModal, setOpenModal] = useState(false);
                
             <div className="w-3/4 h-90% mb-10 xl:mb-0 relative flex flex-col justify-start items-center rounded-t-3xl bg-white-0">
             <div className="mb-5">
-            <h1 className="text-lg font-semibold mx-2 max-w-md mt-1	">{modalItem.title}</h1>
+            <h1 className="text-lg xl:text-xl font-semibold mx-2 max-w-md mt-10">{modalItem.image}</h1>
+            <h1 className="text-lg xl:text-xl font-semibold mx-2 max-w-md mt-10">{modalItem.title}</h1>
+            <h1 className="text-lg xl:text-lg px-5 w-full py-1 text-red-450 rounded-full border-2 border-red-450 w-auto font-semibold mx-2 max-w-md mt-10">{modalItem.category}</h1>
+            <h1 className="text-lg xl:text-lg mx-2 max-w-md mt-10">{modalItem.address}{","} {modalItem.postal}</h1>
+            <motion.img whileTap={{ scale: 0.85 }} id="sablier" src={sablier} className="opacity-100 h-28px"></motion.img>
+            <h1 className="text-sm xl:text-sm mx-2 max-w-md mt-10">{modalItem.description}</h1>
+    
             <div className="flex w-full justify-evenly mb-10">
                       <button onClick={() => setOpenModal(false)} className="block px-5 py-2 text-white-0 text-lg font-semibold bg-red-450 hover:bg-white-0 hover:text-red-450 hover:border-red-450 border-2 border-red-450 dark:hover:bg-white-150 dark:hover:text-gray-550 active:bg-red-200 dark:bg-white-0 dark:text-black rounded-full transition duration-300 ease-in-out" type="submit">Fermer</button>
                        
@@ -216,14 +223,14 @@ const [openModal, setOpenModal] = useState(false);
               </div>
 
             {items.sort(compare).map(item => (
-              <motion.div className="w-92vw xl:w-full h-300px xl:h-96 relative bg-red-450 dark:bg-black rounded-lg text-white-0 mb-4 xl:mb-5 shadow-customm"
+              <motion.div className="w-92vw xl:w-full xl:h-96 relative bg-red-450 dark:bg-black rounded-lg text-white-0 mb-4 xl:mb-5 shadow-customm"
                 whileHover={{ scale: 1.01 }}>
-                <div className="w-full h-75% relative">
+                <div className="w-full h-250px relative">
                   <img className="object-cover rounded-t-lg h-full w-full" src={resto} alt="" />
                 </div>
-                <div className="w-full h-25% md:cursor-pointer" onClick={handleModal.bind(item)} >
+                <div className="w-full min-h-max pb-3 md:cursor-pointer" onClick={handleModal.bind(item)} >
                   <h1 className="text-lg font-semibold mx-2 max-w-md mt-1	">{item.title}</h1>
-                    <div className="flex mt-2 text-sm w-92vw max-w-md 	">
+                    <div className="flex mt-2 text-sm w-92vw max-w-md">
                       <img src={adresse} className="ml-2 mr-1 w-3.5"></img> {item.address} <div className="absolute right-3">{item.postal}</div>
                     </div>
 
