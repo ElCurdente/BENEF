@@ -210,7 +210,7 @@ const [openModal, setOpenModal] = useState(false);
             <h1 className="text-lg xl:text-xl font-semibold mx-2 max-w-md mt-10">{modalItem.image}</h1>
             <h1 className="text-lg xl:text-xl font-semibold mx-2 max-w-md mt-10">{modalItem.title}</h1>
             <h1 className="text-lg xl:text-lg px-5 w-full py-1 text-red-450 rounded-full border-2 border-red-450 w-auto font-semibold mx-2 max-w-md mt-10">{modalItem.category}</h1>
-            <div className="flex mt-2 w-92vw max-w-md">
+            <div className="flex w-92vw max-w-md mt-10">
             <motion.img animate={{ y: ["-10%", "-50%"] }} transition={{ yoyo: Infinity, duration: 0.4, ease: "easeOut", repeatDelay: 1  }} id="loca" src={localisation} className="opacity-100 h-20px"></motion.img><div className='ml-10'>{modalItem.address}{", "}{modalItem.postal}</div>
             </div>
             <div className="flex mt-2 w-92vw max-w-md">
