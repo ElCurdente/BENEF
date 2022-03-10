@@ -151,7 +151,7 @@ function Favoris() {
               <img src={upvoteHautplein} />
             </motion.div> */}
             <ul className="h-full xl:w-2/6 bg-white-0 xl:dark:bg-gray-550 ">
-              <div className="mt-24 ml-6 mr-6 pb-12 xl:dark:bg-gray-550">
+              <div className="mt-16 ml-6 mr-6 pb-12 xl:dark:bg-gray-550">
     
                 {items.sort(compare).map(item => (
                   <motion.div className="w-92vw xl:w-full h-300px xl:h-96 relative bg-red-450 dark:bg-black rounded-lg text-white-0 mb-2 xl:mb-5"

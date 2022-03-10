@@ -180,13 +180,13 @@ const [openModal, setOpenModal] = useState(false);
           <img src={upvoteHautplein} />
         </motion.div> */}
         <ul className="h-full xl:w-2/6 bg-white-0 xl:dark:bg-gray-550 ">
-          <div className="mt-24 ml-6 mr-6 pb-12 xl:dark:bg-gray-550">
+          <div className="mt-16 ml-6 mr-6 pb-12 xl:dark:bg-gray-550">
 
 
 <div id="containerModal" className={openModal ? "block" : "hidden"}>
             <div id="modal" ref={modal} className="flex w-screen h-screen bg-black bg-opacity-30 fixed bottom-0 left-0 justify-center z-40 items-end">
                
-            <div className="w-3/4 xl:w-2/6 h-full xl:h-full top-20 relative flex flex-col justify-start items-center rounded-t-3xl bg-white-0">
+            <div className="w-3/4 h-90% mb-10 xl:mb-0 relative flex flex-col justify-start items-center rounded-t-3xl bg-white-0">
             <div className="mb-5">
             <h1 className="text-lg xl:text-xl font-semibold mx-2 max-w-md mt-10">{modalItem.image}</h1>
             <h1 className="text-lg xl:text-xl font-semibold mx-2 max-w-md mt-10">{modalItem.title}</h1>
@@ -205,12 +205,12 @@ const [openModal, setOpenModal] = useState(false);
               </div>
 
             {items.sort(compare).map(item => (
-              <motion.div className="w-92vw xl:w-full h-300px xl:h-96 relative bg-red-450 dark:bg-black rounded-lg text-white-0 mb-4 xl:mb-5 shadow-customm"
+              <motion.div className="w-92vw xl:w-full xl:h-96 relative bg-red-450 dark:bg-black rounded-lg text-white-0 mb-4 xl:mb-5 shadow-customm"
                 whileHover={{ scale: 1.01 }}>
-                <div className="w-full h-75% relative">
+                <div className="w-full h-250px relative">
                   <img className="object-cover rounded-t-lg h-full w-full" src={resto} alt="" />
                 </div>
-                <div className="w-full h-25% md:cursor-pointer" onClick={handleModal.bind(item)} >
+                <div className="w-full min-h-max pb-3 md:cursor-pointer" onClick={handleModal.bind(item)} >
                   <h1 className="text-lg font-semibold mx-2 max-w-md mt-1	">{item.title}</h1>
                     <div className="flex mt-2 text-sm w-92vw max-w-md">
                       <img src={adresse} className="ml-2 mr-1 w-3.5"></img> {item.address} <div className="absolute right-3">{item.postal}</div>
