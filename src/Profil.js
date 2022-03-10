@@ -23,7 +23,7 @@ const Profil = () => {
     const [isLoaded, setIsLoaded] = useState(false);
     const [modalItem, setModalItem] = useState([]);
     const [openModal, setOpenModal] = useState(false);
-    
+    const [bio, modifbio] = useState(false);
 
     useEffect(() => {
         fetch("https://benef-app.fr/api-post-user.php")
@@ -153,6 +153,8 @@ const Profil = () => {
             .catch(err => {
               console.log("Error Reading data " + err);
             });
+
+            modifbio(false);
             
     };
 
@@ -203,9 +205,7 @@ const Profil = () => {
                         <button onClick={handleModify} className="flex items-center h-10 bg-red-450 py-2 px-4 rounded-3xl text-white-0 dark:text-black hover:bg-white-0 hover:text-red-450 hover:border-red-450 border-2 border-red-450 dark:bg-white-0 dark:border-white-0">Modifie ton profil</button>
                         <Link to="/favoris"><button className="flex items-center text-red-450 dark:text-white-0 hover:underline">Voir mes favoris <img className="pl-1 h-15px fill-current" src={coeur} alt="" /></button></Link>
                     </div>
-                    {/* <div className="flex justify-end items-center py-5 mr-5">
-                                <button onClick={handleDeconnexion} className="block px-5 py-2 text-white-0 text-lg font-semibold bg-red-450 hover:bg-white-0 hover:text-red-450 hover:border-red-450 border-2 border-red-450 dark:hover:bg-white-150 dark:hover:text-gray-550 active:bg-red-200 dark:bg-white-0 dark:text-black rounded-full transition duration-300 ease-in-out" type="submit">Déconnexion</button>
-                            </div> */}
+
                 </div>
                 <div id="barre1" className="h-1px w-95vw xl:w-2/6 mt-4 bg-gray-200"></div>
                 <div id="badges" className="w-95vw h-100px xl:w-2/6">
