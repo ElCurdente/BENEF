@@ -41,7 +41,7 @@ const Parametre = () => {
 
 
         <div className="flex flex-col justify-center items-center h-screen w-screen dark:bg-gray-550 bg-gray-100 xl:bg-white-0 dark:text-white-0">
-            <div id="infos" className="overflow-y-auto w-95vw h-full mt-20 dark:bg-gray-550 xl:bg-white-0 xl:w-1/3 xl:p-5">
+            <div id="infos" className="overflow-y-auto w-95vw h-full mt-12 dark:bg-gray-550 xl:bg-white-0 xl:w-1/3 xl:p-5">
 
 
                 <div className="flex flex-row justify-center items-center">

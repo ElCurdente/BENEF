@@ -255,7 +255,7 @@ const Filter = ({ searchValue, setSearchValue }) => {
                       <div className="bg-white-0 text-black text-xl font-bold absolute right-3 top-3 w-max rounded-lg">
                         <span className="px-2 upvote">{item.upvote}</span>
                       </div>
-                      <h1 className="text-lg font-semibold mx-2">{item.title}</h1>
+                      <h1 className="text-base font-semibold mx-2">{item.title}</h1>
                       <div className="flex mt-2 text-sm">
                         <img src={adresse} className="ml-2 mr-1 w-3.5"></img> {item.address} <div className="absolute right-3 bottom-3">{item.postal}</div>
                       </div>
@@ -274,7 +274,7 @@ const Filter = ({ searchValue, setSearchValue }) => {
                       <div className="bg-white-0 text-black text-xl font-bold absolute right-3 top-3 w-max rounded-lg">
                         <span className="px-2 upvote">{item.upvote}</span>
                       </div>
-                      <h1 className="text-lg font-semibold mx-2">{item.title}</h1>
+                      <h1 className="text-base font-semibold mx-2">{item.title}</h1>
                       <div className="flex mt-2 text-sm">
                         <img src={adresse} className="ml-2 mr-1 w-3.5"></img> {item.address} <div className="absolute right-3 bottom-3">{item.postal}</div>
                       </div>
