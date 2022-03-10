@@ -227,8 +227,8 @@ const Thread = () => {
 
                     <h1 className="self-end text-sm mt-4"> Posté par <span className="font-semibold">{modalItem.user_pseudo}</span></h1>
 
-                    <div className="flex w-full justify-evenly mb-10">
-                      <button onClick={() => setOpenModal(false)} className="block px-3 py-2 bg-red-450 hover:bg-white-0 hover:text-red-450 hover:border-red-450 border-2 border-red-450 dark:hover:bg-white-150 dark:hover:text-gray-550 active:bg-red-200 dark:bg-white-0 dark:text-black rounded-full transition duration-300 ease-in-out" type="submit"><img src={fleche} alt="fleche" className="w-2 transform"/></button>
+                    <div className="flex w-full justify-evenly mt-10 mb-10">
+                      <button onClick={() => setOpenModal(false)} className="block px-4 font-semibold py-2 bg-red-450 hover:bg-white-0 hover:text-red-450 hover:border-red-450 border-2 border-red-450 dark:hover:bg-white-150 dark:hover:text-gray-550 active:bg-red-200 dark:bg-white-0 dark:text-black rounded-full transition duration-300 ease-in-out text-white-0" type="submit">Fermer</button>
 
                     </div>
                   </div>
