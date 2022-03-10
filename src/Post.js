@@ -25,6 +25,7 @@ const Post = () => {
         postal: '',
         expiration: '',
         category: '',
+        place: '',
         certified: 'false',
         cgu: 'false',
     });
@@ -129,6 +130,7 @@ const Post = () => {
         formData.append('postal', values.postal);
         formData.append('expiration', values.expiration);
         formData.append('category', values.category);
+        formData.append('place', values.place);
         formData.append('certified', values.certified);
         formData.append('cgu',  values.cgu);
         formData.append('id_user', sessionStorage.getItem('id_user'));
@@ -144,19 +146,6 @@ const Post = () => {
             // headers: { "Content-Type": "multipart/form-data" },
             body: formData,
         });
-    //     fetch('https://benef-app.fr/api-post.php', {
-    //     method: "POST",
-    //     headers: {
-    //       'Accept' : 'application/json',
-    //       'Content-Type' : 'application/json'
-    //     },
-    //     body: JSON.stringify(values)
-      
-    //   })
-    //   .then((response) => response.json())
-    //   .then((result) => {
-    //     console.log(result);
-    //   })
         const uploadedImage = await data.json();
         if (uploadedImage) {
             console.log("Successfully uploaded image");
@@ -256,7 +245,7 @@ const Post = () => {
                             name="address"
 
                             placeholder="Adresse" className="placeholder-white-150 text-white-150 border-b-2 bg-transparent w-4/5 my-2 h-12 pt-5 text-left focus:outline-none  focus:placeholder-transparent"
-                            value={values.adress}
+                            value={values.address}
                             onChange={handleChange}
                         />
                     </div>
@@ -273,6 +262,19 @@ const Post = () => {
                             onChange={handleChange}
                         />
                         {errors.postal && <p className="absolute -bottom-4 left-10 text-red-900 dark:text-red-650">{errors.postal}</p>}
+                    </div>
+
+                    <div className="flex  relative justify-center items-center">
+                        <label htmlFor="postal" className="">
+                        </label>
+                        <input id="place"
+                            type="text"
+                            name="place"
+                            placeholder="Lieu" className="placeholder-white-150 text-white-150 border-b-2 bg-transparent w-4/5 my-2 h-12 pt-5 text-left focus:outline-none  focus:placeholder-transparent"
+                            value={values.place}
+                            onChange={handleChange}
+                            required
+                        />
                     </div>
 
                     <div className="flex  relative justify-center items-center">

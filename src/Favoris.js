@@ -157,7 +157,7 @@ function Favoris() {
                   <motion.div className="w-92vw xl:w-full relative bg-red-450 dark:bg-black rounded-lg text-white-0 mb-2 xl:mb-5"
                     whileHover={{ scale: 1.01 }}>
                     <div className="w-full h-250px relative">
-                      <img className="object-cover rounded-t-lg h-full w-full" src={profil} alt="" />
+                      <img className="object-cover rounded-t-lg h-full w-full" src={item.image} alt="" />
                     </div>
                     <div className="w-full min-h-max pb-4 md:cursor-pointer">
                       <li key={item.id_post} className="mt-1 w-92vw max-w-md">

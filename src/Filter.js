@@ -248,7 +248,7 @@ const Filter = ({ searchValue, setSearchValue }) => {
               filter1000.map(item => (
                 <div className="w-92vw h-150px relative flex justify-between items-center bg-red-450 xl:w-full dark:bg-black rounded-lg text-white-0 mb-5 shadow-customm">
                   <div className="h-full w-35% flex justify-center items-center relative">
-                    <img className="w-90% h-90%  object-cover rounded-lg" src={profil} alt="" />
+                    <img className="w-90% h-90%  object-cover rounded-lg" src={item.image} alt="" />
                   </div>
                   <div className="w-65% justify-self-end flex relative justify-center items-center h-full">
                     <li key={item.id_post} className="mt-1 w-92vw">
@@ -267,7 +267,7 @@ const Filter = ({ searchValue, setSearchValue }) => {
               filterByName.map(item => (
                 <div className="w-92vw h-150px relative flex justify-between items-center bg-red-450 xl:w-full dark:bg-black rounded-lg text-white-0 mb-5 shadow-customm">
                   <div className="h-full w-35% flex justify-center items-center relative">
-                    <img className="w-90% h-90%  object-cover rounded-lg" src={profil} alt="" />
+                    <img className="w-90% h-90%  object-cover rounded-lg" src={item.image} alt="" />
                   </div>
                   <div className="w-65% justify-self-end flex relative justify-center items-center h-full">
                     <li key={item.id_post} className="mt-1 w-92vw">
