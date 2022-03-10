@@ -43,6 +43,7 @@ const Thread = () => {
   const nbUpvote = useRef(null);
   let history = useHistory();
   const [modalItem, setModalItem] = useState([])
+  const [openModal, setOpenModal] = useState(false);
 
   useEffect(() => {
     fetch("https://benef-app.fr/api-post-render.php")
@@ -57,6 +58,32 @@ const Thread = () => {
           setError(error);
         }
       )
+  }, [])
+
+  useEffect(() => {
+    if(openModal === true){
+      console.log("prêt à fetch")
+      fetch('https://benef-app.fr/api-infos-utilisateur.php', {
+        method: "POST",
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ id_user: modalItem.id_user })
+      })
+        .then((response) => response.json())
+        .then((data) => {
+          console.log(data)
+          setModalItem(prevState => ({
+            ...prevState,
+            user_pseudo: data.username,
+          }));
+        })
+        .catch(err => {
+          console.log("Error Reading data " + err);
+        });
+        console.log(modalItem);
+    }
   }, [])
 
   function handleFav() {
@@ -154,8 +181,6 @@ const Thread = () => {
   function Alert() { alert('Le message à été supprimé'); };
   function DelayAlert() { setInterval(Alert, 2000); }
 
-  const [openModal, setOpenModal] = useState(false);
-
   const btnOuvrir = () => {
     setOpenModal(true);
   }
@@ -168,25 +193,6 @@ const Thread = () => {
   function handleModal() {
     setOpenModal(true);
     setModalItem(this);
-    fetch('https://benef-app.fr/api-infos-utilisateur.php', {
-      method: "POST",
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({ id_user: modalItem.id_user })
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        setModalItem(prevState => ({
-          ...prevState,
-          user_pseudo: data.username,
-        }));
-      })
-      .catch(err => {
-        console.log("Error Reading data " + err);
-      });
-    console.log(modalItem);
   }
 
   if (error) {

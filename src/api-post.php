@@ -13,7 +13,7 @@
      echo '"Le fichier est valide, et a été téléchargé avec succès. Voici plus d\'informations :"';
      echo $_POST['title'];
      $db = new PDO('mysql:host=db5005161444.hosting-data.io;dbname=dbs4318125', 'dbu1522474', 'lesoussol06092021', array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8"));
-    $requete = "INSERT INTO post (image, title, description, address, postal, expiration, category, id_user, upvote) VALUES (:image, :title, :description, :address, :postal, :expiration, :category, :id_user, 0)";
+    $requete = "INSERT INTO post (image, title, description, address, postal, expiration, category, id_user, upvote, place) VALUES (:image, :title, :description, :address, :postal, :expiration, :category, :id_user, 0, :place)";
     $stmt = $db ->prepare($requete);
     $stmt -> execute(array(
       ":image" => 'https://benef-app.fr/upload/'.$upload_name,
@@ -24,6 +24,7 @@
       ":expiration" => $_POST['expiration'],
       ":category" => $_POST['category'],
       ":id_user" => $_POST['id_user'],
+      "place" => $_POST['place'],
     ));
  } else {
      echo '"Attaque potentielle par téléchargement de fichiers. Voici plus d\'informations"';
