@@ -123,13 +123,13 @@ const Filter = ({ searchValue, setSearchValue }) => {
     return (
       <div className="h-screen w-screen  bg-white-150 xl:dark:bg-gray-550 flex justify-center overflow-auto items-center">
         <ul className="h-full bg-white-150 xl:w-2/6 xl:dark:bg-gray-550">
-          <div className="mt-14 pb-12">
+          <div className="mt-5 pb-12">
             <form className="post flex flex-col justify-center" onSubmit={(e) => handleSubmitFiltered(e)} id="filter_form">
               <div className="flex h-100px relative justify-center items-center w-full ">
                 <h1 className="text-center text-2xl font-bold pt-7 dark:text-gray-50">Recherche</h1>
               </div>
               <div className="flex relative justify-center items-center w-full xl:hidden">
-                <div className="flex border-b-2 border-black required:w-65% h-8 mt-5 mb-20">
+                <div className="flex border-b-2 border-black required:w-65% h-8 mt-2 mb-14">
                   <input value={searchValue} className=" required:w-65% px-6 bg-white-150 placeholder-black focus:outline-none" placeholder="Rechercher..." onChange={event => setSearchValue(event.target.value)} />
                   <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1" viewBox="0 0 20 20" className="w-5 h-5 mt-1 mr-3 xl:hidden"><path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
                 </div>
@@ -137,7 +137,7 @@ const Filter = ({ searchValue, setSearchValue }) => {
 
               <div id="containerModal" className={openModal ? " block" : "hidden"}>
                 <div id="modal" ref={modal} className="flex w-screen h-screen bg-black bg-opacity-30 fixed bottom-0 left-0 justify-center z-40 items-end">
-                  <div className="w-full h-75% mb-10 relative flex flex-col justify-start items-center rounded-t-3xl bg-white-0">
+                  <div className="w-full h-75% mb-10 xl:mb-0 relative flex flex-col justify-start items-center rounded-t-3xl bg-white-0">
                     <div className="mb-5">
                       <h1 className="text-center text-2xl font-bold pt-7">Filtrer</h1>
                     </div>
