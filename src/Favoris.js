@@ -162,9 +162,9 @@ function Favoris() {
                     <div className="w-full min-h-max pb-4 md:cursor-pointer">
                       <li key={item.id_post} className="mt-1 w-92vw max-w-md">
                         <div>
-                        <div className="bg-white-0 h-7 w-7 text-black absolute flex justify-center items-center top-3 right-2 rounded-full">
+                        <div className="bg-white-0 h-10 w-10 text-black absolute flex justify-center items-center top-3 right-2 rounded-full">
                         <button onClick={handleFav.bind(item.id_post)} className="upvote text-red-450 dark:text-black">
-                        <img className='h-15px fill-current cursor-pointer' src={coeurPlein} alt='' />
+                        <img className='h-20px fill-current cursor-pointer' src={coeurPlein} alt='' />
                         </button>
                         </div>
                           <div className="bg-white-0 text-black absolute top-44 text-xl font-bold flex w-max py-1 rounded-lg">
