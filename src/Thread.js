@@ -9,6 +9,7 @@ import resto from './images/resto.jpg';
 import musee from './images/musee.jpg';
 import adresse from './images/icon/adress.svg';
 import Upvote from './Upvote';
+import localisation from './images/icon/icon_localisation.svg';
 import sablier from './images/icon/icon_sablier.svg';
 import upvoteBas from './images/icon/upvote.svg';
 import upvoteHaut from './images/icon/upvote2.svg';
@@ -204,13 +205,17 @@ const [openModal, setOpenModal] = useState(false);
 <div id="containerModal" className={openModal ? "block" : "hidden"}>
             <div id="modal" ref={modal} className="flex w-screen h-screen bg-black bg-opacity-30 fixed bottom-0 left-0 justify-center z-40 items-end">
                
-            <div className="w-3/4 h-90% mb-10 xl:mb-0 relative flex flex-col justify-start items-center rounded-t-3xl bg-white-0">
+            <div className="w-3/4 xl:w-2/6 h-90% mb-10 xl:mb-0 relative flex flex-col justify-start items-center rounded-t-3xl bg-white-0">
             <div className="mb-5">
             <h1 className="text-lg xl:text-xl font-semibold mx-2 max-w-md mt-10">{modalItem.image}</h1>
             <h1 className="text-lg xl:text-xl font-semibold mx-2 max-w-md mt-10">{modalItem.title}</h1>
             <h1 className="text-lg xl:text-lg px-5 w-full py-1 text-red-450 rounded-full border-2 border-red-450 w-auto font-semibold mx-2 max-w-md mt-10">{modalItem.category}</h1>
-            <h1 className="text-lg xl:text-lg mx-2 max-w-md mt-10">{modalItem.address}{","} {modalItem.postal}</h1>
-            <motion.img whileTap={{ scale: 0.85 }} id="sablier" src={sablier} className="opacity-100 h-28px"></motion.img>
+            <div className="flex mt-2 w-92vw max-w-md">
+            <motion.img animate={{ y: ["-10%", "-50%"] }} transition={{ yoyo: Infinity, duration: 0.4, ease: "easeOut", repeatDelay: 1  }} id="loca" src={localisation} className="opacity-100 h-20px"></motion.img><div className='ml-10'>{modalItem.address}{", "}{modalItem.postal}</div>
+            </div>
+            <div className="flex mt-2 w-92vw max-w-md">
+            <motion.img animate={{ rotate: 180 }} transition={{ repeat: Infinity, ease: "easeOut", repeatDelay: 1 }} id="sablier" src={sablier} className="opacity-100 h-20px "></motion.img><div className='ml-10'>{modalItem.expiration}</div>
+            </div>
             <h1 className="text-sm xl:text-sm mx-2 max-w-md mt-10">{modalItem.description}</h1>
     
             <div className="flex w-full justify-evenly mb-10">
