@@ -23,6 +23,7 @@ const Profil = () => {
     const [isLoaded, setIsLoaded] = useState(false);
     const [modalItem, setModalItem] = useState([]);
     const [openModal, setOpenModal] = useState(false);
+    
 
     useEffect(() => {
         fetch("https://benef-app.fr/api-post-user.php")
@@ -117,6 +118,7 @@ const Profil = () => {
     }
 
     const [values, setValues] = useState({
+        id_user: sessionStorage.getItem('id_user'),
         image: '',
         username: '',
         bio: '',
@@ -130,8 +132,28 @@ const Profil = () => {
         });
     };
 
+
     const handleSubmit = e => {
         e.preventDefault();
+        console.log({id_user : sessionStorage.getItem('id_user')},values)
+        fetch('https://benef-app.fr/api-modif-profil.php', {
+            method: "POST",
+            headers: {
+              'Accept': 'application/json',
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(values)
+          })
+            .then((response) => response.json())
+            .then((data) => {
+              console.log(data)
+              modifbio(false);
+              window.location.reload();
+            })
+            .catch(err => {
+              console.log("Error Reading data " + err);
+            });
+            
     };
 
     const [image, setImage] = useState();
@@ -152,16 +174,14 @@ const Profil = () => {
         }
     }, [image]);
 
-    const [bio, modifbio] = useState(false);
-
     const handleConnexion = e => {
         e.preventDefault();
-        modifbio(true);
+        modifbio(false);
     };
 
-    const handleConnexion2 = e => {
+    const handleModify = e => {
         e.preventDefault();
-        modifbio(false);
+        modifbio(true);
     };
 
     function handleDeconnexion() {
@@ -180,7 +200,7 @@ const Profil = () => {
                     </div>
                     <p className="col-span-2 mt-2">{user.bio}</p>
                     <div className="flex items-center justify-between col-span-2 h-16 pt-4">
-                        <button onClick={handleConnexion} className="flex items-center h-10 bg-red-450 py-2 px-4 rounded-3xl text-white-0 dark:text-black hover:bg-white-0 hover:text-red-450 hover:border-red-450 border-2 border-red-450 dark:bg-white-0 dark:border-white-0">Modifie ton profil</button>
+                        <button onClick={handleModify} className="flex items-center h-10 bg-red-450 py-2 px-4 rounded-3xl text-white-0 dark:text-black hover:bg-white-0 hover:text-red-450 hover:border-red-450 border-2 border-red-450 dark:bg-white-0 dark:border-white-0">Modifie ton profil</button>
                         <Link to="/favoris"><button className="flex items-center text-red-450 dark:text-white-0 hover:underline">Voir mes favoris <img className="pl-1 h-15px fill-current" src={coeur} alt="" /></button></Link>
                     </div>
                     {/* <div className="flex justify-end items-center py-5 mr-5">
@@ -297,10 +317,10 @@ const Profil = () => {
 
                         <div className="flex justify-center pt-5">
                             <div className="flex justify-end items-center py-5 mr-5">
-                                <button onClick={handleConnexion2} className="block px-7 py-2 text-red-450 text-lg font-semibold bg-white-0 border-2 border-red-450 hover:bg-red-450 hover:text-white-0 dark:hover:bg-white-150 dark:hover:text-gray-550 active:bg-red-200 dark:bg-white-0 dark:text-black rounded-full transition duration-300 ease-in-out">Annuler</button>
+                                <button onClick={handleConnexion} className="block px-7 py-2 text-red-450 text-lg font-semibold bg-white-0 border-2 border-red-450 hover:bg-red-450 hover:text-white-0 dark:hover:bg-white-150 dark:hover:text-gray-550 active:bg-red-200 dark:bg-white-0 dark:text-black rounded-full transition duration-300 ease-in-out">Annuler</button>
                             </div>
                             <div className="flex justify-end items-center py-5 mr-5">
-                                <button onClick={handleConnexion2} className="block px-5 py-2 text-white-0 text-lg font-semibold bg-red-450 hover:bg-white-0 hover:text-red-450 hover:border-red-450 border-2 border-red-450 dark:hover:bg-white-150 dark:hover:text-gray-550 active:bg-red-200 dark:bg-white-0 dark:text-black rounded-full transition duration-300 ease-in-out" type="submit">Enregistrer</button>
+                                <button className="block px-5 py-2 text-white-0 text-lg font-semibold bg-red-450 hover:bg-white-0 hover:text-red-450 hover:border-red-450 border-2 border-red-450 dark:hover:bg-white-150 dark:hover:text-gray-550 active:bg-red-200 dark:bg-white-0 dark:text-black rounded-full transition duration-300 ease-in-out" type="submit">Enregistrer</button>
                             </div>
                         </div>
 

@@ -8,22 +8,17 @@
         if ($contentType === "application/json") {
           //Receive the RAW post data.
           $content = trim(file_get_contents("php://input"));
-        
           $decoded = json_decode($content, true);
 
           if(is_array($decoded)) {
-            foreach ($decoded as $v) {
-                echo "Valeur courante : $v.\n";
-            }
-            // $newUpvote =  $decoded["upvote"] - 1;
-            // echo $newUpvote;
+           
             $db = new PDO('mysql:host=db5005161444.hosting-data.io;dbname=dbs4318125', 'dbu1522474', 'lesoussol06092021', array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8"));
-            $requete = "UPDATE benef_bdd SET bio = :bio WHERE username =".$decoded['username']."";
+            $requete = "UPDATE benef_bdd SET bio = :bio WHERE id_user =".$decoded['id_user']."";
             $stmt = $db ->prepare($requete);
             $stmt -> execute(array(
               ":bio" => $decoded['bio'],
             ));
-
+            echo "{answer : 'Biographie changée par {$decoded['bio']}'}";
           } else {
             // Send error back to user.
             echo "{'answer' : 'pas ok'}";

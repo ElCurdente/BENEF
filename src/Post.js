@@ -196,12 +196,12 @@ const Post = () => {
                         <div className="w-full h-80px flex justify-center items-center">
                             <select name="category" id="category" onChange={handleChange} className="block appearance-none bg-red-450 text-white-0 border-gray-400 hover:border-gray-500 px-4 py-2 pr-12 ml-12 shadow leading-tight focus:outline-none focus:shadow-outline">
                                 <option value="select">--Choisissez une catégorie--</option>
-                                <option value="1" className="bg-white-0 text-red-450">Restaurant</option>
-                                <option value="2" className="bg-white-0 text-red-450">Bar</option>
-                                <option value="3" className="bg-white-0 text-red-450">Musée / Expo</option>
-                                <option value="4" className="bg-white-0 text-red-450">Festival</option>
-                                <option value="5" className="bg-white-0 text-red-450">Catégorie 5</option>
-                                <option value="6" className="bg-white-0 text-red-450">Catégorie 6</option>
+                                <option value="Restos" className="bg-white-0 text-red-450">Restos</option>
+                                <option value="Expos" className="bg-white-0 text-red-450">Expos</option>
+                                <option value="Bars" className="bg-white-0 text-red-450">Bars</option>
+                                <option value="Soirées" className="bg-white-0 text-red-450">Soirées</option>
+                                <option value="Étudiants" className="bg-white-0 text-red-450">Étudiants</option>
+                                <option value="Autres" className="bg-white-0 text-red-450">Autres</option>
                             </select>
                         </div>
                         <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
@@ -215,7 +215,7 @@ const Post = () => {
                         <input id="title"
                             type="text"
                             name="title"
-                            maxLength="30"
+                            maxLength="60"
                             placeholder="Votre titre" className="placeholder-white-150 text-white-150 border-b-2 bg-transparent w-4/5 my-2 h-12 pt-5 text-left focus:outline-none  focus:placeholder-transparent"
                             value={values.title}
                             onChange={handleChange}
