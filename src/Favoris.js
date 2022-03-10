@@ -154,14 +154,12 @@ function Favoris() {
               <div className="mt-16 ml-6 mr-6 pb-12 xl:dark:bg-gray-550">
     
                 {items.sort(compare).map(item => (
-                  <motion.div className="w-92vw xl:w-full h-300px xl:h-96 relative bg-red-450 dark:bg-black rounded-lg text-white-0 mb-2 xl:mb-5"
+                  <motion.div className="w-92vw xl:w-full relative bg-red-450 dark:bg-black rounded-lg text-white-0 mb-2 xl:mb-5"
                     whileHover={{ scale: 1.01 }}>
-                    <div className="w-full h-75% relative">
+                    <div className="w-full h-250px relative">
                       <img className="object-cover rounded-t-lg h-full w-full" src={profil} alt="" />
-                      <div className="absolute bottom-5 -left-1.5">
-                      </div>
                     </div>
-                    <div className="w-full h-25% md:cursor-pointer">
+                    <div className="w-full min-h-max pb-4 md:cursor-pointer">
                       <li key={item.id_post} className="mt-1 w-92vw max-w-md">
                         <div>
                         <div className="bg-white-0 h-7 w-7 text-black absolute flex justify-center items-center top-3 right-2 rounded-full">
@@ -182,7 +180,7 @@ function Favoris() {
                             </button>
                           </div>
                         </div>
-                        <h1 className="text-lg font-semibold mx-2 max-w-md">{item.title}</h1>
+                        <h1 className="text-lg font-semibold mx-2 mt-2 max-w-md">{item.title}</h1>
                         <div className="flex mt-2 text-sm w-92vw max-w-md">
                           <img src={adresse} className="ml-2 mr-1 w-3.5"></img> {item.address} <div className="absolute right-3">{item.postal}</div>
                         </div>
