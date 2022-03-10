@@ -41,7 +41,7 @@ const Thread = () => {
   const [refreshKey, setRefreshKey] = useState(0);
   const nbUpvote = useRef(null);
   let history = useHistory();
-  const [modalItem,setModalItem] = useState([])
+  const [modalItem, setModalItem] = useState([])
 
   useEffect(() => {
     fetch("https://benef-app.fr/api-post-render.php")
@@ -75,7 +75,7 @@ const Thread = () => {
       .catch(err => {
         console.log("Error Reading data " + err);
       });
-      setState(!state);
+    setState(!state);
   }
 
   function handleUpvote() {
@@ -153,7 +153,7 @@ const Thread = () => {
   function Alert() { alert('Le message à été supprimé'); };
   function DelayAlert() { setInterval(Alert, 2000); }
 
-const [openModal, setOpenModal] = useState(false);
+  const [openModal, setOpenModal] = useState(false);
 
   const btnOuvrir = () => {
     setOpenModal(true);
@@ -168,24 +168,24 @@ const [openModal, setOpenModal] = useState(false);
     setOpenModal(true);
     setModalItem(this);
     fetch('https://benef-app.fr/api-infos-utilisateur.php', {
-            method: "POST",
-            headers: {
-              'Accept': 'application/json',
-              'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({id_user : modalItem.id_user})
-          })
-            .then((response) => response.json())
-            .then((data) => {
-              setModalItem(prevState => ({
-                ...prevState,
-                user_pseudo : data.username,
-              }));
-            })
-            .catch(err => {
-              console.log("Error Reading data " + err);
-            });
-            console.log(modalItem);
+      method: "POST",
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ id_user: modalItem.id_user })
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        setModalItem(prevState => ({
+          ...prevState,
+          user_pseudo: data.username,
+        }));
+      })
+      .catch(err => {
+        console.log("Error Reading data " + err);
+      });
+    console.log(modalItem);
   }
 
   if (error) {
@@ -202,30 +202,36 @@ const [openModal, setOpenModal] = useState(false);
           <div className="mt-16 ml-6 mr-6 pb-12 xl:dark:bg-gray-550">
 
 
-<div id="containerModal" className={openModal ? "block" : "hidden"}>
-            <div id="modal" ref={modal} className="flex w-screen h-screen bg-black bg-opacity-30 fixed bottom-0 left-0 justify-center z-40 items-end">
-               
-            <div className="w-3/4 xl:w-2/6 h-90% mb-10 xl:mb-0 relative flex flex-col justify-start items-center rounded-t-3xl bg-white-0">
-            <div className="mb-5">
-            <h1 className="text-lg xl:text-xl font-semibold mx-2 max-w-md mt-10">{modalItem.image}</h1>
-            <h1 className="text-lg xl:text-xl font-semibold mx-2 max-w-md mt-10">{modalItem.title}</h1>
-            <h1 className="text-lg xl:text-lg px-5 w-full py-1 text-red-450 rounded-full border-2 border-red-450 w-auto font-semibold mx-2 max-w-md mt-10">{modalItem.category}</h1>
-            <div className="flex w-92vw max-w-md mt-10">
-            <motion.img animate={{ y: ["-10%", "-50%"] }} transition={{ yoyo: Infinity, duration: 0.4, ease: "easeOut", repeatDelay: 1  }} id="loca" src={localisation} className="opacity-100 h-20px"></motion.img><div className='ml-10'>{modalItem.address}{", "}{modalItem.postal}</div>
-            </div>
-            <div className="flex mt-2 w-92vw max-w-md">
-            <motion.img animate={{ rotate: 180 }} transition={{ repeat: Infinity, duration: 0.4, ease: "easeOut", repeatDelay: 1 }} id="sablier" src={sablier} className="opacity-100 h-20px "></motion.img><div className='ml-10'>{modalItem.expiration}</div>
-            </div>
-            <h1 className="text-sm xl:text-sm mx-2 max-w-md mt-10">{modalItem.description}</h1>
-    
-            <div className="flex w-full justify-evenly mt-20 mb-10">
+            <div id="containerModal" className={openModal ? "block" : "hidden"}>
+              <div id="modal" ref={modal} className="flex w-screen h-screen bg-black bg-opacity-30 fixed bottom-0 left-0 justify-center z-40 items-end">
+
+                <div className="w-full xl:w-2/6 h-90% mb-10 xl:mb-0 relative flex flex-col justify-start items-center rounded-t-3xl bg-white-0">
+                  <div className="mb-5 mt-7 mx-3">
+                    <div className="w-full h-250px relative">
+                      <img className="object-cover rounded-t-lg h-full w-full" src={resto} alt="" />
+                    </div>
+                    {/* <h1 className="text-lg xl:text-xl font-semibold mx-2 max-w-md">{modalItem.image}</h1> */}
+                    <h1 className="text-lg xl:text-xl font-semibold max-w-md mt-2">{modalItem.title}</h1>
+                    <h1 className="text-lg xl:text-lg px-5 max-w-max py-1 text-red-450 rounded-full border-2 border-red-450 font-semibold mx-2 mt-4">{modalItem.category}</h1>
+
+                    <div className="flex w-92vw max-w-md mt-10">
+                      <motion.img animate={{ y: ["-10%", "-50%"] }} transition={{ yoyo: Infinity, duration: 0.4, ease: "easeOut", repeatDelay: 1 }} id="loca" src={localisation} className="opacity-100 h-20px"></motion.img><div className='ml-10'>{modalItem.address}{", "}{modalItem.postal}</div>
+                    </div>
+
+                    <div className="flex mt-2 w-92vw max-w-md">
+                      <motion.img animate={{ rotate: 180 }} transition={{ repeat: Infinity, duration: 0.4, ease: "easeOut", repeatDelay: 1 }} id="sablier" src={sablier} className="opacity-100 h-20px "></motion.img><div className='ml-10'>{modalItem.expiration}</div>
+                    </div>
+
+                    <h1 className="text-sm xl:text-sm mx-2 max-w-md mt-10">{modalItem.description}</h1>
+
+                    <div className="flex w-full justify-evenly mt-20 mb-10">
                       <button onClick={() => setOpenModal(false)} className="block px-5 py-2 text-white-0 text-lg font-semibold bg-red-450 hover:bg-white-0 hover:text-red-450 hover:border-red-450 border-2 border-red-450 dark:hover:bg-white-150 dark:hover:text-gray-550 active:bg-red-200 dark:bg-white-0 dark:text-black rounded-full transition duration-300 ease-in-out" type="submit">Fermer</button>
-                       
+
+                    </div>
+                  </div>
+                </div>
               </div>
-              </div>
-              </div>
-              </div>
-              </div>
+            </div>
 
             {items.sort(compare).map(item => (
               <motion.div className="w-92vw xl:w-full relative bg-red-450 dark:bg-black rounded-lg text-white-0 mb-4 xl:mb-5 shadow-customm"
@@ -235,56 +241,56 @@ const [openModal, setOpenModal] = useState(false);
                 </div>
                 <div className="w-full min-h-max pb-4 md:cursor-pointer" onClick={handleModal.bind(item)} >
                   <h1 className="text-lg font-semibold mx-2 max-w-md mt-2	">{item.title}</h1>
-                    <div className="flex mt-2 text-sm w-92vw max-w-md">
-                      <img src={adresse} className="ml-2 mr-1 w-3.5"></img> {item.address} <div className="absolute right-3">{item.postal}</div>
+                  <div className="flex mt-2 text-sm w-92vw max-w-md">
+                    <img src={adresse} className="ml-2 mr-1 w-3.5"></img> {item.address} <div className="absolute right-3">{item.postal}</div>
+                  </div>
+
+                </div>
+                <li key={item.id_post} className="mt-1 w-92vw max-w-md">
+                  <div>
+                    <div className="bg-white-0 h-7 w-7 text-black absolute flex justify-center items-center top-3 right-2 rounded-full">
+                      <button className="upvote text-red-450 dark:text-black"
+                        onClick={
+                          // () => {
+                          // setState(!state);
+
+                          handleFav.bind(item.id_post)
+                          // }
+                        }
+                      >
+                        {state ? state && <Lottie options={defaultOptions} height={17} width={17} id={item.id_post} /> : <img className='h-15px fill-current cursor-pointer' id={item.id_post} src={coeur} alt='' />}
+                      </button>
+                      {/* <div> */}
+                      {/* {state && <Lottie options={defaultOptions} height={40} width={40} />} */}
+                      {/* </div> */}
+                      {/* <button onClick={handleFav.bind(item.id_post)} className="px-2 upvote text-red-450 cursor-pointer dark:text-black">Fav</button> */}
                     </div>
+                    <div className="bg-white-0 text-black absolute top-44 text-xl font-bold flex w-max py-1 rounded-lg">
+                      <button onClick={handleUpvote.bind(item)} className="pl-2 relative">
+                        <motion.img whileTap={{ scale: 0.85 }} id="upvote_haut" src={upvoteHaut} className="opacity-100 h-28px"></motion.img>
+                        {/* <img src={upvoteorange} className="absolute top-0 h-30px dark:opacity-0"></img> */}
+                      </button>
 
-          </div>
-                  <li key={item.id_post} className="mt-1 w-92vw max-w-md">
-                    <div>
-                      <div className="bg-white-0 h-7 w-7 text-black absolute flex justify-center items-center top-3 right-2 rounded-full">
-                        <button className="upvote text-red-450 dark:text-black"
-                          onClick={
-                            // () => {
-                            // setState(!state);
-                            
-                            handleFav.bind(item.id_post)
-                            // }
-                          }
-                        >
-                          {state ? state && <Lottie options={defaultOptions} height={17} width={17} id={item.id_post} /> : <img className='h-15px fill-current cursor-pointer' id={item.id_post} src={coeur} alt='' />}
-                        </button>
-                        {/* <div> */}
-                        {/* {state && <Lottie options={defaultOptions} height={40} width={40} />} */}
-                        {/* </div> */}
-                        {/* <button onClick={handleFav.bind(item.id_post)} className="px-2 upvote text-red-450 cursor-pointer dark:text-black">Fav</button> */}
-                      </div>
-                      <div className="bg-white-0 text-black absolute top-44 text-xl font-bold flex w-max py-1 rounded-lg">
-                        <button onClick={handleUpvote.bind(item)} className="pl-2 relative">
-                          <motion.img whileTap={{ scale: 0.85 }} id="upvote_haut" src={upvoteHaut} className="opacity-100 h-28px"></motion.img>
-                          {/* <img src={upvoteorange} className="absolute top-0 h-30px dark:opacity-0"></img> */}
-                        </button>
-
-                        <span id='nb_upvote' ref={nbUpvote} className="px-2 upvote text-red-450 dark:text-black">{item.upvote}</span>
-                        <button onClick={handleDownvote.bind(item)} className="pr-2 relative">
-                          <motion.img whileTap={{ scale: 0.85 }} id="upvote_bas" src={upvoteBas} className="opacity-100 dark:opacity-100 h-28px"></motion.img>
-                          {/* <img src={upvoteorange} className="transform rotate-180 absolute top-0 h-30px dark:opacity-0"></img> */}
-                        </button>
-                      </div>
+                      <span id='nb_upvote' ref={nbUpvote} className="px-2 upvote text-red-450 dark:text-black">{item.upvote}</span>
+                      <button onClick={handleDownvote.bind(item)} className="pr-2 relative">
+                        <motion.img whileTap={{ scale: 0.85 }} id="upvote_bas" src={upvoteBas} className="opacity-100 dark:opacity-100 h-28px"></motion.img>
+                        {/* <img src={upvoteorange} className="transform rotate-180 absolute top-0 h-30px dark:opacity-0"></img> */}
+                      </button>
                     </div>
-                    
+                  </div>
 
 
-                  </li>
-           
-                
+
+                </li>
+
+
               </motion.div>
             ))}
 
           </div>
         </ul>
       </div >
-      
+
     );
   }
 };
