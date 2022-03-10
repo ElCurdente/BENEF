@@ -165,7 +165,25 @@ const [openModal, setOpenModal] = useState(false);
   function handleModal() {
     setOpenModal(true);
     setModalItem(this);
-    console.log(modalItem)
+    fetch('https://benef-app.fr/api-infos-utilisateur.php', {
+            method: "POST",
+            headers: {
+              'Accept': 'application/json',
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({id_user : modalItem.id_user})
+          })
+            .then((response) => response.json())
+            .then((data) => {
+              setModalItem(prevState => ({
+                ...prevState,
+                user_pseudo : data.username,
+              }));
+            })
+            .catch(err => {
+              console.log("Error Reading data " + err);
+            });
+            console.log(modalItem);
   }
 
   if (error) {
