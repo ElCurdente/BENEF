@@ -380,25 +380,13 @@ setIsVoting(false)
                   <div>
                     <div className="bg-white-0 h-10 w-10 text-black absolute flex justify-center items-center top-3 right-2 rounded-full">
                       <button className="upvote text-red-450 dark:text-black"
-                        onClick={
-                          // () => {
-                          // setState(!state);
-
-                          handleFav.bind(item.id_post)
-                          // }
-                        }
-                      >
-                        {/* {state ? state && <Lottie options={defaultOptions} height={17} width={17} id={item.id_post} /> : <img className='h-20px fill-current cursor-pointer' id={item.id_post} src={coeur} alt='' />} */}
+                        onClick={ handleFav.bind(item.id_post)}>
                         {
                           isFav.find(x => x == item.id_post) == item.id_post ? <img className='h-20px fill-current cursor-pointer' src={coeurPlein} alt='' /> : 
                           <img className='h-20px fill-current cursor-pointer' src={coeur} alt='' />
                         }
                         
                       </button>
-                      {/* <div> */}
-                      {/* {state && <Lottie options={defaultOptions} height={40} width={40} />} */}
-                      {/* </div> */}
-                      {/* <button onClick={handleFav.bind(item.id_post)} className="px-2 upvote text-red-450 cursor-pointer dark:text-black">Fav</button> */}
                     </div>
                     <div className="bg-white-0 text-black absolute top-44 text-xl font-bold flex w-max py-1 rounded-lg">
                       <button onClick={handleUpvote.bind(item)} className="pl-2 relative">

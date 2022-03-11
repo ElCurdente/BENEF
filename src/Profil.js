@@ -13,6 +13,8 @@ import Lottie from 'react-lottie';
 import animationData from './images/animation/like.json';
 import { motion } from 'framer-motion/dist/framer-motion';
 import adresse from './images/icon/adress.svg';
+import localisation from './images/icon/icon_localisation.svg';
+import sablier from './images/icon/icon_sablier.svg';
 
 
 const Profil = () => {
@@ -26,19 +28,74 @@ const Profil = () => {
     const [bio, modifbio] = useState(false);
 
     useEffect(() => {
-        fetch("https://benef-app.fr/api-post-user.php")
+        fetch('https://benef-app.fr/api-post-user2.php', {
+            method: "POST",
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ id_user: sessionStorage.getItem('id_user') })
+        })
             .then(res => res.json())
             .then(
                 (result) => {
                     setIsLoaded(true);
                     setItems(result.items);
+                    console.log(items);
                 },
                 (error) => {
                     setIsLoaded(true);
                     setError(error);
                 }
             )
-    }, [])
+    }, []);
+
+    // const [post, setPost] = useState({
+    //     id_post: '',
+    //     image: '',
+    //     title: '',
+    //     description: '',
+    //     adress: '',
+    //     postal: '',
+    //     place: '',
+    //     expiration: '',
+    //     category: '',
+    //     upvote: '',
+    //     id_user: ''
+    // });
+
+    // useEffect(() => {
+    //     console.log({ id_user: sessionStorage.getItem('id_user') })
+    //     fetch('https://benef-app.fr/api-post-user2.php', {
+    //         method: "POST",
+    //         headers: {
+    //             'Accept': 'application/json',
+    //             'Content-Type': 'application/json'
+    //         },
+    //         body: JSON.stringify({ id_user: sessionStorage.getItem('id_user') })
+    //     })
+    //         .then((response) => response.json())
+    //         .then((data) => {
+    //             console.log(data);
+    //             setPost({
+    //                 id_post: data.id_post,
+    //                 image: data.image,
+    //                 title: data.title,
+    //                 description: data.description,
+    //                 adress: data.adress,
+    //                 postal: data.postal,
+    //                 place: data.place,
+    //                 expiration: data.expiration,
+    //                 category: data.category,
+    //                 upvote: data.upvote,
+    //                 id_user: data.id_user,
+    //             })
+    //             console.log(post)
+    //         })
+    //         .catch(err => {
+    //             console.log("Error Reading data " + err);
+    //         });
+    // }, [])
 
     function handleModal() {
         setOpenModal(true);
@@ -135,27 +192,27 @@ const Profil = () => {
 
     const handleSubmit = e => {
         e.preventDefault();
-        console.log({id_user : sessionStorage.getItem('id_user')},values)
+        console.log({ id_user: sessionStorage.getItem('id_user') }, values)
         fetch('https://benef-app.fr/api-modif-profil.php', {
             method: "POST",
             headers: {
-              'Accept': 'application/json',
-              'Content-Type': 'application/json'
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
             },
             body: JSON.stringify(values)
-          })
+        })
             .then((response) => response.json())
             .then((data) => {
-              console.log(data)
-              modifbio(false);
-              window.location.reload();
+                console.log(data)
+                modifbio(false);
+                window.location.reload();
             })
             .catch(err => {
-              console.log("Error Reading data " + err);
+                console.log("Error Reading data " + err);
             });
 
-            modifbio(false);
-            
+        modifbio(false);
+
     };
 
     const [image, setImage] = useState();
@@ -191,10 +248,53 @@ const Profil = () => {
         window.location.reload();
     }
 
+    const modal = useRef(null);
+
+    function handleModal() {
+        setOpenModal(true);
+        setModalItem(this);
+    }
+
 
     if (bio === false) {
         return (
             <div className="overflow-auto flex flex-col justify-start mt-20 items-center xl:mt-15 h-screen w-screen bg-white-0 xl:dark:bg-gray-550 dark:text-white-0">
+
+                <div id="containerModal" className={openModal ? "block" : "hidden"}>
+                    <div id="modal" ref={modal} className="flex w-screen h-screen bg-black bg-opacity-30 fixed bottom-0 left-0 justify-center z-40 items-end">
+
+                        <div className="w-full xl:w-2/6 h-90% xl:h-95% mb-10 xl:mb-0 relative flex flex-col justify-start items-center rounded-t-3xl bg-white-0 overflow-auto dark:bg-gray-550 dark:text-white-0">
+                            <div className="mb-5 mt-7 mx-3 flex flex-col">
+                                <div className="w-full h-250px relative">
+                                    <img className="object-cover rounded-t-lg h-full w-full" src={modalItem.image} alt="" />
+                                </div>
+                                {/* <h1 className="text-lg xl:text-xl font-semibold mx-2 max-w-md">{modalItem.image}</h1> */}
+                                <h1 className="text-lg xl:text-xl font-semibold max-w-md mt-2">{modalItem.title}</h1>
+                                <h1 className="text-base xl:text-lg px-4 max-w-max py-1 text-red-450 dark:text-white-0 rounded-full border-2 border-red-450 dark:border-white-0 font-semibold mt-4">{modalItem.category}</h1>
+
+                                <div className="flex w-92vw max-w-md mt-4">
+                                    <motion.img animate={{ y: ["-10%", "-40%"] }} transition={{ yoyo: Infinity, duration: 0.4, ease: "easeOut", repeatDelay: 1 }} id="loca" src={localisation} className="opacity-100 h-20px"></motion.img><div className='ml-6'>{modalItem.address}{", "}{modalItem.postal}</div>
+                                </div>
+
+                                <div className="flex mt-2 w-92vw max-w-md">
+                                    <motion.img animate={{ rotate: 180 }} transition={{ repeat: Infinity, duration: 0.4, ease: "easeOut", repeatDelay: 1 }} id="sablier" src={sablier} className="opacity-100 h-20px "></motion.img>
+                                    {modalItem.expiration != '0000-00-00' ? <div className='ml-7'>{modalItem.expiration}</div> : <div className='ml-7'>A vie</div>}
+
+                                </div>
+
+                                <h1 className="text-sm xl:text-sm max-w-md mt-4">{modalItem.description}</h1>
+
+                                {/* <h1 className="self-end text-sm mt-4"> Posté par <span className="font-semibold">{modalItem.user_pseudo}</span></h1> */}
+
+                                <div className="flex w-full justify-evenly mt-5 mb-10">
+                                    <button onClick={() => setOpenModal(false)} className="block px-4 font-semibold py-2 bg-red-450 hover:bg-white-0 hover:text-red-450 hover:border-red-450 border-2 border-red-450 dark:hover:bg-white-150 dark:hover:text-gray-550 active:bg-red-200 dark:bg-white-0 dark:border-black dark:text-black rounded-full transition duration-300 ease-in-out text-white-0" type="submit">Fermer</button>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
                 <div id="infos" className="relative xl:w-2/6 w-95vw px-4 xl:-px-0">
                     <div className="flex items-center">
                         <img className="w-100px h-100px bg-transparent dark:bg-gray-650 border-3 border-red-450 dark:border-black rounded-full object-cover" />
@@ -228,7 +328,6 @@ const Profil = () => {
                                     </div>
 
                                 </div>
-
                             </motion.div>
                         ))}
                     </div>

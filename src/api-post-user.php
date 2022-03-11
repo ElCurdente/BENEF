@@ -5,7 +5,7 @@ header('Access-Control-Allow-Headers: Content-Type');
 
 
 $db = new PDO('mysql:host=db5005161444.hosting-data.io;dbname=dbs4318125', 'dbu1522474', 'lesoussol06092021', array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8"));
-$req_post = "SELECT * FROM post WHERE id_user = 37 ORDER BY id_post desc";
+$req_post = "SELECT * FROM post WHERE id_user = {$decoded['id_user']} ORDER BY id_post desc";
 $stmt=$db->query($req_post);
 $posts=$stmt->fetchAll(PDO::FETCH_ASSOC);
 
@@ -59,7 +59,7 @@ if ($contentType === "application/json") {
         }
     }
 }else{
-    $req_filtered = "SELECT * FROM post ORDER BY id_post desc";
+    $req_filtered = "SELECT * FROM post WHERE id_user = {$decoded['id_user']} ORDER BY id_post desc";
 }
 $stmt_filtered=$db->query($req_filtered);
 $posts_filtered=$stmt_filtered->fetchAll(PDO::FETCH_ASSOC);
