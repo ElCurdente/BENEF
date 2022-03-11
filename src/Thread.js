@@ -40,12 +40,16 @@ const Thread = () => {
   const [items, setItems] = useState([]);
   const [upvote, setUpvote] = useState(false);
   const [downvote, setDownvote] = useState(false);
+  const [isVoting, setIsVoting] = useState(false);
   const [isVoted, setIsVoted] = useState(0);
+  const [isUpvoted, setIsUpvoted] = useState([])
+  const [isDownvoted, setIsDownvoted] = useState([])
   const [refreshKey, setRefreshKey] = useState(0);
   const nbUpvote = useRef(null);
   let history = useHistory();
   const [modalItem, setModalItem] = useState([]);
   const [openModal, setOpenModal] = useState(false);
+  const [isFav, setIsFav] = useState([])
 
   useEffect(() => {
     fetch("https://benef-app.fr/api-post-render.php")
@@ -54,13 +58,15 @@ const Thread = () => {
         (result) => {
           setIsLoaded(true);
           setItems(result.items);
+
+          console.log(items[0]);
         },
         (error) => {
           setIsLoaded(true);
           setError(error);
         }
       )
-  }, [])
+  }, [isLoaded])
 
   useEffect(() => {
     if(openModal){
@@ -90,6 +96,8 @@ const Thread = () => {
 
   function handleFav() {
     console.log({ id_user: sessionStorage.getItem('id_user'), id_post: this });
+    setIsFav(prevState => [...prevState, this]);
+    console.log(isFav);
     fetch('https://benef-app.fr/api-favoris.php', {
       method: "POST",
       headers: {
@@ -98,9 +106,9 @@ const Thread = () => {
       },
       body: JSON.stringify({ id_user: sessionStorage.getItem('id_user'), id_post: this })
     })
-      .then((response) => response.json())
       .then((data) => {
         console.log(data);
+       
       })
       .catch(err => {
         console.log("Error Reading data " + err);
@@ -112,6 +120,7 @@ const Thread = () => {
     console.log(this)
     setIsVoted(this.id_post)
     setUpvote(true);
+    setIsVoting(true);
     fetch('https://benef-app.fr/api-upvote.php', {
       method: "POST",
       headers: {
@@ -131,18 +140,58 @@ const Thread = () => {
   }
 
   useEffect(() => {
-    console.log(isVoted)
-    // setUpvote(false)
+    if(upvote){
+      console.log(isUpvoted)
+      for( var i = 0; i < items.length; i++){                     
+        if ( items[i].id_post === isVoted) { 
+            let feed = isUpvoted.find(x => x == isVoted);
+            if(feed == isVoted){
+              console.log(feed + ", ne peut upvote")
+              items[i].upvote--;
+              setUpvote(false)
+              setIsUpvoted(isUpvoted.filter(item => item !== isVoted));
+            }
+            else{
+              console.log(feed + "n'est pas upvote donc peut upvote")
+              setIsUpvoted(prevState => [...prevState, isVoted])
+              items[i].upvote++;
+              console.log(items[i].upvote);
+              setUpvote(false)
+              setIsDownvoted(isDownvoted.filter(item => item !== isVoted));
+            }
+            
+        }
+    }
+  }else if(downvote){
     for( var i = 0; i < items.length; i++){                     
       if ( items[i].id_post === isVoted) { 
-          items[i].upvote++;
-          console.log(items[i].upvote)
+          let feed = isDownvoted.find(x => x == isVoted);
+          if(feed == isVoted){
+            console.log(feed + ", ne peut upvote")
+            items[i].upvote++;
+            setDownvote(false)
+            setIsDownvoted(isDownvoted.filter(item => item !== isVoted));
+          }
+          else{
+            console.log(feed + "n'est pas upvote donc peut upvote")
+            setIsDownvoted(prevState => [...prevState, isVoted])
+            items[i].upvote--;
+            console.log(items[i].upvote);
+            setDownvote(false)
+            setIsUpvoted(isUpvoted.filter(item => item !== isVoted));
+          }
+          
       }
   }
-  }, [upvote])
+}
+setIsVoting(false)
+  }, [isVoting])
 
   function handleDownvote() {
     console.log(this)
+    setIsVoted(this.id_post)
+    setDownvote(true);
+    setIsVoting(true);
     fetch('https://benef-app.fr/api-downvote.php', {
       method: "POST",
       headers: {
@@ -261,7 +310,8 @@ const Thread = () => {
                           // }
                         }
                       >
-                        {state ? state && <Lottie options={defaultOptions} height={17} width={17} id={item.id_post} /> : <img className='h-20px fill-current cursor-pointer' id={item.id_post} src={coeur} alt='' />}
+                        {/* {state ? state && <Lottie options={defaultOptions} height={17} width={17} id={item.id_post} /> : <img className='h-20px fill-current cursor-pointer' id={item.id_post} src={coeur} alt='' />} */}
+                        
                       </button>
                       {/* <div> */}
                       {/* {state && <Lottie options={defaultOptions} height={40} width={40} />} */}
