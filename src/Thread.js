@@ -164,7 +164,70 @@ const Thread = () => {
     setIsVoted(this.id_post)
     setUpvote(true);
     setIsVoting(true);
-    fetch('https://benef-app.fr/api-upvote.php', {
+  }
+
+  useEffect(() => {
+    if(upvote){
+      console.log(isUpvoted)
+      for( var i = 0; i < items.length; i++){                     
+        if ( items[i].id_post === isVoted) { 
+            let feed = isUpvoted.find(x => x == isVoted);
+            if(feed == isVoted){
+              console.log(feed + ", ne peut upvote")
+              fetch('https://benef-app.fr/api-downvote.php', {
+                method: "POST",
+                headers: {
+                  'Accept': 'application/json',
+                  'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(items[i])
+              })
+                .then((response) => response.json())
+                .then((data) => {
+                  console.log(data);
+                })
+                .catch(err => {
+                  console.log("Error Reading data " + err);
+                });
+              items[i].upvote--;
+              setUpvote(false)
+              setIsUpvoted(isUpvoted.filter(item => item !== isVoted));
+            }
+            else{
+              console.log(feed + "n'est pas upvote donc peut upvote")
+              setIsUpvoted(prevState => [...prevState, isVoted])
+              fetch('https://benef-app.fr/api-upvote.php', {
+                method: "POST",
+                headers: {
+                  'Accept': 'application/json',
+                  'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(items[i])
+              })
+                .then((response) => response.json())
+                .then((data) => {
+                  console.log(data);
+                  // setRefreshKey(oldKey => oldKey + 1)
+                })
+                .catch(err => {
+                  console.log("Error Reading data " + err);
+                });
+              items[i].upvote++;
+              console.log(items[i].upvote);
+              setUpvote(false)
+              setIsDownvoted(isDownvoted.filter(item => item !== isVoted));
+             
+            }
+            
+        }
+    }
+  }else if(downvote){
+    for( var i = 0; i < items.length; i++){                     
+      if ( items[i].id_post === isVoted) { 
+          let feed = isDownvoted.find(x => x == isVoted);
+          if(feed == isVoted){
+            console.log(feed + ", ne peut upvote")
+            fetch('https://benef-app.fr/api-upvote.php', {
       method: "POST",
       headers: {
         'Accept': 'application/json',
@@ -180,62 +243,15 @@ const Thread = () => {
       .catch(err => {
         console.log("Error Reading data " + err);
       });
-  }
-
-  useEffect(() => {
-    if(upvote){
-      console.log(isUpvoted)
-      for( var i = 0; i < items.length; i++){                     
-        if ( items[i].id_post === isVoted) { 
-            let feed = isUpvoted.find(x => x == isVoted);
-            if(feed == isVoted){
-              console.log(feed + ", ne peut upvote")
-              items[i].upvote--;
-              setUpvote(false)
-              setIsUpvoted(isUpvoted.filter(item => item !== isVoted));
-            }
-            else{
-              console.log(feed + "n'est pas upvote donc peut upvote")
-              setIsUpvoted(prevState => [...prevState, isVoted])
-              items[i].upvote++;
-              console.log(items[i].upvote);
-              setUpvote(false)
-              setIsDownvoted(isDownvoted.filter(item => item !== isVoted));
-            }
-            
-        }
-    }
-  }else if(downvote){
-    for( var i = 0; i < items.length; i++){                     
-      if ( items[i].id_post === isVoted) { 
-          let feed = isDownvoted.find(x => x == isVoted);
-          if(feed == isVoted){
-            console.log(feed + ", ne peut upvote")
             items[i].upvote++;
             setDownvote(false)
             setIsDownvoted(isDownvoted.filter(item => item !== isVoted));
+            
           }
           else{
             console.log(feed + "n'est pas upvote donc peut upvote")
             setIsDownvoted(prevState => [...prevState, isVoted])
-            items[i].upvote--;
-            console.log(items[i].upvote);
-            setDownvote(false)
-            setIsUpvoted(isUpvoted.filter(item => item !== isVoted));
-          }
-          
-      }
-  }
-}
-setIsVoting(false)
-  }, [isVoting])
-
-  function handleDownvote() {
-    console.log(this)
-    setIsVoted(this.id_post)
-    setDownvote(true);
-    setIsVoting(true);
-    fetch('https://benef-app.fr/api-downvote.php', {
+            fetch('https://benef-app.fr/api-downvote.php', {
       method: "POST",
       headers: {
         'Accept': 'application/json',
@@ -250,6 +266,25 @@ setIsVoting(false)
       .catch(err => {
         console.log("Error Reading data " + err);
       });
+      items[i].upvote--;
+            console.log(items[i].upvote);
+            setDownvote(false)
+            setIsUpvoted(isUpvoted.filter(item => item !== isVoted));
+          }
+          
+      }
+            
+            
+  }
+}
+setIsVoting(false)
+  }, [isVoting])
+
+  function handleDownvote() {
+    console.log(this)
+    setIsVoted(this.id_post)
+    setDownvote(true);
+    setIsVoting(true);
   }
 
   function compare(a, b) {
