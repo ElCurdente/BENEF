@@ -21,7 +21,8 @@ function Favoris() {
     const [error, setError] = useState(null);
     const [isLoaded, setIsLoaded] = useState(false);
     const [items, setItems] = useState([]);
-
+    const [isSuppr, setIsSuppr] = useState('');
+    const [suppr, setSuppr] = useState(false);
     const nbUpvote = useRef(null);
 
 
@@ -46,9 +47,10 @@ function Favoris() {
               setError(error);
             }
           )
-      }, [])
+      }, [isLoaded])
 
       function handleFav() {
+        setIsSuppr(this);
         console.log({id_user : sessionStorage.getItem('id_user'), id_post : this});
         fetch('https://benef-app.fr/api-favoris-sup.php', {
                 method: "POST",
@@ -58,14 +60,25 @@ function Favoris() {
                 },
                 body: JSON.stringify({id_user : sessionStorage.getItem('id_user'), id_post : this})
               })
-                .then((response) => response.json())
                 .then((data) => {
                   console.log(data);
+                  // setIsLoaded(false);
+                  setSuppr(true)
                 })
                 .catch(err => {
                   console.log("Error Reading data " + err);
                 });
       }
+
+      useEffect(() => {
+        for( var i = 0; i < items.length; i++){                     
+          if ( items[i].id_post === isSuppr) { 
+              items.splice(i, 1); 
+              i--; 
+              setSuppr(false);
+          }
+      }
+      }, [suppr])
 
       function handleUpvote() {
         console.log(this)

@@ -38,7 +38,9 @@ const Thread = () => {
   const [error, setError] = useState(null);
   const [isLoaded, setIsLoaded] = useState(false);
   const [items, setItems] = useState([]);
-  const [upvote, setUpvote] = useState();
+  const [upvote, setUpvote] = useState(false);
+  const [downvote, setDownvote] = useState(false);
+  const [isVoted, setIsVoted] = useState(0);
   const [refreshKey, setRefreshKey] = useState(0);
   const nbUpvote = useRef(null);
   let history = useHistory();
@@ -61,7 +63,7 @@ const Thread = () => {
   }, [])
 
   useEffect(() => {
-    if(openModal === true){
+    if(openModal){
       console.log("prêt à fetch")
       fetch('https://benef-app.fr/api-infos-utilisateur.php', {
         method: "POST",
@@ -108,6 +110,8 @@ const Thread = () => {
 
   function handleUpvote() {
     console.log(this)
+    setIsVoted(this.id_post)
+    setUpvote(true);
     fetch('https://benef-app.fr/api-upvote.php', {
       method: "POST",
       headers: {
@@ -124,19 +128,18 @@ const Thread = () => {
       .catch(err => {
         console.log("Error Reading data " + err);
       });
-    // window.location.reload(true);
-
-
-    // const srcUpvoteHaut1 = upvoteHaut1.getAttribute('src');
-
-    // if (srcUpvoteHaut1 == upvoteHautplein) {
-    //   upvoteHaut1.src = upvoteHaut;
-    // } else {
-    //   upvoteHaut1.src = upvoteHautplein;
-    //   upvoteBas1.src = upvoteBas;
-    // }
-
   }
+
+  useEffect(() => {
+    console.log(isVoted)
+    // setUpvote(false)
+    for( var i = 0; i < items.length; i++){                     
+      if ( items[i].id_post === isVoted) { 
+          items[i].upvote++;
+          console.log(items[i].upvote)
+      }
+  }
+  }, [upvote])
 
   function handleDownvote() {
     console.log(this)
