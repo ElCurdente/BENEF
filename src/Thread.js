@@ -21,6 +21,7 @@ import { motion } from 'framer-motion/dist/framer-motion';
 import Lottie from 'react-lottie';
 import animationData from './images/animation/like.json';
 import coeur from './images/icon/icon_coeur.svg';
+import coeurPlein from './images/icon/icon_coeur_rempli.svg';
 import fleche from './images/icon/icon_fleche.svg';
 
 const Thread = () => {
@@ -69,6 +70,28 @@ const Thread = () => {
   }, [isLoaded])
 
   useEffect(() => {
+    fetch("https://benef-app.fr/api-favoris-render-2.php",{
+        method: "POST",
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({id_user : sessionStorage.getItem('id_user')})
+      })
+      .then(res => res.json())
+      .then(
+        (result) => {
+        console.log(result)
+        setIsFav(result)
+        console.log(isFav)
+        },
+        (error) => {
+          setError(error);
+        }
+      )
+  }, [isLoaded])
+
+  useEffect(() => {
     if(openModal){
       console.log("prêt à fetch")
       fetch('https://benef-app.fr/api-infos-utilisateur.php', {
@@ -96,23 +119,43 @@ const Thread = () => {
 
   function handleFav() {
     console.log({ id_user: sessionStorage.getItem('id_user'), id_post: this });
-    setIsFav(prevState => [...prevState, this]);
-    console.log(isFav);
-    fetch('https://benef-app.fr/api-favoris.php', {
-      method: "POST",
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({ id_user: sessionStorage.getItem('id_user'), id_post: this })
-    })
-      .then((data) => {
-        console.log(data);
-       
+    if(isFav.find(x => x == this) != this){
+      setIsFav(prevState => [...prevState, this]);
+      console.log(isFav);
+      fetch('https://benef-app.fr/api-favoris.php', {
+        method: "POST",
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ id_user: sessionStorage.getItem('id_user'), id_post: this })
       })
-      .catch(err => {
-        console.log("Error Reading data " + err);
-      });
+        .then((data) => {
+          console.log(data);
+         
+        })
+        .catch(err => {
+          console.log("Error Reading data " + err);
+        });
+    }else {
+      setIsFav(isFav.filter(item => item !== this));
+      fetch('https://benef-app.fr/api-favoris-sup.php', {
+        method: "POST",
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ id_user: sessionStorage.getItem('id_user'), id_post: this })
+      })
+        .then((data) => {
+          console.log(data);
+         
+        })
+        .catch(err => {
+          console.log("Error Reading data " + err);
+        });
+    }
+    
     setState(!state);
   }
 
@@ -311,6 +354,10 @@ setIsVoting(false)
                         }
                       >
                         {/* {state ? state && <Lottie options={defaultOptions} height={17} width={17} id={item.id_post} /> : <img className='h-20px fill-current cursor-pointer' id={item.id_post} src={coeur} alt='' />} */}
+                        {
+                          isFav.find(x => x == item.id_post) == item.id_post ? <img className='h-20px fill-current cursor-pointer' src={coeurPlein} alt='' /> : 
+                          <img className='h-20px fill-current cursor-pointer' src={coeur} alt='' />
+                        }
                         
                       </button>
                       {/* <div> */}
