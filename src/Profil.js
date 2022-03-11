@@ -11,11 +11,40 @@ import ToggleLike from './toggle-like.js';
 import lottie from 'lottie-web';
 import Lottie from 'react-lottie';
 import animationData from './images/animation/like.json';
+import { motion } from 'framer-motion/dist/framer-motion';
+import adresse from './images/icon/adress.svg';
+
 
 const Profil = () => {
 
     const [state, setState] = useState(false);
+    const [items, setItems] = useState([]);
+    const [error, setError] = useState(null);
+    const [isLoaded, setIsLoaded] = useState(false);
+    const [modalItem, setModalItem] = useState([]);
+    const [openModal, setOpenModal] = useState(false);
     const [bio, modifbio] = useState(false);
+
+    useEffect(() => {
+        fetch("https://benef-app.fr/api-post-user.php")
+            .then(res => res.json())
+            .then(
+                (result) => {
+                    setIsLoaded(true);
+                    setItems(result.items);
+                },
+                (error) => {
+                    setIsLoaded(true);
+                    setError(error);
+                }
+            )
+    }, [])
+
+    function handleModal() {
+        setOpenModal(true);
+        setModalItem(this);
+    }
+
     const defaultOptions = {
         loop: false,
         autoplay: true,
@@ -38,31 +67,31 @@ const Profil = () => {
     }, []);
 
     const [user, setUser] = useState({
-        username:'', 
-        bio:''
+        username: '',
+        bio: ''
     });
 
     useEffect(() => {
-        console.log({id_user : sessionStorage.getItem('id_user')})
+        console.log({ id_user: sessionStorage.getItem('id_user') })
         fetch('https://benef-app.fr/api-infos-utilisateur.php', {
             method: "POST",
             headers: {
-              'Accept': 'application/json',
-              'Content-Type': 'application/json'
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
             },
-            body: JSON.stringify({id_user : sessionStorage.getItem('id_user')})
-          })
+            body: JSON.stringify({ id_user: sessionStorage.getItem('id_user') })
+        })
             .then((response) => response.json())
             .then((data) => {
-              console.log(data);
-              setUser({
-                username: data.username,
-                bio: data.bio
-              })
-              console.log(user)
+                console.log(data);
+                setUser({
+                    username: data.username,
+                    bio: data.bio
+                })
+                console.log(user)
             })
             .catch(err => {
-              console.log("Error Reading data " + err);
+                console.log("Error Reading data " + err);
             });
     }, [])
 
@@ -124,6 +153,8 @@ const Profil = () => {
             .catch(err => {
               console.log("Error Reading data " + err);
             });
+
+            modifbio(false);
             
     };
 
@@ -163,8 +194,8 @@ const Profil = () => {
 
     if (bio === false) {
         return (
-            <div className="flex flex-col justify-start mt-20 items-center xl:mt-15 h-screen w-screen bg-white-0 xl:dark:bg-gray-550 dark:text-white-0">
-                <div id="infos" className="relative grid grid-cols-2 grid-layout xl:w-2/6 w-95vw px-4 xl:-px-0">
+            <div className="overflow-auto flex flex-col justify-start mt-20 items-center xl:mt-15 h-screen w-screen bg-white-0 xl:dark:bg-gray-550 dark:text-white-0">
+                <div id="infos" className="relative xl:w-2/6 w-95vw px-4 xl:-px-0">
                     <div className="flex items-center">
                         <img className="w-100px h-100px bg-transparent dark:bg-gray-650 border-3 border-red-450 dark:border-black rounded-full object-cover" />
                         <h1 className="ml-3 text-xl font-semibold">{user.username}</h1>
@@ -174,28 +205,32 @@ const Profil = () => {
                         <button onClick={handleModify} className="flex items-center h-10 bg-red-450 py-2 px-4 rounded-3xl text-white-0 dark:text-black hover:bg-white-0 hover:text-red-450 hover:border-red-450 border-2 border-red-450 dark:bg-white-0 dark:border-white-0">Modifie ton profil</button>
                         <Link to="/favoris"><button className="flex items-center text-red-450 dark:text-white-0 hover:underline">Voir mes favoris <img className="pl-1 h-15px fill-current" src={coeur} alt="" /></button></Link>
                     </div>
-                    {/* <div className="flex justify-end items-center py-5 mr-5">
-                                <button onClick={handleDeconnexion} className="block px-5 py-2 text-white-0 text-lg font-semibold bg-red-450 hover:bg-white-0 hover:text-red-450 hover:border-red-450 border-2 border-red-450 dark:hover:bg-white-150 dark:hover:text-gray-550 active:bg-red-200 dark:bg-white-0 dark:text-black rounded-full transition duration-300 ease-in-out" type="submit">Déconnexion</button>
-                            </div> */}
+
                 </div>
                 <div id="barre1" className="h-1px w-95vw xl:w-2/6 mt-4 bg-gray-200"></div>
                 <div id="badges" className="w-95vw h-100px xl:w-2/6">
                     <h3 className="font-bold pt-4 pl-4">Badges</h3>
                 </div>
-                <div id="barre1" className="h-1px w-95vw mt-4 bg-gray-200 xl:w-2/6"></div>
+                <div id="barre1" className="h-1px w-95vw mt-10 bg-gray-200 xl:w-2/6"></div>
                 <div id="bp_perso" className="w-95vw xl:w-2/6">
                     <h3 className="font-bold pt-4 pl-4 ">Bons plans publiés</h3>
-                    {/* <ToggleLike /> */}
-                    {/* <button ref={container} onClick={clickHandler}></button> */}
-                    <button 
-                        onClick={() => {
-                            setState(!state);
-                        }}
-                        >
-                            {state ? state && <Lottie options={defaultOptions} height={18} width={18} /> : <img className='h-15px fill-current cursor-pointer' src={coeur}/>}
-                    </button>
-                    <div>
-                        {/* {state && <Lottie options={defaultOptions} height={40} width={40} />} */}
+                    <div className='w-full h-full flex flex-col items-center mt-5 pb-20'>
+                        {items.map(item => (
+                            <motion.div className="w-92vw xl:w-full relative bg-red-450 dark:bg-black rounded-lg text-white-0 mb-4 xl:mb-5 shadow-customm"
+                                whileHover={{ scale: 1.01 }}>
+                                <div className="w-full h-250px relative">
+                                    <img className="object-cover rounded-t-lg h-full w-full" src={item.image} alt="" />
+                                </div>
+                                <div className="w-full min-h-max pb-4 md:cursor-pointer" onClick={handleModal.bind(item)} >
+                                    <h1 className="text-lg font-semibold mx-2 max-w-md mt-2	">{item.title}</h1>
+                                    <div className="flex mt-2 text-sm w-92vw max-w-md">
+                                        <img src={adresse} className="ml-2 mr-1 w-3.5"></img> {item.address} <div className="absolute right-3">{item.postal}</div>
+                                    </div>
+
+                                </div>
+
+                            </motion.div>
+                        ))}
                     </div>
                 </div>
             </div>

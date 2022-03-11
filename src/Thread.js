@@ -42,7 +42,7 @@ const Thread = () => {
   const [refreshKey, setRefreshKey] = useState(0);
   const nbUpvote = useRef(null);
   let history = useHistory();
-  const [modalItem, setModalItem] = useState([])
+  const [modalItem, setModalItem] = useState([]);
   const [openModal, setOpenModal] = useState(false);
 
   useEffect(() => {
@@ -201,7 +201,7 @@ const Thread = () => {
             <div id="containerModal" className={openModal ? "block" : "hidden"}>
               <div id="modal" ref={modal} className="flex w-screen h-screen bg-black bg-opacity-30 fixed bottom-0 left-0 justify-center z-40 items-end">
 
-                <div className="w-full xl:w-2/6 h-90% mb-10 xl:mb-0 relative flex flex-col justify-start items-center rounded-t-3xl bg-white-0 overflow-auto dark:bg-gray-550 dark:text-white-0">
+                <div className="w-full xl:w-2/6 h-90% xl:h-95% mb-10 xl:mb-0 relative flex flex-col justify-start items-center rounded-t-3xl bg-white-0 overflow-auto dark:bg-gray-550 dark:text-white-0">
                   <div className="mb-5 mt-7 mx-3 flex flex-col">
                     <div className="w-full h-250px relative">
                       <img className="object-cover rounded-t-lg h-full w-full" src={modalItem.image} alt="" />
@@ -224,7 +224,7 @@ const Thread = () => {
 
                     <h1 className="self-end text-sm mt-4"> Posté par <span className="font-semibold">{modalItem.user_pseudo}</span></h1>
 
-                    <div className="flex w-full justify-evenly mt-10 mb-10">
+                    <div className="flex w-full justify-evenly mt-5 mb-10">
                       <button onClick={() => setOpenModal(false)} className="block px-4 font-semibold py-2 bg-red-450 hover:bg-white-0 hover:text-red-450 hover:border-red-450 border-2 border-red-450 dark:hover:bg-white-150 dark:hover:text-gray-550 active:bg-red-200 dark:bg-white-0 dark:border-black dark:text-black rounded-full transition duration-300 ease-in-out text-white-0" type="submit">Fermer</button>
 
                     </div>
