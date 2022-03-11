@@ -84,7 +84,7 @@ const Thread = () => {
         });
         console.log(modalItem);
     }
-  }, [])
+  }, [openModal])
 
   function handleFav() {
     console.log({ id_user: sessionStorage.getItem('id_user'), id_post: this });
@@ -155,17 +155,6 @@ const Thread = () => {
       .catch(err => {
         console.log("Error Reading data " + err);
       });
-
-    // window.location.reload(true);
-
-    // const srcUpvoteBas1 = upvoteBas1.getAttribute('src');
-
-    // if (srcUpvoteBas1 == upvoteBasplein) {
-    //   upvoteBas1.src = upvoteBas;
-    // } else {
-    //   upvoteBas1.src = upvoteBasplein;
-    //   upvoteHaut1.src = upvoteHaut;
-    // }
   }
 
   function compare(a, b) {
@@ -226,7 +215,9 @@ const Thread = () => {
                     </div>
 
                     <div className="flex mt-2 w-92vw max-w-md">
-                      <motion.img animate={{ rotate: 180 }} transition={{ repeat: Infinity, duration: 0.4, ease: "easeOut", repeatDelay: 1 }} id="sablier" src={sablier} className="opacity-100 h-20px "></motion.img><div className='ml-7'>{modalItem.expiration}</div>
+                      <motion.img animate={{ rotate: 180 }} transition={{ repeat: Infinity, duration: 0.4, ease: "easeOut", repeatDelay: 1 }} id="sablier" src={sablier} className="opacity-100 h-20px "></motion.img>
+                      {modalItem.expiration != '0000-00-00' ? <div className='ml-7'>{modalItem.expiration}</div> : <div className='ml-7'>A vie</div>}
+
                     </div>
 
                     <h1 className="text-sm xl:text-sm max-w-md mt-4">{modalItem.description}</h1>
