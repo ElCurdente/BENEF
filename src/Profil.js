@@ -233,6 +233,28 @@ const Profil = () => {
         }
     }, [image]);
 
+    const [picture, setPicture] = useState({});
+
+    const uploadPicture = (e) => {
+        const file = e.target.files[0];
+        if (file) {
+            setImage(file);
+            console.log("ça marche pas")
+        } else {
+            setImage(null);
+        }
+
+        console.log(file)
+        setPicture({
+            /* contains the preview, if you want to show the picture to the user
+                 you can access it with this.state.currentPicture
+             */
+            picturePreview: URL.createObjectURL(e.target.files[0]),
+            /* this contains the file we want to send */
+            pictureAsFile: e.target.files[0],
+        });
+    };
+
     const handleConnexion = e => {
         e.preventDefault();
         modifbio(false);
@@ -363,16 +385,8 @@ const Profil = () => {
                                 name="image"
                                 maxLength="30"
                                 ref={fileInputRef}
-                                onChange={(e) => {
-                                    const file = e.target.files[0];
-                                    if (file) {
-                                        setImage(file);
-                                        console.log("ça marche pas")
-                                    } else {
-                                        setImage(null);
-
-                                    }
-                                }}
+                                value={values.image}
+                                onChange={uploadPicture}
                                 className="hidden placeholder-white-150 text-white-150 border-b-2 bg-transparent w-4/5 my-2 h-12 pt-5 text-left focus:outline-none  focus:placeholder-transparent"
 
 
@@ -404,14 +418,7 @@ const Profil = () => {
                                 placeholder={sessionStorage.getItem("desc")}
                                 value={values.bio}
                                 onChange={handleChange}
-                            ></input>
-                            {/* <input id="desc"
-                            type="text"
-                            name="desc"
-                            
-                            placeholder="Description" className="placeholder-white-150 text-white-150 border-b-2 bg-transparent w-4/5 my-2 h-12 pt-5 text-left focus:outline-none  focus:placeholder-transparent"
-                            
-                        />*/}
+                            ></input>                          
                         </div>
 
                         <div className="flex justify-center pt-5">

@@ -57,29 +57,6 @@ const Post = () => {
 
     const myForm = useRef(null);
 
-    // const handleSubmit = async (e) => {
-    //     e.preventDefault();
-    //     // setErrors(validate(values));
-    //     setIsSubmitting(true);
-    
-    //     console.log('fetch');
-    //     const data = await fetch('https://benef-app.fr/api-post.php', {
-    //         method: "POST",
-    //         headers: {
-    //             'Accept': 'application/json',
-    //             'Content-Type': 'application/json'
-    //         },
-    //         body: JSON.stringify(values)
-    //     })
-    //     const response = await data.json();
-    //     if (response) {
-    //         console.log("ok");
-    //     } else {
-    //         console.log("not ok");
-    //     }
-       
-    // };
-
     const [image, setImage] = useState();
     const [preview, setPreview] = useState();
     const fileInputRef = useRef();
