@@ -318,7 +318,7 @@ const Profil = () => {
                         {items.map(item => (
                             <motion.div className="w-92vw xl:w-full relative bg-red-450 dark:bg-black rounded-lg text-white-0 mb-4 xl:mb-5 shadow-customm"
                                 whileHover={{ scale: 1.01 }}>
-                                <div className="w-full h-250px relative">
+                                <div className="w-full h-250px relative" onClick={handleModal.bind(item)}>
                                     <img className="object-cover rounded-t-lg h-full w-full" src={item.image} alt="" />
                                 </div>
                                 <div className="w-full min-h-max pb-4 md:cursor-pointer" onClick={handleModal.bind(item)} >

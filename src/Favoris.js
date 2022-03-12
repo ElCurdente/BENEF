@@ -372,38 +372,44 @@ function Favoris() {
             </div>
 
             {items.sort(compare).map(item => (
-              <motion.div className="w-92vw xl:w-full relative bg-red-450 dark:bg-black rounded-lg text-white-0 mb-2 xl:mb-5"
+              <motion.div className="w-92vw xl:w-full relative bg-red-450 dark:bg-black rounded-lg text-white-0 mb-4 xl:mb-5 shadow-customm"
                 whileHover={{ scale: 1.01 }}>
-                <div className="w-full h-250px relative">
+                <div className="w-full h-250px relative" onClick={handleModal.bind(item)}>
                   <img className="object-cover rounded-t-lg h-full w-full" src={item.image} alt="" />
                 </div>
-                <div className="w-full min-h-max pb-4 md:cursor-pointer" onClick={handleModal.bind(item)}>
-                  <li key={item.id_post} className="mt-1 w-92vw max-w-md">
-                    <div>
-                      <div className="bg-white-0 h-10 w-10 text-black absolute flex justify-center items-center top-3 right-2 rounded-full">
-                        <button onClick={handleFav.bind(item.id_post)} className="upvote text-red-450 dark:text-black">
-                          <img className='h-20px fill-current cursor-pointer' src={coeurPlein} alt='' />
-                        </button>
-                      </div>
-                      <div className="bg-white-0 text-black absolute top-44 text-xl font-bold flex w-max py-1 rounded-lg">
-                        <button onClick={handleUpvote.bind(item)} className="pl-2 relative">
-                          <motion.img whileTap={{ scale: 0.85 }} id="upvote_haut" src={upvoteHaut} className="opacity-100 h-28px"></motion.img>
-                          {/* <img src={upvoteorange} className="absolute top-0 h-30px dark:opacity-0"></img> */}
-                        </button>
+                <div className="w-full min-h-max pb-4 md:cursor-pointer" onClick={handleModal.bind(item)} >
+                  <h1 className="text-lg font-semibold mx-2 max-w-md mt-2	">{item.title}</h1>
+                  <div className="flex mt-2 text-sm w-92vw max-w-md">
+                    <img src={adresse} className="ml-2 mr-1 w-3.5"></img> {item.address} <div className="absolute right-3">{item.postal}</div>
+                  </div>
 
-                        <span id='nb_upvote' ref={nbUpvote} className="px-2 upvote text-red-450 dark:text-black">{item.upvote}</span>
-                        <button onClick={handleDownvote.bind(item)} className="pr-2 relative">
-                          <motion.img whileTap={{ scale: 0.85 }} id="upvote_bas" src={upvoteBas} className="opacity-100 dark:opacity-100 h-28px"></motion.img>
-                          {/* <img src={upvoteorange} className="transform rotate-180 absolute top-0 h-30px dark:opacity-0"></img> */}
-                        </button>
-                      </div>
-                    </div>
-                    <h1 className="text-lg font-semibold mx-2 mt-2 max-w-md">{item.title}</h1>
-                    <div className="flex mt-2 text-sm w-92vw max-w-md">
-                      <img src={adresse} className="ml-2 mr-1 w-3.5"></img> {item.address} <div className="absolute right-3">{item.postal}</div>
-                    </div>
-                  </li>
                 </div>
+                <li key={item.id_post} className="mt-1 w-92vw max-w-md">
+                  <div>
+                    <div className="bg-white-0 h-10 w-10 text-black absolute flex justify-center items-center top-3 right-2 rounded-full">
+                      <button className="upvote text-red-450 dark:text-black"
+                        onClick={ handleFav.bind(item.id_post)}>
+                        {
+                          isFav.find(x => x == item.id_post) == item.id_post ? <img className='h-20px fill-current cursor-pointer' src={coeurPlein} alt='' /> : 
+                          <img className='h-20px fill-current cursor-pointer' src={coeur} alt='' />
+                        }
+                        
+                      </button>
+                    </div>
+                    <div className="bg-white-0 text-black absolute top-44 text-xl font-bold flex w-max py-1 rounded-lg">
+                      <button onClick={handleUpvote.bind(item)} className="pl-2 relative">
+                        <motion.img whileTap={{ scale: 0.85 }} id="upvote_haut" src={upvoteHaut} className="opacity-100 h-28px"></motion.img>
+                        {/* <img src={upvoteorange} className="absolute top-0 h-30px dark:opacity-0"></img> */}
+                      </button>
+
+                      <span id='nb_upvote' ref={nbUpvote} className="px-2 upvote text-red-450 dark:text-black">{item.upvote}</span>
+                      <button onClick={handleDownvote.bind(item)} className="pr-2 relative">
+                        <motion.img whileTap={{ scale: 0.85 }} id="upvote_bas" src={upvoteBas} className="opacity-100 dark:opacity-100 h-28px"></motion.img>
+                        {/* <img src={upvoteorange} className="transform rotate-180 absolute top-0 h-30px dark:opacity-0"></img> */}
+                      </button>
+                    </div>
+                  </div>
+                </li>
               </motion.div>
             ))}
 
