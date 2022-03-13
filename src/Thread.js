@@ -298,6 +298,7 @@ const Thread = () => {
                 console.log("Error Reading data " + err);
               });
             items[i].upvote++;
+            
             setDownvote(false)
             setIsDownvoted(isDownvoted.filter(item => item !== isVoted));
 
@@ -322,6 +323,7 @@ const Thread = () => {
               });
             items[i].upvote--;
             console.log(items[i].upvote);
+            
             setDownvote(false)
             setIsUpvoted(isUpvoted.filter(item => item !== isVoted));
           }

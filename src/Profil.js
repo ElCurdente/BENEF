@@ -215,6 +215,18 @@ const Profil = () => {
 
     };
 
+    const [openModalSupp, setOpenModalSupp] = useState(false);
+    const [deleteId, setDeleteId] = useState(0);
+
+    const handleDeletePost = () => {
+        console.log("Suppression du post n°"+ deleteId)
+    }
+
+    function handlePostSupp() {
+        setOpenModalSupp(true);
+        setDeleteId(this);
+    }
+
     const [image, setImage] = useState();
     const [preview, setPreview] = useState();
     const fileInputRef = useRef();
@@ -317,6 +329,23 @@ const Profil = () => {
                     </div>
                 </div>
 
+                
+                <div id="containerModal" className={openModalSupp ? "block" : "hidden"}>
+                    <div id="modal" ref={modal} className="flex w-screen h-screen bg-black bg-opacity-30 fixed bottom-0 left-0 justify-center z-40 items-center">
+
+                        <div className="w-full xl:w-2/6  mb-10 xl:mb-0 relative flex flex-col justify-center items-center rounded-3xl bg-white-0 overflow-auto dark:bg-gray-550 dark:text-white-0">
+                            <div className="mb-5 mt-7 mx-3 flex flex-col">                 
+                                <h1 className="text-lg xl:text-xl font-semibold max-w-md mt-2">Êtes-vous sûr de vouloir supprimer ce post ?</h1>
+                                <div className="flex w-full justify-evenly mt-5 mb-10">
+                                <button onClick={() => handleDeletePost()} className="block px-4 font-semibold py-2 bg-red-450 hover:bg-white-0 hover:text-red-450 hover:border-red-450 border-2 border-red-450 dark:hover:bg-white-150 dark:hover:text-gray-550 active:bg-red-200 dark:bg-white-0 dark:border-black dark:text-black rounded-full transition duration-300 ease-in-out text-white-0" type="submit">Supprimer</button>
+                                    <button onClick={() => setOpenModalSupp(false)} className="block px-4 font-semibold py-2 bg-red-450 hover:bg-white-0 hover:text-red-450 hover:border-red-450 border-2 border-red-450 dark:hover:bg-white-150 dark:hover:text-gray-550 active:bg-red-200 dark:bg-white-0 dark:border-black dark:text-black rounded-full transition duration-300 ease-in-out text-white-0" type="submit">Annuler</button>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
                 <div id="infos" className="relative xl:w-2/6 w-95vw px-4 xl:-px-0">
                     <div className="flex items-center">
                         <img className="w-100px h-100px bg-transparent dark:bg-gray-650 border-3 border-red-450 dark:border-black rounded-full object-cover" />
@@ -340,6 +369,9 @@ const Profil = () => {
                         {items.map(item => (
                             <motion.div className="w-92vw xl:w-full relative bg-red-450 dark:bg-black rounded-lg text-white-0 mb-4 xl:mb-5 shadow-customm"
                                 whileHover={{ scale: 1.01 }}>
+                                    <button className="bg-white-0 h-10 w-10 text-black absolute z-40 flex justify-center items-center top-3 right-2 rounded-full" onClick={handlePostSupp.bind(item.id_post)}>
+
+                                    </button>
                                 <div className="w-full h-250px relative" onClick={handleModal.bind(item)}>
                                     <img className="object-cover rounded-t-lg h-full w-full" src={item.image} alt="" />
                                 </div>
