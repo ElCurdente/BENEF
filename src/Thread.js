@@ -454,16 +454,17 @@ const Thread = () => {
           {!confirmedReport ? 
            <div id="modal" ref={modal} className="flex w-screen h-screen bg-black bg-opacity-30 fixed bottom-0 left-0 justify-center z-40 items-center">
 
-           <div className="w-full xl:w-2/6  mb-10 xl:mb-0 relative flex flex-col justify-center items-center rounded-3xl bg-white-0 overflow-auto dark:bg-gray-550 dark:text-white-0">
-               <div className="mb-5 mt-7 mx-3 flex flex-col">                 
-                  <h1 className="text-lg xl:text-xl font-semibold text-align max-w-md mt-2 text-center">Veux-tu signaler ce post ?</h1>
+           <div className="w-full xl:w-2/6 mb-10 xl:mb-0 relative flex flex-col justify-center items-center rounded-3xl bg-white-0 overflow-auto dark:bg-gray-550 dark:text-white-0">
+               <div className="mt-7 mx-3 flex flex-col">                 
+                  <h1 className="text-lg xl:text-xl text-red-650 font-semibold text-align max-w-md mb-2 text-center">Signaler ce post</h1>
                   <h1 className="text-lg xl:text-sm font-light max-w-md mt-2 text-align">Tu peux signaler ce post s’il contient des images choquantes, des textes offensants, un contenu inapproprié ou autre.
-                    Ce signalement sera anonyme.<br></br><br></br>
-                  <Link to="/Cgu"><span className="font-semibold">En savoir plus </span> </Link>sur nos règles de conditions générales.</h1>
-                  <div className="flex w-full justify-evenly mt-5 mb-10">
+                  Ce signalement sera anonyme.<br></br><br></br>
+                  <Link to="/Cgu"><span className="font-semibold">En savoir plus </span> </Link>sur nos règles de conditions générales.<br></br><br></br>
+                  Es-tu vraiment sûr de vouloir signaler ce post ?</h1>
+                  <div className="flex w-full justify-evenly mt-5 mb-8">
                     
-                    <button onClick={() => setOpenModalReport(false)} className="block px-4 border-red-450  text-red-450 font-semibold border-2 border-white-0 bg-white-0 hover:bg-red-450 hover:text-white-0 hover:border-white-0 dark:hover:bg-white-150 dark:hover:text-gray-550 active:bg-red-200 dark:bg-white-0 dark:text-black rounded-full transition duration-300 ease-in-out" type="submit">Annuler</button>
-                   <button onClick={() => handleReportPost()} className="block px-4 font-semibold py-2 bg-red-450 hover:bg-white-0 hover:text-red-450 hover:border-red-450 border-2 border-red-450 dark:hover:bg-white-150 dark:hover:text-gray-550 active:bg-red-200 dark:bg-white-0 dark:border-black dark:text-black rounded-full transition duration-300 ease-in-out text-white-0" type="submit">Signaler</button>
+                    <button onClick={() => setOpenModalReport(false)} className="block px-4 hover:underline hover:underline-offset-8 text-red-450 font-semibold dark:hover:underline dark:hover:underline-offset-8 dark:hover:text-black transition duration-300 ease-in-out" type="submit">Annuler</button>
+                   <button onClick={() => handleReportPost()} className="block px-4 font-semibold py-2 bg-red-650 hover:bg-white-0 hover:text-red-650 hover:border-red-650 border-2 border-red-650 dark:hover:bg-white-150 dark:hover:text-gray-550 active:bg-red-200 dark:bg-white-0 dark:border-black dark:text-black rounded-full transition duration-300 ease-in-out text-white-0" type="submit">Signaler</button>
                        
 
                    </div>
