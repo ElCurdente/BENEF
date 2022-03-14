@@ -363,10 +363,12 @@ const Profil = () => {
 
                         <div className="w-full xl:w-2/6  mb-10 xl:mb-0 relative flex flex-col justify-center items-center rounded-3xl bg-white-0 overflow-auto dark:bg-gray-550 dark:text-white-0">
                             <div className="mb-5 mt-7 mx-3 flex flex-col">                 
-                                <h1 className="text-lg xl:text-xl font-semibold max-w-md mt-2">Êtes-vous sûr de vouloir supprimer ce post ?</h1>
+                                <h1 className="text-lg xl:text-xl font-semibold max-w-md mt-2 text-center">Suppression de post</h1>
+                                <h1 className="text-lg font-light max-w-md mt-2">Êtes-vous sûr de vouloir supprimer ce post ?</h1>
                                 <div className="flex w-full justify-evenly mt-5 mb-10">
+                                    <button onClick={() => setOpenModalSupp(false)} className="block px-4 border-red-450  text-red-450 font-semibold border-2 border-white-0 bg-white-0 hover:bg-red-450 hover:text-white-0 hover:border-white-0 dark:hover:bg-white-150 dark:hover:text-gray-550 active:bg-red-200 dark:bg-white-0 dark:text-black rounded-full transition duration-300 ease-in-out" type="submit">Annuler</button>
                                 <button onClick={() => handleDeletePost()} className="block px-4 font-semibold py-2 bg-red-450 hover:bg-white-0 hover:text-red-450 hover:border-red-450 border-2 border-red-450 dark:hover:bg-white-150 dark:hover:text-gray-550 active:bg-red-200 dark:bg-white-0 dark:border-black dark:text-black rounded-full transition duration-300 ease-in-out text-white-0" type="submit">Supprimer</button>
-                                    <button onClick={() => setOpenModalSupp(false)} className="block px-4 font-semibold py-2 bg-red-450 hover:bg-white-0 hover:text-red-450 hover:border-red-450 border-2 border-red-450 dark:hover:bg-white-150 dark:hover:text-gray-550 active:bg-red-200 dark:bg-white-0 dark:border-black dark:text-black rounded-full transition duration-300 ease-in-out text-white-0" type="submit">Annuler</button>
+                                    
                                 </div>
                             </div>
                         </div>
@@ -397,7 +399,7 @@ const Profil = () => {
                             <motion.div className="w-92vw xl:w-full relative bg-red-450 dark:bg-black rounded-lg text-white-0 mb-4 xl:mb-5 shadow-customm"
                                 whileHover={{ scale: 1.01 }}>
                                     <button className="bg-white-0 h-10 w-10 text-black absolute z-40 flex justify-center items-center top-3 right-2 rounded-full" onClick={handlePostSupp.bind(item.id_post)}>
-                                    <img src={plus}></img>
+                                    <img src={plus} className="transform rotate-45 h-6 w-6"></img>
                                     </button>
                                 <div className="w-full h-250px relative" onClick={handleModal.bind(item)}>
                                     <img className="object-cover rounded-t-lg h-full w-full" src={item.image} alt="" />
