@@ -217,15 +217,43 @@ const Profil = () => {
 
     const [openModalSupp, setOpenModalSupp] = useState(false);
     const [deleteId, setDeleteId] = useState(0);
+    const [suppr, setSuppr] = useState(false);
+
 
     const handleDeletePost = () => {
-        console.log("Suppression du post n°"+ deleteId)
+        console.log("Suppression du post n°"+ deleteId);
+        setOpenModalSupp(false);
+        fetch('https://benef-app.fr/api-post-sup.php', {
+      method: "POST",
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({id_post: deleteId})
+    })
+      .then((data) => {
+        console.log(data);
+        setSuppr(true)
+      })
+      .catch(err => {
+        console.log("Error Reading data " + err);
+      });
     }
 
     function handlePostSupp() {
         setOpenModalSupp(true);
         setDeleteId(this);
     }
+
+    useEffect(() => {
+        for (var i = 0; i < items.length; i++) {
+          if (items[i].id_post === deleteId) {
+            items.splice(i, 1);
+            i--;
+            setSuppr(false);
+          }
+        }
+      }, [suppr])
 
     const [image, setImage] = useState();
     const [preview, setPreview] = useState();
