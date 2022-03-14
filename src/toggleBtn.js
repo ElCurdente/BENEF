@@ -33,8 +33,6 @@ const ToggleBtn = () => {
             setChecked(false);
         }
     }, [])
-
-    
         
         return (            
             <div className="mr-2" onClick={toggleDarkMode}>
