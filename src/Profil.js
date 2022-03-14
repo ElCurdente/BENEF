@@ -7,6 +7,7 @@ import { useRef } from 'react';
 import { useEffect } from 'react';
 import plus from './images/icon/icon_plus.svg';
 import plusblanc from './images/icon/icon_plus_blanc.svg';
+import plusrouge from './images/icon/icon_plus_rouge.svg';
 import ToggleLike from './toggle-like.js';
 import lottie from 'lottie-web';
 import Lottie from 'react-lottie';
@@ -399,7 +400,7 @@ const Profil = () => {
                             <motion.div className="w-92vw xl:w-full relative bg-red-450 dark:bg-black rounded-lg text-white-0 mb-4 xl:mb-5 shadow-customm"
                                 whileHover={{ scale: 1.01 }}>
                                     <button className="bg-white-0 h-10 w-10 text-black absolute z-30 flex justify-center items-center top-3 right-2 rounded-full" onClick={handlePostSupp.bind(item.id_post)}>
-                                    <img src={plus} className="transform rotate-45 h-6 w-6"></img>
+                                    <img src={plusrouge} className="transform rotate-45 h-6 w-6"></img>
                                     </button>
                                 <div className="w-full h-250px relative" onClick={handleModal.bind(item)}>
                                     <img className="object-cover rounded-t-lg h-full w-full" src={item.image} alt="" />
@@ -483,10 +484,10 @@ const Profil = () => {
                         </div>
 
                         <div className="flex justify-center pt-5">
-                            <div className="flex justify-end items-center py-5 mr-5">
-                                <button onClick={handleConnexion} className="block px-7 py-2 text-red-450 text-lg font-semibold bg-white-0 border-2 border-red-450 hover:bg-red-450 hover:text-white-0 dark:hover:bg-white-150 dark:hover:text-gray-550 active:bg-red-200 dark:bg-white-0 dark:text-black rounded-full transition duration-300 ease-in-out">Annuler</button>
+                            <div className="flex justify-end items-center py-5 mr-20">
+                                <button onClick={handleConnexion} className="text-lg block px-4 hover:underline hover:underline-offset-8 text-red-450 font-semibold dark:hover:underline dark:hover:underline-offset-8 dark:hover:text-black transition duration-300 ease-in-out">Annuler</button>
                             </div>
-                            <div className="flex justify-end items-center py-5 mr-5">
+                            <div className="flex justify-end items-center py-5">
                                 <button className="block px-5 py-2 text-white-0 text-lg font-semibold bg-red-450 hover:bg-white-0 hover:text-red-450 hover:border-red-450 border-2 border-red-450 dark:hover:bg-white-150 dark:hover:text-gray-550 active:bg-red-200 dark:bg-white-0 dark:text-black rounded-full transition duration-300 ease-in-out" type="submit">Enregistrer</button>
                             </div>
                         </div>
