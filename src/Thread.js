@@ -519,8 +519,8 @@ const Thread = () => {
 
                     <h1 className="text-sm xl:text-sm max-w-md mt-4">{modalItem.description}</h1>
 
-                    <div className='flex  text-sm w-full mt-4'>
-                       Posté par <span className="font-semibold cursor-pointer" onClick={handleModalUser.bind(modalItem)}>{modalItem.user_pseudo}</span> 
+                    <div className='flex self-end items-center text-sm max-w-md mt-4'>
+                       Posté par <span className="font-semibold cursor-pointer ml-1 mr-2" onClick={handleModalUser.bind(modalItem)}>{modalItem.user_pseudo}</span> 
                         <img className="h-8 w-8 xl:border-2 xl:h-8 xl:w-8 rounded-full xl:rounded-full border-2 border-red-450" src={profil} alt="image de profil" />
                       
                     </div>
