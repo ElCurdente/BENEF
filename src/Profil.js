@@ -380,14 +380,13 @@ const Profil = () => {
                         <img className="w-100px h-100px bg-transparent dark:bg-gray-650 border-3 border-red-450 dark:border-black rounded-full object-cover" />
                         <h1 className="ml-3 text-xl font-semibold">{user.username}</h1>
                     </div>
-                    <p className="col-span-2 mt-2">{user.bio}</p>
-                    <div className="flex items-center justify-between col-span-2 h-16 pt-4">
+                    <p className="col-span-2 mt-4">{user.bio}</p>
+                    <div className="flex items-center justify-between col-span-2 h-16 pt-8">
                         <button onClick={handleModify} className="flex items-center h-10 bg-red-450 py-2 px-4 rounded-3xl text-white-0 dark:text-black hover:bg-white-0 hover:text-red-450 hover:border-red-450 border-2 border-red-450 dark:bg-white-0 dark:border-white-0">Modifie ton profil</button>
-                        <Link to="/favoris"><button className="flex items-center text-red-450 dark:text-white-0 hover:underline">Voir mes favoris <img className="pl-1 h-15px fill-current" src={coeur} alt="" /></button></Link>
                     </div>
 
                 </div>
-                <div id="barre1" className="h-1px w-95vw xl:w-2/6 mt-4 bg-gray-200"></div>
+                <div id="barre1" className="h-1px w-95vw xl:w-2/6 mt-7 bg-gray-200"></div>
                 <div id="badges" className="w-95vw h-100px xl:w-2/6">
                     <h3 className="font-bold pt-4 pl-4">Badges</h3>
                 </div>
@@ -455,7 +454,7 @@ const Profil = () => {
                         </div>
 
                         <div className="flex flex-col relative justify-center items-center pt-5">
-                            <label htmlFor="title" className="w-4/5 font-semibold"> Nom d'utilisateur
+                            <label htmlFor="title" className="w-4/5 font-semibold">Nom d'utilisateur
                             </label>
                             <input id="username"
                                 type="text"
@@ -467,16 +466,16 @@ const Profil = () => {
                             />
                         </div>
 
-                        <div className="flex relative flex-col justify-center items-center pt-5">
-                            <label htmlFor="desc" className="w-4/5 font-semibold"> Biographie
+                        <div className="flex relative flex-col justify-center items-center pt-7">
+                            <label htmlFor="desc" className="w-4/5 font-semibold">Biographie
                             </label>
                             <input
                                 id="bio"
                                 type="textarea"
                                 name="bio"
                                 rows="40"
-                                className=" resize-y pt-3 placeholder-gray-500 text-black dark:text-white-0 border-b-2 bg-transparent w-4/5 h-24 text-left focus:outline-none  focus:placeholder-transparent"
-                                placeholder={sessionStorage.getItem("desc")}
+                                className="resize-y relative bottom-5 placeholder-gray-500 text-black dark:text-white-0 border-b-2 bg-transparent w-4/5 h-24 text-left focus:outline-none  focus:placeholder-transparent"
+                                placeholder={user.bio}
                                 value={values.bio}
                                 onChange={handleChange}
                             ></input>                          
