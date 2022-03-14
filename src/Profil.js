@@ -365,10 +365,8 @@ const Profil = () => {
                             <div className="mb-5 mt-7 mx-3 flex flex-col">                 
                                 <h1 className="text-lg xl:text-xl font-semibold max-w-md mt-2">Êtes-vous sûr de vouloir supprimer ce post ?</h1>
                                 <div className="flex w-full justify-evenly mt-5 mb-10">
-                                    <button onClick={() => setOpenModalSupp(false)} className="block px-4 font-semibold py-2 bg-red-450 hover:bg-white-0 hover:text-red-450 hover:border-red-450 border-2 border-red-450 dark:hover:bg-white-150 dark:hover:text-gray-550 active:bg-red-200 dark:bg-white-0 dark:border-black dark:text-black rounded-full transition duration-300 ease-in-out text-white-0" type="submit">Annuler</button>
                                 <button onClick={() => handleDeletePost()} className="block px-4 font-semibold py-2 bg-red-450 hover:bg-white-0 hover:text-red-450 hover:border-red-450 border-2 border-red-450 dark:hover:bg-white-150 dark:hover:text-gray-550 active:bg-red-200 dark:bg-white-0 dark:border-black dark:text-black rounded-full transition duration-300 ease-in-out text-white-0" type="submit">Supprimer</button>
-                                    
-
+                                    <button onClick={() => setOpenModalSupp(false)} className="block px-4 font-semibold py-2 bg-red-450 hover:bg-white-0 hover:text-red-450 hover:border-red-450 border-2 border-red-450 dark:hover:bg-white-150 dark:hover:text-gray-550 active:bg-red-200 dark:bg-white-0 dark:border-black dark:text-black rounded-full transition duration-300 ease-in-out text-white-0" type="submit">Annuler</button>
                                 </div>
                             </div>
                         </div>
