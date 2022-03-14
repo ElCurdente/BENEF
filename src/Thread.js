@@ -456,10 +456,10 @@ const Thread = () => {
 
            <div className="w-full xl:w-2/6  mb-10 xl:mb-0 relative flex flex-col justify-center items-center rounded-3xl bg-white-0 overflow-auto dark:bg-gray-550 dark:text-white-0">
                <div className="mb-5 mt-7 mx-3 flex flex-col">                 
-                  <h1 className="text-lg xl:text-xl font-semibold text-align max-w-md mt-2 text-center">Voulez-vous signaler ce post ?</h1>
-                  <h1 className="text-lg xl:text-sm font-light max-w-md mt-2 text-align">Vous pouvez signaler ce post s’il contient des images choquantes, des textes offensants, un contenu inapproprié ou autre.
+                  <h1 className="text-lg xl:text-xl font-semibold text-align max-w-md mt-2 text-center">Veux-tu signaler ce post ?</h1>
+                  <h1 className="text-lg xl:text-sm font-light max-w-md mt-2 text-align">Tu peux signaler ce post s’il contient des images choquantes, des textes offensants, un contenu inapproprié ou autre.
                     Ce signalement sera anonyme.<br></br><br></br>
-                  <span className="font-semibold">En savoir plus </span> sur nos règles de conditions générales.</h1>
+                  <Link to="/Cgu"><span className="font-semibold">En savoir plus </span> </Link>sur nos règles de conditions générales.</h1>
                   <div className="flex w-full justify-evenly mt-5 mb-10">
                     
                     <button onClick={() => setOpenModalReport(false)} className="block px-4 border-red-450  text-red-450 font-semibold border-2 border-white-0 bg-white-0 hover:bg-red-450 hover:text-white-0 hover:border-white-0 dark:hover:bg-white-150 dark:hover:text-gray-550 active:bg-red-200 dark:bg-white-0 dark:text-black rounded-full transition duration-300 ease-in-out" type="submit">Annuler</button>
