@@ -382,6 +382,41 @@ const Thread = () => {
     bio: ''
   });
 
+  const [openModalReport, setOpenModalReport] = useState(false);
+  const [reportedId, setReportedId] = useState(0);
+  const [confirmedReport, setConfirmedReport] = useState(false);
+
+  function handleReport() {
+    setOpenModalReport(true);
+    setReportedId(this);
+  }
+
+  function resetReport() {
+    setOpenModalReport(false);
+    setConfirmedReport(false);
+  }
+
+  const handleReportPost = () => {
+    console.log("Suppression du post n°"+ reportedId);
+    // setOpenModalSupp(false);
+    fetch('https://benef-app.fr/api-report.php', {
+  method: "POST",
+  headers: {
+    'Accept': 'application/json',
+    'Content-Type': 'application/json'
+  },
+  body: JSON.stringify({id_post: reportedId})
+})
+  .then((data) => {
+    console.log(data);
+    setConfirmedReport(true)
+  })
+  .catch(err => {
+    console.log("Error Reading data " + err);
+  });
+}
+
+
   useEffect(() => {
     console.log({ id_user: modalItem.id_user })
     fetch('https://benef-app.fr/api-infos-utilisateur.php', {
@@ -412,7 +447,40 @@ const Thread = () => {
     return <div>Chargement...</div>;
   } else {
     return (
+
       <div className=" h-screen w-screen flex justify-center xl:justify-center overflow-x-hidden overflow-auto items-center bg-white-0 xl:dark:bg-gray-550">
+        <div id="containerModal" className={openModalReport ? "block" : "hidden"}>
+          {!confirmedReport ? 
+           <div id="modal" ref={modal} className="flex w-screen h-screen bg-black bg-opacity-30 fixed bottom-0 left-0 justify-center z-40 items-center">
+
+           <div className="w-full xl:w-2/6  mb-10 xl:mb-0 relative flex flex-col justify-center items-center rounded-3xl bg-white-0 overflow-auto dark:bg-gray-550 dark:text-white-0">
+               <div className="mb-5 mt-7 mx-3 flex flex-col">                 
+                   <h1 className="text-lg xl:text-xl font-semibold max-w-md mt-2">Voulez-vous signaler ce post ?</h1>
+                   <div className="flex w-full justify-evenly mt-5 mb-10">
+                   <button onClick={() => handleReportPost()} className="block px-4 font-semibold py-2 bg-red-450 hover:bg-white-0 hover:text-red-450 hover:border-red-450 border-2 border-red-450 dark:hover:bg-white-150 dark:hover:text-gray-550 active:bg-red-200 dark:bg-white-0 dark:border-black dark:text-black rounded-full transition duration-300 ease-in-out text-white-0" type="submit">Signaler</button>
+                       <button onClick={() => setOpenModalReport(false)} className="block px-4 font-semibold py-2 bg-red-450 hover:bg-white-0 hover:text-red-450 hover:border-red-450 border-2 border-red-450 dark:hover:bg-white-150 dark:hover:text-gray-550 active:bg-red-200 dark:bg-white-0 dark:border-black dark:text-black rounded-full transition duration-300 ease-in-out text-white-0" type="submit">Annuler</button>
+
+                   </div>
+               </div>
+           </div>
+       </div>
+          : 
+          <div id="modal" ref={modal} className="flex w-screen h-screen bg-black bg-opacity-30 fixed bottom-0 left-0 justify-center z-40 items-center">
+
+           <div className="w-full xl:w-2/6  mb-10 xl:mb-0 relative flex flex-col justify-center items-center rounded-3xl bg-white-0 overflow-auto dark:bg-gray-550 dark:text-white-0">
+               <div className="mb-5 mt-7 mx-3 flex flex-col">                 
+                   <h1 className="text-lg xl:text-xl font-semibold max-w-md mt-2">Merci, ce post a bien été signalé.</h1>
+                   <div className="flex w-full justify-evenly mt-5 mb-10">
+                       <button onClick={() => resetReport()} className="block px-4 font-semibold py-2 bg-red-450 hover:bg-white-0 hover:text-red-450 hover:border-red-450 border-2 border-red-450 dark:hover:bg-white-150 dark:hover:text-gray-550 active:bg-red-200 dark:bg-white-0 dark:border-black dark:text-black rounded-full transition duration-300 ease-in-out text-white-0" type="submit">Retour</button>
+
+                   </div>
+               </div>
+           </div>
+       </div>
+          }
+             </div>
+
+                   
         {/* <motion.div className="">
           <img src={upvoteHautplein} />
         </motion.div> */}
@@ -566,6 +634,8 @@ const Thread = () => {
 
                       </button>
                     </div>
+                    <button className="bg-white-0 h-10 w-10 text-black absolute z-40 flex justify-center items-center top-3 right-16 rounded-full" onClick={handleReport.bind(item.id_post)}>
+                    </button>
                     <div className="bg-white-0 text-black absolute top-44 text-xl font-bold flex w-max py-1 rounded-lg">
                       <button onClick={handleUpvote.bind(item)} className="pl-2 relative">
                         <motion.img whileTap={{ scale: 0.85 }} id="upvote_haut" src={upvoteHaut} className="opacity-100 h-28px"></motion.img>
