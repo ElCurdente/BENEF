@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react';
 import { Redirect } from 'react-router';
 import { useHistory } from "react-router-dom";
+import {AES, enc}from 'crypto-js';
+
 
 
 const useForm = (callback, validate) => {
@@ -85,9 +87,6 @@ const handleSubmitConnexion = e => {
   e.preventDefault();
   setErrors(validate(values));
   setIsSubmitting(true);
-  var test = JSON.stringify(valuesConnexion);
-  console.log(test)
-  console.log(valuesConnexion);
 fetch('https://benef-app.fr/api-connexion.php', {
 method: "POST",
 headers: {
@@ -99,32 +98,28 @@ body: JSON.stringify(valuesConnexion)
 .then((response) => response.json())
 .then((data) => {
   console.log(data);
-  if(stayConnected){
-    localStorage.setItem("isConnected", true);
-  }else{
-    sessionStorage.setItem("user", data.username);
-  }
-sessionStorage.setItem("isConnected", true);
-sessionStorage.setItem("id_user", data.id_user)
-console.log(stayConnected)
-console.log(sessionStorage.getItem("user"))
-if(localStorage.getItem("isConnected")){
+  // setIdUser(data.id_user);
+  const envryptedString = AES.encrypt(data.id_user,'MYKEY4DEMO');// console.log(stayConnected)
+  sessionStorage.setItem('id_user', envryptedString.toString());
+  console.log(AES.decrypt(envryptedString, 'MYKEY4DEMO'));
+  
+const decrypted = AES.decrypt(sessionStorage.getItem('id_user'), 'MYKEY4DEMO');
+const decryptedString = decrypted.toString(enc.Utf8);
+sessionStorage.setItem('decryptedHello', decryptedString)
+ 
+// }else 
+sessionStorage.setItem("isConnected", true)
+//   console.log("oui il est bien connecté là")
   window.location.reload();
-}else 
-if(sessionStorage.getItem("isConnected")){
-  console.log("oui il est bien connecté là")
-  window.location.reload();
-  console.log(stayConnected)
-}
+//   console.log(stayConnected)
+// }
 })
 .catch(err => {
 console.log("Error Reading data " + err);
-console.log(stayConnected);
 setErrorsConnexion({
   ...errorsConnexion,
     wrongEntries : true
 });
-console.log(errorsConnexion);
 });
 };
 
@@ -174,7 +169,7 @@ console.log(errorsConnexion);
     [errors]
   );
 
-  return {handleChange,handleClickShowPassword,handleClickShowPassword2,handleMouseDownPassword, handleSubmit, handleSubmitConnexion, handleChangeCo, values, valuesConnexion, errors, errorsConnexion, errorDoublon, handleStayConnected, stayConnected };
+  return {handleChange,handleClickShowPassword,handleClickShowPassword2,handleMouseDownPassword, handleSubmit, handleSubmitConnexion, handleChangeCo, values, valuesConnexion, errors, errorsConnexion, errorDoublon, handleStayConnected, stayConnected};
 };
 
 export default useForm ;

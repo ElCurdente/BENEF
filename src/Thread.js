@@ -23,6 +23,8 @@ import animationData from './images/animation/like.json';
 import coeur from './images/icon/icon_coeur.svg';
 import coeurPlein from './images/icon/icon_coeur_rempli.svg';
 import fleche from './images/icon/icon_fleche.svg';
+import {AES, enc}from 'crypto-js';
+
 import signaler from './images/icon/icon_signaler.svg';
 
 const Thread = () => {
@@ -56,7 +58,9 @@ const Thread = () => {
   const [openModal, setOpenModal] = useState(false);
   const [openModalUser, setOpenModalUser] = useState(false);
   const [openModalUserPost, setOpenModalUserPost] = useState(false);
-  const [isFav, setIsFav] = useState([])
+  const [isFav, setIsFav] = useState([]);
+  const decrypted = AES.decrypt(sessionStorage.getItem('id_user'), 'MYKEY4DEMO');
+  const id_user = decrypted.toString(enc.Utf8);
 
   useEffect(() => {
     fetch("https://benef-app.fr/api-post-render.php")
@@ -76,13 +80,36 @@ const Thread = () => {
   }, [isLoaded])
 
   useEffect(() => {
+    fetch('https://benef-app.fr/api-post-user2.php', {
+      method: "POST",
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ id_user: id_user })
+    })
+      .then(res => res.json())
+      .then(
+        (result) => {
+          setIsLoaded(true);
+          setUserItems(result.userItems);
+          console.log(userItems);
+        },
+        (error) => {
+          setIsLoaded(true);
+          setError(error);
+        }
+      )
+  }, []);
+
+  useEffect(() => {
     fetch("https://benef-app.fr/api-favoris-render-2.php", {
       method: "POST",
       headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify({ id_user: sessionStorage.getItem('id_user') })
+      body: JSON.stringify({ id_user: id_user })
     })
       .then(res => res.json())
       .then(
@@ -173,7 +200,7 @@ const Thread = () => {
   }, [openModalUser]);
 
   function handleFav() {
-    console.log({ id_user: sessionStorage.getItem('id_user'), id_post: this });
+    console.log({ id_user: id_user, id_post: this });
     if (isFav.find(x => x == this) != this) {
       setIsFav(prevState => [...prevState, this]);
       console.log(isFav);
@@ -183,7 +210,7 @@ const Thread = () => {
           'Accept': 'application/json',
           'Content-Type': 'application/json'
         },
-        body: JSON.stringify({ id_user: sessionStorage.getItem('id_user'), id_post: this })
+        body: JSON.stringify({ id_user: id_user, id_post: this })
       })
         .then((data) => {
           console.log(data);
@@ -200,7 +227,7 @@ const Thread = () => {
           'Accept': 'application/json',
           'Content-Type': 'application/json'
         },
-        body: JSON.stringify({ id_user: sessionStorage.getItem('id_user'), id_post: this })
+        body: JSON.stringify({ id_user: id_user, id_post: this })
       })
         .then((data) => {
           console.log(data);
@@ -519,8 +546,8 @@ const Thread = () => {
 
                     <h1 className="text-sm xl:text-sm max-w-md mt-4">{modalItem.description}</h1>
 
-                    <div className='flex  text-sm w-full mt-4'>
-                       Posté par <span className="font-semibold cursor-pointer" onClick={handleModalUser.bind(modalItem)}>{modalItem.user_pseudo}</span> 
+                    <div className='flex self-end items-center text-sm max-w-md mt-4'>
+                       Posté par <span className="font-semibold cursor-pointer ml-1 mr-2" onClick={handleModalUser.bind(modalItem)}>{modalItem.user_pseudo}</span> 
                         <img className="h-8 w-8 xl:border-2 xl:h-8 xl:w-8 rounded-full xl:rounded-full border-2 border-red-450" src={profil} alt="image de profil" />
                       
                     </div>

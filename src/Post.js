@@ -9,13 +9,16 @@ import fleche from './images/icon/icon_fleche.svg';
 import axios from 'axios';
 import { BrowserRouter as Router, Switch, Route, Link, useHistory} from 'react-router-dom';
 import validate from './validateInfo'
-
+import {AES, enc}from 'crypto-js';
 
 
 const Post = () => {
 
     const [errors, setErrors] = useState({});
     const [isSubmitting, setIsSubmitting] = useState(false);
+
+    const decrypted = AES.decrypt(sessionStorage.getItem('id_user'), 'MYKEY4DEMO');
+  const id_user = decrypted.toString(enc.Utf8);
 
     const [values, setValues] = useState({
         image: undefined,
@@ -110,7 +113,7 @@ const Post = () => {
         formData.append('place', values.place);
         formData.append('certified', values.certified);
         formData.append('cgu',  values.cgu);
-        formData.append('id_user', sessionStorage.getItem('id_user'));
+        formData.append('id_user', id_user);
 
         console.log(picture.pictureAsFile);
 

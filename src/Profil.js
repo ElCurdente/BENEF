@@ -16,6 +16,7 @@ import { motion } from 'framer-motion/dist/framer-motion';
 import adresse from './images/icon/adress.svg';
 import localisation from './images/icon/icon_localisation.svg';
 import sablier from './images/icon/icon_sablier.svg';
+import {AES, enc}from 'crypto-js';
 
 
 
@@ -29,6 +30,9 @@ const Profil = () => {
     const [openModal, setOpenModal] = useState(false);
     const [bio, modifbio] = useState(false);
 
+    const decrypted = AES.decrypt(sessionStorage.getItem('id_user'), 'MYKEY4DEMO');
+  const id_user = decrypted.toString(enc.Utf8);
+
     useEffect(() => {
         fetch('https://benef-app.fr/api-post-user2.php', {
             method: "POST",
@@ -36,7 +40,7 @@ const Profil = () => {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({ id_user: sessionStorage.getItem('id_user') })
+            body: JSON.stringify({ id_user: id_user })
         })
             .then(res => res.json())
             .then(
@@ -126,24 +130,29 @@ const Profil = () => {
     }, []);
 
     const [user, setUser] = useState({
+        id:'',
         username: '',
         bio: ''
     });
 
+
+    console.log(id_user);
+
     useEffect(() => {
-        console.log({ id_user: sessionStorage.getItem('id_user') })
+        console.log({ id_user: id_user })
         fetch('https://benef-app.fr/api-infos-utilisateur.php', {
             method: "POST",
             headers: {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({ id_user: sessionStorage.getItem('id_user') })
+            body: JSON.stringify({ id_user: id_user })
         })
             .then((response) => response.json())
             .then((data) => {
                 console.log(data);
                 setUser({
+                    id:data.id_user,
                     username: data.username,
                     bio: data.bio
                 })
@@ -177,7 +186,7 @@ const Profil = () => {
     }
 
     const [values, setValues] = useState({
-        id_user: sessionStorage.getItem('id_user'),
+        id_user: id_user,
         image: '',
         username: '',
         bio: '',
@@ -194,7 +203,7 @@ const Profil = () => {
 
     const handleSubmit = e => {
         e.preventDefault();
-        console.log({ id_user: sessionStorage.getItem('id_user') }, values)
+        console.log({ id_user: id_user }, values)
         fetch('https://benef-app.fr/api-modif-profil.php', {
             method: "POST",
             headers: {
@@ -319,7 +328,6 @@ const Profil = () => {
         setModalItem(this);
     }
 
-
     if (bio === false) {
         return (
             <div className="overflow-auto flex flex-col justify-start mt-20 items-center xl:mt-15 h-screen w-screen bg-white-0 xl:dark:bg-gray-550 dark:text-white-0">
@@ -385,6 +393,13 @@ const Profil = () => {
                     <p className="col-span-2 mt-4">{user.bio}</p>
                     <div className="flex items-center justify-between col-span-2 h-16 pt-8">
                         <button onClick={handleModify} className="flex items-center h-10 bg-red-450 py-2 px-4 rounded-3xl text-white-0 dark:text-black hover:bg-white-0 hover:text-red-450 hover:border-red-450 border-2 border-red-450 dark:bg-white-0 dark:border-white-0">Modifie ton profil</button>
+                        <Link to="/favoris"><button className="flex items-center text-red-450 dark:text-white-0 hover:underline">Voir mes favoris <img className="pl-1 h-15px fill-current" src={coeur} alt="" /></button></Link>
+                        {user.id == 38 &&
+                         <Link to="/backoffice"><button className="flex items-center text-red-450 dark:text-white-0 hover:underline">Accéder aux signalements</button></Link>          
+                        }
+                                       
+                      
+                     
                     </div>
 
                 </div>
