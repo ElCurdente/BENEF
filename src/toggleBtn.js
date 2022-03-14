@@ -10,6 +10,9 @@ import 'react-dragswitch/dist/index.css';
 const ToggleBtn = () => {
 
     const html = document.querySelector('html');
+    let dragswitch = document.getElementById('dragswitch-handle');
+    const theme = localStorage.getItem('theme');
+    const [checked, setChecked] = useState(false);
 
     const toggleDarkMode = function () {
         if (checked) {
@@ -21,49 +24,19 @@ const ToggleBtn = () => {
         }
     }
 
-    //DarkMode;
-    // const [theme, setTheme] = useState(localStorage.theme);
-    // const colorTheme = theme == "light" ? "dark" : 'light';
-    // useEffect(() => {
-    //     const root = window.document.documentElement;
+    useEffect(() => {
+        console.log(theme);
+        if (html.classList.contains("dark")) {
+            setChecked(true);
+            // dragswitch.style.transform = "translateX(20px)";
+        } else {
+            setChecked(false);
+        }
+    }, [])
 
-    //     root.classList.remove(colorTheme);
-    //     root.classList.add(theme);
-    //     localStorage.setItem('theme', theme);
-    // }, [theme, colorTheme]);
-
-    // const [button, setButton] = useState({
-    //     id:props.id, 
-    //     checked: false,
-    // });
-
-    // const handleClick = () => {
-    //     console.log(button.id);
-    // }
-
-    const [checked, setChecked] = useState(false);
-
-    // let coche = false;
-
-    // if (html.classList.contains('dark')) {
-    //     coche = true;
-    // } else {
-    //     coche = false;
-    // }
-    // if (html.classList.contains('dark')) {
+    
         
-    // }
-        
-        return (
-            // <div>
-            //     <input type="checkbox" id="toggle_btn_3" class="hidden w-10 h-5 text-green-600 mr-2 rounded-full"
-            //         onClick={handleClick} ></input>
-            //     <label for="toggle_btn_3">
-            //         <div className="container-toggle-dot flex w-9 h-5 items-center bg-gray-300 rounded-full p-1 mr-2 transform transition duration-300 cursor-pointer">
-            //             <div id="toggle_dot_3" className="toggle-dot-3 w-4 h-4 bg-white-0 rounded-full shadow-md transform transition duration-300"></div>
-            //         </div>
-            //     </label>
-            // </div>
+        return (            
             <div className="mr-2" onClick={toggleDarkMode}>
             <DragSwitch checked={checked} onChange={(e) => {
                 setChecked(e)
