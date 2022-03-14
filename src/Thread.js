@@ -518,7 +518,11 @@ const Thread = () => {
 
                     <h1 className="text-sm xl:text-sm max-w-md mt-4">{modalItem.description}</h1>
 
-                    <h1 className="self-end text-sm mt-4"> Posté par <span className="font-semibold cursor-pointer" onClick={handleModalUser.bind(modalItem)}>{modalItem.user_pseudo}</span></h1>
+                    <div className='flex flex-end text-sm mt-4'>
+                       Posté par <span className="font-semibold cursor-pointer" onClick={handleModalUser.bind(modalItem)}>{modalItem.user_pseudo}</span> 
+                        <img className="h-5px xl:border-2 xl:h-8 xl:w-8 xl:rounded-full rounded-xl border-2 border-red-450" src={profil} alt="image de profil" />
+                      
+                    </div>
 
                     <div className="flex w-full justify-evenly mt-5 mb-10">
                       <button onClick={() => setOpenModal(false)} className="block px-4 font-semibold py-2 bg-red-450 hover:bg-white-0 hover:text-red-450 hover:border-red-450 border-2 border-red-450 dark:hover:bg-white-150 dark:hover:text-gray-550 active:bg-red-200 dark:bg-white-0 dark:border-black dark:text-black rounded-full transition duration-300 ease-in-out text-white-0" type="submit">Fermer</button>
