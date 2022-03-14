@@ -319,7 +319,7 @@ const Filter = ({ searchValue, setSearchValue }) => {
               filter1000.map(item => (
                 <motion.div className="w-92vw h-150px relative flex justify-between items-center bg-red-450 xl:w-full dark:bg-black rounded-lg text-white-0 mb-5 shadow-customm"
                   whileHover={{ scale: 1.01 }}>
-                  <div className="h-full w-35% flex justify-center items-center relative">
+                  <div className="h-full w-35% flex justify-center items-center relative cursor-pointer">
                     <img className="w-90% h-90%  object-cover rounded-lg" src={item.image} alt="" />
                   </div>
                   <div className="w-65% justify-self-end flex relative justify-center items-center h-full" onClick={handleModal.bind(item)}>
@@ -339,10 +339,10 @@ const Filter = ({ searchValue, setSearchValue }) => {
               filterByName.map(item => (
                 <motion.div className="w-92vw h-150px relative flex justify-between items-center bg-red-450 xl:w-full dark:bg-black rounded-lg text-white-0 mb-5 shadow-customm"
                   whileHover={{ scale: 1.01 }} >
-                  <div className="h-full w-35% flex justify-center items-center relative">
-                    <img className="w-90% h-90%  object-cover rounded-lg" src={item.image} alt="" />
+                  <div className="h-full w-35% flex justify-center items-center relative cursor-pointer">
+                    <img className="w-90% h-90%  object-cover rounded-lg cursor-pointer" src={item.image} alt="" />
                   </div>
-                  <div className="w-65% justify-self-end flex relative justify-center items-center h-full" onClick={handleModal.bind(item)}>
+                  <div className="w-65% justify-self-end flex relative justify-center items-center h-full cursor-pointer" onClick={handleModal.bind(item)}>
                     <li key={item.id_post} className="mt-1 w-92vw">
                       <div className="bg-white-0 text-black text-xl font-bold absolute right-3 top-3 w-max rounded-lg">
                         <span className="px-2 upvote">{item.upvote}</span>
