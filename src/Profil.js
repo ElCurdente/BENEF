@@ -17,6 +17,7 @@ import localisation from './images/icon/icon_localisation.svg';
 import sablier from './images/icon/icon_sablier.svg';
 
 
+
 const Profil = () => {
 
     const [state, setState] = useState(false);
@@ -364,7 +365,7 @@ const Profil = () => {
                         <div className="w-full xl:w-2/6  mb-10 xl:mb-0 relative flex flex-col justify-center items-center rounded-3xl bg-white-0 overflow-auto dark:bg-gray-550 dark:text-white-0">
                             <div className="mb-5 mt-7 mx-3 flex flex-col">                 
                                 <h1 className="text-lg xl:text-xl font-semibold max-w-md mt-2 text-center">Suppression de post</h1>
-                                <h1 className="text-lg font-light max-w-md mt-2">Êtes-vous sûr de vouloir supprimer ce post ?</h1>
+                                <h1 className="text-lg font-light max-w-md mt-2">Es-tu sûr de vouloir supprimer ce post ?</h1>
                                 <div className="flex w-full justify-evenly mt-5 mb-10">
                                     <button onClick={() => setOpenModalSupp(false)} className="block px-4 border-red-450  text-red-450 font-semibold border-2 border-white-0 bg-white-0 hover:bg-red-450 hover:text-white-0 hover:border-white-0 dark:hover:bg-white-150 dark:hover:text-gray-550 active:bg-red-200 dark:bg-white-0 dark:text-black rounded-full transition duration-300 ease-in-out" type="submit">Annuler</button>
                                 <button onClick={() => handleDeletePost()} className="block px-4 font-semibold py-2 bg-red-450 hover:bg-white-0 hover:text-red-450 hover:border-red-450 border-2 border-red-450 dark:hover:bg-white-150 dark:hover:text-gray-550 active:bg-red-200 dark:bg-white-0 dark:border-black dark:text-black rounded-full transition duration-300 ease-in-out text-white-0" type="submit">Supprimer</button>
@@ -380,14 +381,13 @@ const Profil = () => {
                         <img className="w-100px h-100px bg-transparent dark:bg-gray-650 border-3 border-red-450 dark:border-black rounded-full object-cover" />
                         <h1 className="ml-3 text-xl font-semibold">{user.username}</h1>
                     </div>
-                    <p className="col-span-2 mt-2">{user.bio}</p>
-                    <div className="flex items-center justify-between col-span-2 h-16 pt-4">
+                    <p className="col-span-2 mt-4">{user.bio}</p>
+                    <div className="flex items-center justify-between col-span-2 h-16 pt-8">
                         <button onClick={handleModify} className="flex items-center h-10 bg-red-450 py-2 px-4 rounded-3xl text-white-0 dark:text-black hover:bg-white-0 hover:text-red-450 hover:border-red-450 border-2 border-red-450 dark:bg-white-0 dark:border-white-0">Modifie ton profil</button>
-                        <Link to="/favoris"><button className="flex items-center text-red-450 dark:text-white-0 hover:underline">Voir mes favoris <img className="pl-1 h-15px fill-current" src={coeur} alt="" /></button></Link>
                     </div>
 
                 </div>
-                <div id="barre1" className="h-1px w-95vw xl:w-2/6 mt-4 bg-gray-200"></div>
+                <div id="barre1" className="h-1px w-95vw xl:w-2/6 mt-7 bg-gray-200"></div>
                 <div id="badges" className="w-95vw h-100px xl:w-2/6">
                     <h3 className="font-bold pt-4 pl-4">Badges</h3>
                 </div>
@@ -398,7 +398,7 @@ const Profil = () => {
                         {items.map(item => (
                             <motion.div className="w-92vw xl:w-full relative bg-red-450 dark:bg-black rounded-lg text-white-0 mb-4 xl:mb-5 shadow-customm"
                                 whileHover={{ scale: 1.01 }}>
-                                    <button className="bg-white-0 h-10 w-10 text-black absolute z-40 flex justify-center items-center top-3 right-2 rounded-full" onClick={handlePostSupp.bind(item.id_post)}>
+                                    <button className="bg-white-0 h-10 w-10 text-black absolute z-30 flex justify-center items-center top-3 right-2 rounded-full" onClick={handlePostSupp.bind(item.id_post)}>
                                     <img src={plus} className="transform rotate-45 h-6 w-6"></img>
                                     </button>
                                 <div className="w-full h-250px relative" onClick={handleModal.bind(item)}>
@@ -455,7 +455,7 @@ const Profil = () => {
                         </div>
 
                         <div className="flex flex-col relative justify-center items-center pt-5">
-                            <label htmlFor="title" className="w-4/5 font-semibold"> Nom d'utilisateur
+                            <label htmlFor="title" className="w-4/5 font-semibold">Nom d'utilisateur
                             </label>
                             <input id="username"
                                 type="text"
@@ -467,16 +467,16 @@ const Profil = () => {
                             />
                         </div>
 
-                        <div className="flex relative flex-col justify-center items-center pt-5">
-                            <label htmlFor="desc" className="w-4/5 font-semibold"> Biographie
+                        <div className="flex relative flex-col justify-center items-center pt-7">
+                            <label htmlFor="desc" className="w-4/5 font-semibold">Biographie
                             </label>
                             <input
                                 id="bio"
                                 type="textarea"
                                 name="bio"
                                 rows="40"
-                                className=" resize-y pt-3 placeholder-gray-500 text-black dark:text-white-0 border-b-2 bg-transparent w-4/5 h-24 text-left focus:outline-none  focus:placeholder-transparent"
-                                placeholder={sessionStorage.getItem("desc")}
+                                className="resize-y relative bottom-5 placeholder-gray-500 text-black dark:text-white-0 border-b-2 bg-transparent w-4/5 h-24 text-left focus:outline-none  focus:placeholder-transparent"
+                                placeholder={user.bio}
                                 value={values.bio}
                                 onChange={handleChange}
                             ></input>                          
