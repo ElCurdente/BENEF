@@ -79,28 +79,28 @@ const Thread = () => {
       )
   }, [isLoaded])
 
-  useEffect(() => {
-    fetch('https://benef-app.fr/api-post-user2.php', {
-      method: "POST",
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({ id_user: id_user })
-    })
-      .then(res => res.json())
-      .then(
-        (result) => {
-          setIsLoaded(true);
-          setUserItems(result.userItems);
-          console.log(userItems);
-        },
-        (error) => {
-          setIsLoaded(true);
-          setError(error);
-        }
-      )
-  }, []);
+  // useEffect(() => {
+  //   fetch('https://benef-app.fr/api-post-user2.php', {
+  //     method: "POST",
+  //     headers: {
+  //       'Accept': 'application/json',
+  //       'Content-Type': 'application/json'
+  //     },
+  //     body: JSON.stringify({ id_user: id_user })
+  //   })
+  //     .then(res => res.json())
+  //     .then(
+  //       (result) => {
+  //         setIsLoaded(true);
+  //         setUserItems(result.userItems);
+  //         console.log(userItems);
+  //       },
+  //       (error) => {
+  //         setIsLoaded(true);
+  //         setError(error);
+  //       }
+  //     )
+  // }, []);
 
   useEffect(() => {
     fetch("https://benef-app.fr/api-favoris-render-2.php", {
