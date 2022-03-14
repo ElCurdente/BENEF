@@ -2,6 +2,8 @@
         header("Access-Control-Allow-Origin: *"); 
         header('content-type:application/json');      
         header('Access-Control-Allow-Headers: Content-Type');  
+
+        
               
         $contentType = isset($_SERVER["CONTENT_TYPE"]) ? trim($_SERVER["CONTENT_TYPE"]) : '';
 
@@ -27,6 +29,20 @@
                     // echo('C bon');
                     $encoded = json_encode($result);
                     echo($encoded);
+                    // $issuedAt   = new DateTimeImmutable();
+                    // // $key = md5(microtime().rand());
+                    // $secretKey  = 'bGS6lzFqvvSQ8ALbOxatm7/Vk7mLQyzqaS34Q4oR1ew=';
+                    // $data = [
+                    //   'iat'  => $issuedAt->getTimestamp(),         // Issued at:  : heure à laquelle le jeton a été généré
+                    //   'id_user'  => $result['id_user'],         // ID USER
+                    //   'username' => $result['username']                    // Nom d'utilisateur
+                //   ];
+
+                //   echo JWT::encode(
+                //     $data,
+                //     $secretKey,
+                //     'HS512'
+                // );
                     
                 } else{
                    echo('Mdp pas bon');

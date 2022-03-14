@@ -23,6 +23,8 @@ import animationData from './images/animation/like.json';
 import coeur from './images/icon/icon_coeur.svg';
 import coeurPlein from './images/icon/icon_coeur_rempli.svg';
 import fleche from './images/icon/icon_fleche.svg';
+import {AES, enc}from 'crypto-js';
+
 
 const Thread = () => {
 
@@ -55,7 +57,9 @@ const Thread = () => {
   const [openModal, setOpenModal] = useState(false);
   const [openModalUser, setOpenModalUser] = useState(false);
   const [openModalUserPost, setOpenModalUserPost] = useState(false);
-  const [isFav, setIsFav] = useState([])
+  const [isFav, setIsFav] = useState([]);
+  const decrypted = AES.decrypt(sessionStorage.getItem('id_user'), 'MYKEY4DEMO');
+  const id_user = decrypted.toString(enc.Utf8);
 
   useEffect(() => {
     fetch("https://benef-app.fr/api-post-render.php")
@@ -81,7 +85,7 @@ const Thread = () => {
         'Accept': 'application/json',
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify({ id_user: sessionStorage.getItem('id_user') })
+      body: JSON.stringify({ id_user: id_user })
     })
       .then(res => res.json())
       .then(
@@ -104,7 +108,7 @@ const Thread = () => {
         'Accept': 'application/json',
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify({ id_user: sessionStorage.getItem('id_user') })
+      body: JSON.stringify({ id_user: id_user })
     })
       .then(res => res.json())
       .then(
@@ -172,7 +176,7 @@ const Thread = () => {
   }, [openModalUser])
 
   function handleFav() {
-    console.log({ id_user: sessionStorage.getItem('id_user'), id_post: this });
+    console.log({ id_user: id_user, id_post: this });
     if (isFav.find(x => x == this) != this) {
       setIsFav(prevState => [...prevState, this]);
       console.log(isFav);
@@ -182,7 +186,7 @@ const Thread = () => {
           'Accept': 'application/json',
           'Content-Type': 'application/json'
         },
-        body: JSON.stringify({ id_user: sessionStorage.getItem('id_user'), id_post: this })
+        body: JSON.stringify({ id_user: id_user, id_post: this })
       })
         .then((data) => {
           console.log(data);
@@ -199,7 +203,7 @@ const Thread = () => {
           'Accept': 'application/json',
           'Content-Type': 'application/json'
         },
-        body: JSON.stringify({ id_user: sessionStorage.getItem('id_user'), id_post: this })
+        body: JSON.stringify({ id_user: id_user, id_post: this })
       })
         .then((data) => {
           console.log(data);

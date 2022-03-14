@@ -17,8 +17,13 @@ import upvoteorangeplein from './images/icon/icon_vote_fill_orange.svg';
 import { motion } from 'framer-motion/dist/framer-motion';
 import coeur from './images/icon/icon_coeur.svg';
 import coeurPlein from './images/icon/icon_coeur_rempli.svg';
+import {AES, enc}from 'crypto-js';
+
 
 function Favoris() {
+
+  const decrypted = AES.decrypt(sessionStorage.getItem('id_user'), 'MYKEY4DEMO');
+  const id_user = decrypted.toString(enc.Utf8);
 
   const [error, setError] = useState(null);
   const [isLoaded, setIsLoaded] = useState(false);
@@ -44,7 +49,7 @@ function Favoris() {
         'Accept': 'application/json',
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify({ id_user: sessionStorage.getItem('id_user') })
+      body: JSON.stringify({ id_user: id_user })
     })
       .then(res => res.json())
       .then(
@@ -62,14 +67,14 @@ function Favoris() {
 
   function handleFav() {
     setIsSuppr(this);
-    console.log({ id_user: sessionStorage.getItem('id_user'), id_post: this });
+    console.log({ id_user: id_user, id_post: this });
     fetch('https://benef-app.fr/api-favoris-sup.php', {
       method: "POST",
       headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify({ id_user: sessionStorage.getItem('id_user'), id_post: this })
+      body: JSON.stringify({ id_user: id_user, id_post: this })
     })
       .then((data) => {
         console.log(data);
@@ -147,7 +152,7 @@ function Favoris() {
         'Accept': 'application/json',
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify({ id_user: sessionStorage.getItem('id_user') })
+      body: JSON.stringify({ id_user: id_user })
     })
       .then(res => res.json())
       .then(

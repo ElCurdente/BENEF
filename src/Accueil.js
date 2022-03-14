@@ -13,6 +13,7 @@ import Infos from './Infos'
 import Cgu from './Cgu'
 import LandingPage from './testImage'
 import Favoris from './Favoris'
+import BackOffice from './BackOffice'
 import logo from './images/logo/logo_benef.svg';
 import logodark from './images/logo/logo_benef_dark.svg';
 import parameter from './images/icon/icon_parametres.svg';
@@ -85,6 +86,7 @@ const Accueil = () => {
                         <Route path="/cgu" component={Cgu} />
                         <Route path="/testImage" component={LandingPage} />
                         <Route path="/favoris" component={Favoris} />
+                        <Route path="/backoffice" component={BackOffice} />
 
                     </Switch>
                     
