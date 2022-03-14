@@ -76,29 +76,6 @@ const Thread = () => {
   }, [isLoaded])
 
   useEffect(() => {
-    fetch('https://benef-app.fr/api-post-user2.php', {
-      method: "POST",
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({ id_user: sessionStorage.getItem('id_user') })
-    })
-      .then(res => res.json())
-      .then(
-        (result) => {
-          setIsLoaded(true);
-          setUserItems(result.userItems);
-          console.log(userItems);
-        },
-        (error) => {
-          setIsLoaded(true);
-          setError(error);
-        }
-      )
-  }, []);
-
-  useEffect(() => {
     fetch("https://benef-app.fr/api-favoris-render-2.php", {
       method: "POST",
       headers: {
@@ -160,17 +137,40 @@ const Thread = () => {
         .then((response) => response.json())
         .then((data) => {
           console.log(data)
-          setModalItemUser(prevState => ({
-            ...prevState,
-            user_pseudo: data.username,
-          }));
+          setModalItemUser(data);
+          console.log(modalItemUser);
         })
         .catch(err => {
           console.log("Error Reading data " + err);
         });
-      console.log(modalItemUser);
+      
     }
   }, [openModalUser])
+
+  useEffect(() => {
+    if (openModalUser) {
+    fetch('https://benef-app.fr/api-post-user3.php', {
+      method: "POST",
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ id_user: modalItem.id_user })
+    })
+      .then(res => res.json())
+      .then(
+        (result) => {
+          setIsLoaded(true);
+          setUserItems(result.userItems);
+          console.log(userItems);
+        },
+        (error) => {
+          setIsLoaded(true);
+          setError(error);
+        }
+      )
+    }
+  }, [openModalUser]);
 
   function handleFav() {
     console.log({ id_user: sessionStorage.getItem('id_user'), id_post: this });
@@ -454,16 +454,17 @@ const Thread = () => {
           {!confirmedReport ? 
            <div id="modal" ref={modal} className="flex w-screen h-screen bg-black bg-opacity-30 fixed bottom-0 left-0 justify-center z-40 items-center">
 
-           <div className="w-full xl:w-2/6  mb-10 xl:mb-0 relative flex flex-col justify-center items-center rounded-3xl bg-white-0 overflow-auto dark:bg-gray-550 dark:text-white-0">
-               <div className="mb-5 mt-7 mx-3 flex flex-col">                 
-                  <h1 className="text-lg xl:text-xl font-semibold text-align max-w-md mt-2 text-center">Veux-tu signaler ce post ?</h1>
+           <div className="w-full xl:w-2/6 mb-10 xl:mb-0 relative flex flex-col justify-center items-center rounded-3xl bg-white-0 overflow-auto dark:bg-gray-550 dark:text-white-0">
+               <div className="mt-7 mx-3 flex flex-col">                 
+                  <h1 className="text-lg xl:text-xl text-red-650 font-semibold text-align max-w-md mb-2 text-center">Signaler ce post</h1>
                   <h1 className="text-lg xl:text-sm font-light max-w-md mt-2 text-align">Tu peux signaler ce post s’il contient des images choquantes, des textes offensants, un contenu inapproprié ou autre.
-                    Ce signalement sera anonyme.<br></br><br></br>
-                  <Link to="/Cgu"><span className="font-semibold">En savoir plus </span> </Link>sur nos règles de conditions générales.</h1>
-                  <div className="flex w-full justify-evenly mt-5 mb-10">
+                  Ce signalement sera anonyme.<br></br><br></br>
+                  <Link to="/Cgu"><span className="font-semibold">En savoir plus </span> </Link>sur nos règles de conditions générales.<br></br><br></br>
+                  Es-tu vraiment sûr de vouloir signaler ce post ?</h1>
+                  <div className="flex w-full justify-evenly mt-5 mb-8">
                     
-                    <button onClick={() => setOpenModalReport(false)} className="block px-4 border-red-450  text-red-450 font-semibold border-2 border-white-0 bg-white-0 hover:bg-red-450 hover:text-white-0 hover:border-white-0 dark:hover:bg-white-150 dark:hover:text-gray-550 active:bg-red-200 dark:bg-white-0 dark:text-black rounded-full transition duration-300 ease-in-out" type="submit">Annuler</button>
-                   <button onClick={() => handleReportPost()} className="block px-4 font-semibold py-2 bg-red-450 hover:bg-white-0 hover:text-red-450 hover:border-red-450 border-2 border-red-450 dark:hover:bg-white-150 dark:hover:text-gray-550 active:bg-red-200 dark:bg-white-0 dark:border-black dark:text-black rounded-full transition duration-300 ease-in-out text-white-0" type="submit">Signaler</button>
+                    <button onClick={() => setOpenModalReport(false)} className="block px-4 hover:underline hover:underline-offset-8 text-red-450 font-semibold dark:hover:underline dark:hover:underline-offset-8 dark:hover:text-black transition duration-300 ease-in-out" type="submit">Annuler</button>
+                   <button onClick={() => handleReportPost()} className="block px-4 font-semibold py-2 bg-red-650 hover:bg-white-0 hover:text-red-650 hover:border-red-650 border-2 border-red-650 dark:hover:bg-white-150 dark:hover:text-gray-550 active:bg-red-200 dark:bg-white-0 dark:border-black dark:text-black rounded-full transition duration-300 ease-in-out text-white-0" type="submit">Signaler</button>
                        
 
                    </div>
@@ -582,7 +583,7 @@ const Thread = () => {
                       <img className="w-100px h-100px bg-transparent dark:bg-gray-650 border-3 border-red-450 dark:border-black rounded-full object-cover" />
                       <h1 className="ml-3 text-xl font-semibold">{modalItemUser.username}</h1>
                     </div>
-                    <p className="col-span-2 mt-2">{user.bio}</p>
+                    <p className="col-span-2 mt-2">{modalItemUser.bio}</p>
                     <div className="flex items-center justify-between col-span-2 h-16 pt-4">
                       {/* <button onClick={handleModify} className="flex items-center h-10 bg-red-450 py-2 px-4 rounded-3xl text-white-0 dark:text-black hover:bg-white-0 hover:text-red-450 hover:border-red-450 border-2 border-red-450 dark:bg-white-0 dark:border-white-0">Modifie ton profil</button> */}
                       <Link to="/favoris"><button className="flex items-center text-red-450 dark:text-white-0 hover:underline">Voir mes favoris <img className="pl-1 h-15px fill-current" src={coeur} alt="" /></button></Link>
@@ -597,16 +598,16 @@ const Thread = () => {
                   <div id="bp_perso" className="w-95vw xl:w-2/6">
                     <h3 className="font-bold pt-4 pl-4 ">Bons plans publiés</h3>
                     <div className='w-full h-full flex flex-col items-center mt-5'>
-                      {items.map(item => (
+                      {userItems.map(userItem => (
                         <motion.div className="w-92vw xl:w-full relative bg-red-450 dark:bg-black rounded-lg text-white-0 mb-4 xl:mb-5 shadow-customm"
                           whileHover={{ scale: 1.01 }}>
-                          <div className="w-full h-250px relative" onClick={handleModal.bind(item)}>
-                            <img className="object-cover rounded-t-lg h-full w-full" src={item.image} alt="" />
+                          <div className="w-full h-250px relative" onClick={handleModal.bind(userItem)}>
+                            <img className="object-cover rounded-t-lg h-full w-full" src={userItem.image} alt="" />
                           </div>
-                          <div className="w-full min-h-max pb-4 md:cursor-pointer" onClick={handleModal.bind(item)} >
-                            <h1 className="text-lg font-semibold mx-2 max-w-md mt-2	">{item.title}</h1>
+                          <div className="w-full min-h-max pb-4 md:cursor-pointer" onClick={handleModal.bind(userItem)} >
+                            <h1 className="text-lg font-semibold mx-2 max-w-md mt-2	">{userItem.title}</h1>
                             <div className="flex mt-2 text-sm w-92vw max-w-md">
-                              <img src={adresse} className="ml-2 mr-1 w-3.5"></img> {item.address} <div className="absolute right-3">{item.postal}</div>
+                              <img src={adresse} className="ml-2 mr-1 w-3.5"></img> {userItem.address} <div className="absolute right-3">{userItem.postal}</div>
                             </div>
 
                           </div>
