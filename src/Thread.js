@@ -23,6 +23,7 @@ import animationData from './images/animation/like.json';
 import coeur from './images/icon/icon_coeur.svg';
 import coeurPlein from './images/icon/icon_coeur_rempli.svg';
 import fleche from './images/icon/icon_fleche.svg';
+import signaler from './images/icon/icon_signaler.svg';
 
 const Thread = () => {
 
@@ -455,10 +456,15 @@ const Thread = () => {
 
            <div className="w-full xl:w-2/6  mb-10 xl:mb-0 relative flex flex-col justify-center items-center rounded-3xl bg-white-0 overflow-auto dark:bg-gray-550 dark:text-white-0">
                <div className="mb-5 mt-7 mx-3 flex flex-col">                 
-                   <h1 className="text-lg xl:text-xl font-semibold max-w-md mt-2">Voulez-vous signaler ce post ?</h1>
-                   <div className="flex w-full justify-evenly mt-5 mb-10">
+                  <h1 className="text-lg xl:text-xl font-semibold text-align max-w-md mt-2 text-center">Voulez-vous signaler ce post ?</h1>
+                  <h1 className="text-lg xl:text-sm font-light max-w-md mt-2 text-align">Vous pouvez signaler ce post s’il contient des images choquantes, des textes offensants, un contenu inapproprié ou autre.
+                    Ce signalement sera anonyme.<br></br><br></br>
+                  <span className="font-semibold">En savoir plus </span> sur nos règles de conditions générales.</h1>
+                  <div className="flex w-full justify-evenly mt-5 mb-10">
+                    
+                    <button onClick={() => setOpenModalReport(false)} className="block px-4 border-red-450  text-red-450 font-semibold border-2 border-white-0 bg-white-0 hover:bg-red-450 hover:text-white-0 hover:border-white-0 dark:hover:bg-white-150 dark:hover:text-gray-550 active:bg-red-200 dark:bg-white-0 dark:text-black rounded-full transition duration-300 ease-in-out" type="submit">Annuler</button>
                    <button onClick={() => handleReportPost()} className="block px-4 font-semibold py-2 bg-red-450 hover:bg-white-0 hover:text-red-450 hover:border-red-450 border-2 border-red-450 dark:hover:bg-white-150 dark:hover:text-gray-550 active:bg-red-200 dark:bg-white-0 dark:border-black dark:text-black rounded-full transition duration-300 ease-in-out text-white-0" type="submit">Signaler</button>
-                       <button onClick={() => setOpenModalReport(false)} className="block px-4 font-semibold py-2 bg-red-450 hover:bg-white-0 hover:text-red-450 hover:border-red-450 border-2 border-red-450 dark:hover:bg-white-150 dark:hover:text-gray-550 active:bg-red-200 dark:bg-white-0 dark:border-black dark:text-black rounded-full transition duration-300 ease-in-out text-white-0" type="submit">Annuler</button>
+                       
 
                    </div>
                </div>
@@ -634,7 +640,8 @@ const Thread = () => {
 
                       </button>
                     </div>
-                    <button className="bg-white-0 h-10 w-10 text-black absolute z-40 flex justify-center items-center top-3 right-16 rounded-full" onClick={handleReport.bind(item.id_post)}>
+                    <button className="bg-white-0 h-10 w-10 text-black absolute z-30 flex justify-center items-center top-3 right-16 rounded-full" onClick={handleReport.bind(item.id_post)}>
+                      <img src={signaler} className="w-6 h-6"></img>
                     </button>
                     <div className="bg-white-0 text-black absolute top-44 text-xl font-bold flex w-max py-1 rounded-lg">
                       <button onClick={handleUpvote.bind(item)} className="pl-2 relative">

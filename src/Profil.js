@@ -17,6 +17,7 @@ import localisation from './images/icon/icon_localisation.svg';
 import sablier from './images/icon/icon_sablier.svg';
 
 
+
 const Profil = () => {
 
     const [state, setState] = useState(false);
@@ -397,7 +398,7 @@ const Profil = () => {
                         {items.map(item => (
                             <motion.div className="w-92vw xl:w-full relative bg-red-450 dark:bg-black rounded-lg text-white-0 mb-4 xl:mb-5 shadow-customm"
                                 whileHover={{ scale: 1.01 }}>
-                                    <button className="bg-white-0 h-10 w-10 text-black absolute z-40 flex justify-center items-center top-3 right-2 rounded-full" onClick={handlePostSupp.bind(item.id_post)}>
+                                    <button className="bg-white-0 h-10 w-10 text-black absolute z-30 flex justify-center items-center top-3 right-2 rounded-full" onClick={handlePostSupp.bind(item.id_post)}>
                                     <img src={plus} className="transform rotate-45 h-6 w-6"></img>
                                     </button>
                                 <div className="w-full h-250px relative" onClick={handleModal.bind(item)}>
