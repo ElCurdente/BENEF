@@ -25,13 +25,13 @@ const Nav = ({ searchValue, setSearchValue }) => {
         <div className="flex justify-center z-50 relative">
             <div className="fixed flex justify-center items-center xl:top-0 xl:h-7vh xl:justify-start bottom-0 w-100vw rounded-t-lg transition duration-500">
                 <nav className="w-100vw">
-                    <ul className="flex justify-around xl:justify-evenly xl:grid xl:grid-cols-nav xl:pr-32 xl:pl-32 items-center h-7vh xl:h-7vh bg-red-450 dark:bg-black">
+                    <ul className="flex justify-around xl:justify-evenly xl:grid xl:grid-cols-nav xl:pr-40 xl:pl-40 items-center h-7vh xl:h-7vh bg-red-450 dark:bg-black">
 
                         <motion.div whileHover={{ scale: 1.03 }} className="justify-self-start">
                             <Link to="/home">
                                 <li><img className="h-25px xl:hidden" src={etiquette} alt="" /></li>
-                                <img src={logo} alt="Logo" className="w-36 dark:hidden xl:block hidden" />
-                                <img src={logodark} alt="Logo" className="w-36 hidden sm:dark:hidden dark:hidden xl:dark:block" />
+                                <img src={logo} alt="Logo" className="w-32 dark:hidden xl:block hidden" />
+                                <img src={logodark} alt="Logo" className="w-32 hidden sm:dark:hidden dark:hidden xl:dark:block" />
                             </Link>
                         </motion.div>
 
@@ -45,7 +45,7 @@ const Nav = ({ searchValue, setSearchValue }) => {
                                             <svg fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 25 25" className="w-6 h-6"><path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
                                         </button>
                                     </span>
-                                    <input type="text" name="q" className="py-2 text-sm text-gray-650 xl:bg-white h-10 rounded-lg pl-12 focus:outline-none focus:bg-white focus:text-gray-550"
+                                    <input type="text" name="q" className="py-2 text-sm text-gray-650 xl:bg-white h-9 rounded-lg pl-12 focus:outline-none focus:bg-white focus:text-gray-550"
                                         placeholder="Recherche" autoComplete="off" value={searchValue} onChange={event => setSearchValue(event.target.value)}>
                                     </input>
                                 </div>
