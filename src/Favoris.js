@@ -339,12 +339,13 @@ function Favoris() {
     return <div>Chargement...</div>;
   } else {
     return (
-      <div className=" h-screen w-screen flex justify-center xl:justify-center overflow-x-hidden overflow-auto items-center bg-white-0 xl:dark:bg-gray-550">
+      <div className=" h-screen w-screen flex flex-col justify-center xl:justify-center overflow-x-hidden overflow-auto items-center bg-white-0 xl:dark:bg-gray-550 xl:p-5 mt-12">
+        <h1 className="text-center text-2xl font-bold pt-12 mt-5">Bons plans favoris</h1>
         {/* <motion.div className="">
               <img src={upvoteHautplein} />
             </motion.div> */}
         <ul className="h-full xl:w-2/6 bg-white-0 xl:dark:bg-gray-550 ">
-          <div className="mt-16 ml-6 mr-6 pb-12 xl:dark:bg-gray-550">
+          <div className="mt-5 ml-6 mr-6 pb-12 xl:dark:bg-gray-550">
 
           <div id="containerModal" className={openModal ? "block" : "hidden"}>
               <div id="modal" ref={modal} className="flex w-screen h-screen bg-black bg-opacity-30 fixed bottom-0 left-0 justify-center z-40 items-end">
@@ -406,7 +407,7 @@ function Favoris() {
                         
                       </button>
                     </div>
-                    <div className="bg-white-0 text-black absolute top-44 text-xl font-bold flex w-max py-1 rounded-lg">
+                    <div className="bg-white-0 text-black absolute top-44 text-xl font-bold flex w-max py-1 rounded-lg -left-2 pl-2">
                       <button onClick={handleUpvote.bind(item)} className="pl-2 relative">
                         <motion.img whileTap={{ scale: 0.85 }} id="upvote_haut" src={upvoteHaut} className="opacity-100 h-28px"></motion.img>
                         {/* <img src={upvoteorange} className="absolute top-0 h-30px dark:opacity-0"></img> */}

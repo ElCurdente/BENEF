@@ -486,7 +486,7 @@ const Profil = () => {
                                 type="textarea"
                                 name="bio"
                                 rows="40"
-                                className="resize-y relative bottom-5 placeholder-gray-500 text-black dark:text-white-0 border-b-2 bg-transparent w-4/5 h-24 text-left focus:outline-none  focus:placeholder-transparent"
+                                className="resize-y relative bottom-6 placeholder-gray-500 text-black dark:text-white-0 border-b-2 bg-transparent w-4/5 h-24 text-left focus:outline-none  focus:placeholder-transparent"
                                 placeholder={user.bio}
                                 value={values.bio}
                                 onChange={handleChange}

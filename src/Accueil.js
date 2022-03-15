@@ -36,7 +36,7 @@ const Accueil = () => {
         <div className="dark:bg-gray-550 xl:bg-white-0 xl:overflow-x-hidden">
 
             <div className="flex justify-center z-50 relative xl:hidden">
-                <div className="fixed flex h-7vh w-100vw bg-red-450 dark:bg-black xl:justify-start justify-center items-center rounded-b-lg transition duration-500">
+                <div className="fixed flex h-50px w-100vw bg-red-450 dark:bg-black xl:justify-start justify-center items-center rounded-b-lg transition duration-500">
 
                     <img src={logo} alt="Logo" className="w-32 dark:hidden xl:ml-96" />
                     <img src={logodark} alt="Logo" className="w-32 hidden dark:block" />
@@ -67,20 +67,19 @@ const Accueil = () => {
             {openModal && 
             <div id="modal" className="flex w-screen h-screen bg-black bg-opacity-30 fixed bottom-0 left-0 justify-center z-40 items-center">
         <div className="w-full xl:w-2/6 mb-10 xl:mb-0 relative flex flex-col justify-center items-center rounded-3xl bg-white-0 overflow-auto dark:bg-gray-550 dark:text-white-0">
-    <div className="mt-7 mx-3 flex flex-col">                 
-       <h1 className="text-lg xl:text-xl text-red-650 font-semibold text-align max-w-md mb-2 text-center">L'application Web est désormais disponible !</h1>
-       <h1 className="text-lg xl:text-sm font-light max-w-md mt-2 text-align">Si vous souhaitez l'installer :</h1>
+    <div className="mt-7 flex flex-col">                 
+       <h1 className="text-lg xl:text-xl text-red-650 font-semibold max-w-md mb-2 text-center">L'appli web est désormais disponible !</h1>
+       <h1 className="text-lg xl:text-base font-light max-w-md mt-2">Si vous souhaitez l'installer :<br></br>
+       Sur iOS :<br></br>
+       - Cliquez sur l'icône partager<br></br>
+       - Cliquez sur "Sur l'écran d'accueil"<br></br>
        <br></br>
-       <h2>Sur iOS :</h2>
-       <p>-Cliquez sur l'icône partager</p>
-       <p>-Cliquez sur "Sur l'écran d'accueil"</p>
+       Sur Android :<br></br>
+       - Cliquez sur l'icône ... en haut à droite<br></br>
+       - Cliquez sur "Ajouter à l'écran d'accueil"<br></br>
        <br></br>
-       <h2>Sur Android :</h2>
-       <p>-Cliquez sur l'icône ... en haut à droite</p>
-       <p>-Cliquez sur "Ajouter à l'écran d'accueil"</p>
-       <br></br>
-       <h1>Prêt à participer à l'aventure BENEF ?</h1>
-       <div className="flex w-full justify-evenly mt-5 mb-8">
+       Prêt à participer à l'aventure BENEF ?</h1>
+       <div className="flex w-full justify-evenly mt-7 mb-8">
          
          <button onClick={() => setOpenModal(false)} className="block px-4 hover:underline hover:underline-offset-8 text-red-450 font-semibold dark:hover:underline dark:hover:underline-offset-8 dark:hover:text-black transition duration-300 ease-in-out" type="submit">Fermer</button>
         </div>
