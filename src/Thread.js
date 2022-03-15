@@ -515,9 +515,11 @@ const Thread = () => {
           <div id="modal" ref={modal} className="flex w-screen h-screen bg-black bg-opacity-30 fixed bottom-0 left-0 justify-center z-40 items-center">
 
            <div className="w-full xl:w-2/6  mb-10 xl:mb-0 relative flex flex-col justify-center items-center rounded-3xl bg-white-0 overflow-auto dark:bg-gray-550 dark:text-white-0">
-               <div className="mb-5 mt-7 mx-3 flex flex-col">                 
-                   <h1 className="text-lg xl:text-xl font-semibold max-w-md mt-2">Merci, ce post a bien été signalé.</h1>
-                   <div className="flex w-full justify-evenly mt-5 mb-10">
+               <div className="mb-5 mt-5 mx-3 flex flex-col text-center">                 
+                   <h1 className="text-lg xl:text-xl font-semibold max-w-md mt-2">Merci d'avoir signalé ce post !<br></br>
+                   <span className="font-light xl:text-base">L'équipe BENEF va maintenant se charger de la suite.</span></h1>
+                   <h1 className="text-2xl">👍</h1>
+                   <div className="flex w-full justify-evenly mt-5 mb-3">
                        <button onClick={() => resetReport()} className="block px-4 font-semibold py-2 bg-red-450 hover:bg-white-0 hover:text-red-450 hover:border-red-450 border-2 border-red-450 dark:hover:bg-white-150 dark:hover:text-gray-550 active:bg-red-200 dark:bg-white-0 dark:border-black dark:text-black rounded-full transition duration-300 ease-in-out text-white-0" type="submit">Retour</button>
 
                    </div>
@@ -685,7 +687,7 @@ const Thread = () => {
                       </button>
                     </div>
                     <button className="bg-white-0 h-10 w-10 text-black absolute z-30 flex justify-center items-center top-3 right-16 rounded-full" onClick={handleReport.bind(item.id_post)}>
-                      <img src={signaler} className="w-6 h-6"></img>
+                      <img src={signaler} className="h-22px"></img>
                     </button>
                     <div className="bg-white-0 text-black absolute top-44 text-xl font-bold flex w-max py-1 rounded-lg -left-2 pl-2">
                       <button onClick={handleUpvote.bind(item)} className="pl-2 relative">
