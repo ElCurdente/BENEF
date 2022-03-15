@@ -484,7 +484,7 @@ const Thread = () => {
   } else {
     return (
 
-      <div className=" h-screen w-screen flex justify-center xl:justify-center overflow-x-hidden overflow-auto items-center bg-white-0 xl:dark:bg-gray-550">
+      <div className=" h-screen w-screen flex justify-center xl:justify-center overflow-x-hidden items-center bg-white-0 xl:dark:bg-gray-550">
         <div id="containerModal" className={openModalReport ? "block" : "hidden"}>
           {!confirmedReport ? 
            <div id="modal" ref={modal} className="flex w-screen h-screen bg-black bg-opacity-30 fixed bottom-0 left-0 justify-center z-40 items-center">
@@ -615,7 +615,7 @@ const Thread = () => {
 
                   <div id="infos" className="relative xl:w-2/6 w-95vw px-4 xl:-px-0">
                     <div className="flex items-center">
-                      <img className="w-100px h-100px bg-transparent dark:bg-gray-650 border-3 border-red-450 dark:border-black rounded-full object-cover" />
+                      <img src={modalItemUser.image} className="w-100px h-100px bg-transparent dark:bg-gray-650 border-3 border-red-450 dark:border-black rounded-full object-cover" />
                       <h1 className="ml-3 text-xl font-semibold">{modalItemUser.username}</h1>
                     </div>
                     <p className="col-span-2 mt-2">{modalItemUser.bio}</p>
