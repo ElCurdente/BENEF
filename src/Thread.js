@@ -60,7 +60,12 @@ const Thread = () => {
   const [openModalUser, setOpenModalUser] = useState(false);
   const [openModalUserPost, setOpenModalUserPost] = useState(false);
   const [isFav, setIsFav] = useState([]);
-  const decrypted = AES.decrypt(sessionStorage.getItem('id_user'), 'MYKEY4DEMO');
+  let decrypted;
+  if(localStorage.getItem('isConnected')){
+    decrypted = AES.decrypt(localStorage.getItem('id_user'), 'MYKEY4DEMO');
+  }else{
+    decrypted = AES.decrypt(sessionStorage.getItem('id_user'), 'MYKEY4DEMO');
+  }
   const id_user = decrypted.toString(enc.Utf8);
 
   useEffect(() => {

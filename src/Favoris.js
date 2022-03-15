@@ -22,8 +22,13 @@ import {AES, enc}from 'crypto-js';
 
 function Favoris() {
 
-  const decrypted = AES.decrypt(sessionStorage.getItem('id_user'), 'MYKEY4DEMO');
-  const id_user = decrypted.toString(enc.Utf8);
+  let decrypted;
+  if(localStorage.getItem('isConnected')){
+    decrypted = AES.decrypt(localStorage.getItem('id_user'), 'MYKEY4DEMO');
+  }else{
+    decrypted = AES.decrypt(sessionStorage.getItem('id_user'), 'MYKEY4DEMO');
+  }
+     const id_user = decrypted.toString(enc.Utf8);
 
   const [error, setError] = useState(null);
   const [isLoaded, setIsLoaded] = useState(false);

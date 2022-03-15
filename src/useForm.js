@@ -85,6 +85,7 @@ const useForm = (callback, validate) => {
 
 const handleSubmitConnexion = e => {
   e.preventDefault();
+  console.log(stayConnected);
   setErrors(validate(values));
   setIsSubmitting(true);
 fetch('https://benef-app.fr/api-connexion.php', {
@@ -100,15 +101,18 @@ body: JSON.stringify(valuesConnexion)
   console.log(data);
   // setIdUser(data.id_user);
   const envryptedString = AES.encrypt(data.id_user,'MYKEY4DEMO');// console.log(stayConnected)
-  sessionStorage.setItem('id_user', envryptedString.toString());
   console.log(AES.decrypt(envryptedString, 'MYKEY4DEMO'));
   
-const decrypted = AES.decrypt(sessionStorage.getItem('id_user'), 'MYKEY4DEMO');
-const decryptedString = decrypted.toString(enc.Utf8);
-sessionStorage.setItem('decryptedHello', decryptedString)
- 
-// }else 
-sessionStorage.setItem("isConnected", true)
+// const decrypted = AES.decrypt(sessionStorage.getItem('id_user'), 'MYKEY4DEMO');
+// const decryptedString = decrypted.toString(enc.Utf8);
+// sessionStorage.setItem('decryptedHello', decryptedString)
+ if(stayConnected){
+  localStorage.setItem('id_user', envryptedString.toString());
+  localStorage.setItem("isConnected", true)
+ }else{
+  sessionStorage.setItem('id_user', envryptedString.toString());
+  sessionStorage.setItem("isConnected", true)
+ }
 //   console.log("oui il est bien connecté là")
   window.location.reload();
 //   console.log(stayConnected)

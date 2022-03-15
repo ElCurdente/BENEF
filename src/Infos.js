@@ -6,8 +6,13 @@ import {AES, enc}from 'crypto-js';
 
 const Parametre = () => {
 
-    const decrypted = AES.decrypt(sessionStorage.getItem('id_user'), 'MYKEY4DEMO');
-    const id_user = decrypted.toString(enc.Utf8);
+    let decrypted;
+    if(localStorage.getItem('isConnected')){
+      decrypted = AES.decrypt(localStorage.getItem('id_user'), 'MYKEY4DEMO');
+    }else{
+      decrypted = AES.decrypt(sessionStorage.getItem('id_user'), 'MYKEY4DEMO');
+    }
+         const id_user = decrypted.toString(enc.Utf8);
 
     const [user, setUser] = useState({
         username:'', 

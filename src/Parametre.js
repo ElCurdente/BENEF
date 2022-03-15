@@ -11,6 +11,7 @@ const Parametre = () => {
 
     function handleDeconnexion() {
         sessionStorage.clear();
+        localStorage.clear();
         window.location.reload();
     }
 
