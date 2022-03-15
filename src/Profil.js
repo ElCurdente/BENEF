@@ -17,8 +17,7 @@ import adresse from './images/icon/adress.svg';
 import localisation from './images/icon/icon_localisation.svg';
 import sablier from './images/icon/icon_sablier.svg';
 import { AES, enc } from 'crypto-js';
-
-
+import { useHistory } from "react-router-dom";
 
 const Profil = () => {
 
@@ -37,6 +36,9 @@ const Profil = () => {
       decrypted = AES.decrypt(sessionStorage.getItem('id_user'), 'MYKEY4DEMO');
     }
         const id_user = decrypted.toString(enc.Utf8);
+
+        let history = useHistory();
+
 
     useEffect(() => {
         fetch('https://benef-app.fr/api-post-user2.php', {
@@ -484,7 +486,7 @@ const Profil = () => {
                                 type="textarea"
                                 name="bio"
                                 rows="40"
-                                className="resize-y relative bottom-5 placeholder-gray-500 text-black dark:text-white-0 border-b-2 bg-transparent w-4/5 h-24 text-left focus:outline-none  focus:placeholder-transparent"
+                                className="resize-y relative bottom-6 placeholder-gray-500 text-black dark:text-white-0 border-b-2 bg-transparent w-4/5 h-24 text-left focus:outline-none  focus:placeholder-transparent"
                                 placeholder={user.bio}
                                 value={values.bio}
                                 onChange={handleChange}

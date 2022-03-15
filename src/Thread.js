@@ -561,7 +561,7 @@ const Thread = () => {
 
                     <div className='flex self-end items-center text-sm max-w-md mt-4'>
                        Posté par <span className="font-semibold cursor-pointer ml-1 mr-2" onClick={handleModalUser.bind(modalItem)}>{modalItem.user_pseudo}</span> 
-                        <img className="h-8 w-8 xl:border-2 xl:h-8 xl:w-8 rounded-full xl:rounded-full border-2 border-red-450" src={modalItem.file} alt="image de profil" />
+                        <img className="h-8 w-8 xl:border-2 xl:h-8 xl:w-8 rounded-full xl:rounded-full border-2 border-red-450 cursor-pointer" onClick={handleModalUser.bind(modalItem)} src={modalItem.file} alt="image de profil" />
                       
                     </div>
 
@@ -579,8 +579,8 @@ const Thread = () => {
 
                 <div className="relative overflow-auto flex flex-col justify-start pt-16 items-center xl:mt-15 h-screen w-screen bg-white-0 xl:dark:bg-gray-550 dark:text-white-0">
 
-                  <div className="absolute flex w-full z-50 justify-end mt-5 mr-5">
-                    <button onClick={() => setOpenModalUser(false)} className="block px-4 font-semibold py-2 bg-red-450 hover:bg-white-0 hover:text-red-450 hover:border-red-450 border-2 border-red-450 dark:hover:bg-white-150 dark:hover:text-gray-550 active:bg-red-200 dark:bg-white-0 dark:border-black dark:text-black rounded-full transition duration-300 ease-in-out text-white-0" type="submit">Fermer</button>
+                  <div className="absolute flex w-full z-50 justify-end mt-8 mr-20">
+                    <button onClick={() => setOpenModalUser(false)} className="block px-4 font-semibold py-2 bg-red-450 hover:bg-white-0 hover:text-red-450 hover:border-red-450 border-2 border-red-450 dark:hover:bg-white-150 dark:hover:text-gray-550 active:bg-red-200 dark:bg-white-0 dark:border-black dark:text-black rounded-full transition duration-300 ease-in-out text-white-0 mr-44" type="submit">Fermer</button>
                   </div>
 
                   <div id="containerModal" className={openModalUserPost ? "block" : "hidden"}>

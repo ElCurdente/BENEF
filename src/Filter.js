@@ -157,7 +157,7 @@ const Filter = ({ searchValue, setSearchValue }) => {
     console.log(filterByFilters);
 
     return (
-      <div className="h-screen w-screen  bg-white-150 xl:dark:bg-gray-550 flex justify-center overflow-auto items-center">
+      <div className="h-screen w-screen  bg-white-0 xl:dark:bg-gray-550 flex justify-center overflow-auto items-center">
 
         <div id="containerModal" className={openModal2 ? "block" : "hidden"}>
           <div id="modal" ref={modal2} className="flex w-screen h-screen bg-black bg-opacity-30 fixed bottom-0 left-0 justify-center z-40 items-end">
@@ -185,7 +185,7 @@ const Filter = ({ searchValue, setSearchValue }) => {
 
                 <div className='flex self-end items-center text-sm max-w-md mt-4'>
                        Posté par <span className="font-semibold cursor-pointer ml-1 mr-2" onClick={handleModal.bind(modalItem)}>{modalItem.user_pseudo}</span> 
-                        <img className="h-8 w-8 xl:border-2 xl:h-8 xl:w-8 rounded-full xl:rounded-full border-2 border-red-450" src={modalItem.file} alt="image de profil" />
+                        <img className="h-8 w-8 xl:border-2 cursor-pointer xl:h-8 xl:w-8 rounded-full xl:rounded-full border-2 border-red-450" src={modalItem.file} alt="image de profil" />
                       
                     </div>
 
@@ -198,10 +198,10 @@ const Filter = ({ searchValue, setSearchValue }) => {
           </div>
         </div>
 
-        <ul className="h-full bg-white-150 xl:w-2/6 xl:dark:bg-gray-550">
-          <div className="mt-5 pb-12">
+        <ul className="h-full bg-white-0 xl:w-2/6 xl:dark:bg-gray-550">
+          <div className="xl:p-5 mt-5">
             <form className="post flex flex-col justify-center" onSubmit={(e) => handleSubmitFiltered(e)} id="filter_form">
-              <div className="flex h-100px relative justify-center items-center w-full ">
+              <div className="flex h-100px relative justify-center items-center w-full">
                 <h1 className="text-center text-2xl font-bold pt-7 dark:text-gray-50">Recherche</h1>
               </div>
               <div className="flex relative justify-center items-center mx-auto w-65% xl:hidden">
