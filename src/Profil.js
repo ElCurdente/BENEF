@@ -29,7 +29,7 @@ const Profil = () => {
     const [modalItem, setModalItem] = useState([]);
     const [openModal, setOpenModal] = useState(false);
     const [bio, modifbio] = useState(false);
-
+    const [successPdp, setSuccessPdp] = useState(false)
     const decrypted = AES.decrypt(sessionStorage.getItem('id_user'), 'MYKEY4DEMO');
     const id_user = decrypted.toString(enc.Utf8);
 
@@ -116,7 +116,7 @@ const Profil = () => {
             .catch(err => {
                 console.log("Error Reading data " + err);
             });
-    }, [])
+    }, [successPdp])
 
     const [etat, setEtat] = useState({
         isStopped: true,
@@ -205,6 +205,7 @@ const Profil = () => {
             console.log("Successfully uploaded image");
             console.log(data);
             modifbio(false);
+            setSuccessPdp(true);
         } else {
             console.log("Error Found");
         }
