@@ -60,7 +60,12 @@ const Thread = () => {
   const [openModalUser, setOpenModalUser] = useState(false);
   const [openModalUserPost, setOpenModalUserPost] = useState(false);
   const [isFav, setIsFav] = useState([]);
-  const decrypted = AES.decrypt(sessionStorage.getItem('id_user'), 'MYKEY4DEMO');
+  let decrypted;
+  if(localStorage.getItem('isConnected')){
+    decrypted = AES.decrypt(localStorage.getItem('id_user'), 'MYKEY4DEMO');
+  }else{
+    decrypted = AES.decrypt(sessionStorage.getItem('id_user'), 'MYKEY4DEMO');
+  }
   const id_user = decrypted.toString(enc.Utf8);
 
   useEffect(() => {
@@ -556,7 +561,7 @@ const Thread = () => {
 
                     <div className='flex self-end items-center text-sm max-w-md mt-4'>
                        Posté par <span className="font-semibold cursor-pointer ml-1 mr-2" onClick={handleModalUser.bind(modalItem)}>{modalItem.user_pseudo}</span> 
-                        <img className="h-8 w-8 xl:border-2 xl:h-8 xl:w-8 rounded-full xl:rounded-full border-2 border-red-450" src={modalItem.file} alt="image de profil" />
+                        <img className="h-8 w-8 xl:border-2 xl:h-8 xl:w-8 rounded-full xl:rounded-full border-2 border-red-450 cursor-pointer" onClick={handleModalUser.bind(modalItem)} src={modalItem.file} alt="image de profil" />
                       
                     </div>
 
@@ -575,7 +580,7 @@ const Thread = () => {
                 <div className="relative overflow-auto flex flex-col justify-start pt-16 items-center xl:mt-15 h-screen w-screen bg-white-0 xl:dark:bg-gray-550 dark:text-white-0">
 
                   <div className="absolute flex w-full z-50 justify-end mt-5 mr-5">
-                    <button onClick={() => setOpenModalUser(false)} className="block px-4 font-semibold py-2 bg-red-450 hover:bg-white-0 hover:text-red-450 hover:border-red-450 border-2 border-red-450 dark:hover:bg-white-150 dark:hover:text-gray-550 active:bg-red-200 dark:bg-white-0 dark:border-black dark:text-black rounded-full transition duration-300 ease-in-out text-white-0" type="submit">Fermer</button>
+                    <button onClick={() => setOpenModalUser(false)} className="block px-4 font-semibold py-2 bg-red-450 hover:bg-white-0 hover:text-red-450 hover:border-red-450 border-2 border-red-450 dark:hover:bg-white-150 dark:hover:text-gray-550 active:bg-red-200 dark:bg-white-0 dark:border-black dark:text-black rounded-full transition duration-300 ease-in-out text-white-0 mr-20" type="submit">Fermer</button>
                   </div>
 
                   <div id="containerModal" className={openModalUserPost ? "block" : "hidden"}>
@@ -619,11 +624,7 @@ const Thread = () => {
                       <h1 className="ml-3 text-xl font-semibold">{modalItemUser.username}</h1>
                     </div>
                     <p className="col-span-2 mt-2">{modalItemUser.bio}</p>
-                    <div className="flex items-center justify-between col-span-2 h-16 pt-4">
-                      {/* <button onClick={handleModify} className="flex items-center h-10 bg-red-450 py-2 px-4 rounded-3xl text-white-0 dark:text-black hover:bg-white-0 hover:text-red-450 hover:border-red-450 border-2 border-red-450 dark:bg-white-0 dark:border-white-0">Modifie ton profil</button> */}
-                      <Link to="/favoris"><button className="flex items-center text-red-450 dark:text-white-0 hover:underline">Voir mes favoris <img className="pl-1 h-15px fill-current" src={coeur} alt="" /></button></Link>
-                    </div>
-
+                    
                   </div>
                   <div id="barre1" className="h-1px w-95vw xl:w-2/6 mt-4 bg-gray-200"></div>
                   <div id="badges" className="w-95vw h-100px xl:w-2/6">

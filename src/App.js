@@ -9,11 +9,11 @@ import React, {useState} from "react";
 
 function App() {
 
-  if ("serviceWorker" in navigator) {
-    navigator.serviceWorker.register('./serviceWorker.js').then(() => {
-        console.log("sw register")
-    }).catch((e) => console.log(e))
-}
+//   if ("serviceWorker" in navigator) {
+//     navigator.serviceWorker.register('./serviceWorker.js').then(() => {
+//         console.log("sw register")
+//     }).catch((e) => console.log(e))
+// }
 
   return (
     <div className=" bg-white-0 dark:bg-gray-550 h-screen overflow-y-hidden transition ease-in-out duration-500">
