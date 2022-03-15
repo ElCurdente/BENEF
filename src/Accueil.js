@@ -27,7 +27,7 @@ import { useEffect } from 'react';
 const Accueil = () => {
 
     const [searchValue, setSearchValue] = useState("");
-
+    const [openModal, setOpenModal] = useState(true);
     // let location = useLocation();
 
     // useEffect(() => {
@@ -68,7 +68,32 @@ const Accueil = () => {
                     </div>
                 </div>
             </div>
+            {openModal && 
+            <div id="modal" className="flex w-screen h-screen bg-black bg-opacity-30 fixed bottom-0 left-0 justify-center z-40 items-center">
+        <div className="w-full xl:w-2/6 mb-10 xl:mb-0 relative flex flex-col justify-center items-center rounded-3xl bg-white-0 overflow-auto dark:bg-gray-550 dark:text-white-0">
+    <div className="mt-7 mx-3 flex flex-col">                 
+       <h1 className="text-lg xl:text-xl text-red-650 font-semibold text-align max-w-md mb-2 text-center">L'application Web est désormais disponible !</h1>
+       <h1 className="text-lg xl:text-sm font-light max-w-md mt-2 text-align">Si vous souhaitez l'installer :</h1>
+       <br></br>
+       <h2>Sur iOS :</h2>
+       <p>-Cliquez sur l'icône partager</p>
+       <p>-Cliquez sur "Sur l'écran d'accueil"</p>
+       <br></br>
+       <h2>Sur Android :</h2>
+       <p>-Cliquez sur l'icône ... en haut à droite</p>
+       <p>-Cliquez sur "Ajouter à l'écran d'accueil"</p>
+       <br></br>
+       <h1>Prêt à participer à l'aventure BENEF ?</h1>
+       <div className="flex w-full justify-evenly mt-5 mb-8">
+         
+         <button onClick={() => setOpenModal(false)} className="block px-4 hover:underline hover:underline-offset-8 text-red-450 font-semibold dark:hover:underline dark:hover:underline-offset-8 dark:hover:text-black transition duration-300 ease-in-out" type="submit">Fermer</button>
+        </div>
+    </div>
+</div>
+        
 
+</div>
+}
             <Router>
                 
                 <div>
