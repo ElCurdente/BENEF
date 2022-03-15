@@ -405,11 +405,6 @@ const Thread = () => {
     setModalItemUser(this);
   }
 
-  function handleModalUser() {
-    setOpenModalUser(true);
-    setModalItemUser(this);
-  }
-
   function handleModalUserPost() {
     setOpenModalUserPost(true);
     setModalItemUserPost(this);
