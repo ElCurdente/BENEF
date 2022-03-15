@@ -17,8 +17,54 @@ import Parametre from './Parametre'
 import parameter from './images/icon/icon_parametres.svg';
 import favoris from './images/icon/icon_coeur_b.svg';
 import {AnimationPresence, motion } from 'framer-motion/dist/framer-motion';
+import { AES, enc } from 'crypto-js';
+import { useState } from 'react';
+import { useRef } from 'react';
+import { useEffect } from 'react';
+
 
 const Nav = ({ searchValue, setSearchValue }) => {
+
+    const decrypted = AES.decrypt(sessionStorage.getItem('id_user'), 'MYKEY4DEMO');
+    const id_user = decrypted.toString(enc.Utf8);
+
+    const [user, setUser] = useState({
+        id: '',
+        username: '',
+        bio: '',
+        image: undefined
+    });
+
+
+    console.log(id_user);
+
+    useEffect(() => {
+        console.log({ id_user: id_user })
+        fetch('https://benef-app.fr/api-infos-utilisateur.php', {
+            method: "POST",
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ id_user: id_user })
+        })
+            .then((response) => response.json())
+            .then((data) => {
+                console.log(data);
+                setUser({
+                    id: data.id_user,
+                    username: data.username,
+                    bio: data.bio,
+                    image: data.image
+                })
+                console.log(user)
+            })
+            .catch(err => {
+                console.log("Error Reading data " + err);
+            });
+    }, [])
+
+
     return (
         <div className="flex justify-center z-50 relative">
             <div className="fixed flex justify-center items-center xl:top-0 xl:h-7vh xl:justify-start bottom-0 w-100vw rounded-t-lg transition duration-500">
@@ -71,8 +117,8 @@ const Nav = ({ searchValue, setSearchValue }) => {
                         </Link> */}
 
                         <Link to="/profil" className="xl:justify-self-end">
-                            <motion.div whileHover={{ scale: 1.075 }}>
-                                <li><img className="h-25px xl:border-3 xl:h-8 xl:w-8 xl:rounded-full rounded-xl border-2 border-white" src={profil} alt="" /></li>
+                            <motion.div whileHover={{ scale: 1.075 }} className="">
+                                <li><img className="xl:border-3 h-25px w-25px xl:h-8 xl:w-8 object-cover xl:rounded-full rounded-full border-2 border-white" src={user.image} alt="" /></li>
                             </motion.div>
                         </Link>
 

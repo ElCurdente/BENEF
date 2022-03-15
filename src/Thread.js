@@ -142,6 +142,7 @@ const Thread = () => {
           setModalItem(prevState => ({
             ...prevState,
             user_pseudo: data.username,
+            file: data.image
           }));
         })
         .catch(err => {
@@ -407,13 +408,6 @@ const Thread = () => {
     setModalItemUser(this);
   }
 
-  function handleModalUser() {
-    setOpenModalUser(true);
-    setModalItemUser(this);
-    // console.log(history.location.pathname)
-    // history.push("/home?"+modalItem.user_pseudo)
-  }
-
   function handleModalUserPost() {
     setOpenModalUserPost(true);
     setModalItemUserPost(this);
@@ -562,7 +556,7 @@ const Thread = () => {
 
                     <div className='flex self-end items-center text-sm max-w-md mt-4'>
                        Posté par <span className="font-semibold cursor-pointer ml-1 mr-2" onClick={handleModalUser.bind(modalItem)}>{modalItem.user_pseudo}</span> 
-                        <img className="h-8 w-8 xl:border-2 xl:h-8 xl:w-8 rounded-full xl:rounded-full border-2 border-red-450" src={profil} alt="image de profil" />
+                        <img className="h-8 w-8 xl:border-2 xl:h-8 xl:w-8 rounded-full xl:rounded-full border-2 border-red-450" src={modalItem.file} alt="image de profil" />
                       
                     </div>
 
