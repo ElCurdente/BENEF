@@ -1,15 +1,27 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "BENEF",
+  "name": "Benef - Bons Plans sur l'IDF",
+  "start_url": ".",
+  "theme_color": "#000000",
+  "background_color": "#FF5640",
   "icons": [
     {
-      "src": "favicon.ico",
-      "sizes": "64x64 32x32 24x24 16x16",
-      "type": "image/x-icon"
+      "src": "favicon.svg",
+      "sizes": "72x72 96x96 128x128 144x144 192x192 256x256"
+    },
+    {
+      "src": "favicon.svg",
+      "sizes": "512x512",
+      "purpose": "any maskable"
     }
   ],
-  "start_url": ".",
-  "display": "standalone",
-  "theme_color": "#000000",
-  "background_color": "#ffffff"
+  "lang": "fr",
+    "display": "standalone",
+    "prefer_related_applications": true,
+    "related_applications": [
+      {
+        "platform": "play",
+        "id": "com.google.samples.apps.iosched"
+      }
+    ]
 }

@@ -410,6 +410,8 @@ const Thread = () => {
   function handleModalUser() {
     setOpenModalUser(true);
     setModalItemUser(this);
+    // console.log(history.location.pathname)
+    // history.push("/home?"+modalItem.user_pseudo)
   }
 
   function handleModalUserPost() {
