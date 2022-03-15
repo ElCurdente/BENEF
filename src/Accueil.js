@@ -40,7 +40,7 @@ const Accueil = () => {
         <div className="dark:bg-gray-550 xl:bg-white-0 xl:overflow-x-hidden">
 
             <div className="flex justify-center z-50 relative xl:hidden">
-                <div className="fixed flex h-7vh w-100vw bg-red-450 dark:bg-black xl:justify-start justify-center items-center rounded-b-lg transition duration-500">
+                <div className="fixed flex h-50px w-100vw bg-red-450 dark:bg-black xl:justify-start justify-center items-center rounded-b-lg transition duration-500">
 
                     <img src={logo} alt="Logo" className="w-32 dark:hidden xl:ml-96" />
                     <img src={logodark} alt="Logo" className="w-32 hidden dark:block" />

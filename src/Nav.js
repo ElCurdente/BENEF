@@ -72,9 +72,9 @@ const Nav = ({ searchValue, setSearchValue }) => {
 
     return (
         <div className="flex justify-center z-50 relative">
-            <div className="fixed flex justify-center items-center xl:top-0 xl:h-7vh xl:justify-start bottom-0 w-100vw rounded-t-lg transition duration-500">
+            <div className="fixed flex justify-center items-center xl:top-0 xl:h-50px xl:justify-start bottom-0 w-100vw rounded-t-lg transition duration-500">
                 <nav className="w-100vw">
-                    <ul className="flex justify-around xl:justify-evenly xl:grid xl:grid-cols-nav xl:pr-40 xl:pl-40 items-center h-7vh xl:h-7vh bg-red-450 dark:bg-black">
+                    <ul className="flex justify-around xl:justify-evenly xl:grid xl:grid-cols-nav xl:pr-40 xl:pl-40 items-center h-50px xl:h-50px bg-red-450 dark:bg-black">
 
                         <motion.div whileHover={{ scale: 1.03 }} className="justify-self-start">
                             <Link to="/" onClick={() => {}}>
