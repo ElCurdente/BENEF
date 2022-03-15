@@ -60,12 +60,12 @@ const Parametre = () => {
                             <img src={fleche} alt="fleche" className="w-2 transform rotate-180 mr-2"/>
                         </a>
                     </ul>
-                    <ul>
+                    {/* <ul>
                         <a className="flex justify-between cursor-pointer font-normal" href='#'>
                             Bons plans enregistrés
                             <img src={fleche} alt="fleche" className="w-2 transform rotate-180 mr-2"/>
                         </a>
-                    </ul>
+                    </ul> */}
                 </li>
 
                 <h2 className="mt-2 text-xl pt-7 font-semibold">Affichage</h2>

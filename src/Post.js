@@ -9,7 +9,7 @@ import fleche from './images/icon/icon_fleche.svg';
 import axios from 'axios';
 import { BrowserRouter as Router, Switch, Route, Link, useHistory} from 'react-router-dom';
 import validate from './validateInfo'
-import {AES, enc}from 'crypto-js';
+import {AES, enc} from 'crypto-js';
 
 
 const Post = () => {

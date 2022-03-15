@@ -56,53 +56,6 @@ const Profil = () => {
             )
     }, []);
 
-    // const [post, setPost] = useState({
-    //     id_post: '',
-    //     image: '',
-    //     title: '',
-    //     description: '',
-    //     adress: '',
-    //     postal: '',
-    //     place: '',
-    //     expiration: '',
-    //     category: '',
-    //     upvote: '',
-    //     id_user: ''
-    // });
-
-    // useEffect(() => {
-    //     console.log({ id_user: sessionStorage.getItem('id_user') })
-    //     fetch('https://benef-app.fr/api-post-user2.php', {
-    //         method: "POST",
-    //         headers: {
-    //             'Accept': 'application/json',
-    //             'Content-Type': 'application/json'
-    //         },
-    //         body: JSON.stringify({ id_user: sessionStorage.getItem('id_user') })
-    //     })
-    //         .then((response) => response.json())
-    //         .then((data) => {
-    //             console.log(data);
-    //             setPost({
-    //                 id_post: data.id_post,
-    //                 image: data.image,
-    //                 title: data.title,
-    //                 description: data.description,
-    //                 adress: data.adress,
-    //                 postal: data.postal,
-    //                 place: data.place,
-    //                 expiration: data.expiration,
-    //                 category: data.category,
-    //                 upvote: data.upvote,
-    //                 id_user: data.id_user,
-    //             })
-    //             console.log(post)
-    //         })
-    //         .catch(err => {
-    //             console.log("Error Reading data " + err);
-    //         });
-    // }, [])
-
     function handleModal() {
         setOpenModal(true);
         setModalItem(this);
@@ -132,7 +85,8 @@ const Profil = () => {
     const [user, setUser] = useState({
         id: '',
         username: '',
-        bio: ''
+        bio: '',
+        image: undefined
     });
 
 
@@ -154,7 +108,8 @@ const Profil = () => {
                 setUser({
                     id: data.id_user,
                     username: data.username,
-                    bio: data.bio
+                    bio: data.bio,
+                    image: data.image
                 })
                 console.log(user)
             })
@@ -187,7 +142,7 @@ const Profil = () => {
 
     const [values, setValues] = useState({
         id_user: id_user,
-        image: '',
+        image: undefined,
         username: '',
         bio: '',
     });
@@ -201,29 +156,59 @@ const Profil = () => {
     };
 
 
-    const handleSubmit = e => {
-        e.preventDefault();
-        console.log({ id_user: id_user }, values)
-        fetch('https://benef-app.fr/api-modif-profil.php', {
-            method: "POST",
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(values)
-        })
-            .then((response) => response.json())
-            .then((data) => {
-                console.log(data)
-                modifbio(false);
-                window.location.reload();
-            })
-            .catch(err => {
-                console.log("Error Reading data " + err);
-            });
+    // const handleSubmit = e => {
+    //     e.preventDefault();
+    //     console.log({ id_user: id_user }, values)
+    //     fetch('https://benef-app.fr/api-modif-profil.php', {
+    //         method: "POST",
+    //         headers: {
+    //             'Accept': 'application/json',
+    //             'Content-Type': 'application/json'
+    //         },
+    //         body: JSON.stringify(values)
+    //     })
+    //         .then((response) => response.json())
+    //         .then((data) => {
+    //             console.log(data)
+    //             modifbio(false);
+    //             window.location.reload();
+    //         })
+    //         .catch(err => {
+    //             console.log("Error Reading data " + err);
+    //         });
 
+    //     modifbio(false);
+
+    // };
+
+    const handleSubmit = async (event) => {
+        event.preventDefault();
+        const formData = new FormData();
+        formData.append('id_user', id_user);
+        formData.append("file", picture.pictureAsFile);
+        formData.append('username', values.username);
+        formData.append('bio', values.bio);
+
+        console.log(picture.pictureAsFile);
+
+        for (var key of formData.entries()) {
+            console.log(key[0] + ", " + key[1]);
+        }
+        console.log(formData)
+        const data = await fetch("https://benef-app.fr/api-modif-profil.php", {
+            method: "post",
+            // headers: { "Content-Type": "multipart/form-data" },
+            body: formData,
+        });
+        const uploadedImage = await data.json();
+        if (uploadedImage) {
+            console.log("Successfully uploaded image");
+            console.log(data);
+            modifbio(false);
+        } else {
+            console.log("Error Found");
+        }
         modifbio(false);
-
     };
 
     const [openModalSupp, setOpenModalSupp] = useState(false);
@@ -387,7 +372,7 @@ const Profil = () => {
 
                 <div id="infos" className="relative xl:w-2/6 w-95vw px-4 xl:-px-0">
                     <div className="flex items-center">
-                        <img className="w-100px h-100px bg-transparent dark:bg-gray-650 border-3 border-red-450 dark:border-black rounded-full object-cover" />
+                        <img src={user.image} className="w-100px h-100px bg-transparent dark:bg-gray-650 border-3 border-red-450 dark:border-black rounded-full object-cover" />
                         <h1 className="ml-3 text-xl font-semibold">{user.username}</h1>
                     </div>
                     <p className="col-span-2 mt-4">{user.bio}</p>
@@ -439,7 +424,7 @@ const Profil = () => {
         return (
             <div className="flex justify-center items-center box-border h-screen mt-4 w-full bg-white-0 dark:bg-gray-550">
                 <div className="bg-white-0 dark:bg-black h-80vh overflow-y-auto rounded-lg shadow-xl w-95vw">
-                    <form className="post flex flex-col justify-center" action="api-modif-profil.php" method="GET" onSubmit={handleSubmit}>
+                    <form className="post flex flex-col justify-center" action="api-modif-profil.php" method="GET" onSubmit={(e) => handleSubmit(e)}>
                         <div className="flex flex-col relative justify-center items-center">
                             {preview ? (
 
