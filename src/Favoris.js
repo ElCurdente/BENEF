@@ -407,7 +407,7 @@ function Favoris() {
                         
                       </button>
                     </div>
-                    <div className="bg-white-0 text-black absolute top-44 text-xl font-bold flex w-max py-1 rounded-lg">
+                    <div className="bg-white-0 text-black absolute top-44 text-xl font-bold flex w-max py-1 rounded-lg -left-2 pl-2">
                       <button onClick={handleUpvote.bind(item)} className="pl-2 relative">
                         <motion.img whileTap={{ scale: 0.85 }} id="upvote_haut" src={upvoteHaut} className="opacity-100 h-28px"></motion.img>
                         {/* <img src={upvoteorange} className="absolute top-0 h-30px dark:opacity-0"></img> */}
