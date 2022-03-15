@@ -28,7 +28,7 @@ const Nav = ({ searchValue, setSearchValue }) => {
                     <ul className="flex justify-around xl:justify-evenly xl:grid xl:grid-cols-nav xl:pr-40 xl:pl-40 items-center h-7vh xl:h-7vh bg-red-450 dark:bg-black">
 
                         <motion.div whileHover={{ scale: 1.03 }} className="justify-self-start">
-                            <Link to="/home">
+                            <Link to="/home" onClick={() => {}}>
                                 <li><img className="h-25px xl:hidden" src={etiquette} alt="" /></li>
                                 <img src={logo} alt="Logo" className="w-32 dark:hidden xl:block hidden" />
                                 <img src={logodark} alt="Logo" className="w-32 hidden sm:dark:hidden dark:hidden xl:dark:block" />

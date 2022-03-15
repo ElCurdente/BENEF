@@ -16,7 +16,7 @@ import { motion } from 'framer-motion/dist/framer-motion';
 import adresse from './images/icon/adress.svg';
 import localisation from './images/icon/icon_localisation.svg';
 import sablier from './images/icon/icon_sablier.svg';
-import {AES, enc}from 'crypto-js';
+import { AES, enc } from 'crypto-js';
 
 
 
@@ -31,7 +31,7 @@ const Profil = () => {
     const [bio, modifbio] = useState(false);
 
     const decrypted = AES.decrypt(sessionStorage.getItem('id_user'), 'MYKEY4DEMO');
-  const id_user = decrypted.toString(enc.Utf8);
+    const id_user = decrypted.toString(enc.Utf8);
 
     useEffect(() => {
         fetch('https://benef-app.fr/api-post-user2.php', {
@@ -130,7 +130,7 @@ const Profil = () => {
     }, []);
 
     const [user, setUser] = useState({
-        id:'',
+        id: '',
         username: '',
         bio: ''
     });
@@ -152,7 +152,7 @@ const Profil = () => {
             .then((data) => {
                 console.log(data);
                 setUser({
-                    id:data.id_user,
+                    id: data.id_user,
                     username: data.username,
                     bio: data.bio
                 })
@@ -232,23 +232,23 @@ const Profil = () => {
 
 
     const handleDeletePost = () => {
-        console.log("Suppression du post n°"+ deleteId);
+        console.log("Suppression du post n°" + deleteId);
         setOpenModalSupp(false);
         fetch('https://benef-app.fr/api-post-sup.php', {
-      method: "POST",
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({id_post: deleteId})
-    })
-      .then((data) => {
-        console.log(data);
-        setSuppr(true)
-      })
-      .catch(err => {
-        console.log("Error Reading data " + err);
-      });
+            method: "POST",
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ id_post: deleteId })
+        })
+            .then((data) => {
+                console.log(data);
+                setSuppr(true)
+            })
+            .catch(err => {
+                console.log("Error Reading data " + err);
+            });
     }
 
     function handlePostSupp() {
@@ -258,13 +258,13 @@ const Profil = () => {
 
     useEffect(() => {
         for (var i = 0; i < items.length; i++) {
-          if (items[i].id_post === deleteId) {
-            items.splice(i, 1);
-            i--;
-            setSuppr(false);
-          }
+            if (items[i].id_post === deleteId) {
+                items.splice(i, 1);
+                i--;
+                setSuppr(false);
+            }
         }
-      }, [suppr])
+    }, [suppr])
 
     const [image, setImage] = useState();
     const [preview, setPreview] = useState();
@@ -367,18 +367,18 @@ const Profil = () => {
                     </div>
                 </div>
 
-                
+
                 <div id="containerModal" className={openModalSupp ? "block" : "hidden"}>
                     <div id="modal" ref={modal} className="flex w-screen h-screen bg-black bg-opacity-30 fixed bottom-0 left-0 justify-center z-40 items-center">
 
                         <div className="w-full xl:w-2/6  mb-10 xl:mb-0 relative flex flex-col justify-center items-center rounded-3xl bg-white-0 overflow-auto dark:bg-gray-550 dark:text-white-0">
-                            <div className=" mt-7 mx-3 flex flex-col">                 
+                            <div className=" mt-7 mx-3 flex flex-col">
                                 <h1 className="text-lg xl:text-xl text-red-650 font-semibold max-w-md mb-2 text-center">Supprimer ce post</h1>
                                 <h1 className="text-lg xl:text-sm font-light max-w-md mt-2">Es-tu vraiment sûr de vouloir supprimer ce post ?</h1>
                                 <div className="flex w-full justify-evenly mt-5 mb-8">
                                     <button onClick={() => setOpenModalSupp(false)} className="block px-4 hover:underline hover:underline-offset-8 text-red-450 font-semibold dark:hover:underline dark:hover:underline-offset-8 dark:hover:text-black transition duration-300 ease-in-out" type="submit">Annuler</button>
-                                <button onClick={() => handleDeletePost()} className="block px-4 font-semibold py-2 bg-red-650 hover:bg-white-0 hover:text-red-650 hover:border-red-650 border-2 border-red-650 dark:hover:bg-white-150 dark:hover:text-gray-550 active:bg-red-200 dark:bg-white-0 dark:border-black dark:text-black rounded-full transition duration-300 ease-in-out text-white-0" type="submit">Supprimer</button>
-                                    
+                                    <button onClick={() => handleDeletePost()} className="block px-4 font-semibold py-2 bg-red-650 hover:bg-white-0 hover:text-red-650 hover:border-red-650 border-2 border-red-650 dark:hover:bg-white-150 dark:hover:text-gray-550 active:bg-red-200 dark:bg-white-0 dark:border-black dark:text-black rounded-full transition duration-300 ease-in-out text-white-0" type="submit">Supprimer</button>
+
                                 </div>
                             </div>
                         </div>
@@ -394,11 +394,11 @@ const Profil = () => {
                     <div className="flex items-center justify-between col-span-2 h-16 pt-8">
                         <button onClick={handleModify} className="flex items-center h-10 bg-red-450 py-2 px-4 rounded-3xl text-white-0 dark:text-black hover:bg-white-0 hover:text-red-450 hover:border-red-450 border-2 border-red-450 dark:bg-white-0 dark:border-white-0">Modifie ton profil</button>
                         {user.id == 38 &&
-                         <Link to="/backoffice"><button className="flex items-center text-red-450 dark:text-white-0 hover:underline">Accéder aux signalements</button></Link>          
+                            <Link to="/backoffice"><button className="flex items-center text-red-450 dark:text-white-0 hover:underline">Accéder aux signalements</button></Link>
                         }
-                                       
-                      
-                     
+
+
+
                     </div>
 
                 </div>
@@ -413,11 +413,14 @@ const Profil = () => {
                         {items.map(item => (
                             <motion.div className="w-92vw xl:w-full relative bg-red-450 dark:bg-black rounded-lg text-white-0 mb-4 xl:mb-5 shadow-customm"
                                 whileHover={{ scale: 1.01 }}>
-                                    <button className="bg-white-0 h-10 w-10 text-black absolute z-30 flex justify-center items-center top-3 right-2 rounded-full" onClick={handlePostSupp.bind(item.id_post)}>
+                                <button className="bg-white-0 h-10 w-10 text-black absolute z-30 flex justify-center items-center top-3 right-2 rounded-full" onClick={handlePostSupp.bind(item.id_post)}>
                                     <img src={plusrouge} className="transform rotate-45 h-6 w-6"></img>
-                                    </button>
+                                </button>
                                 <div className="w-full h-250px relative" onClick={handleModal.bind(item)}>
                                     <img className="object-cover rounded-t-lg h-full w-full" src={item.image} alt="" />
+                                </div>
+                                <div className="bg-white-0 text-black text-xl font-bold absolute right-3 bottom-24 w-max rounded-lg">
+                                    <span className="px-2 upvote">{item.upvote}</span>
                                 </div>
                                 <div className="w-full min-h-max pb-4 md:cursor-pointer" onClick={handleModal.bind(item)} >
                                     <h1 className="text-lg font-semibold mx-2 max-w-md mt-2	">{item.title}</h1>
@@ -494,7 +497,7 @@ const Profil = () => {
                                 placeholder={user.bio}
                                 value={values.bio}
                                 onChange={handleChange}
-                            ></input>                          
+                            ></input>
                         </div>
 
                         <div className="flex justify-center pt-5">
