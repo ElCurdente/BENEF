@@ -41,9 +41,9 @@ const Parametre = () => {
             <div id="infos" className="overflow-y-auto w-95vw h-full mt-12 dark:bg-gray-550 xl:bg-white-0 xl:w-1/3 xl:p-5">
 
 
-                <h1 className="text-center text-2xl font-bold pt-7">Paramètres</h1>
+                <h1 className="text-center text-2xl font-bold pt-5">Paramètres</h1>
 
-                <h2 className=" text-xl pt-6 font-semibold ">Compte</h2>
+                <h2 className=" text-xl pt-10 font-semibold ">Compte</h2>
                 <li className='mt-2 list-none'>
 
                     <ul className="pb-2">
