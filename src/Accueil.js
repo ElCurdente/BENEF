@@ -19,18 +19,21 @@ import logodark from './images/logo/logo_benef_dark.svg';
 import parameter from './images/icon/icon_parametres.svg';
 import plus from './images/icon/icon_plus.svg';
 import plusnoir from './images/icon/icon_plus_noir.svg';
-import { useState } from "react"
+import { useState } from "react";
+import { useLocation } from 'react-router-dom';
+import { useEffect } from 'react';
 
 
 const Accueil = () => {
 
-    const [isPosting, setIsPosting] = useState(false);
     const [searchValue, setSearchValue] = useState("");
 
-    function handlePost(e) {
-        e.preventDefault();
-        setIsPosting(true);
-    }
+    // let location = useLocation();
+
+    // useEffect(() => {
+    //     history.push("/home")
+    //   }, [])
+
 
     return (
 
@@ -65,13 +68,14 @@ const Accueil = () => {
                     </div>
                 </div>
             </div>
+
             <Router>
                 
                 <div>
                     <Nav searchValue={searchValue} setSearchValue={setSearchValue} />
                     
                     <Switch>
-                        <Route path="/home" exact component={Home} />
+                        <Route path="/" exact component={Home} />
                         <Route path="/recherche">
                             <Recherche
                                 searchValue={searchValue}

@@ -1,8 +1,13 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
 import fleche from './images/icon/icon_fleche_noire.svg';
+import {AES, enc}from 'crypto-js';
+
 
 const Parametre = () => {
+
+    const decrypted = AES.decrypt(sessionStorage.getItem('id_user'), 'MYKEY4DEMO');
+    const id_user = decrypted.toString(enc.Utf8);
 
     const [user, setUser] = useState({
         username:'', 
@@ -12,14 +17,14 @@ const Parametre = () => {
     })
 
     useEffect(() => {
-        console.log({id_user : sessionStorage.getItem('id_user')})
+        console.log({id_user : id_user})
         fetch('https://benef-app.fr/api-infos-utilisateur.php', {
             method: "POST",
             headers: {
               'Accept': 'application/json',
               'Content-Type': 'application/json'
             },
-            body: JSON.stringify({id_user : sessionStorage.getItem('id_user')})
+            body: JSON.stringify({id_user : id_user})
           })
             .then((response) => response.json())
             .then((data) => {
