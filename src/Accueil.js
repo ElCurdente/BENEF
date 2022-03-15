@@ -1,5 +1,5 @@
 import React from 'react'
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import { HashRouter as Router, Switch, Route } from 'react-router-dom';
 import {AnimationPresence, motion} from 'framer-motion/dist/framer-motion';
 import { Link } from 'react-router-dom'
 import Nav from './Nav'
@@ -22,18 +22,14 @@ import plusnoir from './images/icon/icon_plus_noir.svg';
 import { useState } from "react";
 import { useLocation } from 'react-router-dom';
 import { useEffect } from 'react';
+import { useHistory } from "react-router-dom";
 
 
 const Accueil = () => {
 
     const [searchValue, setSearchValue] = useState("");
     const [openModal, setOpenModal] = useState(true);
-    // let location = useLocation();
-
-    // useEffect(() => {
-    //     history.push("/home")
-    //   }, [])
-
+   
 
     return (
 

@@ -31,14 +31,6 @@ const Filter = ({ searchValue, setSearchValue }) => {
   const [openModal, setOpenModal] = useState(false);
   const [openModal2, setOpenModal2] = useState(false);
 
-  const btnOuvrir = () => {
-    setOpenModal(true);
-  }
-
-  const btnFermer = () => {
-    setOpenModal(false);
-  }
-
   const handleReset = () => {
     setFilters({
       filtered: false,
@@ -143,7 +135,6 @@ const Filter = ({ searchValue, setSearchValue }) => {
     const regexp = new RegExp(searchValue, 'i');
     const regexp_postal = new RegExp(filters.postal, 'i');
     const regexp_category = new RegExp(filters.category, 'i');
-
     const filterByName = items.filter(x => regexp.test(x.title));
     console.log(filters.postal);
     filterByFilters = items.filter(item => regexp_postal.test(item.postal));
@@ -220,7 +211,7 @@ const Filter = ({ searchValue, setSearchValue }) => {
                     <div className="mb-7">
                       <h2 className=" text-md pb-2 font-semibold ">Catégorie</h2>
                       <div className="flex  relative justify-center items-center mb-5">
-                        <label htmlFor="cat" className="">{filters.category}</label>
+                        {/* <label htmlFor="cat" className="">{filters.category}</label> */}
                         <select name="category" id="category" onChange={handleChange} className="block appearance-none w-full bg-white border-gray-400 hover:border-gray-500 px-4 py-2 pr-8  shadow leading-tight focus:outline-none focus:shadow-outline">
                           <option value="select">--Choisissez une catégorie--</option>
                           <option value="all">Toutes catégories</option>
@@ -257,7 +248,7 @@ const Filter = ({ searchValue, setSearchValue }) => {
                         </div>
                       </div>
 
-                      <h2 className=" text-md font-semibold ">Date d'expiration</h2>
+                      {/* <h2 className=" text-md font-semibold ">Date d'expiration</h2>
                       <div className="flex  relative justify-center items-center mb-5">
                         <label htmlFor="expiration" className="text-black">
                         </label>
@@ -269,12 +260,12 @@ const Filter = ({ searchValue, setSearchValue }) => {
                           value={filters.expiration}
                           onChange={handleChange}
                         />
-                      </div>
+                      </div> */}
 
                       <h2 className=" text-md font-semibold ">Trier par</h2>
                       <div className="flex">
                         <div className="flex relative items-center mt-3 ml-3">
-                          <h4 className="text-black pl-2">{filters.filter_by}</h4>
+                          {/* <h4 className="text-black pl-2">{filters.filter_by}</h4> */}
                           <label htmlFor="certified" className="text-black pl-2">
                             <input id="filter_by_date"
                               type="radio"
