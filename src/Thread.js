@@ -49,6 +49,7 @@ const Thread = () => {
   const [isVoted, setIsVoted] = useState(0);
   const [isUpvoted, setIsUpvoted] = useState([])
   const [isDownvoted, setIsDownvoted] = useState([])
+  const [upvoteNumber, setUpvoteNumber] = useState(0)
   const [refreshKey, setRefreshKey] = useState(0);
   const nbUpvote = useRef(null);
   let history = useHistory();
@@ -244,6 +245,7 @@ const Thread = () => {
   function handleUpvote() {
     console.log(this)
     setIsVoted(this.id_post)
+    // setUpvoteNumber(this.upvote)
     setUpvote(true);
     setIsVoting(true);
   }
