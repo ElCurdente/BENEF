@@ -23,6 +23,7 @@ import animationData from './images/animation/like.json';
 import coeur from './images/icon/icon_coeur.svg';
 import coeurPlein from './images/icon/icon_coeur_rempli.svg';
 import fleche from './images/icon/icon_fleche.svg';
+import pouce from './images/illustrations/pouce.png';
 import {AES, enc}from 'crypto-js';
 
 import signaler from './images/icon/icon_signaler.svg';
@@ -515,10 +516,11 @@ const Thread = () => {
           <div id="modal" ref={modal} className="flex w-screen h-screen bg-black bg-opacity-30 fixed bottom-0 left-0 justify-center z-40 items-center">
 
            <div className="w-full xl:w-2/6  mb-10 xl:mb-0 relative flex flex-col justify-center items-center rounded-3xl bg-white-0 overflow-auto dark:bg-gray-550 dark:text-white-0">
-               <div className="mb-5 mt-5 mx-3 flex flex-col text-center">                 
+               <div className="mb-5 mt-5 mx-3 flex flex-col items-center text-center">
+               <img className="mb-5 w-20" src={pouce} alt=''/>            
                    <h1 className="text-lg xl:text-xl font-semibold max-w-md mt-2">Merci d'avoir signalé ce post !<br></br>
                    <span className="font-light xl:text-base">L'équipe BENEF va maintenant se charger de la suite.</span></h1>
-                   <h1 className="text-2xl">👍</h1>
+                   
                    <div className="flex w-full justify-evenly mt-5 mb-3">
                        <button onClick={() => resetReport()} className="block px-4 font-semibold py-2 bg-red-450 hover:bg-white-0 hover:text-red-450 hover:border-red-450 border-2 border-red-450 dark:hover:bg-white-150 dark:hover:text-gray-550 active:bg-red-200 dark:bg-white-0 dark:border-black dark:text-black rounded-full transition duration-300 ease-in-out text-white-0" type="submit">Retour</button>
 

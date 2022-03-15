@@ -6,6 +6,7 @@ import Accueil from './Accueil';
 import plus from './images/icon/icon_plus.svg';
 import plusblanc from './images/icon/icon_plus_blanc.svg';
 import fleche from './images/icon/icon_fleche.svg';
+import content from './images/illustrations/content.png';
 import axios from 'axios';
 import { BrowserRouter as Router, Switch, Route, Link, useHistory} from 'react-router-dom';
 import validate from './validateInfo'
@@ -147,14 +148,17 @@ const Post = () => {
     return (
         <div className="flex justify-center items-center h-screen mt-3 w-full bg-white-0 dark:bg-gray-550 ">
             <div id="containerModal" className={openModal ? "block" : "hidden"}>
-                    <div id="modal" ref={modal} className="flex w-screen h-screen bg-black bg-opacity-30 fixed bottom-0 left-0 justify-center z-40 items-end">
+                    <div id="modal" ref={modal} className="flex w-screen h-screen bg-black bg-opacity-30 fixed bottom-0 left-0 justify-center z-40 items-center">
 
-                        <div className="w-full xl:w-2/6 h-90% xl:h-95% mb-10 xl:mb-0 relative flex flex-col justify-start items-center rounded-t-3xl bg-white-0 overflow-auto dark:bg-gray-550 dark:text-white-0">
-                            <div className="mb-5 mt-7 mx-3 flex flex-col">
+                        <div className="w-full xl:w-2/6 xl:mb-0 relative flex flex-col justify-start items-center rounded-3xl bg-white-0 overflow-auto dark:bg-gray-550 dark:text-white-0">
+                            <div className="mt-7 mx-3 flex flex-col items-center text-center">
                                 {/* <h1 className="text-lg xl:text-xl font-semibold mx-2 max-w-md">{modalItem.image}</h1> */}
-                                <h1 className="text-lg xl:text-xl font-semibold max-w-md mt-2">Votre bon plan a bien été publié.</h1>
-
-                                <div className="flex w-full justify-evenly mt-5 mb-10">
+                                <img className="mb-5 w-20" src={content} alt=''/> 
+                                <h1 className="text-lg xl:text-xl font-semibold max-w-md mt-2">
+                                    Ton bon plan a bien été publié !
+                                </h1>
+                                <h1 className="text-lg xl:text-sm font-light max-w-md mt-2">L'équipe BENEF te remercie de faire vivre l'application !</h1>
+                                <div className="flex w-full justify-evenly mt-7 mb-8">
                                 <Link to="/" onClick={() => {}}>
                                     <button onClick={() => setOpenModal(false)} className="block px-4 font-semibold py-2 bg-red-450 hover:bg-white-0 hover:text-red-450 hover:border-red-450 border-2 border-red-450 dark:hover:bg-white-150 dark:hover:text-gray-550 active:bg-red-200 dark:bg-white-0 dark:border-black dark:text-black rounded-full transition duration-300 ease-in-out text-white-0" type="submit">Fermer</button>
                                 </Link>
