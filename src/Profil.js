@@ -17,8 +17,7 @@ import adresse from './images/icon/adress.svg';
 import localisation from './images/icon/icon_localisation.svg';
 import sablier from './images/icon/icon_sablier.svg';
 import { AES, enc } from 'crypto-js';
-
-
+import { useHistory } from "react-router-dom";
 
 const Profil = () => {
 
@@ -30,8 +29,16 @@ const Profil = () => {
     const [openModal, setOpenModal] = useState(false);
     const [bio, modifbio] = useState(false);
     const [successPdp, setSuccessPdp] = useState(false)
-    const decrypted = AES.decrypt(sessionStorage.getItem('id_user'), 'MYKEY4DEMO');
-    const id_user = decrypted.toString(enc.Utf8);
+    let decrypted;
+    if(localStorage.getItem('isConnected')){
+      decrypted = AES.decrypt(localStorage.getItem('id_user'), 'MYKEY4DEMO');
+    }else{
+      decrypted = AES.decrypt(sessionStorage.getItem('id_user'), 'MYKEY4DEMO');
+    }
+        const id_user = decrypted.toString(enc.Utf8);
+
+        let history = useHistory();
+
 
     useEffect(() => {
         fetch('https://benef-app.fr/api-post-user2.php', {

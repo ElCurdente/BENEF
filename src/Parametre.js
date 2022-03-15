@@ -6,11 +6,18 @@ import { useEffect } from 'react';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import './index.css';
+import { useHistory } from "react-router-dom";
+
 
 const Parametre = () => {
 
+    let history = useHistory();
+    console.log(history);
+
     function handleDeconnexion() {
+        history.push("/");
         sessionStorage.clear();
+        localStorage.clear();
         window.location.reload();
     }
 

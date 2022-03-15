@@ -60,7 +60,12 @@ const Thread = () => {
   const [openModalUser, setOpenModalUser] = useState(false);
   const [openModalUserPost, setOpenModalUserPost] = useState(false);
   const [isFav, setIsFav] = useState([]);
-  const decrypted = AES.decrypt(sessionStorage.getItem('id_user'), 'MYKEY4DEMO');
+  let decrypted;
+  if(localStorage.getItem('isConnected')){
+    decrypted = AES.decrypt(localStorage.getItem('id_user'), 'MYKEY4DEMO');
+  }else{
+    decrypted = AES.decrypt(sessionStorage.getItem('id_user'), 'MYKEY4DEMO');
+  }
   const id_user = decrypted.toString(enc.Utf8);
 
   useEffect(() => {
@@ -619,11 +624,7 @@ const Thread = () => {
                       <h1 className="ml-3 text-xl font-semibold">{modalItemUser.username}</h1>
                     </div>
                     <p className="col-span-2 mt-2">{modalItemUser.bio}</p>
-                    <div className="flex items-center justify-between col-span-2 h-16 pt-4">
-                      {/* <button onClick={handleModify} className="flex items-center h-10 bg-red-450 py-2 px-4 rounded-3xl text-white-0 dark:text-black hover:bg-white-0 hover:text-red-450 hover:border-red-450 border-2 border-red-450 dark:bg-white-0 dark:border-white-0">Modifie ton profil</button> */}
-                      <Link to="/favoris"><button className="flex items-center text-red-450 dark:text-white-0 hover:underline">Voir mes favoris <img className="pl-1 h-15px fill-current" src={coeur} alt="" /></button></Link>
-                    </div>
-
+                    
                   </div>
                   <div id="barre1" className="h-1px w-95vw xl:w-2/6 mt-4 bg-gray-200"></div>
                   <div id="badges" className="w-95vw h-100px xl:w-2/6">
