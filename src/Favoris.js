@@ -395,7 +395,7 @@ function Favoris() {
                       <button className="upvote text-red-450 dark:text-black"
                         onClick={ handleFav.bind(item.id_post)}>
                         {
-                          isFav.find(x => x == item.id_post) == item.id_post ? <img className='h-20px fill-current cursor-pointer' src={coeurPlein} alt='' /> : 
+                          isFav.find(x => x == item.id_post) == item.id_post ? <img className='h-20px fill-current cursor-pointer active:h-24px' src={coeurPlein} alt='' /> : 
                           <img className='h-20px fill-current cursor-pointer' src={coeur} alt='' />
                         }
                         
