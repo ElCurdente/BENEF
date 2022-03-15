@@ -100,7 +100,46 @@ useEffect(() => {
         .catch(err => {
             console.log("Error Reading data " + err);
         });
+
+        
+
 }, [])
+
+const [suppr, setSuppr] = useState(false)
+const [deleteId, setDeleteId] = useState(0)
+
+function handleDelete() {
+  console.log(this);
+  setDeleteId(this)
+  fetch('https://benef-app.fr/api-post-sup.php', {
+      method: "POST",
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({id_post: this})
+    })
+      .then((data) => {
+        console.log(data);
+        setSuppr(true);
+        setOpenModal2(false);
+      })
+      .catch(err => {
+        console.log("Error Reading data " + err);
+      });
+}
+
+useEffect(() => {
+  for (var i = 0; i < items.length; i++) {
+    if (items[i].id_post === deleteId) {
+      items.splice(i, 1);
+      i--;
+      setSuppr(false);
+    }
+  }
+}, [suppr])
+
+
   return (
     <div className="h-screen w-screen  bg-white-150 xl:dark:bg-gray-550 flex justify-center overflow-auto items-center">
         <div id="containerModal" className={openModal2 ? "block" : "hidden"}>
@@ -130,7 +169,7 @@ useEffect(() => {
                 <h1 className="self-end text-sm mt-4"> Posté par <span className="font-semibold">{modalItem.user_pseudo}</span></h1>
 
                 <div className="flex w-full justify-evenly mt-5 mb-10">
-                <button onClick={() => setOpenModal2(false)} className="block px-4 font-semibold py-2 bg-red-450 hover:bg-white-0 hover:text-red-450 hover:border-red-450 border-2 border-red-450 dark:hover:bg-white-150 dark:hover:text-gray-550 active:bg-red-200 dark:bg-white-0 dark:border-black dark:text-black rounded-full transition duration-300 ease-in-out text-white-0" type="submit">Supprimer</button>
+                <button onClick={handleDelete.bind(modalItem.id_post)} className="block px-4 font-semibold py-2 bg-red-450 hover:bg-white-0 hover:text-red-450 hover:border-red-450 border-2 border-red-450 dark:hover:bg-white-150 dark:hover:text-gray-550 active:bg-red-200 dark:bg-white-0 dark:border-black dark:text-black rounded-full transition duration-300 ease-in-out text-white-0" type="submit">Supprimer</button>
                   <button onClick={() => setOpenModal2(false)} className="block px-4 font-semibold py-2 bg-red-450 hover:bg-white-0 hover:text-red-450 hover:border-red-450 border-2 border-red-450 dark:hover:bg-white-150 dark:hover:text-gray-550 active:bg-red-200 dark:bg-white-0 dark:border-black dark:text-black rounded-full transition duration-300 ease-in-out text-white-0" type="submit">Fermer</button>
 
                 </div>
