@@ -405,6 +405,16 @@ const Thread = () => {
     setModalItemUser(this);
   }
 
+  function handleModalUser() {
+    setOpenModalUser(true);
+    setModalItemUser(this);
+  }
+
+  function handleModalUserPost() {
+    setOpenModalUserPost(true);
+    setModalItemUserPost(this);
+  }
+
   const [user, setUser] = useState({
     username: '',
     bio: ''
@@ -628,10 +638,13 @@ const Thread = () => {
                       {userItems.map(userItem => (
                         <motion.div className="w-92vw xl:w-full relative bg-red-450 dark:bg-black rounded-lg text-white-0 mb-4 xl:mb-5 shadow-customm"
                           whileHover={{ scale: 1.01 }}>
-                          <div className="w-full h-250px relative" onClick={handleModal.bind(userItem)}>
+                          <div className="w-full h-250px relative" onClick={handleModalUserPost.bind(userItem)}>
                             <img className="object-cover rounded-t-lg h-full w-full" src={userItem.image} alt="" />
                           </div>
-                          <div className="w-full min-h-max pb-4 md:cursor-pointer" onClick={handleModal.bind(userItem)} >
+                          <div className="bg-white-0 text-black text-xl font-bold absolute right-3 bottom-24 w-max rounded-lg">
+                                    <span className="px-2 upvote">{userItem.upvote}</span>
+                                </div>
+                          <div className="w-full min-h-max pb-4 md:cursor-pointer" onClick={handleModalUserPost.bind(userItem)} >
                             <h1 className="text-lg font-semibold mx-2 max-w-md mt-2	">{userItem.title}</h1>
                             <div className="flex mt-2 text-sm w-92vw max-w-md">
                               <img src={adresse} className="ml-2 mr-1 w-3.5"></img> {userItem.address} <div className="absolute right-3">{userItem.postal}</div>
