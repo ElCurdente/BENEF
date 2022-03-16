@@ -348,8 +348,8 @@ const Profil = () => {
                 <div id="containerModal" className={openModal ? "block" : "hidden"}>
                     <div id="modal" ref={modal} className="flex w-screen h-screen bg-black bg-opacity-30 fixed bottom-0 left-0 justify-center z-40 items-end mt-5">
 
-                        <div className="w-full xl:w-2/6 h-90% xl:h-95% mb-10 xl:mb-0 relative flex flex-col justify-start items-center rounded-t-3xl bg-white-0 overflow-auto dark:bg-gray-550 dark:text-white-0">
-                            <div className="mb-5 mx-3 flex flex-col">
+                        <div className="w-full xl:w-2/6 h-90% xl:h-90% mb-10 xl:mb-0 relative flex flex-col justify-start items-center rounded-t-3xl bg-white-0 overflow-auto dark:bg-gray-550 dark:text-white-0">
+                            <div className="mb-5 mx-3 flex mt-5 flex-col">
                                 <div className="w-full h-250px relative">
                                     <img className="object-cover rounded-t-lg h-full w-full" src={modalItem.image} alt="" />
                                 </div>
@@ -422,7 +422,7 @@ const Profil = () => {
                 <div id="barre1" className="h-1px w-95vw mt-10 bg-gray-200 xl:w-2/6"></div>
                 <div id="bp_perso" className="w-95vw xl:w-2/6">
                     <h3 className="font-bold pt-4 pl-4 ">Bons plans publiés</h3>
-                    <div className='w-full h-full flex flex-col items-center mt-5 pb-20'>
+                    <div className='w-full h-full flex flex-col items-center mt-5 pb-14'>
                         {items.map(item => (
                             <motion.div className="w-92vw xl:w-full relative bg-red-450 dark:bg-black rounded-lg text-white-0 mb-4 xl:mb-5 shadow-customm"
                                 whileHover={{ scale: 1.01 }}>

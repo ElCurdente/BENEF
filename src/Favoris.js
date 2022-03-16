@@ -17,9 +17,11 @@ import upvoteorangeplein from './images/icon/icon_vote_fill_orange.svg';
 import { motion } from 'framer-motion/dist/framer-motion';
 import coeur from './images/icon/icon_coeur.svg';
 import coeurPlein from './images/icon/icon_coeur_rempli.svg';
-import {AES, enc}from 'crypto-js';
+import { AES, enc } from 'crypto-js';
 import animationData2 from './images/animation/loading.json';
 import Lottie from 'react-lottie';
+import { useHistory } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 
 function Favoris() {
@@ -33,13 +35,14 @@ function Favoris() {
     }
   };
 
+  let history = useHistory();
   let decrypted;
-  if(localStorage.getItem('isConnected')){
+  if (localStorage.getItem('isConnected')) {
     decrypted = AES.decrypt(localStorage.getItem('id_user'), 'MYKEY4DEMO');
-  }else{
+  } else {
     decrypted = AES.decrypt(sessionStorage.getItem('id_user'), 'MYKEY4DEMO');
   }
-     const id_user = decrypted.toString(enc.Utf8);
+  const id_user = decrypted.toString(enc.Utf8);
 
   const [error, setError] = useState(null);
   const [isLoaded, setIsLoaded] = useState(false);
@@ -319,7 +322,7 @@ function Favoris() {
   }
 
   useEffect(() => {
-    if(openModal){
+    if (openModal) {
       console.log("prêt à fetch")
       fetch('https://benef-app.fr/api-infos-utilisateur.php', {
         method: "POST",
@@ -332,15 +335,18 @@ function Favoris() {
         .then((response) => response.json())
         .then((data) => {
           console.log(data)
+          const envryptedString = AES.encrypt(data.id_user, 'MYKEY4DEMO');
+          localStorage.setItem('id_user_post', envryptedString.toString());
           setModalItem(prevState => ({
             ...prevState,
             user_pseudo: data.username,
+            file: data.image
           }));
         })
         .catch(err => {
           console.log("Error Reading data " + err);
         });
-        console.log(modalItem);
+      console.log(modalItem);
     }
   }, [openModal])
 
@@ -348,12 +354,12 @@ function Favoris() {
     return <div>Erreur : {error.message}</div>;
   } else if (!isLoaded) {
     return <div className='h-screen w-screen flex justify-center items-center bg-red-450 xl:bg-white-0'>
-    <div className='pt-36 flex justify-center items-center h-400px w-400px rounded-full bg-red-450'>
-      <Lottie options={defaultOptions2}
-        height={500}
-        width={500} className=""/>
-    </div>  
-  </div>;
+      <div className='pt-36 flex justify-center items-center h-400px w-400px rounded-full bg-red-450'>
+        <Lottie options={defaultOptions2}
+          height={500}
+          width={500} className="" />
+      </div>
+    </div>;
   } else {
     return (
       <div className=" h-screen w-screen flex flex-col justify-center xl:justify-center overflow-x-hidden overflow-auto items-center bg-white-0 xl:dark:bg-gray-550 xl:p-5 mt-12">
@@ -364,7 +370,7 @@ function Favoris() {
         <ul className="h-full xl:w-2/6 bg-white-0 xl:dark:bg-gray-550 ">
           <div className="mt-5 ml-4 mr-4 pb-24 xl:pb-12 xl:dark:bg-gray-550">
 
-          <div id="containerModal" className={openModal ? "block" : "hidden"}>
+            <div id="containerModal" className={openModal ? "block" : "hidden"}>
               <div id="modal" ref={modal} className="flex w-screen h-screen bg-black bg-opacity-30 fixed bottom-0 left-0 justify-center z-40 items-end">
 
                 <div className="w-full xl:w-2/6 h-90% xl:h-95% mb-10 xl:mb-0 relative flex flex-col justify-start items-center rounded-t-3xl bg-white-0 overflow-auto dark:bg-gray-550 dark:text-white-0">
@@ -388,7 +394,11 @@ function Favoris() {
 
                     <h1 className="text-sm xl:text-sm max-w-md mt-4">{modalItem.description}</h1>
 
-                    <h1 className="self-end text-sm mt-4"> Posté par <span className="font-semibold">{modalItem.user_pseudo}</span></h1>
+                    <div className='flex self-end items-center text-sm max-w-md mt-4'>
+                      <Link to="/profil2" className='flex items-center'>
+                        Posté par <span className="font-semibold cursor-pointer ml-1 mr-2" onClick={handleModal.bind(modalItem)}>{modalItem.user_pseudo}</span>
+                        <img className="h-8 w-8 xl:border-2 cursor-pointer xl:h-8 xl:w-8 rounded-full xl:rounded-full border-2 border-red-450" src={modalItem.file} alt="image de profil" /></Link>
+                    </div>
 
                     <div className="flex w-full justify-evenly mt-5 mb-10">
                       <button onClick={() => setOpenModal(false)} className="block px-4 font-semibold py-2 bg-red-450 hover:bg-white-0 hover:text-red-450 hover:border-red-450 border-2 border-red-450 dark:hover:bg-white-150 dark:hover:text-gray-550 active:bg-red-200 dark:bg-white-0 dark:border-black dark:text-black rounded-full transition duration-300 ease-in-out text-white-0" type="submit">Fermer</button>
@@ -416,12 +426,12 @@ function Favoris() {
                   <div>
                     <div className="bg-white-0 h-10 w-10 text-black absolute flex justify-center items-center top-3 right-2 rounded-full">
                       <button className="upvote text-red-450 dark:text-black"
-                        onClick={ handleFav.bind(item.id_post)}>
+                        onClick={handleFav.bind(item.id_post)}>
                         {
-                          isFav.find(x => x == item.id_post) == item.id_post ? <img className='h-20px fill-current cursor-pointer active:h-24px' src={coeurPlein} alt='' /> : 
-                          <img className='h-20px fill-current cursor-pointer' src={coeur} alt='' />
+                          isFav.find(x => x == item.id_post) == item.id_post ? <img className='h-20px fill-current cursor-pointer active:h-24px' src={coeurPlein} alt='' /> :
+                            <img className='h-20px fill-current cursor-pointer' src={coeur} alt='' />
                         }
-                        
+
                       </button>
                     </div>
                     <div className="bg-white-0 text-black absolute top-44 text-xl font-bold flex w-max py-1 rounded-lg -left-2 pl-2">

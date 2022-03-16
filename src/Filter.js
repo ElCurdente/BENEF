@@ -16,6 +16,9 @@ import recherche from './images/icon/icon_recherche.svg';
 import { motion } from 'framer-motion/dist/framer-motion';
 import animationData2 from './images/animation/loading.json';
 import Lottie from 'react-lottie';
+import { AES, enc } from 'crypto-js';
+import { useHistory } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 const Filter = ({ searchValue, setSearchValue }) => {
   const [error, setError] = useState(null);
@@ -29,6 +32,15 @@ const Filter = ({ searchValue, setSearchValue }) => {
     postal: '',
     filter_by: 'upvote',
   })
+  let history = useHistory();
+
+  let decrypted;
+  if (localStorage.getItem('isConnected')) {
+    decrypted = AES.decrypt(localStorage.getItem('id_user'), 'MYKEY4DEMO');
+  } else {
+    decrypted = AES.decrypt(sessionStorage.getItem('id_user'), 'MYKEY4DEMO');
+  }
+  const id_user = decrypted.toString(enc.Utf8);
 
   const [openModal, setOpenModal] = useState(false);
   const [openModal2, setOpenModal2] = useState(false);
@@ -116,11 +128,15 @@ const Filter = ({ searchValue, setSearchValue }) => {
         .then((response) => response.json())
         .then((data) => {
           console.log(data)
+          const envryptedString = AES.encrypt(data.id_user, 'MYKEY4DEMO');
+          localStorage.setItem('id_user_post', envryptedString.toString());
+          // history.push('/profil2');
           setModalItem(prevState => ({
             ...prevState,
             user_pseudo: data.username,
             file: data.image
           }));
+          
         })
         .catch(err => {
           console.log("Error Reading data " + err);
@@ -194,8 +210,9 @@ const Filter = ({ searchValue, setSearchValue }) => {
                 <h1 className="text-sm xl:text-sm max-w-md mt-4">{modalItem.description}</h1>
 
                 <div className='flex self-end items-center text-sm max-w-md mt-4'>
+                  <Link to="/profil2" className='flex items-center'>
                   Posté par <span className="font-semibold cursor-pointer ml-1 mr-2" onClick={handleModal.bind(modalItem)}>{modalItem.user_pseudo}</span>
-                  <img className="h-8 w-8 xl:border-2 cursor-pointer xl:h-8 xl:w-8 rounded-full xl:rounded-full border-2 border-red-450" src={modalItem.file} alt="image de profil" />
+                  <img className="h-8 w-8 xl:border-2 cursor-pointer xl:h-8 xl:w-8 rounded-full xl:rounded-full border-2 border-red-450" src={modalItem.file} alt="image de profil" /></Link>
                 </div>
 
                 <div className="flex w-full justify-evenly mt-5 mb-10">
