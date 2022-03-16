@@ -141,7 +141,7 @@ useEffect(() => {
 
 
   return (
-    <div className="h-screen w-screen  bg-white-150 xl:dark:bg-gray-550 flex justify-center overflow-auto items-center">
+    <div className="h-screen w-screen  bg-white-0 xl:dark:bg-gray-550 flex justify-center overflow-auto items-center">
         <div id="containerModal" className={openModal2 ? "block" : "hidden"}>
           <div id="modal" ref={modal2} className="flex w-screen h-screen bg-black bg-opacity-30 fixed bottom-0 left-0 justify-center z-40 items-end">
 
@@ -168,18 +168,17 @@ useEffect(() => {
 
                 <h1 className="self-end text-sm mt-4"> Posté par <span className="font-semibold">{modalItem.user_pseudo}</span></h1>
 
-                <div className="flex w-full justify-evenly mt-5 mb-10">
-                <button onClick={handleDelete.bind(modalItem.id_post)} className="block px-4 font-semibold py-2 bg-red-450 hover:bg-white-0 hover:text-red-450 hover:border-red-450 border-2 border-red-450 dark:hover:bg-white-150 dark:hover:text-gray-550 active:bg-red-200 dark:bg-white-0 dark:border-black dark:text-black rounded-full transition duration-300 ease-in-out text-white-0" type="submit">Supprimer</button>
-                  <button onClick={() => setOpenModal2(false)} className="block px-4 font-semibold py-2 bg-red-450 hover:bg-white-0 hover:text-red-450 hover:border-red-450 border-2 border-red-450 dark:hover:bg-white-150 dark:hover:text-gray-550 active:bg-red-200 dark:bg-white-0 dark:border-black dark:text-black rounded-full transition duration-300 ease-in-out text-white-0" type="submit">Fermer</button>
-
+                <div className="flex w-full justify-evenly mt-7 mb-10">
+                <button onClick={() => setOpenModal2(false)} className="block px-4 hover:underline hover:underline-offset-8 text-red-450 font-semibold dark:hover:underline dark:hover:underline-offset-8 dark:hover:text-black transition duration-300 ease-in-out" type="submit">Fermer</button>
+                <button onClick={handleDelete.bind(modalItem.id_post)} className="block px-4 font-semibold py-2 bg-red-650 hover:bg-white-0 hover:text-red-650 hover:border-red-650 border-2 border-red-650 dark:hover:bg-white-150 dark:hover:text-gray-550 active:bg-red-200 dark:bg-white-0 dark:border-black dark:text-black rounded-full transition duration-300 ease-in-out text-white-0" type="submit">Supprimer</button>
                 </div>
               </div>
             </div>
           </div>
         </div>
-    <ul className="h-full bg-white-150 xl:w-2/6 xl:dark:bg-gray-550">
+    <ul className="h-full bg-white-0 xl:w-2/6 xl:dark:bg-gray-550">
     <div className="mt-5 pb-12">
-    <div className="flex h-100px relative justify-center items-center w-full ">
+    <div className="flex h-100px relative justify-center items-center w-full mb-5 pt-7">
     <h1 className="text-center text-2xl font-bold pt-7 dark:text-gray-50">Posts Signalés</h1>
     </div>
     {items.map(item => (
