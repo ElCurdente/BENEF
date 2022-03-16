@@ -147,7 +147,7 @@ const Post = () => {
 
 
     return (
-        <div className="flex justify-center items-center h-screen mt-3 w-full bg-white-0 dark:bg-gray-550 ">
+        <div className="flex justify-center items-center h-screen mt-3 pb-20 w-full bg-white-0 dark:bg-gray-550 ">
             <div id="containerModal" className={openModal ? "block" : "hidden"}>
                     <div id="modal" ref={modal} className="flex w-screen h-screen bg-black bg-opacity-30 fixed bottom-0 left-0 justify-center z-40 items-center">
 
