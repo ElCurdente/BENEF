@@ -141,13 +141,14 @@ const Filter = ({ searchValue, setSearchValue }) => {
   if (error) {
     return <div>Erreur : {error.message}</div>;
   } else if (!isLoaded) {
-    return <div className='h-screen w-screen flex justify-center items-center bg-red-450'>
-      
-    <Lottie options={defaultOptions2}
-            height={500}
-            width={500}
-            />
-    
+    return <div className='h-screen w-screen flex justify-center items-center bg-red-450 xl:bg-white-0'>
+      <div className='pt-36 flex justify-center items-center h-400px w-400px rounded-full bg-red-450'>
+        <Lottie options={defaultOptions2}
+          height={500}
+          width={500} className=""/>
+      </div>
+
+
     </div>;
   } else {
     const regexp = new RegExp(searchValue, 'i');
@@ -193,10 +194,10 @@ const Filter = ({ searchValue, setSearchValue }) => {
                 <h1 className="text-sm xl:text-sm max-w-md mt-4">{modalItem.description}</h1>
 
                 <div className='flex self-end items-center text-sm max-w-md mt-4'>
-                       Posté par <span className="font-semibold cursor-pointer ml-1 mr-2" onClick={handleModal.bind(modalItem)}>{modalItem.user_pseudo}</span> 
-                        <img className="h-8 w-8 xl:border-2 cursor-pointer xl:h-8 xl:w-8 rounded-full xl:rounded-full border-2 border-red-450" src={modalItem.file} alt="image de profil" />
-                      
-                    </div>
+                  Posté par <span className="font-semibold cursor-pointer ml-1 mr-2" onClick={handleModal.bind(modalItem)}>{modalItem.user_pseudo}</span>
+                  <img className="h-8 w-8 xl:border-2 cursor-pointer xl:h-8 xl:w-8 rounded-full xl:rounded-full border-2 border-red-450" src={modalItem.file} alt="image de profil" />
+
+                </div>
 
                 <div className="flex w-full justify-evenly mt-5 mb-10">
                   <button onClick={() => setOpenModal2(false)} className="block px-4 font-semibold py-2 bg-red-450 hover:bg-white-0 hover:text-red-450 hover:border-red-450 border-2 border-red-450 dark:hover:bg-white-150 dark:hover:text-gray-550 active:bg-red-200 dark:bg-white-0 dark:border-black dark:text-black rounded-full transition duration-300 ease-in-out text-white-0" type="submit">Fermer</button>

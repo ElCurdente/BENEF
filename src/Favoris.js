@@ -347,14 +347,13 @@ function Favoris() {
   if (error) {
     return <div>Erreur : {error.message}</div>;
   } else if (!isLoaded) {
-    return <div className='h-screen w-screen flex justify-center items-center bg-red-450'>
-      
-    <Lottie options={defaultOptions2}
-            height={500}
-            width={500}
-            />
-    
-    </div>;
+    return <div className='h-screen w-screen flex justify-center items-center bg-red-450 xl:bg-white-0'>
+    <div className='pt-36 flex justify-center items-center h-400px w-400px rounded-full bg-red-450'>
+      <Lottie options={defaultOptions2}
+        height={500}
+        width={500} className=""/>
+    </div>  
+  </div>;
   } else {
     return (
       <div className=" h-screen w-screen flex flex-col justify-center xl:justify-center overflow-x-hidden overflow-auto items-center bg-white-0 xl:dark:bg-gray-550 xl:p-5 mt-12">

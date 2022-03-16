@@ -75,6 +75,8 @@ module.exports = {
         '200px': '200px',
         '250px': '250px',
         '300px': '300px',
+        '400px': '400px',
+        '500px': '500px',
       },
       width: {
         '1px': '1px',
@@ -101,6 +103,8 @@ module.exports = {
         '150px': '150px',
         '200px': '200px',
         '300px': '300px',
+        '400px': '400px',
+        '500px': '500px',
         '600px': '600px',
       },
       colors: {
