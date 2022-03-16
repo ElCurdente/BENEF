@@ -334,14 +334,13 @@ const Profil = () => {
     if (error) {
         return <div>Erreur : {error.message}</div>;
       } else if (!isLoaded) {
-        return <div className='h-screen w-screen flex justify-center items-center bg-red-450'>
-          
-        <Lottie options={defaultOptions2}
-                height={500}
-                width={500}
-                />
-        
-        </div>;
+        return <div className='h-screen w-screen flex justify-center items-center bg-red-450 xl:bg-white-0'>
+        <div className='pt-36 flex justify-center items-center h-400px w-400px rounded-full bg-red-450'>
+          <Lottie options={defaultOptions2}
+            height={500}
+            width={500} className=""/>
+        </div>  
+      </div>;
       } else if (bio === false) {
         return (
             <div className="overflow-auto flex flex-col justify-start mt-20 items-center xl:mt-15 h-screen w-screen bg-white-0 xl:dark:bg-gray-550 dark:text-white-0">

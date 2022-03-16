@@ -496,14 +496,13 @@ const Thread = () => {
   if (error) {
     return <div>Erreur : {error.message}</div>;
   } else if (!isLoaded) {
-    return <div className='h-screen w-screen flex justify-center items-center bg-red-450'>
-      
+    return <div className='h-screen w-screen flex justify-center items-center bg-red-450 xl:bg-white-0'>
+    <div className='pt-36 flex justify-center items-center h-400px w-400px rounded-full bg-red-450'>
       <Lottie options={defaultOptions2}
-              height={500}
-              width={500}
-              />
-      
-      </div>;
+        height={500}
+        width={500} className=""/>
+    </div>  
+  </div>;
   } else {
     return (
 
