@@ -14,6 +14,8 @@ import upvoteBas from './images/icon/upvote.svg';
 import upvoteHaut from './images/icon/upvote2.svg';
 import recherche from './images/icon/icon_recherche.svg';
 import { motion } from 'framer-motion/dist/framer-motion';
+import animationData2 from './images/animation/loading.json';
+import Lottie from 'react-lottie';
 
 const Filter = ({ searchValue, setSearchValue }) => {
   const [error, setError] = useState(null);
@@ -127,10 +129,26 @@ const Filter = ({ searchValue, setSearchValue }) => {
     }
   }, [openModal2])
 
+  const defaultOptions2 = {
+    loop: true,
+    autoplay: true,
+    animationData: animationData2,
+    rendererSettings: {
+      preserveAspectRatio: 'xMidYMid slice'
+    }
+  };
+
   if (error) {
     return <div>Erreur : {error.message}</div>;
   } else if (!isLoaded) {
-    return <div>Chargement...</div>;
+    return <div className='h-screen w-screen flex justify-center items-center bg-red-450'>
+      
+    <Lottie options={defaultOptions2}
+            height={500}
+            width={500}
+            />
+    
+    </div>;
   } else {
     const regexp = new RegExp(searchValue, 'i');
     const regexp_postal = new RegExp(filters.postal, 'i');

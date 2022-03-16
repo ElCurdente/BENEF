@@ -12,6 +12,7 @@ import ToggleLike from './toggle-like.js';
 import lottie from 'lottie-web';
 import Lottie from 'react-lottie';
 import animationData from './images/animation/like.json';
+import animationData2 from './images/animation/loading.json';
 import { motion } from 'framer-motion/dist/framer-motion';
 import adresse from './images/icon/adress.svg';
 import localisation from './images/icon/icon_localisation.svg';
@@ -28,7 +29,7 @@ const Profil = () => {
     const [modalItem, setModalItem] = useState([]);
     const [openModal, setOpenModal] = useState(false);
     const [bio, modifbio] = useState(false);
-    const [successPdp, setSuccessPdp] = useState(false)
+    const [successPdp, setSuccessPdp] = useState(false);
     let decrypted;
     if(localStorage.getItem('isConnected')){
       decrypted = AES.decrypt(localStorage.getItem('id_user'), 'MYKEY4DEMO');
@@ -321,7 +322,27 @@ const Profil = () => {
         setModalItem(this);
     }
 
-    if (bio === false) {
+    const defaultOptions2 = {
+        loop: true,
+        autoplay: true,
+        animationData: animationData2,
+        rendererSettings: {
+          preserveAspectRatio: 'xMidYMid slice'
+        }
+      };
+
+    if (error) {
+        return <div>Erreur : {error.message}</div>;
+      } else if (!isLoaded) {
+        return <div className='h-screen w-screen flex justify-center items-center bg-red-450'>
+          
+        <Lottie options={defaultOptions2}
+                height={500}
+                width={500}
+                />
+        
+        </div>;
+      } else if (bio === false) {
         return (
             <div className="overflow-auto flex flex-col justify-start mt-20 items-center xl:mt-15 h-screen w-screen bg-white-0 xl:dark:bg-gray-550 dark:text-white-0">
 

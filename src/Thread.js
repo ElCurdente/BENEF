@@ -20,6 +20,7 @@ import upvoteorangeplein from './images/icon/icon_vote_fill_orange.svg';
 import { motion } from 'framer-motion/dist/framer-motion';
 import Lottie from 'react-lottie';
 import animationData from './images/animation/like.json';
+import animationData2 from './images/animation/loading.json';
 import coeur from './images/icon/icon_coeur.svg';
 import coeurPlein from './images/icon/icon_coeur_rempli.svg';
 import fleche from './images/icon/icon_fleche.svg';
@@ -35,6 +36,15 @@ const Thread = () => {
     loop: false,
     autoplay: true,
     animationData: animationData,
+    rendererSettings: {
+      preserveAspectRatio: 'xMidYMid slice'
+    }
+  };
+
+  const defaultOptions2 = {
+    loop: true,
+    autoplay: true,
+    animationData: animationData2,
     rendererSettings: {
       preserveAspectRatio: 'xMidYMid slice'
     }
@@ -486,7 +496,14 @@ const Thread = () => {
   if (error) {
     return <div>Erreur : {error.message}</div>;
   } else if (!isLoaded) {
-    return <div>Chargement...</div>;
+    return <div className='h-screen w-screen flex justify-center items-center bg-red-450'>
+      
+      <Lottie options={defaultOptions2}
+              height={500}
+              width={500}
+              />
+      
+      </div>;
   } else {
     return (
 
