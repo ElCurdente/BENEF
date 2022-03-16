@@ -555,7 +555,7 @@ const Thread = () => {
           <img src={upvoteHautplein} />
         </motion.div> */}
         <ul className="h-full xl:w-2/6 bg-white-0 xl:dark:bg-gray-550 relative top-14">
-          <div className="mt-7 ml-6 mr-6 pb-24 xl:pb-16 xl:dark:bg-gray-550">
+          <div className="mt-7 ml-6 mr-6 pb-24 xl:pb-10 xl:dark:bg-gray-550">
 
 
             <div id="containerModal" className={openModal ? "block" : "hidden"}>
