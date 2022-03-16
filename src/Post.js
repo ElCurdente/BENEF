@@ -163,7 +163,7 @@ const Post = () => {
                         </div>
                     </div>
                 </div>
-            <div className="bg-red-450 xl:bg-white-0 dark:bg-black xl:w-2/6 h-80vh overflow-y-auto rounded-lg shadow-xl w-95vw">
+            <div className="bg-red-450 xl:bg-white-0 dark:bg-black xl:w-2/6 h-80vh overflow-y-auto rounded-lg xl:shadow-2xl  xl:shadow-merwan w-95vw">
                 <form className="post flex flex-col justify-center" onSubmit={(e) => handleSubmit(e)} id="post_form" ref={myForm}>
                     <div className="flex relative justify-center items-center">
                         {preview ? (
@@ -172,13 +172,13 @@ const Post = () => {
                                 onClick={() => {
                                     setImage(null);
                                 }}
-                                className="w-100vw h-30vh bg-white-0 dark:bg-gray-650 cursor-pointer border-2 border-red-450 dark:border-black rounded-t-md object-contain " />
+                                className="w-100vw h-30vh bg-white-0 dark:bg-gray-650 xl:border-none cursor-pointer border-2 border-red-450 dark:border-black rounded-t-md object-contain " />
                         ) : (
                             <button onClick={(e) => {
                                 e.preventDefault();
                                 fileInputRef.current.click();
 
-                            }} className="w-100vw h-30vh rounded-t-md border-2 border-red-450 cursor-pointer bg-white-0 text-red-450 dark:text-white-0 text-xl leading-loose dark:bg-gray-650 dark:border-black">
+                            }} className="w-100vw h-30vh rounded-t-md border-2 border-red-450  xl:border-dashed cursor-pointer bg-white-0 text-red-450 dark:text-white-0 text-xl leading-loose dark:bg-gray-650 dark:border-black">
                                 <img className="h-40px m-auto dark:hidden" src={plus} alt="" />
                                 <img className="h-40px m-auto hidden dark:block" src={plusblanc} alt="" /> <span className='xl:hidden'>Ajouter une photo</span> <span className='hidden xl:block'>Séléctionner sur l'ordinateur</span>
                             </button>)}
@@ -191,7 +191,7 @@ const Post = () => {
                             ref={fileInputRef}
                             value={values.image}
                             onChange={uploadPicture}
-                            className="hidden placeholder-white-150 text-white-150 border-b-2 bg-transparent w-4/5 my-2 h-12 pt-5 text-left focus:outline-none  focus:placeholder-transparent"
+                            className="hidden placeholder-white-150 text-white-150 border-b-2  bg-transparent w-4/5 my-2 h-12 pt-5 text-left focus:outline-none  focus:placeholder-transparent"
 
 
                         />
@@ -309,7 +309,7 @@ const Post = () => {
 
                     </div>
 
-                    <div className="flex  relative items-center xl:justify-center">
+                    <div className="flex relative items-center xl:justify-center">
                         <input id="cgu"
                             type="checkbox"
                             name="cgu"

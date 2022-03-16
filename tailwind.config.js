@@ -125,7 +125,9 @@ module.exports = {
     },
     boxShadow: {
       custom: '0px -3px 10px 1px rgba(0, 0, 0, 0.1)',
-      customm: '3px 3px 5px 1px rgb(0, 0, 0, 0.25)'
+      customm: '3px 3px 5px 1px rgb(0, 0, 0, 0.25)',
+      merwan:'3px 3px 5px 1px rgb(0, 0, 0, 0.25)'
+      
     }
   },
   variants: {
