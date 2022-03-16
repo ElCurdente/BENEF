@@ -304,7 +304,7 @@ const Post = () => {
                             type="checkbox"
                             name="certified"
                             maxLength="30"
-                            className="form-checkbox rounded-sm bg-transparent border-white-0 border-2 text-transparent focus:ring-transparent checked:border-white-0  xl:border-red-450"
+                            className="form-checkbox rounded-sm bg-transparent border-white-0 border-2 text-transparent focus:ring-transparent checked:border-white-0 xl:border-red-450 xl:checked:border-red-450 xl:text-red-450"
                             value={values.certified}
                             onChange={handleChange}
                         />
@@ -318,7 +318,7 @@ const Post = () => {
                             type="checkbox"
                             name="cgu"
                             maxLength="30"
-                            className="form-checkbox rounded-sm bg-transparent border-white-0 border-2 text-transparent focus:ring-transparent checked:border-white-0 xl:border-red-450"
+                            className="form-checkbox rounded-sm bg-transparent border-white-0 border-2 text-transparent focus:ring-transparent xl:focus:ring-black checked:border-white-0 xl:border-red-450 xl:checked:border-red-450 xl:text-red-450"
                             value={values.cgu}
                             onChange={handleChange}
                         />
