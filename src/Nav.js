@@ -127,7 +127,11 @@ const Nav = ({ searchValue, setSearchValue }) => {
                             </motion.div>
                         </Link>
 
-                        
+                        <Link to="/parametre" className="fixed top-3 right-7 xl:top-0 xl:right-0 xl:relative xl:block xl:justify-self-end">
+                            <motion.div whileHover={{ scale: 1.075 }}>
+                                <li><img className="h-25px xl:h-8 xl:w-8" src={parameter} alt="" /></li>
+                            </motion.div>
+                        </Link>
 
                     </ul>
                 </nav>
