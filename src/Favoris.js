@@ -363,11 +363,11 @@ function Favoris() {
   } else {
     return (
       <div className=" h-screen w-screen flex flex-col justify-center xl:justify-center overflow-x-hidden overflow-auto items-center bg-white-0 xl:dark:bg-gray-550 xl:p-5">
-        <h1 className="text-center text-2xl font-bold mt-10">Bons plans favoris</h1>
         {/* <motion.div className="">
               <img src={upvoteHautplein} />
             </motion.div> */}
-        <ul className="h-full xl:w-2/6 bg-white-0 xl:dark:bg-gray-550 ">
+        <ul className="h-full xl:w-2/6 bg-white-0 xl:dark:bg-gray-550 relative top-10">
+        <h1 className="text-center text-2xl font-bold mt-5">Bons plans favoris</h1>
           <div className="mt-5 ml-4 mr-4 pb-24 xl:pb-12 xl:dark:bg-gray-550">
 
             <div id="containerModal" className={openModal ? "block" : "hidden"}>

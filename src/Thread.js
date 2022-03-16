@@ -554,7 +554,7 @@ const Thread = () => {
         {/* <motion.div className="">
           <img src={upvoteHautplein} />
         </motion.div> */}
-        <ul className="h-full xl:w-2/6 bg-white-0 xl:dark:bg-gray-550 ">
+        <ul className="h-full xl:w-2/6 bg-white-0 xl:dark:bg-gray-550 relative top-14">
           <div className="mt-7 ml-6 mr-6 pb-24 xl:pb-16 xl:dark:bg-gray-550">
 
 
