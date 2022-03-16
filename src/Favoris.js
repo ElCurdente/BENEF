@@ -357,7 +357,7 @@ function Favoris() {
   } else {
     return (
       <div className=" h-screen w-screen flex flex-col justify-center xl:justify-center overflow-x-hidden overflow-auto items-center bg-white-0 xl:dark:bg-gray-550 xl:p-5 mt-12">
-        <h1 className="text-center text-2xl font-bold pt-12 mt-5">Bons plans favoris</h1>
+        <h1 className="text-center text-2xl font-bold mt-4">Bons plans favoris</h1>
         {/* <motion.div className="">
               <img src={upvoteHautplein} />
             </motion.div> */}

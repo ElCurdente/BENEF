@@ -452,7 +452,7 @@ const Profil = () => {
         return (
             <div className="flex justify-center items-center box-border h-screen mt-4 w-full bg-white-0 dark:bg-gray-550">
                 <div className="bg-white-0 dark:bg-black h-80vh overflow-y-auto rounded-lg shadow-xl w-95vw">
-                    <form className="post flex flex-col justify-center" action="api-modif-profil.php" method="GET" onSubmit={(e) => handleSubmit(e)}>
+                    <form className="post flex flex-col justify-center" action="api-modif-profil.php" method="POST" onSubmit={(e) => handleSubmit(e)}>
                         <div className="flex flex-col relative justify-center items-center">
                             {preview ? (
 
