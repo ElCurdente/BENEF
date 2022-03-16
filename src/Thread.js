@@ -184,7 +184,7 @@ const Thread = () => {
           console.log(data)
           const envryptedString = AES.encrypt(data.id_user, 'MYKEY4DEMO');
           localStorage.setItem('id_user_post', envryptedString.toString());
-          history.push('/profil2')
+          history.push('/profil2');
           setModalItemUser(data);
           console.log(modalItemUser);
 
