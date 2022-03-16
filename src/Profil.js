@@ -348,8 +348,8 @@ const Profil = () => {
                 <div id="containerModal" className={openModal ? "block" : "hidden"}>
                     <div id="modal" ref={modal} className="flex w-screen h-screen bg-black bg-opacity-30 fixed bottom-0 left-0 justify-center z-40 items-end mt-5">
 
-                        <div className="w-full xl:w-2/6 h-90% xl:h-95% mb-10 xl:mb-0 relative flex flex-col justify-start items-center rounded-t-3xl bg-white-0 overflow-auto dark:bg-gray-550 dark:text-white-0">
-                            <div className="mb-5 mx-3 flex flex-col">
+                        <div className="w-full xl:w-2/6 h-90% xl:h-90% mb-10 xl:mb-0 relative flex flex-col justify-start items-center rounded-t-3xl bg-white-0 overflow-auto dark:bg-gray-550 dark:text-white-0">
+                            <div className="mb-5 mx-3 flex mt-5 flex-col">
                                 <div className="w-full h-250px relative">
                                     <img className="object-cover rounded-t-lg h-full w-full" src={modalItem.image} alt="" />
                                 </div>
