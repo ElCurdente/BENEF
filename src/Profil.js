@@ -12,6 +12,7 @@ import ToggleLike from './toggle-like.js';
 import lottie from 'lottie-web';
 import Lottie from 'react-lottie';
 import animationData from './images/animation/like.json';
+import animationData2 from './images/animation/loading.json';
 import { motion } from 'framer-motion/dist/framer-motion';
 import adresse from './images/icon/adress.svg';
 import localisation from './images/icon/icon_localisation.svg';
@@ -28,7 +29,7 @@ const Profil = () => {
     const [modalItem, setModalItem] = useState([]);
     const [openModal, setOpenModal] = useState(false);
     const [bio, modifbio] = useState(false);
-    const [successPdp, setSuccessPdp] = useState(false)
+    const [successPdp, setSuccessPdp] = useState(false);
     let decrypted;
     if(localStorage.getItem('isConnected')){
       decrypted = AES.decrypt(localStorage.getItem('id_user'), 'MYKEY4DEMO');
@@ -321,7 +322,27 @@ const Profil = () => {
         setModalItem(this);
     }
 
-    if (bio === false) {
+    const defaultOptions2 = {
+        loop: true,
+        autoplay: true,
+        animationData: animationData2,
+        rendererSettings: {
+          preserveAspectRatio: 'xMidYMid slice'
+        }
+      };
+
+    if (error) {
+        return <div>Erreur : {error.message}</div>;
+      } else if (!isLoaded) {
+        return <div className='h-screen w-screen flex justify-center items-center bg-red-450'>
+          
+        <Lottie options={defaultOptions2}
+                height={500}
+                width={500}
+                />
+        
+        </div>;
+      } else if (bio === false) {
         return (
             <div className="overflow-auto flex flex-col justify-start mt-20 items-center xl:mt-15 h-screen w-screen bg-white-0 xl:dark:bg-gray-550 dark:text-white-0">
 
@@ -364,11 +385,11 @@ const Profil = () => {
                 <div id="containerModal" className={openModalSupp ? "block" : "hidden"}>
                     <div id="modal" ref={modal} className="flex w-screen h-screen bg-black bg-opacity-30 fixed bottom-0 left-0 justify-center z-40 items-center">
 
-                        <div className="w-full xl:w-2/6  mb-10 xl:mb-0 relative flex flex-col justify-center items-center rounded-3xl bg-white-0 overflow-auto dark:bg-gray-550 dark:text-white-0">
+                        <div className="w-full xl:w-2/6 mb-10 xl:mb-0 relative flex flex-col justify-center items-center rounded-3xl bg-white-0 overflow-auto dark:bg-gray-550 dark:text-white-0 right-1">
                             <div className=" mt-7 mx-3 flex flex-col">
                                 <h1 className="text-lg xl:text-xl text-red-650 font-semibold max-w-md mb-2 text-center">Supprimer ce post</h1>
                                 <h1 className="text-lg xl:text-sm font-light max-w-md mt-2">Es-tu vraiment sûr de vouloir supprimer ce post ?</h1>
-                                <div className="flex w-full justify-evenly mt-5 mb-8">
+                                <div className="flex w-full justify-evenly mt-7 mb-8">
                                     <button onClick={() => setOpenModalSupp(false)} className="block px-4 hover:underline hover:underline-offset-8 text-red-450 font-semibold dark:hover:underline dark:hover:underline-offset-8 dark:hover:text-black transition duration-300 ease-in-out" type="submit">Annuler</button>
                                     <button onClick={() => handleDeletePost()} className="block px-4 font-semibold py-2 bg-red-650 hover:bg-white-0 hover:text-red-650 hover:border-red-650 border-2 border-red-650 dark:hover:bg-white-150 dark:hover:text-gray-550 active:bg-red-200 dark:bg-white-0 dark:border-black dark:text-black rounded-full transition duration-300 ease-in-out text-white-0" type="submit">Supprimer</button>
 

@@ -18,9 +18,20 @@ import { motion } from 'framer-motion/dist/framer-motion';
 import coeur from './images/icon/icon_coeur.svg';
 import coeurPlein from './images/icon/icon_coeur_rempli.svg';
 import {AES, enc}from 'crypto-js';
+import animationData2 from './images/animation/loading.json';
+import Lottie from 'react-lottie';
 
 
 function Favoris() {
+
+  const defaultOptions2 = {
+    loop: true,
+    autoplay: true,
+    animationData: animationData2,
+    rendererSettings: {
+      preserveAspectRatio: 'xMidYMid slice'
+    }
+  };
 
   let decrypted;
   if(localStorage.getItem('isConnected')){
@@ -336,7 +347,14 @@ function Favoris() {
   if (error) {
     return <div>Erreur : {error.message}</div>;
   } else if (!isLoaded) {
-    return <div>Chargement...</div>;
+    return <div className='h-screen w-screen flex justify-center items-center bg-red-450'>
+      
+    <Lottie options={defaultOptions2}
+            height={500}
+            width={500}
+            />
+    
+    </div>;
   } else {
     return (
       <div className=" h-screen w-screen flex flex-col justify-center xl:justify-center overflow-x-hidden overflow-auto items-center bg-white-0 xl:dark:bg-gray-550 xl:p-5 mt-12">
