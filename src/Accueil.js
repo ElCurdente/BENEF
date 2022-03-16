@@ -8,6 +8,7 @@ import Post from './Post'
 import Messagerie from './Messagerie'
 import Home from './Home'
 import Profil from './Profil'
+import Profil2 from './Profil2'
 import Recherche from './Recherche'
 import Infos from './Infos'
 import Cgu from './Cgu'
@@ -105,6 +106,7 @@ const Accueil = () => {
                         <Route path="/post" component={Post} />
                         <Route path="/messagerie" component={Messagerie} />
                         <Route path="/profil" component={Profil} />
+                        <Route path="/profil2" component={Profil2} />
                         <Route path="/parametre" component={Parametre} />
                         <Route path="/infos" component={Infos} />
                         <Route path="/cgu" component={Cgu} />

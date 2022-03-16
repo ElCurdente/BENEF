@@ -25,7 +25,7 @@ import coeur from './images/icon/icon_coeur.svg';
 import coeurPlein from './images/icon/icon_coeur_rempli.svg';
 import fleche from './images/icon/icon_fleche.svg';
 import pouce from './images/illustrations/pouce.png';
-import {AES, enc}from 'crypto-js';
+import { AES, enc } from 'crypto-js';
 
 import signaler from './images/icon/icon_signaler.svg';
 
@@ -72,9 +72,9 @@ const Thread = () => {
   const [openModalUserPost, setOpenModalUserPost] = useState(false);
   const [isFav, setIsFav] = useState([]);
   let decrypted;
-  if(localStorage.getItem('isConnected')){
+  if (localStorage.getItem('isConnected')) {
     decrypted = AES.decrypt(localStorage.getItem('id_user'), 'MYKEY4DEMO');
-  }else{
+  } else {
     decrypted = AES.decrypt(sessionStorage.getItem('id_user'), 'MYKEY4DEMO');
   }
   const id_user = decrypted.toString(enc.Utf8);
@@ -182,38 +182,42 @@ const Thread = () => {
         .then((response) => response.json())
         .then((data) => {
           console.log(data)
+          const envryptedString = AES.encrypt(data.id_user, 'MYKEY4DEMO');
+          localStorage.setItem('id_user_post', envryptedString.toString());
+          history.push('/profil2')
           setModalItemUser(data);
           console.log(modalItemUser);
+
         })
         .catch(err => {
           console.log("Error Reading data " + err);
         });
-      
+
     }
   }, [openModalUser])
 
   useEffect(() => {
     if (openModalUser) {
-    fetch('https://benef-app.fr/api-post-user3.php', {
-      method: "POST",
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({ id_user: modalItem.id_user })
-    })
-      .then(res => res.json())
-      .then(
-        (result) => {
-          setIsLoaded(true);
-          setUserItems(result.userItems);
-          console.log(userItems);
+      fetch('https://benef-app.fr/api-post-user3.php', {
+        method: "POST",
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
         },
-        (error) => {
-          setIsLoaded(true);
-          setError(error);
-        }
-      )
+        body: JSON.stringify({ id_user: modalItem.id_user })
+      })
+        .then(res => res.json())
+        .then(
+          (result) => {
+            setIsLoaded(true);
+            setUserItems(result.userItems);
+            console.log(userItems);
+          },
+          (error) => {
+            setIsLoaded(true);
+            setError(error);
+          }
+        )
     }
   }, [openModalUser]);
 
@@ -345,7 +349,7 @@ const Thread = () => {
                 console.log("Error Reading data " + err);
               });
             items[i].upvote++;
-            
+
             setDownvote(false)
             setIsDownvoted(isDownvoted.filter(item => item !== isVoted));
 
@@ -370,7 +374,7 @@ const Thread = () => {
               });
             items[i].upvote--;
             console.log(items[i].upvote);
-            
+
             setDownvote(false)
             setIsUpvoted(isUpvoted.filter(item => item !== isVoted));
           }
@@ -449,24 +453,24 @@ const Thread = () => {
   }
 
   const handleReportPost = () => {
-    console.log("Suppression du post n°"+ reportedId);
+    console.log("Suppression du post n°" + reportedId);
     // setOpenModalSupp(false);
     fetch('https://benef-app.fr/api-report.php', {
-  method: "POST",
-  headers: {
-    'Accept': 'application/json',
-    'Content-Type': 'application/json'
-  },
-  body: JSON.stringify({id_post: reportedId})
-})
-  .then((data) => {
-    console.log(data);
-    setConfirmedReport(true)
-  })
-  .catch(err => {
-    console.log("Error Reading data " + err);
-  });
-}
+      method: "POST",
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ id_post: reportedId })
+    })
+      .then((data) => {
+        console.log(data);
+        setConfirmedReport(true)
+      })
+      .catch(err => {
+        console.log("Error Reading data " + err);
+      });
+  }
 
 
   useEffect(() => {
@@ -497,56 +501,56 @@ const Thread = () => {
     return <div>Erreur : {error.message}</div>;
   } else if (!isLoaded) {
     return <div className='h-screen w-screen flex justify-center items-center bg-red-450 xl:bg-white-0'>
-    <div className='pt-36 flex justify-center items-center h-400px w-400px rounded-full bg-red-450'>
-      <Lottie options={defaultOptions2}
-        height={500}
-        width={500} className=""/>
-    </div>  
-  </div>;
+      <div className='pt-36 flex justify-center items-center h-400px w-400px rounded-full bg-red-450'>
+        <Lottie options={defaultOptions2}
+          height={500}
+          width={500} className="" />
+      </div>
+    </div>;
   } else {
     return (
 
       <div className="h-screen w-screen flex justify-center xl:justify-center overflow-x-hidden items-center bg-white-0 xl:dark:bg-gray-550 mt-12">
         <div id="containerModal" className={openModalReport ? "block" : "hidden"}>
-          {!confirmedReport ? 
-           <div id="modal" ref={modal} className="flex w-screen h-screen bg-black bg-opacity-30 fixed bottom-0 left-0 justify-center z-40 items-center">
+          {!confirmedReport ?
+            <div id="modal" ref={modal} className="flex w-screen h-screen bg-black bg-opacity-30 fixed bottom-0 left-0 justify-center z-40 items-center">
 
-           <div className="w-full xl:w-2/6 mb-10 xl:mb-0 relative flex flex-col justify-center items-center rounded-3xl bg-white-0 overflow-auto dark:bg-gray-550 dark:text-white-0">
-               <div className="mt-7 mx-3 flex flex-col">                 
+              <div className="w-full xl:w-2/6 mb-10 xl:mb-0 relative flex flex-col justify-center items-center rounded-3xl bg-white-0 overflow-auto dark:bg-gray-550 dark:text-white-0">
+                <div className="mt-7 mx-3 flex flex-col">
                   <h1 className="text-lg xl:text-xl text-red-650 font-semibold text-align max-w-md mb-2 text-center">Signaler ce post</h1>
                   <h1 className="text-lg xl:text-sm font-light max-w-md mt-2 text-align">Tu peux signaler ce post s’il contient des images choquantes, des textes offensants, un contenu inapproprié ou autre.
-                  Ce signalement sera anonyme.<br></br><br></br>
-                  <Link to="/Cgu"><span className="font-semibold">En savoir plus </span> </Link>sur nos règles de conditions générales.<br></br><br></br>
-                  Es-tu vraiment sûr de vouloir signaler ce post ?</h1>
+                    Ce signalement sera anonyme.<br></br><br></br>
+                    <Link to="/Cgu"><span className="font-semibold">En savoir plus </span> </Link>sur nos règles de conditions générales.<br></br><br></br>
+                    Es-tu vraiment sûr de vouloir signaler ce post ?</h1>
                   <div className="flex w-full justify-evenly mt-5 mb-8">
-                    
+
                     <button onClick={() => setOpenModalReport(false)} className="block px-4 hover:underline hover:underline-offset-8 text-red-450 font-semibold dark:hover:underline dark:hover:underline-offset-8 dark:hover:text-black transition duration-300 ease-in-out" type="submit">Annuler</button>
-                   <button onClick={() => handleReportPost()} className="block px-4 font-semibold py-2 bg-red-650 hover:bg-white-0 hover:text-red-650 hover:border-red-650 border-2 border-red-650 dark:hover:bg-white-150 dark:hover:text-gray-550 active:bg-red-200 dark:bg-white-0 dark:border-black dark:text-black rounded-full transition duration-300 ease-in-out text-white-0" type="submit">Signaler</button>
-                       
+                    <button onClick={() => handleReportPost()} className="block px-4 font-semibold py-2 bg-red-650 hover:bg-white-0 hover:text-red-650 hover:border-red-650 border-2 border-red-650 dark:hover:bg-white-150 dark:hover:text-gray-550 active:bg-red-200 dark:bg-white-0 dark:border-black dark:text-black rounded-full transition duration-300 ease-in-out text-white-0" type="submit">Signaler</button>
 
-                   </div>
-               </div>
-           </div>
-       </div>
-          : 
-          <div id="modal" ref={modal} className="flex w-screen h-screen bg-black bg-opacity-30 fixed bottom-0 left-0 justify-center z-40 items-center">
 
-           <div className="w-full xl:w-2/6  mb-10 xl:mb-0 relative flex flex-col justify-center items-center rounded-3xl bg-white-0 overflow-auto dark:bg-gray-550 dark:text-white-0">
-               <div className="mb-5 mt-5 mx-3 flex flex-col items-center text-center">
-               <img className="mb-5 w-20" src={pouce} alt=''/>            
-                   <h1 className="text-lg xl:text-xl font-semibold max-w-md mt-2">Merci d'avoir signalé ce post !<br></br>
-                   <span className="font-light xl:text-base">L'équipe BENEF va maintenant se charger de la suite.</span></h1>
-                   <div className="flex w-full justify-evenly mt-5 mb-3">
-                       <button onClick={() => resetReport()} className="block px-4 font-semibold py-2 bg-red-450 hover:bg-white-0 hover:text-red-450 hover:border-red-450 border-2 border-red-450 dark:hover:bg-white-150 dark:hover:text-gray-550 active:bg-red-200 dark:bg-white-0 dark:border-black dark:text-black rounded-full transition duration-300 ease-in-out text-white-0" type="submit">Retour</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            :
+            <div id="modal" ref={modal} className="flex w-screen h-screen bg-black bg-opacity-30 fixed bottom-0 left-0 justify-center z-40 items-center">
 
-                   </div>
-               </div>
-           </div>
-       </div>
+              <div className="w-full xl:w-2/6  mb-10 xl:mb-0 relative flex flex-col justify-center items-center rounded-3xl bg-white-0 overflow-auto dark:bg-gray-550 dark:text-white-0">
+                <div className="mb-5 mt-5 mx-3 flex flex-col items-center text-center">
+                  <img className="mb-5 w-20" src={pouce} alt='' />
+                  <h1 className="text-lg xl:text-xl font-semibold max-w-md mt-2">Merci d'avoir signalé ce post !<br></br>
+                    <span className="font-light xl:text-base">L'équipe BENEF va maintenant se charger de la suite.</span></h1>
+                  <div className="flex w-full justify-evenly mt-5 mb-3">
+                    <button onClick={() => resetReport()} className="block px-4 font-semibold py-2 bg-red-450 hover:bg-white-0 hover:text-red-450 hover:border-red-450 border-2 border-red-450 dark:hover:bg-white-150 dark:hover:text-gray-550 active:bg-red-200 dark:bg-white-0 dark:border-black dark:text-black rounded-full transition duration-300 ease-in-out text-white-0" type="submit">Retour</button>
+
+                  </div>
+                </div>
+              </div>
+            </div>
           }
-             </div>
+        </div>
 
-                   
+
         {/* <motion.div className="">
           <img src={upvoteHautplein} />
         </motion.div> */}
@@ -579,9 +583,9 @@ const Thread = () => {
                     <h1 className="text-sm xl:text-sm max-w-md mt-4">{modalItem.description}</h1>
 
                     <div className='flex self-end items-center text-sm max-w-md mt-4'>
-                       Posté par <span className="font-semibold cursor-pointer ml-1 mr-2" onClick={handleModalUser.bind(modalItem)}>{modalItem.user_pseudo}</span> 
-                        <img className="h-8 w-8 xl:border-2 xl:h-8 xl:w-8 rounded-full xl:rounded-full border-2 border-red-450 cursor-pointer" onClick={handleModalUser.bind(modalItem)} src={modalItem.file} alt="image de profil" />
-                      
+                      Posté par <span className="font-semibold cursor-pointer ml-1 mr-2" onClick={handleModalUser.bind(modalItem)}>{modalItem.user_pseudo}</span>
+                      <img className="h-8 w-8 xl:border-2 xl:h-8 xl:w-8 rounded-full xl:rounded-full border-2 border-red-450 cursor-pointer" onClick={handleModalUser.bind(modalItem)} src={modalItem.file} alt="image de profil" />
+
                     </div>
 
                     <div className="flex w-full justify-evenly mt-5 mb-10">
@@ -593,90 +597,7 @@ const Thread = () => {
               </div>
             </div>
 
-            <div id="containerModal" className={openModalUser ? "block" : "hidden"}>
-              <div id="modal" ref={modalUser} className="flex w-screen h-screen bg-black bg-opacity-30 fixed bottom-0 left-0 justify-center z-40 items-end">
-
-                <div className="relative overflow-auto flex flex-col justify-start pt-16 items-center xl:mt-15 h-screen w-screen bg-white-0 xl:dark:bg-gray-550 dark:text-white-0">
-
-                  <div className="absolute flex w-full z-50 justify-end mt-8 mr-20">
-                    <button onClick={() => setOpenModalUser(false)} className="block px-4 font-semibold py-2 bg-red-450 hover:bg-white-0 hover:text-red-450 hover:border-red-450 border-2 border-red-450 dark:hover:bg-white-150 dark:hover:text-gray-550 active:bg-red-200 dark:bg-white-0 dark:border-black dark:text-black rounded-full transition duration-300 ease-in-out text-white-0 xl:mr-44" type="submit">Fermer</button>
-                  </div>
-
-                  <div id="containerModal" className={openModalUserPost ? "block" : "hidden"}>
-                    <div id="modal" ref={modalUserPost} className="flex w-screen h-screen bg-black bg-opacity-30 fixed bottom-0 left-0 justify-center z-40 items-end">
-
-                      <div className="w-full xl:w-2/6 h-90% xl:h-95% mb-10 xl:mb-0 relative flex flex-col justify-start items-center rounded-t-3xl bg-white-0 overflow-auto dark:bg-gray-550 dark:text-white-0">
-                        <div className="mb-5 mt-7 mx-3 flex flex-col">
-                          <div className="w-full h-250px relative">
-                            <img className="object-cover rounded-t-lg h-full w-full" src={modalItemUserPost.image} alt="" />
-                          </div>
-                          {/* <h1 className="text-lg xl:text-xl font-semibold mx-2 max-w-md">{modalItem.image}</h1> */}
-                          <h1 className="text-lg xl:text-xl font-semibold max-w-md mt-2">{modalItemUserPost.title}</h1>
-                          <h1 className="text-base xl:text-lg px-4 max-w-max py-1 text-red-450 dark:text-white-0 rounded-full border-2 border-red-450 dark:border-white-0 font-semibold mt-4">{modalItemUserPost.category}</h1>
-
-                          <div className="flex w-92vw max-w-md mt-4">
-                            <motion.img animate={{ y: ["-10%", "-40%"] }} transition={{ yoyo: Infinity, duration: 0.4, ease: "easeOut", repeatDelay: 1 }} id="loca" src={localisation} className="opacity-100 h-20px"></motion.img><div className='ml-6'>{modalItemUserPost.address}{", "}{modalItemUserPost.postal}</div>
-                          </div>
-
-                          <div className="flex mt-2 w-92vw max-w-md">
-                            <motion.img animate={{ rotate: 180 }} transition={{ repeat: Infinity, duration: 0.4, ease: "easeOut", repeatDelay: 1 }} id="sablier" src={sablier} className="opacity-100 h-20px "></motion.img>
-                            {modalItemUserPost.expiration != '0000-00-00' ? <div className='ml-7'>{modalItemUserPost.expiration}</div> : <div className='ml-7'>A vie</div>}
-
-                          </div>
-
-                          <h1 className="text-sm xl:text-sm max-w-md mt-4">{modalItemUserPost.description}</h1>
-
-                          {/* <h1 className="self-end text-sm mt-4"> Posté par <span className="font-semibold">{modalItem.user_pseudo}</span></h1> */}
-
-                          <div className="flex w-full justify-evenly mt-5 mb-10">
-                            <button onClick={() => setOpenModalUserPost(false)} className="block px-4 font-semibold py-2 bg-red-450 hover:bg-white-0 hover:text-red-450 hover:border-red-450 border-2 border-red-450 dark:hover:bg-white-150 dark:hover:text-gray-550 active:bg-red-200 dark:bg-white-0 dark:border-black dark:text-black rounded-full transition duration-300 ease-in-out text-white-0" type="submit">Fermer</button>
-
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div id="infos" className="relative xl:w-2/6 w-95vw px-4 xl:-px-0">
-                    <div className="flex items-center">
-                      <img src={modalItemUser.image} className="w-100px h-100px bg-transparent dark:bg-gray-650 border-3 border-red-450 dark:border-black rounded-full object-cover" />
-                      <h1 className="ml-3 text-xl font-semibold">{modalItemUser.username}</h1>
-                    </div>
-                    <p className="col-span-2 mt-2">{modalItemUser.bio}</p>
-                    
-                  </div>
-                  <div id="barre1" className="h-1px w-95vw xl:w-2/6 mt-4 bg-gray-200"></div>
-                  <div id="badges" className="w-95vw h-100px xl:w-2/6">
-                    <h3 className="font-bold pt-4 pl-4">Badges</h3>
-                  </div>
-                  <div id="barre1" className="h-1px w-95vw mt-10 bg-gray-200 xl:w-2/6"></div>
-                  <div id="bp_perso" className="w-95vw xl:w-2/6">
-                    <h3 className="font-bold pt-4 pl-4 ">Bons plans publiés</h3>
-                    <div className='w-full h-full flex flex-col items-center mt-5'>
-                      {userItems.map(userItem => (
-                        <motion.div className="w-92vw xl:w-full relative bg-red-450 dark:bg-black rounded-lg text-white-0 mb-4 xl:mb-5 shadow-customm"
-                          whileHover={{ scale: 1.01 }}>
-                          <div className="w-full h-250px relative" onClick={handleModalUserPost.bind(userItem)}>
-                            <img className="object-cover rounded-t-lg h-full w-full" src={userItem.image} alt="" />
-                          </div>
-                          <div className="bg-white-0 text-black text-xl font-bold absolute right-3 bottom-24 w-max rounded-lg">
-                                    <span className="px-2 upvote">{userItem.upvote}</span>
-                                </div>
-                          <div className="w-full min-h-max pb-4 md:cursor-pointer" onClick={handleModalUserPost.bind(userItem)} >
-                            <h1 className="text-lg font-semibold mx-2 max-w-md mt-2	">{userItem.title}</h1>
-                            <div className="flex mt-2 text-sm w-92vw max-w-md">
-                              <img src={adresse} className="ml-2 mr-1 w-3.5"></img> {userItem.address} <div className="absolute right-3">{userItem.postal}</div>
-                            </div>
-
-                          </div>
-                        </motion.div>
-                      ))}
-                    </div>
-                  </div>
-                </div>
-
-              </div>
-            </div>
+            
 
             {items.sort(compare).map(item => (
               <motion.div className="w-92vw xl:w-full relative bg-red-450 dark:bg-black rounded-lg text-white-0 mb-4 xl:mb-5 shadow-customm"
@@ -704,7 +625,7 @@ const Thread = () => {
                       </button>
                     </div>
                     <button className="bg-white-0 h-10 w-10 text-black absolute z-30 flex justify-center items-center top-3 right-16 rounded-full" onClick={handleReport.bind(item.id_post)}>
-                    <img src={signaler} className="h-22px"></img>
+                      <img src={signaler} className="h-22px"></img>
                     </button>
                     <div className="bg-white-0 text-black absolute top-44 text-xl font-bold flex w-max py-1 rounded-lg -left-2 pl-2">
                       <button onClick={handleUpvote.bind(item)} className="pl-2 relative">
