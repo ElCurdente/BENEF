@@ -510,7 +510,7 @@ const Thread = () => {
   } else {
     return (
 
-      <div className="h-screen w-screen flex justify-center xl:justify-center overflow-x-hidden items-center bg-white-0 xl:dark:bg-gray-550 mt-12">
+      <div className="h-screen w-screen flex justify-center xl:justify-center overflow-x-hidden items-center bg-white-0 xl:dark:bg-gray-550">
         <div id="containerModal" className={openModalReport ? "block" : "hidden"}>
           {!confirmedReport ?
             <div id="modal" ref={modal} className="flex w-screen h-screen bg-black bg-opacity-30 fixed bottom-0 left-0 justify-center z-40 items-center">

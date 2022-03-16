@@ -343,7 +343,7 @@ const Profil = () => {
       </div>;
       } else if (bio === false) {
         return (
-            <div className="overflow-auto flex flex-col justify-start mt-12 pt-7 items-center h-screen w-screen bg-white-0 xl:dark:bg-gray-550 dark:text-white-0">
+            <div className="overflow-auto flex flex-col justify-start pt-7 items-center h-screen w-screen bg-white-0 xl:dark:bg-gray-550 dark:text-white-0">
 
                 <div id="containerModal" className={openModal ? "block" : "hidden"}>
                     <div id="modal" ref={modal} className="flex w-screen h-screen bg-black bg-opacity-30 fixed bottom-0 left-0 justify-center z-40 items-end mt-5">

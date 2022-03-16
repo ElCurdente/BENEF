@@ -183,7 +183,7 @@ const Filter = ({ searchValue, setSearchValue }) => {
     console.log(filterByFilters);
 
     return (
-      <div className="h-screen w-screen  bg-white-0 xl:dark:bg-gray-550 flex justify-center overflow-auto items-center mt-12">
+      <div className="h-screen w-screen  bg-white-0 xl:dark:bg-gray-550 flex justify-center overflow-auto items-center">
 
         <div id="containerModal" className={openModal2 ? "block" : "hidden"}>
           <div id="modal" ref={modal2} className="flex w-screen h-screen bg-black bg-opacity-30 fixed bottom-0 left-0 justify-center z-40 items-end">
