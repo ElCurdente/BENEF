@@ -536,7 +536,6 @@ const Thread = () => {
                <img className="mb-5 w-20" src={pouce} alt=''/>            
                    <h1 className="text-lg xl:text-xl font-semibold max-w-md mt-2">Merci d'avoir signalé ce post !<br></br>
                    <span className="font-light xl:text-base">L'équipe BENEF va maintenant se charger de la suite.</span></h1>
-                   
                    <div className="flex w-full justify-evenly mt-5 mb-3">
                        <button onClick={() => resetReport()} className="block px-4 font-semibold py-2 bg-red-450 hover:bg-white-0 hover:text-red-450 hover:border-red-450 border-2 border-red-450 dark:hover:bg-white-150 dark:hover:text-gray-550 active:bg-red-200 dark:bg-white-0 dark:border-black dark:text-black rounded-full transition duration-300 ease-in-out text-white-0" type="submit">Retour</button>
 
