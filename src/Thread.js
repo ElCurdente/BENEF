@@ -506,7 +506,7 @@ const Thread = () => {
   } else {
     return (
 
-      <div className=" h-screen w-screen flex justify-center xl:justify-center overflow-x-hidden items-center bg-white-0 xl:dark:bg-gray-550">
+      <div className="h-screen w-screen flex justify-center xl:justify-center overflow-x-hidden items-center bg-white-0 xl:dark:bg-gray-550 mt-12">
         <div id="containerModal" className={openModalReport ? "block" : "hidden"}>
           {!confirmedReport ? 
            <div id="modal" ref={modal} className="flex w-screen h-screen bg-black bg-opacity-30 fixed bottom-0 left-0 justify-center z-40 items-center">
@@ -552,7 +552,7 @@ const Thread = () => {
           <img src={upvoteHautplein} />
         </motion.div> */}
         <ul className="h-full xl:w-2/6 bg-white-0 xl:dark:bg-gray-550 ">
-          <div className="mt-20 ml-6 mr-6 pb-12 xl:dark:bg-gray-550">
+          <div className="mt-7 ml-6 mr-6 xl:dark:bg-gray-550">
 
 
             <div id="containerModal" className={openModal ? "block" : "hidden"}>
@@ -600,7 +600,7 @@ const Thread = () => {
                 <div className="relative overflow-auto flex flex-col justify-start pt-16 items-center xl:mt-15 h-screen w-screen bg-white-0 xl:dark:bg-gray-550 dark:text-white-0">
 
                   <div className="absolute flex w-full z-50 justify-end mt-8 mr-20">
-                    <button onClick={() => setOpenModalUser(false)} className="block px-4 font-semibold py-2 bg-red-450 hover:bg-white-0 hover:text-red-450 hover:border-red-450 border-2 border-red-450 dark:hover:bg-white-150 dark:hover:text-gray-550 active:bg-red-200 dark:bg-white-0 dark:border-black dark:text-black rounded-full transition duration-300 ease-in-out text-white-0 mr-44" type="submit">Fermer</button>
+                    <button onClick={() => setOpenModalUser(false)} className="block px-4 font-semibold py-2 bg-red-450 hover:bg-white-0 hover:text-red-450 hover:border-red-450 border-2 border-red-450 dark:hover:bg-white-150 dark:hover:text-gray-550 active:bg-red-200 dark:bg-white-0 dark:border-black dark:text-black rounded-full transition duration-300 ease-in-out text-white-0 xl:mr-44" type="submit">Fermer</button>
                   </div>
 
                   <div id="containerModal" className={openModalUserPost ? "block" : "hidden"}>
@@ -705,7 +705,7 @@ const Thread = () => {
                       </button>
                     </div>
                     <button className="bg-white-0 h-10 w-10 text-black absolute z-30 flex justify-center items-center top-3 right-16 rounded-full" onClick={handleReport.bind(item.id_post)}>
-                      <img src={signaler} className="h-22px"></img>
+                    <img src={signaler} className="h-22px"></img>
                     </button>
                     <div className="bg-white-0 text-black absolute top-44 text-xl font-bold flex w-max py-1 rounded-lg -left-2 pl-2">
                       <button onClick={handleUpvote.bind(item)} className="pl-2 relative">

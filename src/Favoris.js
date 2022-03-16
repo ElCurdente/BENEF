@@ -362,7 +362,7 @@ function Favoris() {
               <img src={upvoteHautplein} />
             </motion.div> */}
         <ul className="h-full xl:w-2/6 bg-white-0 xl:dark:bg-gray-550 ">
-          <div className="mt-5 ml-6 mr-6 pb-12 xl:dark:bg-gray-550">
+          <div className="mt-5 ml-4 mr-4 pb-12 xl:dark:bg-gray-550">
 
           <div id="containerModal" className={openModal ? "block" : "hidden"}>
               <div id="modal" ref={modal} className="flex w-screen h-screen bg-black bg-opacity-30 fixed bottom-0 left-0 justify-center z-40 items-end">

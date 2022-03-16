@@ -88,7 +88,7 @@ const FormSignup = ({ submitForm }) => {
                             </label>
                         </div>
                             <div className="flex justify-center items-center my-5 mt-5">
-                                <button className="block h-10 w-36 text-white-0 font-bold bg-red-450 text-lg border-2 border-transparent hover:bg-white-0 hover:text-red-450 hover:border-red-450 dark:hover:bg-white-150 dark:hover:text-gray-550 active:bg-red-450 active:text-white-0 dark:bg-white-0 dark:text-black rounded-full transition duration-300 ease-in-out" type="submit">Se connecter</button>
+                                <button className="block h-10 w-36 text-white-0 font-semibold bg-red-450 text-lg border-2 border-transparent hover:bg-white-0 hover:text-red-450 hover:border-red-450 dark:hover:bg-white-150 dark:hover:text-gray-550 active:bg-red-450 active:text-white-0 dark:bg-white-0 dark:text-black rounded-full transition duration-300 ease-in-out" type="submit">Se connecter</button>
                             </div>
                             <div className="flex justify-center items-center">
                                 <h3 onClick={handleConnexion2} className="text-red-450 cursor-pointer hover:underline">Pas de compte ? Crée en un !</h3>
@@ -222,7 +222,7 @@ const FormSignup = ({ submitForm }) => {
                             </div>
 
                             <div className="flex justify-center items-center my-5">
-                                <button className="block h-10 w-36 text-white-0 font-bold bg-red-450 text-lg border-2 border-transparent hover:bg-white-0 hover:text-red-450 hover:border-red-450 dark:hover:bg-white-150 dark:hover:text-gray-550 active:bg-red-450 active:text-white-0 dark:bg-white-0 dark:text-black rounded-full transition duration-300 ease-in-out" type="submit">S'inscrire</button>
+                                <button className="block h-10 w-36 text-white-0 font-semibold bg-red-450 text-lg border-2 border-transparent hover:bg-white-0 hover:text-red-450 hover:border-red-450 dark:hover:bg-white-150 dark:hover:text-gray-550 active:bg-red-450 active:text-white-0 dark:bg-white-0 dark:text-black rounded-full transition duration-300 ease-in-out" type="submit">S'inscrire</button>
                             </div>
                             {errorDoublon &&  <div className="flex justify-center items-center my-5"><p className="text-red-650 dark:text-red-650">Ce nom d'utilisateur est déjà pris.</p></div>}
                             <div className="flex justify-center items-center">

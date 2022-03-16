@@ -343,13 +343,13 @@ const Profil = () => {
       </div>;
       } else if (bio === false) {
         return (
-            <div className="overflow-auto flex flex-col justify-start mt-20 items-center xl:mt-15 h-screen w-screen bg-white-0 xl:dark:bg-gray-550 dark:text-white-0">
+            <div className="overflow-auto flex flex-col justify-start mt-12 pt-7 items-center h-screen w-screen bg-white-0 xl:dark:bg-gray-550 dark:text-white-0">
 
                 <div id="containerModal" className={openModal ? "block" : "hidden"}>
-                    <div id="modal" ref={modal} className="flex w-screen h-screen bg-black bg-opacity-30 fixed bottom-0 left-0 justify-center z-40 items-end">
+                    <div id="modal" ref={modal} className="flex w-screen h-screen bg-black bg-opacity-30 fixed bottom-0 left-0 justify-center z-40 items-end mt-5">
 
                         <div className="w-full xl:w-2/6 h-90% xl:h-95% mb-10 xl:mb-0 relative flex flex-col justify-start items-center rounded-t-3xl bg-white-0 overflow-auto dark:bg-gray-550 dark:text-white-0">
-                            <div className="mb-5 mt-7 mx-3 flex flex-col">
+                            <div className="mb-5 mx-3 flex flex-col">
                                 <div className="w-full h-250px relative">
                                     <img className="object-cover rounded-t-lg h-full w-full" src={modalItem.image} alt="" />
                                 </div>
@@ -363,7 +363,7 @@ const Profil = () => {
 
                                 <div className="flex mt-2 w-92vw max-w-md">
                                     <motion.img animate={{ rotate: 180 }} transition={{ repeat: Infinity, duration: 0.4, ease: "easeOut", repeatDelay: 1 }} id="sablier" src={sablier} className="opacity-100 h-20px "></motion.img>
-                                    {modalItem.expiration != '0000-00-00' ? <div className='ml-7'>{modalItem.expiration}</div> : <div className='ml-7'>A vie</div>}
+                                    {modalItem.expiration != '0000-00-00' ? <div className='ml-7'>{modalItem.expiration}</div> : <div className='ml-7'>À vie</div>}
 
                                 </div>
 
@@ -405,7 +405,7 @@ const Profil = () => {
                     </div>
                     <p className="col-span-2 mt-4">{user.bio}</p>
                     <div className="flex items-center justify-between col-span-2 h-16 pt-8">
-                        <button onClick={handleModify} className="flex items-center h-10 bg-red-450 py-2 px-4 rounded-3xl text-white-0 dark:text-black hover:bg-white-0 hover:text-red-450 hover:border-red-450 border-2 border-red-450 dark:bg-white-0 dark:border-white-0">Modifie ton profil</button>
+                        <button onClick={handleModify} className="flex items-center h-10 bg-red-450 py-2 px-4 rounded-3xl text-white-0 dark:text-black hover:bg-white-0 hover:text-red-450 hover:border-red-450 border-2 border-red-450 dark:bg-white-0 dark:border-white-0 transition duration-300 ease-in-out">Modifie ton profil</button>
                         {user.id == 38 &&
                             <Link to="/backoffice"><button className="flex items-center text-red-450 dark:text-white-0 hover:underline">Accéder aux signalements</button></Link>
                         }
@@ -427,7 +427,7 @@ const Profil = () => {
                             <motion.div className="w-92vw xl:w-full relative bg-red-450 dark:bg-black rounded-lg text-white-0 mb-4 xl:mb-5 shadow-customm"
                                 whileHover={{ scale: 1.01 }}>
                                 <button className="bg-white-0 h-10 w-10 text-black absolute z-30 flex justify-center items-center top-3 right-2 rounded-full" onClick={handlePostSupp.bind(item.id_post)}>
-                                    <img src={plusrouge} className="transform rotate-45 h-6 w-6"></img>
+                                    <img src={plusrouge} className="transform rotate-45 h-6 w-6 hover:animate-pulse"></img>
                                 </button>
                                 <div className="w-full h-250px relative" onClick={handleModal.bind(item)}>
                                     <img className="object-cover rounded-t-lg h-full w-full" src={item.image} alt="" />
