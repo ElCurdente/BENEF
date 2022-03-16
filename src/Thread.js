@@ -567,26 +567,24 @@ const Thread = () => {
                       <img className="object-cover rounded-lg h-full w-full" src={modalItem.image} alt="" />
                     </div>
                     {/* <h1 className="text-lg xl:text-xl font-semibold mx-2 max-w-md">{modalItem.image}</h1> */}
-                    <h1 className="text-lg xl:text-xl font-semibold max-w-md mt-2">{modalItem.title}</h1>
-                    <h1 className="text-base xl:text-lg px-4 max-w-max py-1 text-red-450 dark:text-white-0 rounded-full border-2 border-red-450 dark:border-white-0 font-semibold mt-4">{modalItem.category}</h1>
+                    <div className="ml-2">
+                      <h1 className="text-lg xl:text-xl font-semibold max-w-md mt-2">{modalItem.title}</h1>
+                      <h1 className="text-base xl:text-base px-4 max-w-max py-1 text-red-450 dark:text-white-0 rounded-full border-2 border-red-450 dark:border-white-0 font-base mt-4">{modalItem.category}</h1>
+                      <div className="flex w-92vw max-w-md mt-7">
+                        <motion.img animate={{ y: ["-10%", "-40%"] }} transition={{ yoyo: Infinity, duration: 0.4, ease: "easeOut", repeatDelay: 1 }} id="loca" src={localisation} className="opacity-100 h-20px"></motion.img><div className='ml-3'>{modalItem.address}{", "}{modalItem.postal}</div>
+                      </div>
+                      <div className="flex mt-2 w-92vw max-w-md">
+                        <motion.img animate={{ rotate: 180 }} transition={{ repeat: Infinity, duration: 0.4, ease: "easeOut", repeatDelay: 1 }} id="sablier" src={sablier} className="opacity-100 h-20px "></motion.img>
+                        {modalItem.expiration != '0000-00-00' ? <div className='ml-4'>{modalItem.expiration}</div> : <div className='ml-7'>A vie</div>}
+                      </div>
+                      <h1 className="text-sm xl:text-sm max-w-md mt-4">{modalItem.description}</h1>
+                      </div>
+                      <div className='flex self-end items-center text-sm max-w-md mt-7 mr-2'>
+                         Posté par <span className="font-semibold cursor-pointer ml-1 mr-2" onClick={handleModalUser.bind(modalItem)}>{modalItem.user_pseudo}</span>
+                          <img className="h-8 w-8 xl:border-2 xl:h-8 xl:w-8 rounded-full xl:rounded-full border-2 border-red-450 cursor-pointer" onClick={handleModalUser.bind(modalItem)} src={modalItem.file} alt="image de profil" />
+                      
+                      </div>
 
-                    <div className="flex w-92vw max-w-md mt-4">
-                      <motion.img animate={{ y: ["-10%", "-40%"] }} transition={{ yoyo: Infinity, duration: 0.4, ease: "easeOut", repeatDelay: 1 }} id="loca" src={localisation} className="opacity-100 h-20px"></motion.img><div className='ml-6'>{modalItem.address}{", "}{modalItem.postal}</div>
-                    </div>
-
-                    <div className="flex mt-2 w-92vw max-w-md">
-                      <motion.img animate={{ rotate: 180 }} transition={{ repeat: Infinity, duration: 0.4, ease: "easeOut", repeatDelay: 1 }} id="sablier" src={sablier} className="opacity-100 h-20px "></motion.img>
-                      {modalItem.expiration != '0000-00-00' ? <div className='ml-7'>{modalItem.expiration}</div> : <div className='ml-7'>A vie</div>}
-
-                    </div>
-
-                    <h1 className="text-sm xl:text-sm max-w-md mt-4">{modalItem.description}</h1>
-
-                    <div className='flex self-end items-center text-sm max-w-md mt-4'>
-                      Posté par <span className="font-semibold cursor-pointer ml-1 mr-2" onClick={handleModalUser.bind(modalItem)}>{modalItem.user_pseudo}</span>
-                      <img className="h-8 w-8 xl:border-2 xl:h-8 xl:w-8 rounded-full xl:rounded-full border-2 border-red-450 cursor-pointer" onClick={handleModalUser.bind(modalItem)} src={modalItem.file} alt="image de profil" />
-
-                    </div>
 
                     <div className="flex w-full justify-evenly mt-5 mb-10">
                       <button onClick={() => setOpenModal(false)} className="block px-4 font-semibold py-2 bg-red-450 hover:bg-white-0 hover:text-red-450 hover:border-red-450 border-2 border-red-450 dark:hover:bg-white-150 dark:hover:text-gray-550 active:bg-red-200 dark:bg-white-0 dark:border-black dark:text-black rounded-full transition duration-300 ease-in-out text-white-0" type="submit">Fermer</button>
