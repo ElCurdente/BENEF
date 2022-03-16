@@ -127,9 +127,7 @@ const Nav = ({ searchValue, setSearchValue }) => {
                             </motion.div>
                         </Link>
 
-                        <Link to="/parametre" className="fixed top-3 right-7 xl:top-0 xl:right-0 xl:relative xl:block xl:justify-self-end">
-                            
-                        </Link>
+                        
 
                     </ul>
                 </nav>
