@@ -196,7 +196,6 @@ const Filter = ({ searchValue, setSearchValue }) => {
                 <div className='flex self-end items-center text-sm max-w-md mt-4'>
                   Posté par <span className="font-semibold cursor-pointer ml-1 mr-2" onClick={handleModal.bind(modalItem)}>{modalItem.user_pseudo}</span>
                   <img className="h-8 w-8 xl:border-2 cursor-pointer xl:h-8 xl:w-8 rounded-full xl:rounded-full border-2 border-red-450" src={modalItem.file} alt="image de profil" />
-
                 </div>
 
                 <div className="flex w-full justify-evenly mt-5 mb-10">
@@ -223,7 +222,7 @@ const Filter = ({ searchValue, setSearchValue }) => {
 
               <div id="containerModal" className={openModal ? " block" : "hidden"}>
                 <div id="modal" ref={modal} className="flex w-screen h-screen bg-black bg-opacity-30 fixed bottom-0 left-0 justify-center z-40 items-end">
-                  <div className="w-full h-75% mb-10 xl:mb-0 relative flex flex-col justify-start items-center rounded-t-3xl bg-white-0">
+                  <div className="w-full xl:w-2/6 h-50% mb-10 xl:mb-0 relative flex flex-col justify-start items-center rounded-t-3xl bg-white-0">
                     <div className="mb-5">
                       <h1 className="text-center text-2xl font-bold pt-7">Filtrer</h1>
                     </div>
@@ -254,13 +253,13 @@ const Filter = ({ searchValue, setSearchValue }) => {
                           <option value="select">--Choisissez une région--</option>
                           <option value="all">Tous</option>
                           <option value="75">75</option>
+                          <option value="77">77</option>
                           <option value="78">78</option>
                           <option value="91">91</option>
                           <option value="92">92</option>
                           <option value="93">93</option>
                           <option value="94">94</option>
                           <option value="95">95</option>
-                          <option value="77">77</option>
                         </select>
                         <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
                           <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" /></svg>
@@ -319,8 +318,8 @@ const Filter = ({ searchValue, setSearchValue }) => {
                         <button onClick={handleReset} className="block  h-9 text-red-450 text-lg font-bold border-2 border-white-0 bg-white-0 hover:bg-red-450 hover:text-white-0 hover:border-white-0 dark:hover:bg-white-150 dark:hover:text-gray-550 active:bg-red-200 dark:bg-white-0 dark:text-black rounded-full transition duration-300 ease-in-out">Réinitialiser</button>
                     </div> */}
                     </div>
-                    <div className="flex w-full justify-evenly mb-10">
-                      <button onClick={handleReset} className="block px-7 py-2 text-red-450 text-lg font-semibold bg-white-0 border-2 border-red-450 hover:bg-red-450 hover:text-white-0 dark:hover:bg-white-150 dark:hover:text-gray-550 active:bg-red-200 dark:bg-white-0 dark:text-black rounded-full transition duration-300 ease-in-out">Annuler</button>
+                    <div className="flex w-full justify-evenly mt-5 mb-10">
+                      <button onClick={handleReset} className="block px-4 text-lg hover:underline hover:underline-offset-8 text-red-450 font-semibold dark:hover:underline dark:hover:underline-offset-8 dark:hover:text-black transition duration-300 ease-in-out">Annuler</button>
                       <button onClick={() => setOpenModal(false)} className="block px-5 py-2 text-white-0 text-lg font-semibold bg-red-450 hover:bg-white-0 hover:text-red-450 hover:border-red-450 border-2 border-red-450 dark:hover:bg-white-150 dark:hover:text-gray-550 active:bg-red-200 dark:bg-white-0 dark:text-black rounded-full transition duration-300 ease-in-out" type="submit">Appliquer</button>
                     </div>
                   </div>
