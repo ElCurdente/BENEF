@@ -209,7 +209,7 @@ const Filter = ({ searchValue, setSearchValue }) => {
         </div>
 
         <ul className="h-full bg-white-0 xl:w-2/6 xl:dark:bg-gray-550">
-          <div className="xl:pl-5 xl:pr-5 mt-7">
+          <div className="xl:pl-5 xl:pr-5 mt-7 pb-24 xl:pb-14">
             <form className="post flex flex-col justify-center mb-3" onSubmit={(e) => handleSubmitFiltered(e)} id="filter_form">
               <div className="flex h-50px relative justify-center items-center w-full">
                 <h1 className="text-center text-2xl font-bold dark:text-gray-50">Recherche</h1>
