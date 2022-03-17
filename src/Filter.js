@@ -225,7 +225,7 @@ const Filter = ({ searchValue, setSearchValue }) => {
         </div>
 
         <ul className="h-full bg-white-0 xl:w-2/6 xl:dark:bg-gray-550 relative top-10">
-          <div className="xl:pl-5 xl:pr-5 mt-7 pb-24 xl:pb-14">
+          <div className="xl:pl-5 xl:pr-5 mt-7 pb-24 xl:pb-10">
             <form className="post flex flex-col justify-center mb-3" onSubmit={(e) => handleSubmitFiltered(e)} id="filter_form">
               <div className="flex h-50px relative justify-center items-center w-full">
                 <h1 className="text-center text-2xl font-bold dark:text-gray-50">Recherche</h1>
@@ -239,7 +239,7 @@ const Filter = ({ searchValue, setSearchValue }) => {
 
               <div id="containerModal" className={openModal ? " block" : "hidden"}>
                 <div id="modal" ref={modal} className="flex w-screen h-screen bg-black bg-opacity-30 fixed bottom-0 left-0 justify-center z-40 items-end">
-                  <div className="w-full xl:w-2/6 h-50% mb-10 xl:mb-0 relative flex flex-col justify-start items-center rounded-t-3xl bg-white-0">
+                  <div className="w-full xl:w-2/6 h-50% mb-10 xl:mb-0 relative  overflow-auto flex flex-col justify-start items-center rounded-t-3xl bg-white-0">
                     <div className="mb-5">
                       <h1 className="text-center text-2xl font-bold pt-7">Filtrer</h1>
                     </div>
