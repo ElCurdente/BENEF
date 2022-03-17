@@ -239,6 +239,7 @@ const Post = () => {
                                 type="text"
                                 name="desc"
                                 rows="40"
+                                maxLength="255"
                                 className=" resize-y placeholder-white-150 text-white-150 border-b-2 bg-transparent w-4/5 my-2 h-24 pt-5 text-left focus:outline-none  focus:placeholder-transparent  xl:text-black xl:placeholder-gray-650 xl:border-red-450"
                                 placeholder="Description"
                                 value={values.desc}
