@@ -57,10 +57,10 @@ const Accueil = () => {
                             </div>
                         </form>
                         <div className="relative flex justify-center items-center h-14 w-14 ml-48 bg-white-0 rounded-full shadow-custom">
-                            <img className="h-25px dark:hidden" src={plus} alt="" />
-                            <img className="h-25px hidden dark:block" src={plusnoir} alt="" />
+                            <img className="h-25px dark:hidden" src={plus} alt="logo plus" />
+                            <img className="h-25px hidden dark:block" src={plusnoir} alt="logo plus" />
                         </div>
-                        <img className="w-14 h-14 ml-6 bg-black dark:bg-gray-650 border-3 border-white dark:border-black rounded-full object-cover transition ease-in-out duration-500" />
+                        <img className="w-14 h-14 ml-6 bg-black dark:bg-gray-650 border-3 border-white dark:border-black rounded-full object-cover transition ease-in-out duration-500" alt='img' />
 
                     </div>
                 </div>

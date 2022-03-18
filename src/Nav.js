@@ -78,15 +78,15 @@ const Nav = ({ searchValue, setSearchValue }) => {
 
                         <motion.div whileHover={{ scale: 1.03 }} className="justify-self-start">
                             <Link to="/" onClick={() => {}}>
-                                <li><img className="h-25px xl:hidden" src={etiquette} alt="" /></li>
+                                <li><img className="h-25px xl:hidden" src={etiquette} alt="logo etiquette" /></li>
                                 <img src={logo} alt="Logo" className="w-32 dark:hidden xl:block hidden" />
-                                <img src={logodark} alt="Logo" className="w-32 hidden sm:dark:hidden dark:hidden xl:dark:block" />
+                                <img src={logodark} alt="Logo dark mode" className="w-32 hidden sm:dark:hidden dark:hidden xl:dark:block" />
                             </Link>
                         </motion.div>
 
                         <Link to="/recherche" className="justify-self-center">
                             <motion.div whileHover={{ scale: 1.03 }}>
-                                <li><img className="h-25px xl:hidden" src={recherche} alt="" /></li>
+                                <li><img className="h-25px xl:hidden" src={recherche} alt="logo recherche" /></li>
 
                                 <div className="relative text-gray-650 focus-within:text-gray-650 sm:hidden hidden xl:block">
                                     <span className="absolute inset-y-0 left-0 flex items-center pl-2">
@@ -104,32 +104,32 @@ const Nav = ({ searchValue, setSearchValue }) => {
 
                         <Link to="/post" className="xl:justify-self-end">
                             <motion.div whileHover={{ scale: 1.075 }} className="relative xl:bottom-0 bottom-6 flex justify-center items-center h-16 w-16 xl:h-8 xl:w-8 bg-white-0 rounded-full shadow-custom ">
-                                <li ><img className="h-24px xl:h-20px dark:hidden" src={plus} alt="" />
-                                    <img className="h-24px xl:h-20px hidden dark:block" src={plusnoir} alt="" /></li>
+                                <li ><img className="h-24px xl:h-20px dark:hidden" src={plus} alt="logo plus" />
+                                    <img className="h-24px xl:h-20px hidden dark:block" src={plusnoir} alt="logo plus" /></li>
                             </motion.div>
                         </Link>
 
                         <Link to="/favoris" className="xl:justify-self-end">
                             <motion.div whileHover={{ scale: 1.075 }} className="">
-                                <li><img className="h-24px xl:h-8 xl:w-8" src={favoris} alt="" /></li>
+                                <li><img className="h-24px xl:h-8 xl:w-8" src={favoris} alt="logo favoris" /></li>
                             </motion.div>
                         </Link>
 
                         {/* <Link to="/messagerie">
                         <div className="relative top-3 hidden xl:hidden">
-                            <li><img className="h-25px" src={message} alt=""/></li>
+                            <li><img className="h-25px" src={message} alt="logo message"/></li>
                             </div>
                         </Link> */}
 
                         <Link to="/profil" className="xl:justify-self-end">
                             <motion.div whileHover={{ scale: 1.075 }} className="">
-                                <li><img className="xl:border-3 h-25px w-25px xl:h-8 xl:w-8 object-cover xl:rounded-full rounded-full border-2 border-white" src={user.image} alt="" /></li>
+                                <li><img className="xl:border-3 h-25px w-25px xl:h-8 xl:w-8 object-cover xl:rounded-full rounded-full border-2 border-white" src={user.image} alt="image utilisateur" /></li>
                             </motion.div>
                         </Link>
 
                         <Link to="/parametre" className="fixed top-3 right-7 xl:top-0 xl:right-0 xl:relative xl:block xl:justify-self-end">
                             <motion.div whileHover={{ scale: 1.075 }}>
-                                <li><img className="h-25px xl:h-8 xl:w-8" src={parameter} alt="" /></li>
+                                <li><img className="h-25px xl:h-8 xl:w-8" src={parameter} alt="logo paramètre" /></li>
                             </motion.div>
                         </Link>
 

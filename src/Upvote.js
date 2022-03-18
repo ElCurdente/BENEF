@@ -17,12 +17,12 @@ function Upvote() {
         <div className="bg-white-0 text-black text-xl font-bold flex w-max py-1 rounded-lg">
             {/* if(!isUpvoted){ */}
                 {<button onClick={() => setCount(upvote + 1)} className="pl-2">
-                <img src={upvoteHaut} className=""></img>
+                <img src={upvoteHaut} className="" alt='icon upvote haut'></img>
                 </button>
             }
           <span className="px-2">upvote</span>
           {<button onClick={() => setCount(count - 1)} className="pr-2">
-            <img src={upvoteBas} className=""></img>
+            <img src={upvoteBas} className="" alt='icon upvote bas'></img>
           </button>}
         </div>
       </div>

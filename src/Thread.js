@@ -537,7 +537,7 @@ const Thread = () => {
 
               <div className="w-full xl:w-2/6  mb-10 xl:mb-0 relative flex flex-col justify-center items-center rounded-3xl bg-white-0 overflow-auto dark:bg-gray-550 dark:text-white-0">
                 <div className="mb-5 mt-5 mx-3 flex flex-col items-center text-center">
-                  <img className="mb-5 w-20" src={pouce} alt='' />
+                  <img className="mb-5 w-20" src={pouce} alt='emoji pouce' />
                   <h1 className="text-lg xl:text-xl font-semibold max-w-md mt-2">Merci d'avoir signalé ce post !<br></br>
                     <span className="font-light xl:text-base">L'équipe BENEF va maintenant se charger de la suite.</span></h1>
                   <div className="flex w-full justify-evenly mt-5 mb-3">
@@ -552,7 +552,7 @@ const Thread = () => {
 
 
         {/* <motion.div className="">
-          <img src={upvoteHautplein} />
+          <img src={upvoteHautplein} alt="icon upvote plein"/>
         </motion.div> */}
         <ul className="h-full xl:w-2/6 bg-white-0 xl:dark:bg-gray-550 relative top-14">
           <div className="mt-7 ml-6 mr-6 pb-24 xl:pb-10 xl:dark:bg-gray-550">
@@ -564,17 +564,17 @@ const Thread = () => {
                 <div className="w-full xl:w-2/6 h-90vh xl:h-90vh mb-10 xl:mb-0 xl:relative xl:bottom-3 flex flex-col justify-start items-center xl:rounded-xl bg-white-0 overflow-auto dark:bg-gray-550 dark:text-white-0">
                   <div className="mb-5 mt-3 mx-3 flex flex-col">
                     <div className="w-full h-250px">
-                      <img className="object-cover rounded-lg h-full w-full" src={modalItem.image} alt="" />
+                      <img className="object-cover rounded-lg h-full w-full" src={modalItem.image} alt="image post" />
                     </div>
                     {/* <h1 className="text-lg xl:text-xl font-semibold mx-2 max-w-md">{modalItem.image}</h1> */}
                     <div className="ml-2">
                       <h1 className="text-xl font-semibold max-w-md mt-2">{modalItem.title}</h1>
                       <h1 className="text-base px-4 max-w-max py-1 text-red-450 dark:text-white-0 rounded-full border-2 border-red-450 dark:border-white-0 font-base mt-3">{modalItem.category}</h1>
                       <div className="flex w-92vw max-w-md mt-7 text-sm">
-                        <img id="loca" src={localisation} className="opacity-100 h-20px"></img><div className='ml-3'>{modalItem.address}{", "}{modalItem.postal}</div>
+                        <img id="loca" src={localisation} className="opacity-100 h-20px" alt='icon localisation'></img><div className='ml-3'>{modalItem.address}{", "}{modalItem.postal}</div>
                       </div>
                       <div className="flex mt-2 w-92vw max-w-md text-sm">
-                        <motion.img animate={{ rotate: 180 }} transition={{ repeat: Infinity, duration: 0.75, ease: "easeOut", repeatDelay: 1 }} id="sablier" src={sablier} className="opacity-100 h-20px"></motion.img>
+                        <motion.img animate={{ rotate: 180 }} transition={{ repeat: Infinity, duration: 0.75, ease: "easeOut", repeatDelay: 1 }} id="sablier" src={sablier} className="opacity-100 h-20px" alt="icon sablier"></motion.img>
                         {modalItem.expiration != '0000-00-00' ? <div className='ml-4'>{modalItem.expiration}</div> : <div className='ml-4'>À vie</div>}
                       </div>
                       <h1 className="text-base max-w-md mt-5">{modalItem.description}</h1>
@@ -599,12 +599,12 @@ const Thread = () => {
               <motion.div className="w-92vw xl:w-full relative bg-red-450 dark:bg-black rounded-lg text-white-0 mb-4 xl:mb-5 shadow-customm"
                 whileHover={{ scale: 1.01 }}>
                 <div className="w-full h-250px relative" onClick={handleModal.bind(item)}>
-                  <img className="object-cover rounded-t-lg h-full w-full" src={item.image} alt="" />
+                  <img className="object-cover rounded-t-lg h-full w-full" src={item.image} alt="image post" />
                 </div>
                 <div className="w-full min-h-max pb-4 md:cursor-pointer" onClick={handleModal.bind(item)} >
                   <h1 className="text-lg font-semibold mx-2 max-w-md mt-2	">{item.title}</h1>
                   <div className="flex mt-2 text-sm w-92vw max-w-md">
-                    <img src={adresse} className="ml-2 mr-1 w-3.5"></img> {item.address} <div className="absolute right-3">{item.postal}</div>
+                    <img src={adresse} className="ml-2 mr-1 w-3.5" alt='icon adresse'></img> {item.address} <div className="absolute right-3">{item.postal}</div>
                   </div>
 
                 </div>
@@ -614,25 +614,25 @@ const Thread = () => {
                       <button className="upvote text-red-450 dark:text-black"
                         onClick={handleFav.bind(item.id_post)}>
                         {
-                          isFav.find(x => x == item.id_post) == item.id_post ? <img className='h-20px fill-current cursor-pointer' src={coeurPlein} alt='' /> :
-                            <img className='h-20px fill-current cursor-pointer' src={coeur} alt='' />
+                          isFav.find(x => x == item.id_post) == item.id_post ? <img className='h-20px fill-current cursor-pointer' src={coeurPlein} alt='icon coeur rempli' /> :
+                            <img className='h-20px fill-current cursor-pointer' src={coeur} alt='icon coeur' />
                         }
 
                       </button>
                     </div>
                     <button className="bg-white-0 h-10 w-10 text-black absolute z-30 flex justify-center items-center top-3 right-16 rounded-full" onClick={handleReport.bind(item.id_post)}>
-                      <img src={signaler} className="h-22px"></img>
+                      <img src={signaler} className="h-22px" alt='icon signaler'></img>
                     </button>
                     <div className="bg-white-0 text-black absolute top-44 text-xl font-bold flex w-max py-1 rounded-lg -left-2 pl-2">
                       <button onClick={handleUpvote.bind(item)} className="pl-2 relative">
-                        <motion.img whileTap={{ scale: 0.85 }} id="upvote_haut" src={upvoteHaut} className="opacity-100 h-28px"></motion.img>
-                        {/* <img src={upvoteorange} className="absolute top-0 h-30px dark:opacity-0"></img> */}
+                        <motion.img whileTap={{ scale: 0.85 }} id="upvote_haut" src={upvoteHaut} className="opacity-100 h-28px" alt="icon upvote haut"></motion.img>
+                        {/* <img src={upvoteorange} className="absolute top-0 h-30px dark:opacity-0" alt="icon upvote"></img> */}
                       </button>
 
                       <span id='nb_upvote' ref={nbUpvote} className="px-2 upvote text-red-450 dark:text-black">{item.upvote}</span>
                       <button onClick={handleDownvote.bind(item)} className="pr-2 relative">
-                        <motion.img whileTap={{ scale: 0.85 }} id="upvote_bas" src={upvoteBas} className="opacity-100 dark:opacity-100 h-28px"></motion.img>
-                        {/* <img src={upvoteorange} className="transform rotate-180 absolute top-0 h-30px dark:opacity-0"></img> */}
+                        <motion.img whileTap={{ scale: 0.85 }} id="upvote_bas" src={upvoteBas} className="opacity-100 dark:opacity-100 h-28px" alt="icon upvote bas"></motion.img>
+                        {/* <img src={upvoteorange} className="transform rotate-180 absolute top-0 h-30px dark:opacity-0" alt="icon upvote bas"></img> */}
                       </button>
                     </div>
                   </div>

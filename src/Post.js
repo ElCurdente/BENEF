@@ -154,7 +154,7 @@ const Post = () => {
                         <div className="w-full xl:w-2/6 xl:mb-0 relative flex flex-col justify-start items-center rounded-3xl bg-white-0 overflow-auto dark:bg-gray-550 dark:text-white-0">
                             <div className="mt-7 mx-3 flex flex-col items-center text-center">
                                 {/* <h1 className="text-lg xl:text-xl font-semibold mx-2 max-w-md">{modalItem.image}</h1> */}
-                                <img className="mb-5 w-20" src={content} alt=''/> 
+                                <img className="mb-5 w-20" src={content} alt='emoji content'/> 
                                 <h1 className="text-lg xl:text-xl font-semibold max-w-md mt-2">
                                     Ton bon plan a bien été publié !
                                 </h1>
@@ -177,15 +177,15 @@ const Post = () => {
                                 onClick={() => {
                                     setImage(null);
                                 }}
-                                className="w-100vw h-30vh bg-white-0 dark:bg-gray-650 xl:border-none cursor-pointer border-2 border-red-450 dark:border-black rounded-t-md object-contain " />
+                                className="w-100vw h-30vh bg-white-0 dark:bg-gray-650 xl:border-none cursor-pointer border-2 border-red-450 dark:border-black rounded-t-md object-contain " alt='image previsualisation'/>
                         ) : (
                             <button onClick={(e) => {
                                 e.preventDefault();
                                 fileInputRef.current.click();
 
                             }} className="w-100vw h-30vh rounded-t-md border-2 border-red-450  xl:border-dashed cursor-pointer bg-white-0 text-red-450 dark:text-white-0 text-xl leading-loose dark:bg-gray-650 dark:border-black">
-                                <img className="h-50px m-auto dark:hidden" src={illus_images} alt="" />
-                                <img className="h-40px m-auto hidden dark:block" src={plusblanc} alt="" /> <span className='xl:hidden'>Ajouter une photo</span> <span className='hidden xl:block xl:mt-2'>Sélectionner sur l'ordinateur</span>
+                                <img className="h-50px m-auto dark:hidden" src={illus_images} alt="illustration ajout d'image" />
+                                <img className="h-40px m-auto hidden dark:block" src={plusblanc} alt="icon plus" /> <span className='xl:hidden'>Ajouter une photo</span> <span className='hidden xl:block xl:mt-2'>Sélectionner sur l'ordinateur</span>
                             </button>)}
 
                         <input id="image"

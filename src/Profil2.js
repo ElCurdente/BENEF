@@ -353,18 +353,18 @@ const Profil2 = () => {
                         <div className="w-full xl:w-2/6 h-90% xl:h-90% mb-10 xl:mb-0 relative flex flex-col justify-start items-center rounded-t-3xl bg-white-0 overflow-auto dark:bg-gray-550 dark:text-white-0">
                             <div className="mb-5 mx-3 flex flex-col">
                                 <div className="w-full h-250px pt-5 relative">
-                                    <img className="object-cover rounded-t-lg h-full w-full" src={modalItem.image} alt="" />
+                                    <img className="object-cover rounded-t-lg h-full w-full" src={modalItem.image} alt="image post" />
                                 </div>
                                 {/* <h1 className="text-lg xl:text-xl font-semibold mx-2 max-w-md">{modalItem.image}</h1> */}
                                 <h1 className="text-lg xl:text-xl font-semibold max-w-md mt-2">{modalItem.title}</h1>
                                 <h1 className="text-base xl:text-lg px-4 max-w-max py-1 text-red-450 dark:text-white-0 rounded-full border-2 border-red-450 dark:border-white-0 font-semibold mt-4">{modalItem.category}</h1>
 
                                 <div className="flex w-92vw max-w-md mt-4">
-                                    <motion.img animate={{ y: ["-10%", "-40%"] }} transition={{ yoyo: Infinity, duration: 0.4, ease: "easeOut", repeatDelay: 1 }} id="loca" src={localisation} className="opacity-100 h-20px"></motion.img><div className='ml-6'>{modalItem.address}{", "}{modalItem.postal}</div>
+                                    <motion.img animate={{ y: ["-10%", "-40%"] }} transition={{ yoyo: Infinity, duration: 0.4, ease: "easeOut", repeatDelay: 1 }} id="loca" src={localisation} className="opacity-100 h-20px" alt="icon localisation"></motion.img><div className='ml-6'>{modalItem.address}{", "}{modalItem.postal}</div>
                                 </div>
 
                                 <div className="flex mt-2 w-92vw max-w-md">
-                                    <motion.img animate={{ rotate: 180 }} transition={{ repeat: Infinity, duration: 0.4, ease: "easeOut", repeatDelay: 1 }} id="sablier" src={sablier} className="opacity-100 h-20px "></motion.img>
+                                    <motion.img animate={{ rotate: 180 }} transition={{ repeat: Infinity, duration: 0.4, ease: "easeOut", repeatDelay: 1 }} id="sablier" src={sablier} className="opacity-100 h-20px " alt="icon sablier"></motion.img>
                                     {modalItem.expiration != '0000-00-00' ? <div className='ml-7'>{modalItem.expiration}</div> : <div className='ml-7'>À vie</div>}
 
                                 </div>
@@ -402,7 +402,7 @@ const Profil2 = () => {
 
                 <div id="infos" className="relative xl:w-2/6 w-95vw px-4 xl:-px-0">
                     <div className="flex items-center">
-                        <img src={user.image} className="w-100px h-100px bg-transparent dark:bg-gray-650 border-3 border-red-450 dark:border-black rounded-full object-cover" />
+                        <img src={user.image} className="w-100px h-100px bg-transparent dark:bg-gray-650 border-3 border-red-450 dark:border-black rounded-full object-cover" alt='image de profil'/>
                         <h1 className="ml-3 text-xl font-semibold">{user.username}</h1>
                     </div>
                     <p className="col-span-2 mt-4">{user.bio}</p>
@@ -429,10 +429,10 @@ const Profil2 = () => {
                             <motion.div className="w-92vw xl:w-full relative bg-red-450 dark:bg-black rounded-lg text-white-0 mb-4 xl:mb-5 shadow-customm"
                                 whileHover={{ scale: 1.01 }}>
                                 {/* <button className="bg-white-0 h-10 w-10 text-black absolute z-30 flex justify-center items-center top-3 right-2 rounded-full" onClick={handlePostSupp.bind(item.id_post)}>
-                                    <img src={plusrouge} className="transform rotate-45 h-6 w-6 hover:animate-pulse"></img>
+                                    <img src={plusrouge} className="transform rotate-45 h-6 w-6 hover:animate-pulse" alt="icon plus"></img>
                                 </button> */}
                                 <div className="w-full h-250px relative" onClick={handleModal.bind(item)}>
-                                    <img className="object-cover rounded-t-lg h-full w-full" src={item.image} alt="" />
+                                    <img className="object-cover rounded-t-lg h-full w-full" src={item.image} alt="image post" />
                                 </div>
                                 <div className="bg-white-0 text-black text-xl font-bold absolute right-3 bottom-24 w-max rounded-lg">
                                     <span className="px-2 upvote">{item.upvote}</span>
@@ -440,7 +440,7 @@ const Profil2 = () => {
                                 <div className="w-full min-h-max pb-4 md:cursor-pointer" onClick={handleModal.bind(item)} >
                                     <h1 className="text-lg font-semibold mx-2 max-w-md mt-2	">{item.title}</h1>
                                     <div className="flex mt-2 text-sm w-92vw max-w-md">
-                                        <img src={adresse} className="ml-2 mr-1 w-3.5"></img> {item.address} <div className="absolute right-3">{item.postal}</div>
+                                        <img src={adresse} className="ml-2 mr-1 w-3.5" alt='icon adresse'></img> {item.address} <div className="absolute right-3">{item.postal}</div>
                                     </div>
 
                                 </div>
