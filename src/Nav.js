@@ -77,14 +77,14 @@ const Nav = ({ searchValue, setSearchValue }) => {
                     <ul className="flex justify-around xl:justify-evenly xl:grid xl:grid-cols-nav xl:pr-40 xl:pl-40 items-center h-60px xl:h-50px bg-red-450 dark:bg-black pb-3">
 
                         <motion.div whileHover={{ scale: 1.03 }} className="justify-self-start">
-                            <Link to="/" onClick={() => {}}>
+                            <Link to="/" name="lien vers le fil d'actualité" onClick={() => {}}>
                                 <li><img className="h-25px xl:hidden" src={etiquette} alt="logo etiquette" /></li>
                                 <img src={logo} alt="Logo" className="w-32 dark:hidden xl:block hidden" />
                                 <img src={logodark} alt="Logo dark mode" className="w-32 hidden sm:dark:hidden dark:hidden xl:dark:block" />
                             </Link>
                         </motion.div>
 
-                        <Link to="/recherche" className="justify-self-center">
+                        <Link to="/recherche" name='lien vers la page recherche' className="justify-self-center">
                             <motion.div whileHover={{ scale: 1.03 }}>
                                 <li><img className="h-25px xl:hidden" src={recherche} alt="logo recherche" /></li>
 
@@ -102,14 +102,14 @@ const Nav = ({ searchValue, setSearchValue }) => {
                             </motion.div>
                         </Link>
 
-                        <Link to="/post" className="xl:justify-self-end">
+                        <Link to="/post" name='lien vers la page post' className="xl:justify-self-end">
                             <motion.div whileHover={{ scale: 1.075 }} className="relative xl:bottom-0 bottom-6 flex justify-center items-center h-16 w-16 xl:h-8 xl:w-8 bg-white-0 rounded-full shadow-custom ">
                                 <li ><img className="h-24px xl:h-20px dark:hidden" src={plus} alt="logo plus" />
                                     <img className="h-24px xl:h-20px hidden dark:block" src={plusnoir} alt="logo plus" /></li>
                             </motion.div>
                         </Link>
 
-                        <Link to="/favoris" className="xl:justify-self-end">
+                        <Link to="/favoris" name='lien vers la page favoris' className="xl:justify-self-end">
                             <motion.div whileHover={{ scale: 1.075 }} className="">
                                 <li><img className="h-24px xl:h-8 xl:w-8" src={favoris} alt="logo favoris" /></li>
                             </motion.div>
@@ -121,13 +121,13 @@ const Nav = ({ searchValue, setSearchValue }) => {
                             </div>
                         </Link> */}
 
-                        <Link to="/profil" className="xl:justify-self-end">
+                        <Link to="/profil" name='lien vers la page profil' className="xl:justify-self-end">
                             <motion.div whileHover={{ scale: 1.075 }} className="">
                                 <li><img className="xl:border-3 h-25px w-25px xl:h-8 xl:w-8 object-cover xl:rounded-full rounded-full border-2 border-white" src={user.image} alt="image utilisateur" /></li>
                             </motion.div>
                         </Link>
 
-                        <Link to="/parametre" className="fixed top-3 right-7 xl:top-0 xl:right-0 xl:relative xl:block xl:justify-self-end">
+                        <Link to="/parametre" name='lien vers la page paramètre' className="fixed top-3 right-7 xl:top-0 xl:right-0 xl:relative xl:block xl:justify-self-end">
                             <motion.div whileHover={{ scale: 1.075 }}>
                                 <li><img className="h-25px xl:h-8 xl:w-8" src={parameter} alt="logo paramètre" /></li>
                             </motion.div>
