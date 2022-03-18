@@ -161,7 +161,7 @@ const Post = () => {
                                 <h1 className="text-lg xl:text-sm font-light max-w-md mt-2">L'équipe BENEF te remercie de faire vivre l'application !</h1>
                                 <div className="flex w-full justify-evenly mt-7 mb-8">
                                 <Link to="/" onClick={() => {}}>
-                                    <button onClick={() => setOpenModal(false)} className="block px-4 font-semibold py-2 bg-red-450 hover:bg-white-0 hover:text-red-450 hover:border-red-450 border-2 border-red-450 dark:hover:bg-white-150 dark:hover:text-gray-550 active:bg-red-200 dark:bg-white-0 dark:border-black dark:text-black rounded-full transition duration-300 ease-in-out text-white-0" type="submit">Fermer</button>
+                                    <button onClick={() => setOpenModal(false)} name='bouton fermer' className="block px-4 font-semibold py-2 bg-red-450 hover:bg-white-0 hover:text-red-450 hover:border-red-450 border-2 border-red-450 dark:hover:bg-white-150 dark:hover:text-gray-550 active:bg-red-200 dark:bg-white-0 dark:border-black dark:text-black rounded-full transition duration-300 ease-in-out text-white-0" type="submit">Fermer</button>
                                 </Link>
                                 </div>
                             </div>
@@ -182,8 +182,9 @@ const Post = () => {
                             <button onClick={(e) => {
                                 e.preventDefault();
                                 fileInputRef.current.click();
+                                
 
-                            }} className="w-100vw h-30vh rounded-t-md border-2 border-red-450  xl:border-dashed cursor-pointer bg-white-0 text-red-450 dark:text-white-0 text-xl leading-loose dark:bg-gray-650 dark:border-black">
+                            }} name='bouton sélectionner une image' className="w-100vw h-30vh rounded-t-md border-2 border-red-450  xl:border-dashed cursor-pointer bg-white-0 text-red-450 dark:text-white-0 text-xl leading-loose dark:bg-gray-650 dark:border-black">
                                 <img className="h-50px m-auto dark:hidden" src={illus_images} alt="illustration ajout d'image" />
                                 <img className="h-40px m-auto hidden dark:block" src={plusblanc} alt="icon plus" /> <span className='xl:hidden'>Ajouter une photo</span> <span className='hidden xl:block xl:mt-2'>Sélectionner sur l'ordinateur</span>
                             </button>)}
@@ -329,7 +330,7 @@ const Post = () => {
 
                     </div>
                     <div className="flex justify-end xl:justify-center items-center py-5 mr-5">
-                        <button className="block w-24 h-9 bg-red-450 hover:bg-white-0 hover:text-red-450 hover:border-red-450 border-2 border-red-450 dark:hover:bg-white-150 dark:hover:text-gray-550 active:bg-red-200 dark:bg-white-0 dark:border-black dark:text-black rounded-full transition duration-300 ease-in-out text-white-0" type="submit">Publier</button>
+                        <button name='bouton publier' className="block w-24 h-9 bg-red-450 hover:bg-white-0 hover:text-red-450 hover:border-red-450 border-2 border-red-450 dark:hover:bg-white-150 dark:hover:text-gray-550 active:bg-red-200 dark:bg-white-0 dark:border-black dark:text-black rounded-full transition duration-300 ease-in-out text-white-0" type="submit">Publier</button>
                     </div>
 
                 </form>

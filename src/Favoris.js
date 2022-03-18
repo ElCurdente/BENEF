@@ -401,7 +401,7 @@ function Favoris() {
                     </div>
 
                     <div className="flex w-full justify-evenly mt-5 mb-10">
-                      <button onClick={() => setOpenModal(false)} className="block px-4 font-semibold py-2 bg-red-450 hover:bg-white-0 hover:text-red-450 hover:border-red-450 border-2 border-red-450 dark:hover:bg-white-150 dark:hover:text-gray-550 active:bg-red-200 dark:bg-white-0 dark:border-black dark:text-black rounded-full transition duration-300 ease-in-out text-white-0" type="submit">Fermer</button>
+                      <button onClick={() => setOpenModal(false)} name='bouton fermer' className="block px-4 font-semibold py-2 bg-red-450 hover:bg-white-0 hover:text-red-450 hover:border-red-450 border-2 border-red-450 dark:hover:bg-white-150 dark:hover:text-gray-550 active:bg-red-200 dark:bg-white-0 dark:border-black dark:text-black rounded-full transition duration-300 ease-in-out text-white-0" type="submit">Fermer</button>
 
                     </div>
                   </div>
@@ -425,7 +425,7 @@ function Favoris() {
                 <li key={item.id_post} className="mt-1 w-92vw max-w-md">
                   <div>
                     <div className="bg-white-0 h-10 w-10 text-black absolute flex justify-center items-center top-3 right-2 rounded-full">
-                      <button className="upvote text-red-450 dark:text-black"
+                      <button className="upvote text-red-450 dark:text-black" name='bouton fav'
                         onClick={handleFav.bind(item.id_post)}>
                         {
                           isFav.find(x => x == item.id_post) == item.id_post ? <img className='h-20px fill-current cursor-pointer active:h-24px' src={coeurPlein} alt='icon coeur rempli' /> :
@@ -435,13 +435,13 @@ function Favoris() {
                       </button>
                     </div>
                     <div className="bg-white-0 text-black absolute top-44 text-xl font-bold flex w-max py-1 rounded-lg -left-2 pl-2">
-                      <button onClick={handleUpvote.bind(item)} className="pl-2 relative">
+                      <button onClick={handleUpvote.bind(item)} className="pl-2 relative" name='bouton upvote haut'>
                         <motion.img whileTap={{ scale: 0.85 }} id="upvote_haut" src={upvoteHaut} className="opacity-100 h-28px" alt="icon upvote haut"></motion.img>
                         {/* <img src={upvoteorange} className="absolute top-0 h-30px dark:opacity-0" alt='icon upvote'></img> */}
                       </button>
 
                       <span id='nb_upvote' ref={nbUpvote} className="px-2 upvote text-red-450 dark:text-black">{item.upvote}</span>
-                      <button onClick={handleDownvote.bind(item)} className="pr-2 relative">
+                      <button onClick={handleDownvote.bind(item)} className="pr-2 relative" name='bouton upvote bas'>
                         <motion.img whileTap={{ scale: 0.85 }} id="upvote_bas" src={upvoteBas} className="opacity-100 dark:opacity-100 h-28px" alt="icon upvote bas"></motion.img>
                         {/* <img src={upvoteorange} className="transform rotate-180 absolute top-0 h-30px dark:opacity-0" alt='icon upvote bas'></img> */}
                       </button>
