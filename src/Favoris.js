@@ -1,26 +1,18 @@
 import React from 'react';
-import Thread from "./Thread";
 import { useState } from 'react';
 import { useEffect } from 'react';
 import { useRef } from 'react';
-import profil from './images/profil-gaelle.png';
 import adresse from './images/icon/adress.svg';
-import Upvote from './Upvote';
 import upvoteBas from './images/icon/upvote.svg';
 import upvoteHaut from './images/icon/upvote2.svg';
 import localisation from './images/icon/icon_localisation.svg';
 import sablier from './images/icon/icon_sablier.svg';
-import upvoteHautplein from './images/icon/icon_vote_fill.svg';
-import upvoteBasplein from './images/icon/icon_vote_fill_r.svg';
-import upvoteOrange from './images/icon/icon_vote_orange.svg';
-import upvoteorangeplein from './images/icon/icon_vote_fill_orange.svg';
 import { motion } from 'framer-motion/dist/framer-motion';
 import coeur from './images/icon/icon_coeur.svg';
 import coeurPlein from './images/icon/icon_coeur_rempli.svg';
 import { AES, enc } from 'crypto-js';
 import animationData2 from './images/animation/loading.json';
 import Lottie from 'react-lottie';
-import { useHistory } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 
 
@@ -35,7 +27,6 @@ function Favoris() {
     }
   };
 
-  let history = useHistory();
   let decrypted;
   if (localStorage.getItem('isConnected')) {
     decrypted = AES.decrypt(localStorage.getItem('id_user'), 'MYKEY4DEMO');

@@ -1,7 +1,5 @@
 import React from 'react'
 import { HashRouter as Router, Switch, Route } from 'react-router-dom';
-import { AnimationPresence, motion } from 'framer-motion/dist/framer-motion';
-import { Link } from 'react-router-dom'
 import Nav from './Nav'
 import Parametre from './Parametre'
 import Post from './Post'
@@ -21,9 +19,6 @@ import parameter from './images/icon/icon_parametres.svg';
 import plus from './images/icon/icon_plus.svg';
 import plusnoir from './images/icon/icon_plus_noir.svg';
 import { useState } from "react";
-import { useLocation } from 'react-router-dom';
-import { useEffect } from 'react';
-import { useHistory } from "react-router-dom";
 
 
 const Accueil = () => {

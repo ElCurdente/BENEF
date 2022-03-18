@@ -2,17 +2,9 @@ import React from 'react';
 import { useState } from 'react';
 import { useEffect } from 'react';
 import { useRef } from 'react';
-import profil from './images/profil-gaelle.png';
 import adresse from './images/icon/adress.svg';
-import filtre from './images/icon/icon_filtre.svg';
-import filtreNoir from './images/icon/icon_filtre_n.svg';
 import localisation from './images/icon/icon_localisation.svg';
 import sablier from './images/icon/icon_sablier.svg';
-import FilterButton from './FilterButton'
-import Upvote from './Upvote';
-import upvoteBas from './images/icon/upvote.svg';
-import upvoteHaut from './images/icon/upvote2.svg';
-import recherche from './images/icon/icon_recherche.svg';
 import { motion } from 'framer-motion/dist/framer-motion';
 import {AES, enc}from 'crypto-js';
 
@@ -27,8 +19,6 @@ const BackOffice = () => {
 const [isLoaded, setIsLoaded] = useState(false);
 const [items, setItems] = useState([]);
 const [modalItem, setModalItem] = useState([]);
-const [openModal, setOpenModal] = useState(false);
-const modal = useRef(null);
 const modal2 = useRef(null);
 const [openModal2, setOpenModal2] = useState(false);
 
@@ -39,7 +29,6 @@ function handleModal() {
 
   useEffect(() => {
     if (openModal2) {
-      console.log("prêt à fetch")
       fetch('https://benef-app.fr/api-infos-utilisateur.php', {
         method: "POST",
         headers: {
@@ -50,7 +39,6 @@ function handleModal() {
       })
         .then((response) => response.json())
         .then((data) => {
-          console.log(data)
           setModalItem(prevState => ({
             ...prevState,
             user_pseudo: data.username,
@@ -59,7 +47,6 @@ function handleModal() {
         .catch(err => {
           console.log("Error Reading data " + err);
         });
-      console.log(modalItem);
     }
   }, [openModal2])
 
@@ -82,7 +69,6 @@ useEffect(() => {
   const [user, setUser] = useState(0);
 
 useEffect(() => {
-    console.log({ id_user: id_user })
     fetch('https://benef-app.fr/api-infos-utilisateur.php', {
         method: "POST",
         headers: {
@@ -93,9 +79,7 @@ useEffect(() => {
     })
         .then((response) => response.json())
         .then((data) => {
-            console.log(data);
             setUser(data.id_user);
-            console.log(user)
         })
         .catch(err => {
             console.log("Error Reading data " + err);
@@ -109,7 +93,6 @@ const [suppr, setSuppr] = useState(false)
 const [deleteId, setDeleteId] = useState(0)
 
 function handleDelete() {
-  console.log(this);
   setDeleteId(this)
   fetch('https://benef-app.fr/api-post-sup.php', {
       method: "POST",
@@ -120,7 +103,6 @@ function handleDelete() {
       body: JSON.stringify({id_post: this})
     })
       .then((data) => {
-        console.log(data);
         setSuppr(true);
         setOpenModal2(false);
       })
