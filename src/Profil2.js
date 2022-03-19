@@ -393,7 +393,7 @@ const Profil2 = () => {
                     <h3 className="font-bold pt-4 pl-4 ">Bons plans publiés</h3>
                     <div className='w-full h-full flex flex-col items-center mt-5 pb-14'>
                         {items.map(item => (
-                            <motion.div className="w-92vw xl:w-full relative bg-red-450 dark:bg-black rounded-lg text-white-0 mb-4 xl:mb-5 shadow-customm"
+                            <motion.div key={item.id_post} className="w-92vw xl:w-full relative bg-red-450 dark:bg-black rounded-lg text-white-0 mb-4 xl:mb-5 shadow-customm"
                                 whileHover={{ scale: 1.01 }}>
                                 {/* <button name='bouton supprimer' className="bg-white-0 h-10 w-10 text-black absolute z-30 flex justify-center items-center top-3 right-2 rounded-full" onClick={handlePostSupp.bind(item.id_post)}>
                                     <img src={plusrouge} className="transform rotate-45 h-6 w-6 hover:animate-pulse" alt="icon sup"></img>

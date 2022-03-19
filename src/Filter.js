@@ -220,7 +220,7 @@ const Filter = ({ searchValue, setSearchValue }) => {
               <div className="flex relative justify-center items-center mx-auto w-65% xl:hidden">
                 <div className="flex border-b-2 border-black required:w-65% h-8 mt-2 mb-14">
                   <input value={searchValue} className=" required:w-65% px-6 bg-white-150 placeholder-black focus:outline-none" placeholder="Rechercher..." onChange={event => setSearchValue(event.target.value)} />
-                  <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1" viewBox="0 0 20 20" className="w-5 h-5 mt-1 mr-3 xl:hidden"><path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+                  <svg fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1" viewBox="0 0 20 20" className="w-5 h-5 mt-1 mr-3 xl:hidden"><path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
                 </div>
               </div>
 
@@ -244,8 +244,8 @@ const Filter = ({ searchValue, setSearchValue }) => {
                           <option value="Étudiants">Étudiants</option>
                           <option value="Autres">Autres</option>
                         </select>
-                        <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
-                          <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" /></svg>
+                        <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+                          <svg className="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" /></svg>
                         </div>
                       </div>
 
@@ -265,8 +265,8 @@ const Filter = ({ searchValue, setSearchValue }) => {
                           <option value="94">94</option>
                           <option value="95">95</option>
                         </select>
-                        <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
-                          <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" /></svg>
+                        <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+                          <svg className="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" /></svg>
                         </div>
                       </div>
 
@@ -335,7 +335,7 @@ const Filter = ({ searchValue, setSearchValue }) => {
             {(filters.filtered ?
 
               filter1000.map(item => (
-                <motion.div className="w-92vw h-150px relative flex justify-between items-center bg-red-450 xl:w-full dark:bg-black rounded-lg text-white-0 mb-5 shadow-customm"
+                <motion.div key={item.id_post} className="w-92vw h-150px relative flex justify-between items-center bg-red-450 xl:w-full dark:bg-black rounded-lg text-white-0 mb-5 shadow-customm"
                   whileHover={{ scale: 1.01 }}>
                   <div className="h-full w-35% flex justify-center items-center relative cursor-pointer">
                     <img className="w-90% h-90%  object-cover rounded-lg" src={item.image} alt="post" />
@@ -355,7 +355,7 @@ const Filter = ({ searchValue, setSearchValue }) => {
               ))
               :
               filterByName.map(item => (
-                <motion.div className="w-92vw h-150px relative flex justify-between items-center bg-red-450 xl:w-full dark:bg-black rounded-lg text-white-0 mb-5 shadow-customm"
+                <motion.div key={item.id_post} className="w-92vw h-150px relative flex justify-between items-center bg-red-450 xl:w-full dark:bg-black rounded-lg text-white-0 mb-5 shadow-customm"
                   whileHover={{ scale: 1.01 }} >
                   <div className="h-full w-35% flex justify-center items-center relative cursor-pointer">
                     <img className="w-90% h-90%  object-cover rounded-lg cursor-pointer" src={item.image} alt="post" />
