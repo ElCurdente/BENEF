@@ -1,13 +1,10 @@
 import { useState, useEffect } from 'react';
-import { Redirect } from 'react-router';
-import { useHistory } from "react-router-dom";
 import {AES, enc}from 'crypto-js';
 
 
 
 const useForm = (callback, validate) => {
   
-  let history = useHistory();
 
   const [values, setValues] = useState({
     username:'',
@@ -75,17 +72,16 @@ const useForm = (callback, validate) => {
     e.preventDefault();
     setErrors(validate(values));
     setIsSubmitting(true);
-    if (Object.keys(errors).length === 0 && isSubmitting) {
-      console.log("pas d'erreur");
-    }else{
-      console.log("pleins d'erreurs")
-    }
+    // if (Object.keys(errors).length === 0 && isSubmitting) {
+    //   console.log("pas d'erreur");
+    // }else{
+    //   console.log("pleins d'erreurs")
+    // }
   
 };
 
 const handleSubmitConnexion = e => {
   e.preventDefault();
-  console.log(stayConnected);
   setErrors(validate(values));
   setIsSubmitting(true);
 fetch('https://benef-app.fr/api-connexion.php', {
@@ -98,10 +94,8 @@ body: JSON.stringify(valuesConnexion)
 })
 .then((response) => response.json())
 .then((data) => {
-  console.log(data);
   // setIdUser(data.id_user);
   const envryptedString = AES.encrypt(data.id_user,'MYKEY4DEMO');// console.log(stayConnected)
-  console.log(AES.decrypt(envryptedString, 'MYKEY4DEMO'));
   
 // const decrypted = AES.decrypt(sessionStorage.getItem('id_user'), 'MYKEY4DEMO');
 // const decryptedString = decrypted.toString(enc.Utf8);
@@ -143,7 +137,6 @@ setErrorsConnexion({
       })
       .then((response) => response.json())
       .then((result) => {
-        console.log(result);
         if(result.doublon == true){
           console.log("Utilisateur doublon");
           setErrorDoublon(true)
@@ -158,7 +151,6 @@ setErrorsConnexion({
             })
             .then((response) => response.json())
             .then((data) => {
-              console.log(data);
               sessionStorage.setItem("isConnected", true);
               sessionStorage.setItem("id_user", data.id_user);
               window.location.reload();

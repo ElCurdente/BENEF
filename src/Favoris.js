@@ -66,7 +66,6 @@ function Favoris() {
         (result) => {
           setIsLoaded(true);
           setItems(result.items);
-          console.log(result)
         },
         (error) => {
           setIsLoaded(true);
@@ -77,7 +76,6 @@ function Favoris() {
 
   function handleFav() {
     setIsSuppr(this);
-    console.log({ id_user: id_user, id_post: this });
     fetch('https://benef-app.fr/api-favoris-sup.php', {
       method: "POST",
       headers: {
@@ -87,7 +85,6 @@ function Favoris() {
       body: JSON.stringify({ id_user: id_user, id_post: this })
     })
       .then((data) => {
-        console.log(data);
         // setIsLoaded(false);
         setSuppr(true)
       })
@@ -107,7 +104,6 @@ function Favoris() {
   }, [suppr])
 
   function handleUpvote() {
-    console.log(this)
     fetch('https://benef-app.fr/api-upvote.php', {
       method: "POST",
       headers: {
@@ -118,7 +114,6 @@ function Favoris() {
     })
       .then((response) => response.json())
       .then((data) => {
-        console.log(data);
         // setRefreshKey(oldKey => oldKey + 1)
       })
       .catch(err => {
@@ -127,7 +122,6 @@ function Favoris() {
   }
 
   function handleDownvote() {
-    console.log(this)
     fetch('https://benef-app.fr/api-downvote.php', {
       method: "POST",
       headers: {
@@ -138,7 +132,6 @@ function Favoris() {
     })
       .then((response) => response.json())
       .then((data) => {
-        console.log(data);
       })
       .catch(err => {
         console.log("Error Reading data " + err);
@@ -167,9 +160,7 @@ function Favoris() {
       .then(res => res.json())
       .then(
         (result) => {
-          console.log(result)
           setIsFav(result)
-          console.log(isFav)
         },
         (error) => {
           setError(error);
@@ -178,7 +169,6 @@ function Favoris() {
   }, [isLoaded])
 
   function handleUpvote() {
-    console.log(this)
     setIsVoted(this.id_post)
     setUpvote(true);
     setIsVoting(true);
@@ -186,12 +176,10 @@ function Favoris() {
 
   useEffect(() => {
     if (upvote) {
-      console.log(isUpvoted)
       for (var i = 0; i < items.length; i++) {
         if (items[i].id_post === isVoted) {
           let feed = isUpvoted.find(x => x == isVoted);
           if (feed == isVoted) {
-            console.log(feed + ", ne peut upvote")
             fetch('https://benef-app.fr/api-downvote.php', {
               method: "POST",
               headers: {
@@ -202,7 +190,6 @@ function Favoris() {
             })
               .then((response) => response.json())
               .then((data) => {
-                console.log(data);
               })
               .catch(err => {
                 console.log("Error Reading data " + err);
@@ -212,7 +199,6 @@ function Favoris() {
             setIsUpvoted(isUpvoted.filter(item => item !== isVoted));
           }
           else {
-            console.log(feed + "n'est pas upvote donc peut upvote")
             setIsUpvoted(prevState => [...prevState, isVoted])
             fetch('https://benef-app.fr/api-upvote.php', {
               method: "POST",
@@ -224,14 +210,12 @@ function Favoris() {
             })
               .then((response) => response.json())
               .then((data) => {
-                console.log(data);
                 // setRefreshKey(oldKey => oldKey + 1)
               })
               .catch(err => {
                 console.log("Error Reading data " + err);
               });
             items[i].upvote++;
-            console.log(items[i].upvote);
             setUpvote(false)
             setIsDownvoted(isDownvoted.filter(item => item !== isVoted));
 
@@ -244,7 +228,6 @@ function Favoris() {
         if (items[i].id_post === isVoted) {
           let feed = isDownvoted.find(x => x == isVoted);
           if (feed == isVoted) {
-            console.log(feed + ", ne peut upvote")
             fetch('https://benef-app.fr/api-upvote.php', {
               method: "POST",
               headers: {
@@ -255,7 +238,6 @@ function Favoris() {
             })
               .then((response) => response.json())
               .then((data) => {
-                console.log(data);
                 // setRefreshKey(oldKey => oldKey + 1)
               })
               .catch(err => {
@@ -267,7 +249,6 @@ function Favoris() {
 
           }
           else {
-            console.log(feed + "n'est pas upvote donc peut upvote")
             setIsDownvoted(prevState => [...prevState, isVoted])
             fetch('https://benef-app.fr/api-downvote.php', {
               method: "POST",
@@ -279,13 +260,11 @@ function Favoris() {
             })
               .then((response) => response.json())
               .then((data) => {
-                console.log(data);
               })
               .catch(err => {
                 console.log("Error Reading data " + err);
               });
             items[i].upvote--;
-            console.log(items[i].upvote);
             setDownvote(false)
             setIsUpvoted(isUpvoted.filter(item => item !== isVoted));
           }
@@ -299,7 +278,6 @@ function Favoris() {
   }, [isVoting])
 
   function handleDownvote() {
-    console.log(this)
     setIsVoted(this.id_post)
     setDownvote(true);
     setIsVoting(true);
@@ -314,7 +292,6 @@ function Favoris() {
 
   useEffect(() => {
     if (openModal) {
-      console.log("prêt à fetch")
       fetch('https://benef-app.fr/api-infos-utilisateur.php', {
         method: "POST",
         headers: {
@@ -325,7 +302,6 @@ function Favoris() {
       })
         .then((response) => response.json())
         .then((data) => {
-          console.log(data)
           const envryptedString = AES.encrypt(data.id_user, 'MYKEY4DEMO');
           localStorage.setItem('id_user_post', envryptedString.toString());
           setModalItem(prevState => ({

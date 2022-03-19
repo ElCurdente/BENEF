@@ -4,26 +4,17 @@ import { useEffect } from 'react';
 import { useRef } from 'react';
 import { useHistory } from 'react-router-dom';
 import { Link } from 'react-router-dom';
-import profil from './images/profil-gaelle.png';
-import resto from './images/resto.jpg';
-import musee from './images/musee.jpg';
 import adresse from './images/icon/adress.svg';
-import Upvote from './Upvote';
 import localisation from './images/icon/icon_localisation.svg';
 import sablier from './images/icon/icon_sablier.svg';
 import upvoteBas from './images/icon/upvote.svg';
 import upvoteHaut from './images/icon/upvote2.svg';
-import upvoteHautplein from './images/icon/icon_vote_fill.svg';
-import upvoteBasplein from './images/icon/icon_vote_fill_r.svg';
-import upvoteOrange from './images/icon/icon_vote_orange.svg';
-import upvoteorangeplein from './images/icon/icon_vote_fill_orange.svg';
 import { motion } from 'framer-motion/dist/framer-motion';
 import Lottie from 'react-lottie';
 import animationData from './images/animation/like.json';
 import animationData2 from './images/animation/loading.json';
 import coeur from './images/icon/icon_coeur.svg';
 import coeurPlein from './images/icon/icon_coeur_rempli.svg';
-import fleche from './images/icon/icon_fleche.svg';
 import pouce from './images/illustrations/pouce.png';
 import { AES, enc } from 'crypto-js';
 
@@ -60,8 +51,6 @@ const Thread = () => {
   const [isVoted, setIsVoted] = useState(0);
   const [isUpvoted, setIsUpvoted] = useState([])
   const [isDownvoted, setIsDownvoted] = useState([])
-  const [upvoteNumber, setUpvoteNumber] = useState(0)
-  const [refreshKey, setRefreshKey] = useState(0);
   const nbUpvote = useRef(null);
   let history = useHistory();
   const [modalItem, setModalItem] = useState([]);
@@ -86,8 +75,6 @@ const Thread = () => {
         (result) => {
           setIsLoaded(true);
           setItems(result.items);
-
-          console.log(items[0]);
         },
         (error) => {
           setIsLoaded(true);
@@ -131,9 +118,7 @@ const Thread = () => {
       .then(res => res.json())
       .then(
         (result) => {
-          console.log(result)
           setIsFav(result)
-          console.log(isFav)
         },
         (error) => {
           setError(error);
@@ -143,7 +128,6 @@ const Thread = () => {
 
   useEffect(() => {
     if (openModal) {
-      console.log("prêt à fetch")
       fetch('https://benef-app.fr/api-infos-utilisateur.php', {
         method: "POST",
         headers: {
@@ -154,7 +138,6 @@ const Thread = () => {
       })
         .then((response) => response.json())
         .then((data) => {
-          console.log(data)
           setModalItem(prevState => ({
             ...prevState,
             user_pseudo: data.username,
@@ -164,13 +147,11 @@ const Thread = () => {
         .catch(err => {
           console.log("Error Reading data " + err);
         });
-      console.log(modalItem);
     }
   }, [openModal])
 
   useEffect(() => {
     if (openModalUser) {
-      console.log("prêt à fetch")
       fetch('https://benef-app.fr/api-infos-utilisateur.php', {
         method: "POST",
         headers: {
@@ -181,13 +162,10 @@ const Thread = () => {
       })
         .then((response) => response.json())
         .then((data) => {
-          console.log(data)
           const envryptedString = AES.encrypt(data.id_user, 'MYKEY4DEMO');
           localStorage.setItem('id_user_post', envryptedString.toString());
           history.push('/profil2');
           setModalItemUser(data);
-          console.log(modalItemUser);
-
         })
         .catch(err => {
           console.log("Error Reading data " + err);
@@ -211,7 +189,6 @@ const Thread = () => {
           (result) => {
             setIsLoaded(true);
             setUserItems(result.userItems);
-            console.log(userItems);
           },
           (error) => {
             setIsLoaded(true);
@@ -222,10 +199,8 @@ const Thread = () => {
   }, [openModalUser]);
 
   function handleFav() {
-    console.log({ id_user: id_user, id_post: this });
     if (isFav.find(x => x == this) != this) {
       setIsFav(prevState => [...prevState, this]);
-      console.log(isFav);
       fetch('https://benef-app.fr/api-favoris.php', {
         method: "POST",
         headers: {
@@ -235,7 +210,6 @@ const Thread = () => {
         body: JSON.stringify({ id_user: id_user, id_post: this })
       })
         .then((data) => {
-          console.log(data);
 
         })
         .catch(err => {
@@ -252,7 +226,6 @@ const Thread = () => {
         body: JSON.stringify({ id_user: id_user, id_post: this })
       })
         .then((data) => {
-          console.log(data);
 
         })
         .catch(err => {
@@ -264,7 +237,6 @@ const Thread = () => {
   }
 
   function handleUpvote() {
-    console.log(this)
     setIsVoted(this.id_post)
     // setUpvoteNumber(this.upvote)
     setUpvote(true);
@@ -273,12 +245,10 @@ const Thread = () => {
 
   useEffect(() => {
     if (upvote) {
-      console.log(isUpvoted)
       for (var i = 0; i < items.length; i++) {
         if (items[i].id_post === isVoted) {
           let feed = isUpvoted.find(x => x == isVoted);
           if (feed == isVoted) {
-            console.log(feed + ", ne peut upvote")
             fetch('https://benef-app.fr/api-downvote.php', {
               method: "POST",
               headers: {
@@ -289,7 +259,6 @@ const Thread = () => {
             })
               .then((response) => response.json())
               .then((data) => {
-                console.log(data);
               })
               .catch(err => {
                 console.log("Error Reading data " + err);
@@ -299,7 +268,6 @@ const Thread = () => {
             setIsUpvoted(isUpvoted.filter(item => item !== isVoted));
           }
           else {
-            console.log(feed + "n'est pas upvote donc peut upvote")
             setIsUpvoted(prevState => [...prevState, isVoted])
             fetch('https://benef-app.fr/api-upvote.php', {
               method: "POST",
@@ -311,14 +279,12 @@ const Thread = () => {
             })
               .then((response) => response.json())
               .then((data) => {
-                console.log(data);
                 // setRefreshKey(oldKey => oldKey + 1)
               })
               .catch(err => {
                 console.log("Error Reading data " + err);
               });
             items[i].upvote++;
-            console.log(items[i].upvote);
             setUpvote(false)
             setIsDownvoted(isDownvoted.filter(item => item !== isVoted));
 
@@ -331,7 +297,6 @@ const Thread = () => {
         if (items[i].id_post === isVoted) {
           let feed = isDownvoted.find(x => x == isVoted);
           if (feed == isVoted) {
-            console.log(feed + ", ne peut upvote")
             fetch('https://benef-app.fr/api-upvote.php', {
               method: "POST",
               headers: {
@@ -342,7 +307,6 @@ const Thread = () => {
             })
               .then((response) => response.json())
               .then((data) => {
-                console.log(data);
                 // setRefreshKey(oldKey => oldKey + 1)
               })
               .catch(err => {
@@ -355,7 +319,6 @@ const Thread = () => {
 
           }
           else {
-            console.log(feed + "n'est pas upvote donc peut upvote")
             setIsDownvoted(prevState => [...prevState, isVoted])
             fetch('https://benef-app.fr/api-downvote.php', {
               method: "POST",
@@ -367,13 +330,11 @@ const Thread = () => {
             })
               .then((response) => response.json())
               .then((data) => {
-                console.log(data);
               })
               .catch(err => {
                 console.log("Error Reading data " + err);
               });
             items[i].upvote--;
-            console.log(items[i].upvote);
 
             setDownvote(false)
             setIsUpvoted(isUpvoted.filter(item => item !== isVoted));
@@ -388,7 +349,6 @@ const Thread = () => {
   }, [isVoting])
 
   function handleDownvote() {
-    console.log(this)
     setIsVoted(this.id_post)
     setDownvote(true);
     setIsVoting(true);
@@ -405,18 +365,16 @@ const Thread = () => {
   }
 
   function Alert() { alert('Le message à été supprimé'); };
-  function DelayAlert() { setInterval(Alert, 2000); }
+  // function DelayAlert() { setInterval(Alert, 2000); }
 
-  const btnOuvrir = () => {
-    setOpenModal(true);
-  }
+  // const btnOuvrir = () => {
+  //   setOpenModal(true);
+  // }
 
-  const btnFermer = () => {
-    setOpenModal(false);
-  }
+  // const btnFermer = () => {
+  //   setOpenModal(false);
+  // }
   const modal = useRef(null);
-  const modalUser = useRef(null);
-  const modalUserPost = useRef(null);
 
   function handleModal() {
     setOpenModal(true);
@@ -453,7 +411,6 @@ const Thread = () => {
   }
 
   const handleReportPost = () => {
-    console.log("Suppression du post n°" + reportedId);
     // setOpenModalSupp(false);
     fetch('https://benef-app.fr/api-report.php', {
       method: "POST",
@@ -464,7 +421,6 @@ const Thread = () => {
       body: JSON.stringify({ id_post: reportedId })
     })
       .then((data) => {
-        console.log(data);
         setConfirmedReport(true)
       })
       .catch(err => {
@@ -474,7 +430,6 @@ const Thread = () => {
 
 
   useEffect(() => {
-    console.log({ id_user: modalItem.id_user })
     fetch('https://benef-app.fr/api-infos-utilisateur.php', {
       method: "POST",
       headers: {
@@ -485,12 +440,10 @@ const Thread = () => {
     })
       .then((response) => response.json())
       .then((data) => {
-        console.log(data);
         setUser({
           username: data.username,
           bio: data.bio
         })
-        console.log(user)
       })
       .catch(err => {
         console.log("Error Reading data " + err);

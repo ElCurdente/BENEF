@@ -1,9 +1,6 @@
 import React from 'react';
 import fleche from './images/icon/icon_fleche_noire.svg';
 import ToggleBtn from './toggleBtn';
-import ToggleBtn2 from './toggleBtn_2';
-import { useEffect } from 'react';
-import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import './index.css';
 import { useHistory } from "react-router-dom";
@@ -12,7 +9,6 @@ import { useHistory } from "react-router-dom";
 const Parametre = () => {
 
     let history = useHistory();
-    console.log(history);
 
     function handleDeconnexion() {
         history.push("/");
@@ -33,7 +29,6 @@ const Parametre = () => {
     })
       .then((response) => response.json())
       .then((data) => {
-        console.log(data);
         sessionStorage.clear();
         window.location.reload();
       })

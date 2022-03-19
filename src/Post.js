@@ -2,22 +2,16 @@ import React from 'react';
 import { useState } from 'react';
 import { useRef } from 'react';
 import { useEffect } from 'react';
-import Accueil from './Accueil';
-import plus from './images/icon/icon_plus.svg';
 import plusblanc from './images/icon/icon_plus_blanc.svg';
 import illus_images from './images/icon/icon_images.svg';
-import fleche from './images/icon/icon_fleche.svg';
 import content from './images/illustrations/content.png';
-import axios from 'axios';
-import { BrowserRouter as Router, Switch, Route, Link, useHistory} from 'react-router-dom';
-import validate from './validateInfo'
+import { BrowserRouter as Link} from 'react-router-dom';
 import {AES, enc} from 'crypto-js';
 
 
 const Post = () => {
     const modal = useRef(null);
     const [errors, setErrors] = useState({});
-    const [isSubmitting, setIsSubmitting] = useState(false);
 
     const [openModal, setOpenModal] = useState(false);
     let decrypted;
@@ -47,23 +41,16 @@ const Post = () => {
             ...values,
             [name]: value
         });
-        console.log(value);
     };
-
-    const img_form = document.getElementById('image');
-    let history = useHistory();
 
 
     const onFileChange = (e) => {
         const file = e.target.files[0];
         if (file) {
             setImage(file);
-            console.log("ça marche pas")
         } else {
             setImage(null);
         }
-
-        console.log(file)
     }
 
     const myForm = useRef(null);
@@ -82,7 +69,6 @@ const Post = () => {
 
         } else {
             setPreview(null);
-            console.log("ça marche")
         }
     }, [image]);
 
@@ -92,12 +78,10 @@ const Post = () => {
         const file = e.target.files[0];
         if (file) {
             setImage(file);
-            console.log("ça marche pas")
         } else {
             setImage(null);
         }
 
-        console.log(file)
         setPicture({
             /* contains the preview, if you want to show the picture to the user
                  you can access it with this.state.currentPicture
@@ -123,12 +107,9 @@ const Post = () => {
         formData.append('cgu',  values.cgu);
         formData.append('id_user', id_user);
 
-        console.log(picture.pictureAsFile);
-
         for (var key of formData.entries()) {
-            console.log(key[0] + ", " + key[1]);
+            // console.log(key[0] + ", " + key[1]);
         }
-        console.log(formData)
         setOpenModal(true);
         const data = await fetch("https://benef-app.fr/api-post.php", {
             method: "post",
@@ -138,7 +119,6 @@ const Post = () => {
         const uploadedImage = await data.json();
         if (uploadedImage) {
             console.log("Successfully uploaded image");
-            console.log(data);
         } else {
             console.log("Error Found");
         }

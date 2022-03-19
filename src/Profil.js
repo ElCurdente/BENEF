@@ -1,14 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom'
-import coeur from './images/icon/icon_coeur.svg';
-import coeurplein from './images/icon/icon_coeur_rempli.svg';
 import { useState } from 'react';
 import { useRef } from 'react';
 import { useEffect } from 'react';
 import plus from './images/icon/icon_plus.svg';
 import plusblanc from './images/icon/icon_plus_blanc.svg';
 import plusrouge from './images/icon/icon_plus_rouge.svg';
-import ToggleLike from './toggle-like.js';
 import lottie from 'lottie-web';
 import Lottie from 'react-lottie';
 import animationData from './images/animation/like.json';
@@ -18,11 +15,9 @@ import adresse from './images/icon/adress.svg';
 import localisation from './images/icon/icon_localisation.svg';
 import sablier from './images/icon/icon_sablier.svg';
 import { AES, enc } from 'crypto-js';
-import { useHistory } from "react-router-dom";
 
 const Profil = () => {
 
-    const [state, setState] = useState(false);
     const [items, setItems] = useState([]);
     const [error, setError] = useState(null);
     const [isLoaded, setIsLoaded] = useState(false);
@@ -37,8 +32,6 @@ const Profil = () => {
       decrypted = AES.decrypt(sessionStorage.getItem('id_user'), 'MYKEY4DEMO');
     }
         const id_user = decrypted.toString(enc.Utf8);
-
-        let history = useHistory();
 
 
     useEffect(() => {
@@ -55,7 +48,6 @@ const Profil = () => {
                 (result) => {
                     setIsLoaded(true);
                     setItems(result.items);
-                    console.log(items);
                 },
                 (error) => {
                     setIsLoaded(true);
@@ -97,11 +89,7 @@ const Profil = () => {
         image: undefined
     });
 
-
-    console.log(id_user);
-
     useEffect(() => {
-        console.log({ id_user: id_user })
         fetch('https://benef-app.fr/api-infos-utilisateur.php', {
             method: "POST",
             headers: {
@@ -112,14 +100,12 @@ const Profil = () => {
         })
             .then((response) => response.json())
             .then((data) => {
-                console.log(data);
                 setUser({
                     id: data.id_user,
                     username: data.username,
                     bio: data.bio,
                     image: data.image
                 })
-                console.log(user)
             })
             .catch(err => {
                 console.log("Error Reading data " + err);
@@ -197,12 +183,10 @@ const Profil = () => {
         formData.append('username', values.username);
         formData.append('bio', values.bio);
 
-        console.log(picture.pictureAsFile);
-
         for (var key of formData.entries()) {
-            console.log(key[0] + ", " + key[1]);
+            // console.log(key[0] + ", " + key[1]);
         }
-        console.log(formData)
+
         const data = await fetch("https://benef-app.fr/api-modif-profil.php", {
             method: "post",
             // headers: { "Content-Type": "multipart/form-data" },
@@ -211,7 +195,6 @@ const Profil = () => {
         const uploadedImage = await data.json();
         if (uploadedImage) {
             console.log("Successfully uploaded image");
-            console.log(data);
             modifbio(false);
             setSuccessPdp(true);
         } else {
@@ -226,7 +209,6 @@ const Profil = () => {
 
 
     const handleDeletePost = () => {
-        console.log("Suppression du post n°" + deleteId);
         setOpenModalSupp(false);
         fetch('https://benef-app.fr/api-post-sup.php', {
             method: "POST",
@@ -237,7 +219,6 @@ const Profil = () => {
             body: JSON.stringify({ id_post: deleteId })
         })
             .then((data) => {
-                console.log(data);
                 setSuppr(true)
             })
             .catch(err => {
@@ -274,7 +255,6 @@ const Profil = () => {
 
         } else {
             setPreview(null);
-            console.log("ça marche")
         }
     }, [image]);
 
@@ -284,12 +264,10 @@ const Profil = () => {
         const file = e.target.files[0];
         if (file) {
             setImage(file);
-            console.log("ça marche pas")
         } else {
             setImage(null);
         }
 
-        console.log(file)
         setPicture({
             /* contains the preview, if you want to show the picture to the user
                  you can access it with this.state.currentPicture

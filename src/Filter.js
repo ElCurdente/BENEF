@@ -2,22 +2,15 @@ import React from 'react';
 import { useState } from 'react';
 import { useEffect } from 'react';
 import { useRef } from 'react';
-import profil from './images/profil-gaelle.png';
 import adresse from './images/icon/adress.svg';
 import filtre from './images/icon/icon_filtre.svg';
 import filtreNoir from './images/icon/icon_filtre_n.svg';
 import localisation from './images/icon/icon_localisation.svg';
 import sablier from './images/icon/icon_sablier.svg';
-import FilterButton from './FilterButton'
-import Upvote from './Upvote';
-import upvoteBas from './images/icon/upvote.svg';
-import upvoteHaut from './images/icon/upvote2.svg';
-import recherche from './images/icon/icon_recherche.svg';
 import { motion } from 'framer-motion/dist/framer-motion';
 import animationData2 from './images/animation/loading.json';
 import Lottie from 'react-lottie';
 import { AES, enc } from 'crypto-js';
-import { useHistory } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 
 const Filter = ({ searchValue, setSearchValue }) => {
@@ -32,7 +25,6 @@ const Filter = ({ searchValue, setSearchValue }) => {
     postal: '',
     filter_by: 'upvote',
   })
-  let history = useHistory();
 
   let decrypted;
   if (localStorage.getItem('isConnected')) {
@@ -116,7 +108,6 @@ const Filter = ({ searchValue, setSearchValue }) => {
 
   useEffect(() => {
     if (openModal2) {
-      console.log("prêt à fetch")
       fetch('https://benef-app.fr/api-infos-utilisateur.php', {
         method: "POST",
         headers: {
@@ -127,7 +118,6 @@ const Filter = ({ searchValue, setSearchValue }) => {
       })
         .then((response) => response.json())
         .then((data) => {
-          console.log(data)
           const envryptedString = AES.encrypt(data.id_user, 'MYKEY4DEMO');
           localStorage.setItem('id_user_post', envryptedString.toString());
           // history.push('/profil2');
@@ -141,7 +131,6 @@ const Filter = ({ searchValue, setSearchValue }) => {
         .catch(err => {
           console.log("Error Reading data " + err);
         });
-      console.log(modalItem);
     }
   }, [openModal2])
 

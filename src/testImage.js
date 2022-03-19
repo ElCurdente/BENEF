@@ -1,6 +1,5 @@
 import React from 'react';
 import { useState } from 'react';
-import { setState } from 'react';
 
 const LandingPage = () => {
     const [picture, setPicture] = useState({});
@@ -29,10 +28,9 @@ const LandingPage = () => {
         formData.append('certified', 'values.certified');
         formData.append('cgu', ' values.cgu');
 
-        console.log(picture.pictureAsFile);
 
         for (var key of formData.entries()) {
-            console.log(key[0] + ", " + key[1]);
+            // console.log(key[0] + ", " + key[1]);
         }
         const data = await fetch("https://benef-app.fr/api-post.php", {
             method: "post",
@@ -42,7 +40,6 @@ const LandingPage = () => {
         const uploadedImage = await data.json();
         if (uploadedImage) {
             console.log("Successfully uploaded image");
-            console.log(data);
         } else {
             console.log("Error Found");
         }

@@ -1,25 +1,16 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import SearchIcon from '@material-ui/icons/Search';
-import ChatIcon from '@material-ui/icons/Chat';
-import PersonOutlineIcon from '@material-ui/icons/PersonOutline';
-import AddIcon from '@material-ui/icons/Add';
-import LocalOfferIcon from '@material-ui/icons/LocalOffer';
 import etiquette from './images/icon/icon_etiquette.svg';
 import recherche from './images/icon/icon_recherche.svg';
 import plus from './images/icon/icon_plus.svg';
-import message from './images/icon/icon_message.svg';
-import profil from './images/profil-gaelle.png';
 import plusnoir from './images/icon/icon_plus_noir.svg';
 import logo from './images/logo/logo_benef.svg';
 import logodark from './images/logo/logo_benef_dark.svg';
-import Parametre from './Parametre'
 import parameter from './images/icon/icon_parametres.svg';
 import favoris from './images/icon/icon_coeur_b.svg';
-import {AnimationPresence, motion } from 'framer-motion/dist/framer-motion';
+import {motion } from 'framer-motion/dist/framer-motion';
 import { AES, enc } from 'crypto-js';
 import { useState } from 'react';
-import { useRef } from 'react';
 import { useEffect } from 'react';
 
 
@@ -40,11 +31,7 @@ const Nav = ({ searchValue, setSearchValue }) => {
         image: undefined
     });
 
-
-    console.log(id_user);
-
     useEffect(() => {
-        console.log({ id_user: id_user })
         fetch('https://benef-app.fr/api-infos-utilisateur.php', {
             method: "POST",
             headers: {
@@ -55,14 +42,12 @@ const Nav = ({ searchValue, setSearchValue }) => {
         })
             .then((response) => response.json())
             .then((data) => {
-                console.log(data);
                 setUser({
                     id: data.id_user,
                     username: data.username,
                     bio: data.bio,
                     image: data.image
                 })
-                console.log(user)
             })
             .catch(err => {
                 console.log("Error Reading data " + err);

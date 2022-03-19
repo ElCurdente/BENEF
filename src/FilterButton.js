@@ -1,9 +1,7 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
 import Filter from './Filter'
-import plus from './images/icon/icon_plus.svg';
-import plusblanc from './images/icon/icon_plus_blanc.svg';
-import fleche from './images/icon/icon_fleche.svg';
+
 
 const FilterButton = () => {
     const [values, setValues] = useState({

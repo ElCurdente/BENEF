@@ -3,7 +3,6 @@ import upvoteBas from './images/icon/upvote.svg';
 import upvoteHaut from './images/icon/upvote2.svg';
 import upvote from './Home'
 import { useState } from 'react';
-import { useEffect } from 'react';
 
 
 function Upvote() {

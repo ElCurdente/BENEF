@@ -22,7 +22,6 @@ const Parametre = () => {
     })
 
     useEffect(() => {
-        console.log({id_user : id_user})
         fetch('https://benef-app.fr/api-infos-utilisateur.php', {
             method: "POST",
             headers: {
@@ -33,14 +32,12 @@ const Parametre = () => {
           })
             .then((response) => response.json())
             .then((data) => {
-              console.log(data);
               setUser({
                 username: data.username,
                 email: data.email,
                 postal: data.postal,
                 birth: data.birth
               })
-              console.log(user)
             })
             .catch(err => {
               console.log("Error Reading data " + err);
