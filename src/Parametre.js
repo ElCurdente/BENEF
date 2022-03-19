@@ -55,7 +55,7 @@ const Parametre = () => {
                             </Link>
                         </ul>
                         <ul className="pb-2">
-                            <a className="flex justify-between cursor-pointer font-normal" href='/parametre'>
+                            <a className="flex justify-between cursor-pointer font-normal" href='/#/parametre'>
                                 Changer son mot de passe
                                 <img src={fleche} alt="fleche" className="w-2 transform rotate-180 mr-2"/>
                             </a>
