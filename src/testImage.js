@@ -29,9 +29,9 @@ const LandingPage = () => {
         formData.append('cgu', ' values.cgu');
 
 
-        for (var key of formData.entries()) {
-            // console.log(key[0] + ", " + key[1]);
-        }
+        // for (var key of formData.entries()) {
+        //     // console.log(key[0] + ", " + key[1]);
+        // }
         const data = await fetch("https://benef-app.fr/api-post.php", {
             method: "post",
             // headers: { "Content-Type": "multipart/form-data" },

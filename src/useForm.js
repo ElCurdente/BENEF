@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import {AES, enc}from 'crypto-js';
+import {AES}from 'crypto-js';
 
 
 
@@ -137,7 +137,7 @@ setErrorsConnexion({
       })
       .then((response) => response.json())
       .then((result) => {
-        if(result.doublon == true){
+        if(result.doublon === true){
           console.log("Utilisateur doublon");
           setErrorDoublon(true)
         }else{

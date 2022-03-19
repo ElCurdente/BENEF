@@ -160,7 +160,6 @@ const Filter = ({ searchValue, setSearchValue }) => {
     const regexp_postal = new RegExp(filters.postal, 'i');
     const regexp_category = new RegExp(filters.category, 'i');
     const filterByName = items.filter(x => regexp.test(x.title));
-    console.log(filters.postal);
     filterByFilters = items.filter(item => regexp_postal.test(item.postal));
     const filter100 = filterByFilters.filter(item => regexp_category.test(item.category))
     const filter1000 = filter100.filter(x => regexp.test(x.title));
@@ -169,7 +168,6 @@ const Filter = ({ searchValue, setSearchValue }) => {
     } else if (filters.filter_by === "date") {
       filter1000.sort(compareDate);
     }
-    console.log(filterByFilters);
 
     return (
       <div className="h-screen w-screen  bg-white-0 xl:dark:bg-gray-550 flex justify-center overflow-auto items-center">
@@ -180,7 +178,7 @@ const Filter = ({ searchValue, setSearchValue }) => {
             <div className="w-full xl:w-2/6 h-90% xl:h-95% mb-10 xl:mb-0 relative flex flex-col justify-start items-center rounded-t-3xl bg-white-0 overflow-auto dark:bg-gray-550 dark:text-white-0">
               <div className="mb-5 mt-7 mx-3 flex flex-col">
                 <div className="w-full h-250px relative">
-                  <img className="object-cover rounded-t-lg h-full w-full" src={modalItem.image} alt="image modale" />
+                  <img className="object-cover rounded-t-lg h-full w-full" src={modalItem.image} alt="modale" />
                 </div>
                 {/* <h1 className="text-lg xl:text-xl font-semibold mx-2 max-w-md">{modalItem.image}</h1> */}
                 <h1 className="text-lg xl:text-xl font-semibold max-w-md mt-2">{modalItem.title}</h1>
@@ -192,7 +190,7 @@ const Filter = ({ searchValue, setSearchValue }) => {
 
                 <div className="flex mt-2 w-92vw max-w-md">
                   <motion.img animate={{ rotate: 180 }} transition={{ repeat: Infinity, duration: 0.4, ease: "easeOut", repeatDelay: 1 }} id="sablier" src={sablier} className="opacity-100 h-20px " alt="icon sablier"></motion.img>
-                  {modalItem.expiration != '0000-00-00' ? <div className='ml-7'>{modalItem.expiration}</div> : <div className='ml-7'>A vie</div>}
+                  {modalItem.expiration !== '0000-00-00' ? <div className='ml-7'>{modalItem.expiration}</div> : <div className='ml-7'>A vie</div>}
 
                 </div>
 
@@ -201,7 +199,7 @@ const Filter = ({ searchValue, setSearchValue }) => {
                 <div className='flex self-end items-center text-sm max-w-md mt-4'>
                   <Link to="/profil2" className='flex items-center'>
                   Posté par <span className="font-semibold cursor-pointer ml-1 mr-2" onClick={handleModal.bind(modalItem)}>{modalItem.user_pseudo}</span>
-                  <img className="h-8 w-8 xl:border-2 cursor-pointer xl:h-8 xl:w-8 rounded-full xl:rounded-full border-2 border-red-450" src={modalItem.file} alt="image de profil" /></Link>
+                  <img className="h-8 w-8 xl:border-2 cursor-pointer xl:h-8 xl:w-8 rounded-full xl:rounded-full border-2 border-red-450" src={modalItem.file} alt="profil" /></Link>
                 </div>
 
                 <div className="flex w-full justify-evenly mt-5 mb-10">
@@ -340,7 +338,7 @@ const Filter = ({ searchValue, setSearchValue }) => {
                 <motion.div className="w-92vw h-150px relative flex justify-between items-center bg-red-450 xl:w-full dark:bg-black rounded-lg text-white-0 mb-5 shadow-customm"
                   whileHover={{ scale: 1.01 }}>
                   <div className="h-full w-35% flex justify-center items-center relative cursor-pointer">
-                    <img className="w-90% h-90%  object-cover rounded-lg" src={item.image} alt="image post" />
+                    <img className="w-90% h-90%  object-cover rounded-lg" src={item.image} alt="post" />
                   </div>
                   <div className="w-65% justify-self-end flex relative justify-center items-center h-full" onClick={handleModal.bind(item)}>
                     <li key={item.id_post} className="mt-1 w-92vw">
@@ -360,7 +358,7 @@ const Filter = ({ searchValue, setSearchValue }) => {
                 <motion.div className="w-92vw h-150px relative flex justify-between items-center bg-red-450 xl:w-full dark:bg-black rounded-lg text-white-0 mb-5 shadow-customm"
                   whileHover={{ scale: 1.01 }} >
                   <div className="h-full w-35% flex justify-center items-center relative cursor-pointer">
-                    <img className="w-90% h-90%  object-cover rounded-lg cursor-pointer" src={item.image} alt="image post" />
+                    <img className="w-90% h-90%  object-cover rounded-lg cursor-pointer" src={item.image} alt="post" />
                   </div>
                   <div className="w-65% justify-self-end flex relative justify-center items-center h-full cursor-pointer" onClick={handleModal.bind(item)}>
                     <li key={item.id_post} className="mt-1 w-92vw">
@@ -382,7 +380,7 @@ const Filter = ({ searchValue, setSearchValue }) => {
         <button name='bouton filtre' className="fixed bottom-24 xl:bottom-5 right-5 flex justify-center items-center w-16 h-16 text-lg font-bold  bg-orange-450 hover:bg-red-450 hover:text-white-0 hover:border-white-0 dark:hover:bg-white-150 dark:hover:text-gray-550 active:bg-red-200 dark:bg-white-0 dark:text-black rounded-full transition duration-300 ease-in-out shadow-customm"
           onClick={() => {
             setOpenModal(true);
-          }}><img src={filtre} className="h-6 dark:hidden" alt='icon filtre'/><img src={filtreNoir} className="h-6 hidden dark:block" /></button>
+          }}><img src={filtre} className="h-6 dark:hidden" alt="icon filtre"/><img src={filtreNoir} className="h-6 hidden dark:block" /></button>
 
       </div >
     );

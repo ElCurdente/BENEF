@@ -4,7 +4,6 @@ import { useRef } from 'react';
 import { useEffect } from 'react';
 import lottie from 'lottie-web';
 import Lottie from 'react-lottie';
-import animationData from './images/animation/like.json';
 import animationData2 from './images/animation/loading.json';
 import { motion } from 'framer-motion/dist/framer-motion';
 import adresse from './images/icon/adress.svg';
@@ -19,7 +18,6 @@ const Profil2 = () => {
     const [isLoaded, setIsLoaded] = useState(false);
     const [modalItem, setModalItem] = useState([]);
     const [openModal, setOpenModal] = useState(false);
-    const [bio, modifbio] = useState(false);
     const [successPdp, setSuccessPdp] = useState(false);
     let decrypted;
     
@@ -58,14 +56,14 @@ const Profil2 = () => {
         setModalItem(this);
     }
 
-    const defaultOptions = {
-        loop: false,
-        autoplay: true,
-        animationData: animationData,
-        rendererSettings: {
-            preserveAspectRatio: 'xMidYMid slice'
-        }
-    };
+    // const defaultOptions = {
+    //     loop: false,
+    //     autoplay: true,
+    //     animationData: animationData,
+    //     rendererSettings: {
+    //         preserveAspectRatio: 'xMidYMid slice'
+    //     }
+    // };
 
     const container = useRef(null)
 
@@ -111,42 +109,42 @@ const Profil2 = () => {
     }, [successPdp])
 
 
-    const [etat, setEtat] = useState({
-        isStopped: true,
-        isPaused: false,
-        speed: 1,
-        direction: 1,
-        isLiked: false,
-    });
+    // const [etat, setEtat] = useState({
+    //     isStopped: true,
+    //     isPaused: false,
+    //     speed: 1,
+    //     direction: 1,
+    //     isLiked: false,
+    // });
 
-    const clickHandler = () => {
-        if (!etat.isStopped) {
-            setEtat({
-                ...etat,
-                direction: etat.direction * -1
-            });
-        }
-        setEtat({
-            ...etat,
-            isStopped: false,
-            isLike: !etat.isLike
-        });
-    }
+    // const clickHandler = () => {
+    //     if (!etat.isStopped) {
+    //         setEtat({
+    //             ...etat,
+    //             direction: etat.direction * -1
+    //         });
+    //     }
+    //     setEtat({
+    //         ...etat,
+    //         isStopped: false,
+    //         isLike: !etat.isLike
+    //     });
+    // }
 
-    const [values, setValues] = useState({
-        id_user: id_user,
-        image: undefined,
-        username: '',
-        bio: '',
-    });
+    // const [values, setValues] = useState({
+    //     id_user: id_user,
+    //     image: undefined,
+    //     username: '',
+    //     bio: '',
+    // });
 
-    const handleChange = e => {
-        const { name, value } = e.target;
-        setValues({
-            ...values,
-            [name]: value
-        });
-    };
+    // const handleChange = e => {
+    //     const { name, value } = e.target;
+    //     setValues({
+    //         ...values,
+    //         [name]: value
+    //     });
+    // };
 
 
     // const handleSubmit = e => {
@@ -174,61 +172,61 @@ const Profil2 = () => {
 
     // };
 
-    const handleSubmit = async (event) => {
-        event.preventDefault();
-        const formData = new FormData();
-        formData.append('id_user', id_user);
-        formData.append("file", picture.pictureAsFile);
-        formData.append('username', values.username);
-        formData.append('bio', values.bio);
+    // const handleSubmit = async (event) => {
+    //     event.preventDefault();
+    //     const formData = new FormData();
+    //     formData.append('id_user', id_user);
+    //     formData.append("file", picture.pictureAsFile);
+    //     formData.append('username', values.username);
+    //     formData.append('bio', values.bio);
 
-        for (var key of formData.entries()) {
-            // console.log(key[0] + ", " + key[1]);
-        }
+    //     for (var key of formData.entries()) {
+    //         // console.log(key[0] + ", " + key[1]);
+    //     }
 
-        const data = await fetch("https://benef-app.fr/api-modif-profil.php", {
-            method: "post",
-            // headers: { "Content-Type": "multipart/form-data" },
-            body: formData,
-        });
-        const uploadedImage = await data.json();
-        if (uploadedImage) {
-            console.log("Successfully uploaded image");
-            modifbio(false);
-            setSuccessPdp(true);
-        } else {
-            console.log("Error Found");
-        }
-        modifbio(false);
-    };
+    //     const data = await fetch("https://benef-app.fr/api-modif-profil.php", {
+    //         method: "post",
+    //         // headers: { "Content-Type": "multipart/form-data" },
+    //         body: formData,
+    //     });
+    //     const uploadedImage = await data.json();
+    //     if (uploadedImage) {
+    //         console.log("Successfully uploaded image");
+    //         modifbio(false);
+    //         setSuccessPdp(true);
+    //     } else {
+    //         console.log("Error Found");
+    //     }
+    //     modifbio(false);
+    // };
 
-    const [openModalSupp, setOpenModalSupp] = useState(false);
+    // const [openModalSupp, setOpenModalSupp] = useState(false);
     const [deleteId, setDeleteId] = useState(0);
     const [suppr, setSuppr] = useState(false);
 
 
-    const handleDeletePost = () => {
-        setOpenModalSupp(false);
-        fetch('https://benef-app.fr/api-post-sup.php', {
-            method: "POST",
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({ id_post: deleteId })
-        })
-            .then((data) => {
-                setSuppr(true)
-            })
-            .catch(err => {
-                console.log("Error Reading data " + err);
-            });
-    }
+    // const handleDeletePost = () => {
+    //     setOpenModalSupp(false);
+    //     fetch('https://benef-app.fr/api-post-sup.php', {
+    //         method: "POST",
+    //         headers: {
+    //             'Accept': 'application/json',
+    //             'Content-Type': 'application/json'
+    //         },
+    //         body: JSON.stringify({ id_post: deleteId })
+    //     })
+    //         .then((data) => {
+    //             setSuppr(true)
+    //         })
+    //         .catch(err => {
+    //             console.log("Error Reading data " + err);
+    //         });
+    // }
 
-    function handlePostSupp() {
-        setOpenModalSupp(true);
-        setDeleteId(this);
-    }
+    // function handlePostSupp() {
+    //     setOpenModalSupp(true);
+    //     setDeleteId(this);
+    // }
 
     useEffect(() => {
         for (var i = 0; i < items.length; i++) {
@@ -240,63 +238,58 @@ const Profil2 = () => {
         }
     }, [suppr])
 
-    const [image, setImage] = useState();
-    const [preview, setPreview] = useState();
+    // const [image, setImage] = useState();
+    // const [preview, setPreview] = useState();
 
-    useEffect(() => {
-        if (image) {
-            const reader = new FileReader();
-            reader.onloadend = () => {
-                setPreview(reader.result);
-            };
-            reader.readAsDataURL(image);
+    // useEffect(() => {
+    //     if (image) {
+    //         const reader = new FileReader();
+    //         reader.onloadend = () => {
+    //             setPreview(reader.result);
+    //         };
+    //         reader.readAsDataURL(image);
 
-        } else {
-            setPreview(null);
-        }
-    }, [image]);
+    //     } else {
+    //         setPreview(null);
+    //     }
+    // }, [image]);
 
-    const [picture, setPicture] = useState({});
+    // const [picture, setPicture] = useState({});
 
-    const uploadPicture = (e) => {
-        const file = e.target.files[0];
-        if (file) {
-            setImage(file);
-        } else {
-            setImage(null);
-        }
+    // const uploadPicture = (e) => {
+    //     const file = e.target.files[0];
+    //     if (file) {
+    //         setImage(file);
+    //     } else {
+    //         setImage(null);
+    //     }
 
-        setPicture({
-            /* contains the preview, if you want to show the picture to the user
-                 you can access it with this.state.currentPicture
-             */
-            picturePreview: URL.createObjectURL(e.target.files[0]),
-            /* this contains the file we want to send */
-            pictureAsFile: e.target.files[0],
-        });
-    };
+    //     setPicture({
+    //         /* contains the preview, if you want to show the picture to the user
+    //              you can access it with this.state.currentPicture
+    //          */
+    //         picturePreview: URL.createObjectURL(e.target.files[0]),
+    //         /* this contains the file we want to send */
+    //         pictureAsFile: e.target.files[0],
+    //     });
+    // };
 
-    const handleConnexion = e => {
-        e.preventDefault();
-        modifbio(false);
-    };
+    // const handleConnexion = e => {
+    //     e.preventDefault();
+    //     modifbio(false);
+    // };
 
-    const handleModify = e => {
-        e.preventDefault();
-        modifbio(true);
-    };
+    // const handleModify = e => {
+    //     e.preventDefault();
+    //     modifbio(true);
+    // };
 
-    function handleDeconnexion() {
-        sessionStorage.clear();
-        window.location.reload();
-    }
+    // function handleDeconnexion() {
+    //     sessionStorage.clear();
+    //     window.location.reload();
+    // }
 
     const modal = useRef(null);
-
-    function handleModal() {
-        setOpenModal(true);
-        setModalItem(this);
-    }
 
     const defaultOptions2 = {
         loop: true,
@@ -327,7 +320,7 @@ const Profil2 = () => {
                         <div className="w-full xl:w-2/6 h-90% xl:h-90% mb-10 xl:mb-0 relative flex flex-col justify-start items-center rounded-t-3xl bg-white-0 overflow-auto dark:bg-gray-550 dark:text-white-0">
                             <div className="mb-5 mx-3 flex flex-col">
                                 <div className="w-full h-250px pt-5 relative">
-                                    <img className="object-cover rounded-t-lg h-full w-full" src={modalItem.image} alt="image post" />
+                                    <img className="object-cover rounded-t-lg h-full w-full" src={modalItem.image} alt="post" />
                                 </div>
                                 {/* <h1 className="text-lg xl:text-xl font-semibold mx-2 max-w-md">{modalItem.image}</h1> */}
                                 <h1 className="text-lg xl:text-xl font-semibold max-w-md mt-2">{modalItem.title}</h1>
@@ -339,7 +332,7 @@ const Profil2 = () => {
 
                                 <div className="flex mt-2 w-92vw max-w-md">
                                     <motion.img animate={{ rotate: 180 }} transition={{ repeat: Infinity, duration: 0.4, ease: "easeOut", repeatDelay: 1 }} id="sablier" src={sablier} className="opacity-100 h-20px " alt="icon sablier"></motion.img>
-                                    {modalItem.expiration != '0000-00-00' ? <div className='ml-7'>{modalItem.expiration}</div> : <div className='ml-7'>À vie</div>}
+                                    {modalItem.expiration !== '0000-00-00' ? <div className='ml-7'>{modalItem.expiration}</div> : <div className='ml-7'>À vie</div>}
 
                                 </div>
 
@@ -376,7 +369,7 @@ const Profil2 = () => {
 
                 <div id="infos" className="relative xl:w-2/6 w-95vw px-4 xl:-px-0">
                     <div className="flex items-center">
-                        <img src={user.image} className="w-100px h-100px bg-transparent dark:bg-gray-650 border-3 border-red-450 dark:border-black rounded-full object-cover" alt='image de profil'/>
+                        <img src={user.image} className="w-100px h-100px bg-transparent dark:bg-gray-650 border-3 border-red-450 dark:border-black rounded-full object-cover" alt='profil'/>
                         <h1 className="ml-3 text-xl font-semibold">{user.username}</h1>
                     </div>
                     <p className="col-span-2 mt-4">{user.bio}</p>
@@ -406,7 +399,7 @@ const Profil2 = () => {
                                     <img src={plusrouge} className="transform rotate-45 h-6 w-6 hover:animate-pulse" alt="icon sup"></img>
                                 </button> */}
                                 <div className="w-full h-250px relative" onClick={handleModal.bind(item)}>
-                                    <img className="object-cover rounded-t-lg h-full w-full" src={item.image} alt="image post" />
+                                    <img className="object-cover rounded-t-lg h-full w-full" src={item.image} alt="post" />
                                 </div>
                                 <div className="bg-white-0 text-black text-xl font-bold absolute right-3 bottom-24 w-max rounded-lg">
                                     <span className="px-2 upvote">{item.upvote}</span>

@@ -11,7 +11,6 @@ import upvoteBas from './images/icon/upvote.svg';
 import upvoteHaut from './images/icon/upvote2.svg';
 import { motion } from 'framer-motion/dist/framer-motion';
 import Lottie from 'react-lottie';
-import animationData from './images/animation/like.json';
 import animationData2 from './images/animation/loading.json';
 import coeur from './images/icon/icon_coeur.svg';
 import coeurPlein from './images/icon/icon_coeur_rempli.svg';
@@ -23,14 +22,14 @@ import signaler from './images/icon/icon_signaler.svg';
 const Thread = () => {
 
   const [state, setState] = useState(false);
-  const defaultOptions = {
-    loop: false,
-    autoplay: true,
-    animationData: animationData,
-    rendererSettings: {
-      preserveAspectRatio: 'xMidYMid slice'
-    }
-  };
+  // const defaultOptions = {
+  //   loop: false,
+  //   autoplay: true,
+  //   animationData: animationData,
+  //   rendererSettings: {
+  //     preserveAspectRatio: 'xMidYMid slice'
+  //   }
+  // };
 
   const defaultOptions2 = {
     loop: true,
@@ -44,7 +43,6 @@ const Thread = () => {
   const [error, setError] = useState(null);
   const [isLoaded, setIsLoaded] = useState(false);
   const [items, setItems] = useState([]);
-  const [userItems, setUserItems] = useState([]);
   const [upvote, setUpvote] = useState(false);
   const [downvote, setDownvote] = useState(false);
   const [isVoting, setIsVoting] = useState(false);
@@ -55,10 +53,9 @@ const Thread = () => {
   let history = useHistory();
   const [modalItem, setModalItem] = useState([]);
   const [modalItemUser, setModalItemUser] = useState([]);
-  const [modalItemUserPost, setModalItemUserPost] = useState([]);
   const [openModal, setOpenModal] = useState(false);
   const [openModalUser, setOpenModalUser] = useState(false);
-  const [openModalUserPost, setOpenModalUserPost] = useState(false);
+  // const [openModalUserPost, setOpenModalUserPost] = useState(false);
   const [isFav, setIsFav] = useState([]);
   let decrypted;
   if (localStorage.getItem('isConnected')) {
@@ -165,7 +162,7 @@ const Thread = () => {
           const envryptedString = AES.encrypt(data.id_user, 'MYKEY4DEMO');
           localStorage.setItem('id_user_post', envryptedString.toString());
           history.push('/profil2');
-          setModalItemUser(data);
+          // setModalItemUser(data);
         })
         .catch(err => {
           console.log("Error Reading data " + err);
@@ -174,32 +171,32 @@ const Thread = () => {
     }
   }, [openModalUser])
 
-  useEffect(() => {
-    if (openModalUser) {
-      fetch('https://benef-app.fr/api-post-user3.php', {
-        method: "POST",
-        headers: {
-          'Accept': 'application/json',
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({ id_user: modalItem.id_user })
-      })
-        .then(res => res.json())
-        .then(
-          (result) => {
-            setIsLoaded(true);
-            setUserItems(result.userItems);
-          },
-          (error) => {
-            setIsLoaded(true);
-            setError(error);
-          }
-        )
-    }
-  }, [openModalUser]);
+  // useEffect(() => {
+  //   if (openModalUser) {
+  //     fetch('https://benef-app.fr/api-post-user3.php', {
+  //       method: "POST",
+  //       headers: {
+  //         'Accept': 'application/json',
+  //         'Content-Type': 'application/json'
+  //       },
+  //       body: JSON.stringify({ id_user: modalItem.id_user })
+  //     })
+  //       .then(res => res.json())
+  //       .then(
+  //         (result) => {
+  //           setIsLoaded(true);
+  //           setUserItems(result.userItems);
+  //         },
+  //         (error) => {
+  //           setIsLoaded(true);
+  //           setError(error);
+  //         }
+  //       )
+  //   }
+  // }, [openModalUser]);
 
   function handleFav() {
-    if (isFav.find(x => x == this) != this) {
+    if (isFav.find(x => x === this) !== this) {
       setIsFav(prevState => [...prevState, this]);
       fetch('https://benef-app.fr/api-favoris.php', {
         method: "POST",
@@ -247,8 +244,8 @@ const Thread = () => {
     if (upvote) {
       for (var i = 0; i < items.length; i++) {
         if (items[i].id_post === isVoted) {
-          let feed = isUpvoted.find(x => x == isVoted);
-          if (feed == isVoted) {
+          let feed = isUpvoted.find(x => x === isVoted);
+          if (feed === isVoted) {
             fetch('https://benef-app.fr/api-downvote.php', {
               method: "POST",
               headers: {
@@ -295,8 +292,8 @@ const Thread = () => {
     } else if (downvote) {
       for (var i = 0; i < items.length; i++) {
         if (items[i].id_post === isVoted) {
-          let feed = isDownvoted.find(x => x == isVoted);
-          if (feed == isVoted) {
+          let feed = isDownvoted.find(x => x === isVoted);
+          if (feed === isVoted) {
             fetch('https://benef-app.fr/api-upvote.php', {
               method: "POST",
               headers: {
@@ -364,7 +361,7 @@ const Thread = () => {
     return 0;
   }
 
-  function Alert() { alert('Le message à été supprimé'); };
+  // function Alert() { alert('Le message à été supprimé'); };
   // function DelayAlert() { setInterval(Alert, 2000); }
 
   // const btnOuvrir = () => {
@@ -386,15 +383,15 @@ const Thread = () => {
     setModalItemUser(this);
   }
 
-  function handleModalUserPost() {
-    setOpenModalUserPost(true);
-    setModalItemUserPost(this);
-  }
+  // function handleModalUserPost() {
+  //   setOpenModalUserPost(true);
+  //   setModalItemUserPost(this);
+  // }
 
-  const [user, setUser] = useState({
-    username: '',
-    bio: ''
-  });
+  // const [user, setUser] = useState({
+  //   username: '',
+  //   bio: ''
+  // });
 
   const [openModalReport, setOpenModalReport] = useState(false);
   const [reportedId, setReportedId] = useState(0);
@@ -429,26 +426,26 @@ const Thread = () => {
   }
 
 
-  useEffect(() => {
-    fetch('https://benef-app.fr/api-infos-utilisateur.php', {
-      method: "POST",
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({ id_user: modalItem.id_user })
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        setUser({
-          username: data.username,
-          bio: data.bio
-        })
-      })
-      .catch(err => {
-        console.log("Error Reading data " + err);
-      });
-  }, [])
+  // useEffect(() => {
+  //   fetch('https://benef-app.fr/api-infos-utilisateur.php', {
+  //     method: "POST",
+  //     headers: {
+  //       'Accept': 'application/json',
+  //       'Content-Type': 'application/json'
+  //     },
+  //     body: JSON.stringify({ id_user: modalItem.id_user })
+  //   })
+  //     .then((response) => response.json())
+  //     .then((data) => {
+  //       setUser({
+  //         username: data.username,
+  //         bio: data.bio
+  //       })
+  //     })
+  //     .catch(err => {
+  //       console.log("Error Reading data " + err);
+  //     });
+  // }, [])
 
   if (error) {
     return <div>Erreur : {error.message}</div>;
@@ -517,7 +514,7 @@ const Thread = () => {
                 <div className="w-full xl:w-2/6 h-90vh xl:h-90vh mb-10 xl:mb-0 xl:relative xl:bottom-3 flex flex-col justify-start items-center xl:rounded-xl bg-white-0 overflow-auto dark:bg-gray-550 dark:text-white-0">
                   <div className="mb-5 mt-3 mx-3 flex flex-col">
                     <div className="w-full h-250px">
-                      <img className="object-cover rounded-lg h-full w-full" src={modalItem.image} alt="image post" />
+                      <img className="object-cover rounded-lg h-full w-full" src={modalItem.image} alt="post" />
                     </div>
                     {/* <h1 className="text-lg xl:text-xl font-semibold mx-2 max-w-md">{modalItem.image}</h1> */}
                     <div className="ml-2">
@@ -528,13 +525,13 @@ const Thread = () => {
                       </div>
                       <div className="flex mt-2 w-92vw max-w-md text-sm">
                         <motion.img animate={{ rotate: 180 }} transition={{ repeat: Infinity, duration: 0.75, ease: "easeOut", repeatDelay: 1 }} id="sablier" src={sablier} className="opacity-100 h-20px" alt="icon sablier"></motion.img>
-                        {modalItem.expiration != '0000-00-00' ? <div className='ml-4'>{modalItem.expiration}</div> : <div className='ml-4'>À vie</div>}
+                        {modalItem.expiration !== '0000-00-00' ? <div className='ml-4'>{modalItem.expiration}</div> : <div className='ml-4'>À vie</div>}
                       </div>
                       <h1 className="text-base max-w-md mt-5">{modalItem.description}</h1>
                       </div>
                       <div className='flex self-end items-center text-sm max-w-md mt-7 mr-2'>
                          Posté par <span className="font-semibold cursor-pointer ml-1 mr-2" onClick={handleModalUser.bind(modalItem)}>{modalItem.user_pseudo}</span>
-                          <img className="h-8 w-8 xl:border-2 xl:h-8 xl:w-8 rounded-full xl:rounded-full border-2 border-red-450 cursor-pointer" onClick={handleModalUser.bind(modalItem)} src={modalItem.file} alt="image de profil" />
+                          <img className="h-8 w-8 xl:border-2 xl:h-8 xl:w-8 rounded-full xl:rounded-full border-2 border-red-450 cursor-pointer" onClick={handleModalUser.bind(modalItem)} src={modalItem.file} alt="profil" />
                       
                       </div>
                     <div className="flex w-full justify-evenly mt-7 mb-10">
@@ -552,7 +549,7 @@ const Thread = () => {
               <motion.div className="w-92vw xl:w-full relative bg-red-450 dark:bg-black rounded-lg text-white-0 mb-4 xl:mb-5 shadow-customm"
                 whileHover={{ scale: 1.01 }}>
                 <div className="w-full h-250px relative" onClick={handleModal.bind(item)}>
-                  <img className="object-cover rounded-t-lg h-full w-full" src={item.image} alt="image post" />
+                  <img className="object-cover rounded-t-lg h-full w-full" src={item.image} alt="post" />
                 </div>
                 <div className="w-full min-h-max pb-4 md:cursor-pointer" onClick={handleModal.bind(item)} >
                   <h1 className="text-lg font-semibold mx-2 max-w-md mt-2	">{item.title}</h1>
@@ -567,7 +564,7 @@ const Thread = () => {
                       <button name='bouton favoris' className="upvote text-red-450 dark:text-black"
                         onClick={handleFav.bind(item.id_post)}>
                         {
-                          isFav.find(x => x == item.id_post) == item.id_post ? <img className='h-20px fill-current cursor-pointer' src={coeurPlein} alt='icon coeur rempli' /> :
+                          isFav.find(x => x === item.id_post) === item.id_post ? <img className='h-20px fill-current cursor-pointer' src={coeurPlein} alt='icon coeur rempli' /> :
                             <img className='h-20px fill-current cursor-pointer' src={coeur} alt='icon coeur' />
                         }
 

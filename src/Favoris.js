@@ -178,8 +178,8 @@ function Favoris() {
     if (upvote) {
       for (var i = 0; i < items.length; i++) {
         if (items[i].id_post === isVoted) {
-          let feed = isUpvoted.find(x => x == isVoted);
-          if (feed == isVoted) {
+          let feed = isUpvoted.find(x => x === isVoted);
+          if (feed === isVoted) {
             fetch('https://benef-app.fr/api-downvote.php', {
               method: "POST",
               headers: {
@@ -226,8 +226,8 @@ function Favoris() {
     } else if (downvote) {
       for (var i = 0; i < items.length; i++) {
         if (items[i].id_post === isVoted) {
-          let feed = isDownvoted.find(x => x == isVoted);
-          if (feed == isVoted) {
+          let feed = isDownvoted.find(x => x === isVoted);
+          if (feed === isVoted) {
             fetch('https://benef-app.fr/api-upvote.php', {
               method: "POST",
               headers: {
@@ -343,7 +343,7 @@ function Favoris() {
                 <div className="w-full xl:w-2/6 h-90% xl:h-95% mb-10 xl:mb-0 relative flex flex-col justify-start items-center rounded-t-3xl bg-white-0 overflow-auto dark:bg-gray-550 dark:text-white-0">
                   <div className="mb-5 mt-7 mx-3 flex flex-col">
                     <div className="w-full h-250px relative">
-                      <img className="object-cover rounded-t-lg h-full w-full" src={modalItem.image} alt="image modale" />
+                      <img className="object-cover rounded-t-lg h-full w-full" src={modalItem.image} alt="modale" />
                     </div>
                     {/* <h1 className="text-lg xl:text-xl font-semibold mx-2 max-w-md">{modalItem.image}</h1> */}
                     <h1 className="text-lg xl:text-xl font-semibold max-w-md mt-2">{modalItem.title}</h1>
@@ -355,7 +355,7 @@ function Favoris() {
 
                     <div className="flex mt-2 w-92vw max-w-md">
                       <motion.img animate={{ rotate: 180 }} transition={{ repeat: Infinity, duration: 0.4, ease: "easeOut", repeatDelay: 1 }} id="sablier" src={sablier} className="opacity-100 h-20px " alt="icon sablier"></motion.img>
-                      {modalItem.expiration != '0000-00-00' ? <div className='ml-7'>{modalItem.expiration}</div> : <div className='ml-7'>A vie</div>}
+                      {modalItem.expiration !== '0000-00-00' ? <div className='ml-7'>{modalItem.expiration}</div> : <div className='ml-7'>A vie</div>}
 
                     </div>
 
@@ -364,7 +364,7 @@ function Favoris() {
                     <div className='flex self-end items-center text-sm max-w-md mt-4'>
                       <Link to="/profil2" className='flex items-center'>
                         Posté par <span className="font-semibold cursor-pointer ml-1 mr-2" onClick={handleModal.bind(modalItem)}>{modalItem.user_pseudo}</span>
-                        <img className="h-8 w-8 xl:border-2 cursor-pointer xl:h-8 xl:w-8 rounded-full xl:rounded-full border-2 border-red-450" src={modalItem.file} alt="image de profil" /></Link>
+                        <img className="h-8 w-8 xl:border-2 cursor-pointer xl:h-8 xl:w-8 rounded-full xl:rounded-full border-2 border-red-450" src={modalItem.file} alt="profil" /></Link>
                     </div>
 
                     <div className="flex w-full justify-evenly mt-5 mb-10">
@@ -380,7 +380,7 @@ function Favoris() {
               <motion.div className="w-92vw xl:w-full relative bg-red-450 dark:bg-black rounded-lg text-white-0 mb-4 xl:mb-5 shadow-customm"
                 whileHover={{ scale: 1.01 }}>
                 <div className="w-full h-250px relative" onClick={handleModal.bind(item)}>
-                  <img className="object-cover rounded-t-lg h-full w-full" src={item.image} alt="image post" />
+                  <img className="object-cover rounded-t-lg h-full w-full" src={item.image} alt="post" />
                 </div>
                 <div className="w-full min-h-max pb-4 md:cursor-pointer" onClick={handleModal.bind(item)} >
                   <h1 className="text-lg font-semibold mx-2 max-w-md mt-2	">{item.title}</h1>
@@ -395,7 +395,7 @@ function Favoris() {
                       <button className="upvote text-red-450 dark:text-black" name='bouton fav'
                         onClick={handleFav.bind(item.id_post)}>
                         {
-                          isFav.find(x => x == item.id_post) == item.id_post ? <img className='h-20px fill-current cursor-pointer active:h-24px' src={coeurPlein} alt='icon coeur rempli' /> :
+                          isFav.find(x => x === item.id_post) === item.id_post ? <img className='h-20px fill-current cursor-pointer active:h-24px' src={coeurPlein} alt='icon coeur rempli' /> :
                             <img className='h-20px fill-current cursor-pointer' src={coeur} alt='icon coeur' />
                         }
 

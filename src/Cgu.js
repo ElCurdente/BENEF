@@ -18,7 +18,7 @@ const Cgu = () => {
 
                     <ul className="pb-2">
 
-                        <p class="opacity-95 font-normal">BENEF est une web-application unique en son genre. BENEF va vous permettre de consulter les bons plans publiés par les autres utilisateurs et de partager les vôtres avec la communauté de benefeurs. BENEF est ouvert à tous.
+                        <p className="opacity-95 font-normal">BENEF est une web-application unique en son genre. BENEF va vous permettre de consulter les bons plans publiés par les autres utilisateurs et de partager les vôtres avec la communauté de benefeurs. BENEF est ouvert à tous.
                             Nous souhaitons inciter les gens à sortir, le prix des sorties étant souvent un frein, surtout pour les jeunes et les étudiants. Nous souhaitons aussi développer un esprit collectif parmi les benefeurs,
                             c’est pourquoi ce sont les utilisateurs qui partagent les bons plans qui leur tiennent à cœur.</p>
                     </ul>

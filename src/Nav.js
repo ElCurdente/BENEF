@@ -108,7 +108,7 @@ const Nav = ({ searchValue, setSearchValue }) => {
 
                         <Link to="/profil" name='lien vers la page profil' className="xl:justify-self-end">
                             <motion.div whileHover={{ scale: 1.075 }} className="">
-                                <li><img className="xl:border-3 h-25px w-25px xl:h-8 xl:w-8 object-cover xl:rounded-full rounded-full border-2 border-white" src={user.image} alt="image utilisateur" /></li>
+                                <li><img className="xl:border-3 h-25px w-25px xl:h-8 xl:w-8 object-cover xl:rounded-full rounded-full border-2 border-white" src={user.image} alt="utilisateur" /></li>
                             </motion.div>
                         </Link>
 

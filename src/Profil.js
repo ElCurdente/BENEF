@@ -61,14 +61,14 @@ const Profil = () => {
         setModalItem(this);
     }
 
-    const defaultOptions = {
-        loop: false,
-        autoplay: true,
-        animationData: animationData,
-        rendererSettings: {
-            preserveAspectRatio: 'xMidYMid slice'
-        }
-    };
+    // const defaultOptions = {
+    //     loop: false,
+    //     autoplay: true,
+    //     animationData: animationData,
+    //     rendererSettings: {
+    //         preserveAspectRatio: 'xMidYMid slice'
+    //     }
+    // };
 
     const container = useRef(null)
 
@@ -112,27 +112,27 @@ const Profil = () => {
             });
     }, [successPdp])
 
-    const [etat, setEtat] = useState({
-        isStopped: true,
-        isPaused: false,
-        speed: 1,
-        direction: 1,
-        isLiked: false,
-    });
+    // const [etat, setEtat] = useState({
+    //     isStopped: true,
+    //     isPaused: false,
+    //     speed: 1,
+    //     direction: 1,
+    //     isLiked: false,
+    // });
 
-    const clickHandler = () => {
-        if (!etat.isStopped) {
-            setEtat({
-                ...etat,
-                direction: etat.direction * -1
-            });
-        }
-        setEtat({
-            ...etat,
-            isStopped: false,
-            isLike: !etat.isLike
-        });
-    }
+    // const clickHandler = () => {
+    //     if (!etat.isStopped) {
+    //         setEtat({
+    //             ...etat,
+    //             direction: etat.direction * -1
+    //         });
+    //     }
+    //     setEtat({
+    //         ...etat,
+    //         isStopped: false,
+    //         isLike: !etat.isLike
+    //     });
+    // }
 
     const [values, setValues] = useState({
         id_user: id_user,
@@ -183,9 +183,9 @@ const Profil = () => {
         formData.append('username', values.username);
         formData.append('bio', values.bio);
 
-        for (var key of formData.entries()) {
-            // console.log(key[0] + ", " + key[1]);
-        }
+        // for (var key of formData.entries()) {
+        //     // console.log(key[0] + ", " + key[1]);
+        // }
 
         const data = await fetch("https://benef-app.fr/api-modif-profil.php", {
             method: "post",
@@ -288,17 +288,13 @@ const Profil = () => {
         modifbio(true);
     };
 
-    function handleDeconnexion() {
-        sessionStorage.clear();
-        window.location.reload();
-    }
+    // function handleDeconnexion() {
+    //     sessionStorage.clear();
+    //     window.location.reload();
+    // }
 
     const modal = useRef(null);
 
-    function handleModal() {
-        setOpenModal(true);
-        setModalItem(this);
-    }
 
     const defaultOptions2 = {
         loop: true,
@@ -329,7 +325,7 @@ const Profil = () => {
                         <div className="w-full xl:w-2/6 h-90% xl:h-90% mb-10 xl:mb-0 relative flex flex-col justify-start items-center rounded-t-3xl bg-white-0 overflow-auto dark:bg-gray-550 dark:text-white-0">
                             <div className="mb-5 mx-3 flex mt-5 flex-col">
                                 <div className="w-full h-250px relative">
-                                    <img className="object-cover rounded-t-lg h-full w-full" src={modalItem.image} alt="image post" />
+                                    <img className="object-cover rounded-t-lg h-full w-full" src={modalItem.image} alt="post" />
                                 </div>
                                 {/* <h1 className="text-lg xl:text-xl font-semibold mx-2 max-w-md">{modalItem.image}</h1> */}
                                 <h1 className="text-lg xl:text-xl font-semibold max-w-md mt-2">{modalItem.title}</h1>
@@ -341,7 +337,7 @@ const Profil = () => {
 
                                 <div className="flex mt-2 w-92vw max-w-md">
                                     <motion.img animate={{ rotate: 180 }} transition={{ repeat: Infinity, duration: 0.4, ease: "easeOut", repeatDelay: 1 }} id="sablier" src={sablier} className="opacity-100 h-20px " alt="icon sablier"></motion.img>
-                                    {modalItem.expiration != '0000-00-00' ? <div className='ml-7'>{modalItem.expiration}</div> : <div className='ml-7'>À vie</div>}
+                                    {modalItem.expiration !== '0000-00-00' ? <div className='ml-7'>{modalItem.expiration}</div> : <div className='ml-7'>À vie</div>}
 
                                 </div>
 
@@ -378,13 +374,13 @@ const Profil = () => {
 
                 <div id="infos" className="relative xl:w-2/6 w-95vw px-4 xl:-px-0 relative top-10">
                     <div className="flex items-center">
-                        <img src={user.image} className="w-100px h-100px bg-transparent dark:bg-gray-650 border-3 border-red-450 dark:border-black rounded-full object-cover" alt='image de profil'/>
+                        <img src={user.image} className="w-100px h-100px bg-transparent dark:bg-gray-650 border-3 border-red-450 dark:border-black rounded-full object-cover" alt='profil'/>
                         <h1 className="ml-3 text-xl font-semibold">{user.username}</h1>
                     </div>
                     <p className="col-span-2 mt-4">{user.bio}</p>
                     <div className="flex items-center justify-between col-span-2 h-16 pt-8">
                         <button name='bouton modifie ton profil' onClick={handleModify} className="flex items-center h-10 bg-red-450 py-2 px-4 rounded-3xl text-white-0 dark:text-black hover:bg-white-0 hover:text-red-450 hover:border-red-450 border-2 border-red-450 dark:bg-white-0 dark:border-white-0 transition duration-300 ease-in-out">Modifie ton profil</button>
-                        {user.id == 38 &&
+                        {user.id === 38 &&
                             <Link to="/backoffice"><button name='bouton backoffice' className="flex items-center text-red-450 dark:text-white-0 hover:underline">Accéder aux signalements</button></Link>
                         }
 
@@ -408,7 +404,7 @@ const Profil = () => {
                                     <img src={plusrouge} className="transform rotate-45 h-6 w-6 hover:animate-pulse" alt='icon sup'></img>
                                 </button>
                                 <div className="w-full h-250px relative" onClick={handleModal.bind(item)}>
-                                    <img className="object-cover rounded-t-lg h-full w-full" src={item.image} alt="image post" />
+                                    <img className="object-cover rounded-t-lg h-full w-full" src={item.image} alt="post" />
                                 </div>
                                 <div className="bg-white-0 text-black text-xl font-bold absolute right-3 bottom-24 w-max rounded-lg">
                                     <span className="px-2 upvote">{item.upvote}</span>
@@ -438,7 +434,7 @@ const Profil = () => {
                                     onClick={() => {
                                         setImage(null);
                                     }}
-                                    className="w-100px h-100px bg-transparent dark:bg-gray-650 cursor-pointer border-3 border-red-450 dark:border-black rounded-full object-cover " alt='image previsualisation'/>
+                                    className="w-100px h-100px bg-transparent dark:bg-gray-650 cursor-pointer border-3 border-red-450 dark:border-black rounded-full object-cover " alt='previsualisation'/>
                             ) : (
                                 <button onClick={(e) => {
                                     e.preventDefault();
