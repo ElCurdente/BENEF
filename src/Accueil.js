@@ -17,7 +17,9 @@ import logo from './images/logo/logo_benef.svg';
 import logodark from './images/logo/logo_benef_dark.svg';
 import plus from './images/icon/icon_plus.svg';
 import plusnoir from './images/icon/icon_plus_noir.svg';
-import etiquette from './images/icon/icon_etiquette.svg';
+import etiquettedark from './images/icon/icon_etiquette_dark.svg';
+import favorisdark from './images/icon/icon_coeur_dark.svg';
+import recherchedark from './images/icon/icon_recherche_dark.svg';
 import { useState } from "react";
 
 
@@ -62,17 +64,22 @@ const Accueil = () => {
             </div>
             {openModal &&
                 <div id="modal" className="flex w-screen h-screen bg-black bg-opacity-30 fixed bottom-0 left-0 justify-center overflow-auto z-40 items-center">
-                    <div className="w-95vw xl:w-2/6 max-h-max mb-10 xl:mb-0 relative flex flex-col justify-center items-center rounded-3xl bg-white-0 dark:bg-gray-550 dark:text-white-0 h-90vh overflow-y-auto mt-32 pb-20">
-                        <div className="mt-7 flex flex-col">
-                            <h1 className="text-lg xl:text-xl text-red-650 font-semibold max-w-md mb-2 pt-20 text-center">Bienvenue sur BENEF !</h1>
+                    <div className="w-95vw xl:w-2/6 mb-10 xl:mb-0 relative flex flex-col justify-center items-center rounded-3xl bg-white-0 dark:bg-gray-550 dark:text-white-0  xl:h-auto overflow-y-auto mt-56 pb-20 xl:pb-10 ">
+                        <div className="mt-7 xl:mt-0 flex flex-col">
+                            <h1 className="text-lg xl:text-xl text-red-650 font-semibold max-w-md mb-2 pt-20 xl:pt-10 text-center">Bienvenue sur BENEF !</h1>
                             <h1 className="text-lg xl:text-base font-light max-w-md mt-2">Voici quelques explications :<br></br><br></br>
-                                <div className='max-w-d'>Le <img className="h-24px xl:h-20px dark:hidden" src={plus} alt="logo plus"/>
-                                 te permet de créer ton bon plan <br></br>
-                                Le <img className="h-24px xl:h-20px dark:hidden" src={etiquette} alt="logo plus"/> est la page d'accueil<br></br>
-                                <br></br></div>
+                                <div className='max-w-d'>
+                                <img className="h-24px xl:h-20px dark:hidden xl:hidden" src={etiquettedark} alt="logo plus"/>
+                                <img className="h-24px xl:h-20px dark:hidden hidden xl:block" src={logo} alt="logo plus"/> est la page d'accueil<br></br>
+                                
+                                <img className="h-24px xl:h-20px dark:hidden" src={recherchedark} alt="logo plus"/> est la page recherche<br></br>
+                                <img className="h-24px xl:h-20px dark:hidden" src={plus} alt="logo plus"/>te permet de créer ton bon plan <br></br>
+                                <img className="h-24px xl:h-20px dark:hidden" src={favorisdark} alt="logo plus"/> affiche tes favoris
+                                <br></br><br></br></div>
                                 
                                 
                                 </h1>
+                                <div className='xl:hidden'>
                             <h1 className="text-lg xl:text-xl text-red-650 font-semibold max-w-md mb-2 text-center">L'appli web est désormais disponible !</h1>
                             <h1 className="text-lg xl:text-base font-light max-w-md mt-2">Si vous souhaitez l'installer :<br></br>
                                 Sur iOS :<br></br>
@@ -84,6 +91,7 @@ const Accueil = () => {
                                 - Cliquez sur "Ajouter à l'écran d'accueil"<br></br>
                                 <br></br>
                                 Prêt à participer à l'aventure BENEF ?</h1>
+                                </div>
                             <div className="flex w-full justify-evenly mt-7 mb-8">
 
                                 <button onClick={() => setOpenModal(false)} className="block px-4 hover:underline hover:underline-offset-8 text-red-450 font-semibold dark:hover:underline dark:hover:underline-offset-8 dark:hover:text-black transition duration-300 ease-in-out" type="submit" name='bouton fermer'>Fermer</button>
