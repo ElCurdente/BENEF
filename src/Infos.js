@@ -22,7 +22,6 @@ const Parametre = () => {
     })
 
     useEffect(() => {
-        console.log({id_user : id_user})
         fetch('https://benef-app.fr/api-infos-utilisateur.php', {
             method: "POST",
             headers: {
@@ -33,14 +32,12 @@ const Parametre = () => {
           })
             .then((response) => response.json())
             .then((data) => {
-              console.log(data);
               setUser({
                 username: data.username,
                 email: data.email,
                 postal: data.postal,
                 birth: data.birth
               })
-              console.log(user)
             })
             .catch(err => {
               console.log("Error Reading data " + err);
@@ -60,18 +57,18 @@ const Parametre = () => {
 
                 <h2 className=" text-base pt-7 font-bold ">Nom d'utilisateur</h2>
                 <li className='mt-2 list-none'>
-                    <ul><a className="opacity-95 text-base">{user.username}</a></ul>
+                    <ul><p className="opacity-95 text-base">{user.username}</p></ul>
                 </li>
 
                 <h2 className="text-base pt-7 font-bold ">E-mail</h2>
                 <li className='mt-2 list-none'>
-                    <ul><a className="opacity-95 text-base">{user.email}</a></ul>
+                    <ul><p className="opacity-95 text-base">{user.email}</p></ul>
                 </li>
 
 
                 <h2 className="text-base pt-7 font-bold ">Code postal</h2>
                 <li className=' mt-2 list-none'>
-                    <ul><a className="opacity-95 text-base">{user.postal}</a></ul>
+                    <ul><p className="opacity-95 text-base">{user.postal}</p></ul>
                 </li>
 
 

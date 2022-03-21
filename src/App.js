@@ -2,9 +2,7 @@ import './App.css';
 import Form from './Form';
 import './Form.css';
 import Accueil from './Accueil';
-import Home from './Home';
-import Thread from './Thread';
-import React, {useState} from "react";
+import React from "react";
 
 
 function App() {

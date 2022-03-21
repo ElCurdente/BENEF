@@ -42,7 +42,7 @@ export default class ToggleLike extends React.Component {
         speed={speed}
         direction={direction}
       />
-      <button style={centerStyle} onClick={clickHandler}>{isLike ? 'unlike' : 'like'}</button>
+      <button style={centerStyle} name='bouton toggle Like' onClick={clickHandler}>{isLike ? 'unlike' : 'like'}</button>
     </div>);
   }
 }

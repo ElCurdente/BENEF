@@ -1,18 +1,13 @@
 import React from 'react';
 import fleche from './images/icon/icon_fleche_noire.svg';
 import ToggleBtn from './toggleBtn';
-import ToggleBtn2 from './toggleBtn_2';
-import { useEffect } from 'react';
-import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import './index.css';
 import { useHistory } from "react-router-dom";
 
-
 const Parametre = () => {
 
     let history = useHistory();
-    console.log(history);
 
     function handleDeconnexion() {
         history.push("/");
@@ -33,7 +28,6 @@ const Parametre = () => {
     })
       .then((response) => response.json())
       .then((data) => {
-        console.log(data);
         sessionStorage.clear();
         window.location.reload();
       })
@@ -61,7 +55,7 @@ const Parametre = () => {
                             </Link>
                         </ul>
                         <ul className="pb-2">
-                            <a className="flex justify-between cursor-pointer font-normal" href>
+                            <a className="flex justify-between cursor-pointer font-normal" href='/#/parametre'>
                                 Changer son mot de passe
                                 <img src={fleche} alt="fleche" className="w-2 transform rotate-180 mr-2"/>
                             </a>
@@ -86,9 +80,8 @@ const Parametre = () => {
                     <li className='mt-2 list-none'>
     
                         <ul className="w-full flex justify-between items-center font-normal pb-2">
-                            <Link to="/Cgu">
-    
-                               <a className="cursor-pointer font-normal">Conditions d'utilisations générales</a>
+                            <Link to="/Cgu" className="cursor-pointer font-normal">
+                               Conditions d'utilisations générales
                             </Link>
                         </ul>
     

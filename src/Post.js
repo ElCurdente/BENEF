@@ -2,22 +2,16 @@ import React from 'react';
 import { useState } from 'react';
 import { useRef } from 'react';
 import { useEffect } from 'react';
-import Accueil from './Accueil';
-import plus from './images/icon/icon_plus.svg';
 import plusblanc from './images/icon/icon_plus_blanc.svg';
 import illus_images from './images/icon/icon_images.svg';
-import fleche from './images/icon/icon_fleche.svg';
 import content from './images/illustrations/content.png';
-import axios from 'axios';
-import { BrowserRouter as Router, Switch, Route, Link, useHistory} from 'react-router-dom';
-import validate from './validateInfo'
+import { BrowserRouter as Link} from 'react-router-dom';
 import {AES, enc} from 'crypto-js';
 
 
 const Post = () => {
     const modal = useRef(null);
     const [errors, setErrors] = useState({});
-    const [isSubmitting, setIsSubmitting] = useState(false);
 
     const [openModal, setOpenModal] = useState(false);
     let decrypted;
@@ -47,23 +41,16 @@ const Post = () => {
             ...values,
             [name]: value
         });
-        console.log(value);
     };
-
-    const img_form = document.getElementById('image');
-    let history = useHistory();
 
 
     const onFileChange = (e) => {
         const file = e.target.files[0];
         if (file) {
             setImage(file);
-            console.log("ça marche pas")
         } else {
             setImage(null);
         }
-
-        console.log(file)
     }
 
     const myForm = useRef(null);
@@ -82,7 +69,6 @@ const Post = () => {
 
         } else {
             setPreview(null);
-            console.log("ça marche")
         }
     }, [image]);
 
@@ -92,12 +78,10 @@ const Post = () => {
         const file = e.target.files[0];
         if (file) {
             setImage(file);
-            console.log("ça marche pas")
         } else {
             setImage(null);
         }
 
-        console.log(file)
         setPicture({
             /* contains the preview, if you want to show the picture to the user
                  you can access it with this.state.currentPicture
@@ -123,12 +107,9 @@ const Post = () => {
         formData.append('cgu',  values.cgu);
         formData.append('id_user', id_user);
 
-        console.log(picture.pictureAsFile);
-
         for (var key of formData.entries()) {
-            console.log(key[0] + ", " + key[1]);
+            // console.log(key[0] + ", " + key[1]);
         }
-        console.log(formData)
         setOpenModal(true);
         const data = await fetch("https://benef-app.fr/api-post.php", {
             method: "post",
@@ -138,7 +119,6 @@ const Post = () => {
         const uploadedImage = await data.json();
         if (uploadedImage) {
             console.log("Successfully uploaded image");
-            console.log(data);
         } else {
             console.log("Error Found");
         }
@@ -154,14 +134,14 @@ const Post = () => {
                         <div className="w-full xl:w-2/6 xl:mb-0 relative flex flex-col justify-start items-center rounded-3xl bg-white-0 overflow-auto dark:bg-gray-550 dark:text-white-0">
                             <div className="mt-7 mx-3 flex flex-col items-center text-center">
                                 {/* <h1 className="text-lg xl:text-xl font-semibold mx-2 max-w-md">{modalItem.image}</h1> */}
-                                <img className="mb-5 w-20" src={content} alt=''/> 
+                                <img className="mb-5 w-20" src={content} alt='emoji content'/> 
                                 <h1 className="text-lg xl:text-xl font-semibold max-w-md mt-2">
                                     Ton bon plan a bien été publié !
                                 </h1>
                                 <h1 className="text-lg xl:text-sm font-light max-w-md mt-2">L'équipe BENEF te remercie de faire vivre l'application !</h1>
                                 <div className="flex w-full justify-evenly mt-7 mb-8">
                                 <Link to="/" onClick={() => {}}>
-                                    <button onClick={() => setOpenModal(false)} className="block px-4 font-semibold py-2 bg-red-450 hover:bg-white-0 hover:text-red-450 hover:border-red-450 border-2 border-red-450 dark:hover:bg-white-150 dark:hover:text-gray-550 active:bg-red-200 dark:bg-white-0 dark:border-black dark:text-black rounded-full transition duration-300 ease-in-out text-white-0" type="submit">Fermer</button>
+                                    <button onClick={() => setOpenModal(false)} name='bouton fermer' className="block px-4 font-semibold py-2 bg-red-450 hover:bg-white-0 hover:text-red-450 hover:border-red-450 border-2 border-red-450 dark:hover:bg-white-150 dark:hover:text-gray-550 active:bg-red-200 dark:bg-white-0 dark:border-black dark:text-black rounded-full transition duration-300 ease-in-out text-white-0" type="submit">Fermer</button>
                                 </Link>
                                 </div>
                             </div>
@@ -177,15 +157,16 @@ const Post = () => {
                                 onClick={() => {
                                     setImage(null);
                                 }}
-                                className="w-100vw h-30vh bg-white-0 dark:bg-gray-650 xl:border-none cursor-pointer border-2 border-red-450 dark:border-black rounded-t-md object-contain " />
+                                className="w-100vw h-30vh bg-white-0 dark:bg-gray-650 xl:border-none cursor-pointer border-2 border-red-450 dark:border-black rounded-t-md object-contain " alt='previsualisation'/>
                         ) : (
                             <button onClick={(e) => {
                                 e.preventDefault();
                                 fileInputRef.current.click();
+                                
 
-                            }} className="w-100vw h-30vh rounded-t-md border-2 border-red-450  xl:border-dashed cursor-pointer bg-white-0 text-red-450 dark:text-white-0 text-xl leading-loose dark:bg-gray-650 dark:border-black">
-                                <img className="h-50px m-auto dark:hidden" src={illus_images} alt="" />
-                                <img className="h-40px m-auto hidden dark:block" src={plusblanc} alt="" /> <span className='xl:hidden'>Ajouter une photo</span> <span className='hidden xl:block xl:mt-2'>Sélectionner sur l'ordinateur</span>
+                            }} name='bouton sélectionner une image' className="w-100vw h-30vh rounded-t-md border-2 border-red-450  xl:border-dashed cursor-pointer bg-white-0 text-red-450 dark:text-white-0 text-xl leading-loose dark:bg-gray-650 dark:border-black">
+                                <img className="h-50px m-auto dark:hidden" src={illus_images} alt="illustration" />
+                                <img className="h-40px m-auto hidden dark:block" src={plusblanc} alt="icon plus" /> <span className='xl:hidden'>Ajouter une photo</span> <span className='hidden xl:block xl:mt-2'>Sélectionner sur l'ordinateur</span>
                             </button>)}
 
                         <input id="image"
@@ -329,7 +310,7 @@ const Post = () => {
 
                     </div>
                     <div className="flex justify-end xl:justify-center items-center py-5 mr-5">
-                        <button className="block w-24 h-9 bg-red-450 hover:bg-white-0 hover:text-red-450 hover:border-red-450 border-2 border-red-450 dark:hover:bg-white-150 dark:hover:text-gray-550 active:bg-red-200 dark:bg-white-0 dark:border-black dark:text-black rounded-full transition duration-300 ease-in-out text-white-0" type="submit">Publier</button>
+                        <button name='bouton publier' className="block w-24 h-9 bg-red-450 hover:bg-white-0 hover:text-red-450 hover:border-red-450 border-2 border-red-450 dark:hover:bg-white-150 dark:hover:text-gray-550 active:bg-red-200 dark:bg-white-0 dark:border-black dark:text-black rounded-full transition duration-300 ease-in-out text-white-0" type="submit">Publier</button>
                     </div>
 
                 </form>
