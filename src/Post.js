@@ -186,12 +186,12 @@ const Post = () => {
                     <div className="flex h-100px relative justify-center items-center w-4/5">
                         <div className="w-full h-80px flex justify-center items-center">
                             <select name="category" id="category" onChange={handleChange} className="block appearance-none bg-red-450 xl:bg-white-0 text-white-0 border-gray-400 hover:border-gray-500 px-4 py-2 pr-12 ml-12 shadow leading-tight focus:outline-none focus:shadow-outline xl:text-gray-650">
-                                <option value="select">--Choisissez une catégorie--</option>
+                                <option value="select">--Catégorie du bon plan--</option>
                                 <option value="Restos" className="bg-white-0 text-red-450">Restos</option>
                                 <option value="Expos" className="bg-white-0 text-red-450">Expos</option>
                                 <option value="Bars" className="bg-white-0 text-red-450">Bars</option>
                                 <option value="Soirées" className="bg-white-0 text-red-450">Soirées</option>
-                                <option value="Étudiants" className="bg-white-0 text-red-450">Étudiants</option>
+                                <option value="Étudiants" className="bg-white-0 text-red-450">Tarifs étudiants</option>
                                 <option value="Autres" className="bg-white-0 text-red-450">Autres</option>
                             </select>
                         </div>
@@ -207,13 +207,13 @@ const Post = () => {
                             type="text"
                             name="title"
                             maxLength="60"
-                            placeholder="Titre du bon plan" className="placeholder-white-150 text-white-150 border-b-2 bg-transparent w-4/5 my-2 h-12 pt-5 text-left focus:outline-none  focus:placeholder-transparent  xl:placeholder-gray-650 xl:text-black xl:border-red-450"
+                            placeholder="Titre du bon plan (ex: Tapas maison de 2 à 5€)" className="placeholder-white-150 text-white-150 border-b-2 bg-transparent w-4/5 my-2 h-12 pt-5 text-left focus:outline-none  focus:placeholder-transparent  xl:placeholder-gray-650 xl:text-black xl:border-red-450"
                             value={values.title}
                             onChange={handleChange}
                         />
                     </div>
 
-                    <div className="flex  relative justify-center items-center">
+                    <div className="flex relative justify-center items-center">
                         <label htmlFor="desc" className="w-full flex justify-center">
                             <textarea
                                 id="desc"
@@ -221,7 +221,7 @@ const Post = () => {
                                 name="desc"
                                 rows="40"
                                 maxLength="255"
-                                className=" resize-y placeholder-white-150 text-white-150 border-b-2 bg-transparent w-4/5 my-2 h-24 pt-5 text-left focus:outline-none  focus:placeholder-transparent  xl:text-black xl:placeholder-gray-650 xl:border-red-450"
+                                className=" resize-y placeholder-white-150 text-white-150 border-b-2 bg-transparent w-4/5 my-2 h-12 pt-5 text-left focus:outline-none  focus:placeholder-transparent  xl:text-black xl:placeholder-gray-650 xl:border-red-450"
                                 placeholder="Précisions, détails..."
                                 value={values.desc}
                                 onChange={handleChange}
@@ -256,27 +256,27 @@ const Post = () => {
                         {errors.postal && <p className="absolute -bottom-4 left-10 text-red-900 dark:text-red-650">{errors.postal}</p>}
                     </div>
 
-                    <div className="flex  relative justify-center items-center">
+                    <div className="flex relative justify-center items-center">
                         <label htmlFor="postal" className="">
                         </label>
                         <input id="place"
                             type="text"
                             name="place"
-                            placeholder="Nom de l'enseigne" className="placeholder-white-150 text-white-150 border-b-2 bg-transparent w-4/5 my-2 h-12 pt-5 text-left focus:outline-none  focus:placeholder-transparent  xl:placeholder-gray-650 xl:text-black xl:border-red-450"
+                            placeholder="Nom de l'enseigne" className="placeholder-white-150 text-white-150 border-b-2 bg-transparent w-4/5 my-2 h-12 pt-5 text-left focus:outline-none focus:placeholder-transparent  xl:placeholder-gray-650 xl:text-black xl:border-red-450"
                             value={values.place}
                             onChange={handleChange}
                             required
                         />
                     </div>
 
-                    <div className="flex  relative justify-center items-center">
+                    <div className="flex relative justify-center items-center">
                         <label htmlFor="expiration" className="">
                         </label>
                         <input id="expiration"
                             type="date"
                             name="expiration"
                             maxLength="30"
-                            placeholder="Date d'expiration" className="appearance-none placeholder-white-150 text-white-150 border-b-2 bg-transparent w-4/5 my-2 h-12 pt-5 text-left focus:outline-none  focus:placeholder-transparent  xl:placeholder-gray-650 xl:text-black xl:border-red-450"
+                            placeholder="Date d'expiration" className="appearance-none placeholder-white-150 text-white-150 border-b-2 bg-transparent w-4/5 my-2 h-12 pt-5 text-left focus:outline-none focus:placeholder-transparent  xl:placeholder-gray-650 xl:text-black xl:border-red-450"
                             value={values.expiration}
                             onChange={handleChange}
                         />
