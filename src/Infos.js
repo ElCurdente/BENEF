@@ -53,7 +53,7 @@ const Parametre = () => {
 
           <div className="flex relative flex-row justify-center items-center pt-7">
             <Link to="/Parametre">
-              <img className="absolute left-0 mt-10 xl:mt-3 w-4" src={fleche} alt="fleche"  />
+              <img className="absolute left-0 mt-10 xl:mt-0 w-4" src={fleche} alt="fleche"  />
                 </Link>
                   <span className="text-center text-2xl mt-20 font-bold xl:mt-8">Informations du compte</span>
                 </div>
