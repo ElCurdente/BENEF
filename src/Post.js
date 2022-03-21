@@ -310,7 +310,7 @@ const Post = () => {
 
                     </div>
                     <div className="flex justify-end xl:justify-center items-center py-5 mr-5">
-                        <button name='bouton publier' className="block w-24 h-9 bg-white-O hover:bg-red-450 hover:text-white-0 hover:border-white-0 border-2 border-red-white-0 dark:hover:bg-white-150 dark:hover:text-gray-550 active:bg-red-200 dark:bg-white-0 dark:border-black dark:text-black rounded-full transition duration-300 ease-in-out text-white-0" type="submit">Publier</button>
+                        <button name='bouton publier' className="block w-24 h-9 bg-white-O hover:bg-red-450 hover:text-white-0 hover:border-white-0 border-2 border-red-white-0 dark:hover:bg-white-150 dark:hover:text-gray-550 active:bg-red-200 dark:bg-white-0 dark:border-black dark:text-black rounded-full transition duration-300 ease-in-out text-white-0 xl:bg-red-450 xl:hover:bg-white-0 xl:hover:text-red-450 xl:hover:border-red-450" type="submit">Publier</button>
                     </div>
 
                 </form>
