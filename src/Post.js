@@ -12,7 +12,8 @@ import {AES, enc} from 'crypto-js';
 const Post = () => {
     const modal = useRef(null);
     const [errors, setErrors] = useState({});
-
+    const [isSubmitting, setIsSubmitting] = useState(false);
+    const ref = useRef();
     const [openModal, setOpenModal] = useState(false);
     let decrypted;
     if(localStorage.getItem('isConnected')){
@@ -273,7 +274,10 @@ const Post = () => {
                         <label htmlFor="expiration" className="">
                         </label>
                         <input id="expiration"
-                            type="date"
+                            type="text"
+                            ref={ref}
+                            onFocus={() => (ref.current.type = "date")}
+                            onBlur={() => (ref.current.type = "text")}
                             name="expiration"
                             maxLength="30"
                             placeholder="Date d'expiration" className="appearance-none placeholder-white-150 text-white-150 border-b-2 bg-transparent w-4/5 my-2 h-12 pt-5 text-left focus:outline-none focus:placeholder-transparent  xl:placeholder-gray-650 xl:text-black xl:border-red-450"
@@ -290,8 +294,9 @@ const Post = () => {
                             className="form-checkbox rounded-sm bg-transparent border-white-0 border-2 text-transparent focus:ring-transparent checked:border-white-0 xl:border-red-450 xl:checked:border-red-450 xl:text-red-450"
                             value={values.certified}
                             onChange={handleChange}
+                            required
                         />
-                        <label htmlFor="certified" className="text-white-150 pl-2 xl:text-red-450">Je certifie que ce bon plan existe
+                        <label  htmlFor="certified" className="text-white-150 pl-2 xl:text-red-450" >Je certifie que ce bon plan existe
                         </label>
 
                     </div>
@@ -304,8 +309,9 @@ const Post = () => {
                             className="form-checkbox rounded-sm bg-transparent border-white-0 border-2 text-transparent focus:ring-transparent xl:focus:ring-black checked:border-white-0 xl:border-red-450 xl:checked:border-red-450 xl:text-red-450"
                             value={values.cgu}
                             onChange={handleChange}
+                            required
                         />
-                        <label htmlFor="cgu" className="text-white-150 pl-2 xl:text-red-450">Je certifie avoir pris connaissance des CGU
+                        <label htmlFor="cgu" className="text-white-150 pl-2 xl:text-red-450" >Je certifie avoir pris connaissance des CGU
                         </label>
 
                     </div>
