@@ -147,7 +147,7 @@ const Post = () => {
 
 
     return (
-        <div className="flex justify-center items-center h-screen mt-3 pb-20 w-full bg-white-0 dark:bg-gray-550 ">
+        <div className="flex justify-center items-center h-screen pb-20 w-full bg-white-0 dark:bg-gray-550 ">
             <div id="containerModal" className={openModal ? "block" : "hidden"}>
                     <div id="modal" ref={modal} className="flex w-screen h-screen bg-black bg-opacity-30 fixed bottom-0 left-0 justify-center z-40 items-center">
 
@@ -168,7 +168,7 @@ const Post = () => {
                         </div>
                     </div>
                 </div>
-            <div className="bg-red-450 xl:bg-white-0 dark:bg-black xl:w-2/6 h-90vh mt-5 overflow-y-auto rounded-lg xl:shadow-merwan w-95vw">
+            <div className="bg-red-450 xl:bg-white-0 dark:bg-black xl:mt-32 xl:w-2/6 h-90vh overflow-y-auto rounded-lg xl:shadow-merwan w-95vw">
                 <form className="post flex flex-col justify-center" onSubmit={(e) => handleSubmit(e)} id="post_form" ref={myForm}>
                     <div className="flex relative justify-center items-center">
                         {preview ? (

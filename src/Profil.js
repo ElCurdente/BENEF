@@ -416,10 +416,8 @@ const Profil = () => {
 
                 </div>
                 <div id="barre1" className="h-1px w-95vw xl:w-2/6 mt-7 bg-gray-200"></div>
-                <div id="badges" className="w-95vw h-100px xl:w-2/6">
-                    <h3 className="font-bold pt-4 pl-4 relative top-10">Badges</h3>
-                </div>
-                <div id="barre1" className="h-1px w-95vw mt-10 bg-gray-200 xl:w-2/6"></div>
+                
+                <div id="barre1" className="h-1px w-95vw mt-2 bg-gray-200 xl:w-2/6"></div>
                 <div id="bp_perso" className="w-95vw xl:w-2/6">
                     <h3 className="font-bold pt-4 pl-4 relative top-10">Bons plans publiés</h3>
                     <div className='w-full h-full flex flex-col items-center mt-5 relative top-10'>
