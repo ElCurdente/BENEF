@@ -51,8 +51,8 @@ const Parametre = () => {
             <div id="infos" className="overflow-y-auto w-95vw h-full dark:bg-gray-550 xl:bg-white-0 xl:w-1/3 xl:p-5">
 
                 <div className="flex relative flex-row justify-center items-center pt-7">
-                  <a href="/parametre" className="absolute left-0"><img src={fleche} alt="fleche" className="w-4"/></a>
-                  <span className="text-center text-2xl font-bold">Informations du compte</span>
+                  <a href="/parametre" className="absolute left-0 mt-10 xl:mt-3"><img src={fleche} alt="fleche" className="w-4"/></a>
+                  <span className="text-center text-2xl mt-20 font-bold xl:mt-8">Informations du compte</span>
                 </div>
 
                 <h2 className=" text-base pt-7 font-bold ">Nom d'utilisateur</h2>
