@@ -4,26 +4,16 @@ import { useEffect } from 'react';
 import { useRef } from 'react';
 import { useHistory } from 'react-router-dom';
 import { Link } from 'react-router-dom';
-import profil from './images/profil-gaelle.png';
-import resto from './images/resto.jpg';
-import musee from './images/musee.jpg';
 import adresse from './images/icon/adress.svg';
-import Upvote from './Upvote';
 import localisation from './images/icon/icon_localisation.svg';
 import sablier from './images/icon/icon_sablier.svg';
 import upvoteBas from './images/icon/upvote.svg';
 import upvoteHaut from './images/icon/upvote2.svg';
-import upvoteHautplein from './images/icon/icon_vote_fill.svg';
-import upvoteBasplein from './images/icon/icon_vote_fill_r.svg';
-import upvoteOrange from './images/icon/icon_vote_orange.svg';
-import upvoteorangeplein from './images/icon/icon_vote_fill_orange.svg';
 import { motion } from 'framer-motion/dist/framer-motion';
 import Lottie from 'react-lottie';
-import animationData from './images/animation/like.json';
 import animationData2 from './images/animation/loading.json';
 import coeur from './images/icon/icon_coeur.svg';
 import coeurPlein from './images/icon/icon_coeur_rempli.svg';
-import fleche from './images/icon/icon_fleche.svg';
 import pouce from './images/illustrations/pouce.png';
 import { AES, enc } from 'crypto-js';
 
@@ -32,14 +22,14 @@ import signaler from './images/icon/icon_signaler.svg';
 const Thread = () => {
 
   const [state, setState] = useState(false);
-  const defaultOptions = {
-    loop: false,
-    autoplay: true,
-    animationData: animationData,
-    rendererSettings: {
-      preserveAspectRatio: 'xMidYMid slice'
-    }
-  };
+  // const defaultOptions = {
+  //   loop: false,
+  //   autoplay: true,
+  //   animationData: animationData,
+  //   rendererSettings: {
+  //     preserveAspectRatio: 'xMidYMid slice'
+  //   }
+  // };
 
   const defaultOptions2 = {
     loop: true,
@@ -53,23 +43,19 @@ const Thread = () => {
   const [error, setError] = useState(null);
   const [isLoaded, setIsLoaded] = useState(false);
   const [items, setItems] = useState([]);
-  const [userItems, setUserItems] = useState([]);
   const [upvote, setUpvote] = useState(false);
   const [downvote, setDownvote] = useState(false);
   const [isVoting, setIsVoting] = useState(false);
   const [isVoted, setIsVoted] = useState(0);
   const [isUpvoted, setIsUpvoted] = useState([])
   const [isDownvoted, setIsDownvoted] = useState([])
-  const [upvoteNumber, setUpvoteNumber] = useState(0)
-  const [refreshKey, setRefreshKey] = useState(0);
   const nbUpvote = useRef(null);
   let history = useHistory();
   const [modalItem, setModalItem] = useState([]);
   const [modalItemUser, setModalItemUser] = useState([]);
-  const [modalItemUserPost, setModalItemUserPost] = useState([]);
   const [openModal, setOpenModal] = useState(false);
   const [openModalUser, setOpenModalUser] = useState(false);
-  const [openModalUserPost, setOpenModalUserPost] = useState(false);
+  // const [openModalUserPost, setOpenModalUserPost] = useState(false);
   const [isFav, setIsFav] = useState([]);
   let decrypted;
   if (localStorage.getItem('isConnected')) {
@@ -86,8 +72,6 @@ const Thread = () => {
         (result) => {
           setIsLoaded(true);
           setItems(result.items);
-
-          console.log(items[0]);
         },
         (error) => {
           setIsLoaded(true);
@@ -131,9 +115,7 @@ const Thread = () => {
       .then(res => res.json())
       .then(
         (result) => {
-          console.log(result)
           setIsFav(result)
-          console.log(isFav)
         },
         (error) => {
           setError(error);
@@ -143,7 +125,6 @@ const Thread = () => {
 
   useEffect(() => {
     if (openModal) {
-      console.log("prêt à fetch")
       fetch('https://benef-app.fr/api-infos-utilisateur.php', {
         method: "POST",
         headers: {
@@ -154,7 +135,6 @@ const Thread = () => {
       })
         .then((response) => response.json())
         .then((data) => {
-          console.log(data)
           setModalItem(prevState => ({
             ...prevState,
             user_pseudo: data.username,
@@ -164,13 +144,11 @@ const Thread = () => {
         .catch(err => {
           console.log("Error Reading data " + err);
         });
-      console.log(modalItem);
     }
   }, [openModal])
 
   useEffect(() => {
     if (openModalUser) {
-      console.log("prêt à fetch")
       fetch('https://benef-app.fr/api-infos-utilisateur.php', {
         method: "POST",
         headers: {
@@ -181,13 +159,10 @@ const Thread = () => {
       })
         .then((response) => response.json())
         .then((data) => {
-          console.log(data)
           const envryptedString = AES.encrypt(data.id_user, 'MYKEY4DEMO');
           localStorage.setItem('id_user_post', envryptedString.toString());
           history.push('/profil2');
-          setModalItemUser(data);
-          console.log(modalItemUser);
-
+          // setModalItemUser(data);
         })
         .catch(err => {
           console.log("Error Reading data " + err);
@@ -196,36 +171,33 @@ const Thread = () => {
     }
   }, [openModalUser])
 
-  useEffect(() => {
-    if (openModalUser) {
-      fetch('https://benef-app.fr/api-post-user3.php', {
-        method: "POST",
-        headers: {
-          'Accept': 'application/json',
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({ id_user: modalItem.id_user })
-      })
-        .then(res => res.json())
-        .then(
-          (result) => {
-            setIsLoaded(true);
-            setUserItems(result.userItems);
-            console.log(userItems);
-          },
-          (error) => {
-            setIsLoaded(true);
-            setError(error);
-          }
-        )
-    }
-  }, [openModalUser]);
+  // useEffect(() => {
+  //   if (openModalUser) {
+  //     fetch('https://benef-app.fr/api-post-user3.php', {
+  //       method: "POST",
+  //       headers: {
+  //         'Accept': 'application/json',
+  //         'Content-Type': 'application/json'
+  //       },
+  //       body: JSON.stringify({ id_user: modalItem.id_user })
+  //     })
+  //       .then(res => res.json())
+  //       .then(
+  //         (result) => {
+  //           setIsLoaded(true);
+  //           setUserItems(result.userItems);
+  //         },
+  //         (error) => {
+  //           setIsLoaded(true);
+  //           setError(error);
+  //         }
+  //       )
+  //   }
+  // }, [openModalUser]);
 
   function handleFav() {
-    console.log({ id_user: id_user, id_post: this });
-    if (isFav.find(x => x == this) != this) {
+    if (isFav.find(x => x === this) !== this) {
       setIsFav(prevState => [...prevState, this]);
-      console.log(isFav);
       fetch('https://benef-app.fr/api-favoris.php', {
         method: "POST",
         headers: {
@@ -235,7 +207,6 @@ const Thread = () => {
         body: JSON.stringify({ id_user: id_user, id_post: this })
       })
         .then((data) => {
-          console.log(data);
 
         })
         .catch(err => {
@@ -252,7 +223,6 @@ const Thread = () => {
         body: JSON.stringify({ id_user: id_user, id_post: this })
       })
         .then((data) => {
-          console.log(data);
 
         })
         .catch(err => {
@@ -264,7 +234,6 @@ const Thread = () => {
   }
 
   function handleUpvote() {
-    console.log(this)
     setIsVoted(this.id_post)
     // setUpvoteNumber(this.upvote)
     setUpvote(true);
@@ -273,12 +242,10 @@ const Thread = () => {
 
   useEffect(() => {
     if (upvote) {
-      console.log(isUpvoted)
       for (var i = 0; i < items.length; i++) {
         if (items[i].id_post === isVoted) {
-          let feed = isUpvoted.find(x => x == isVoted);
-          if (feed == isVoted) {
-            console.log(feed + ", ne peut upvote")
+          let feed = isUpvoted.find(x => x === isVoted);
+          if (feed === isVoted) {
             fetch('https://benef-app.fr/api-downvote.php', {
               method: "POST",
               headers: {
@@ -289,7 +256,6 @@ const Thread = () => {
             })
               .then((response) => response.json())
               .then((data) => {
-                console.log(data);
               })
               .catch(err => {
                 console.log("Error Reading data " + err);
@@ -299,7 +265,6 @@ const Thread = () => {
             setIsUpvoted(isUpvoted.filter(item => item !== isVoted));
           }
           else {
-            console.log(feed + "n'est pas upvote donc peut upvote")
             setIsUpvoted(prevState => [...prevState, isVoted])
             fetch('https://benef-app.fr/api-upvote.php', {
               method: "POST",
@@ -311,14 +276,12 @@ const Thread = () => {
             })
               .then((response) => response.json())
               .then((data) => {
-                console.log(data);
                 // setRefreshKey(oldKey => oldKey + 1)
               })
               .catch(err => {
                 console.log("Error Reading data " + err);
               });
             items[i].upvote++;
-            console.log(items[i].upvote);
             setUpvote(false)
             setIsDownvoted(isDownvoted.filter(item => item !== isVoted));
 
@@ -329,9 +292,8 @@ const Thread = () => {
     } else if (downvote) {
       for (var i = 0; i < items.length; i++) {
         if (items[i].id_post === isVoted) {
-          let feed = isDownvoted.find(x => x == isVoted);
-          if (feed == isVoted) {
-            console.log(feed + ", ne peut upvote")
+          let feed = isDownvoted.find(x => x === isVoted);
+          if (feed === isVoted) {
             fetch('https://benef-app.fr/api-upvote.php', {
               method: "POST",
               headers: {
@@ -342,7 +304,6 @@ const Thread = () => {
             })
               .then((response) => response.json())
               .then((data) => {
-                console.log(data);
                 // setRefreshKey(oldKey => oldKey + 1)
               })
               .catch(err => {
@@ -355,7 +316,6 @@ const Thread = () => {
 
           }
           else {
-            console.log(feed + "n'est pas upvote donc peut upvote")
             setIsDownvoted(prevState => [...prevState, isVoted])
             fetch('https://benef-app.fr/api-downvote.php', {
               method: "POST",
@@ -367,13 +327,11 @@ const Thread = () => {
             })
               .then((response) => response.json())
               .then((data) => {
-                console.log(data);
               })
               .catch(err => {
                 console.log("Error Reading data " + err);
               });
             items[i].upvote--;
-            console.log(items[i].upvote);
 
             setDownvote(false)
             setIsUpvoted(isUpvoted.filter(item => item !== isVoted));
@@ -388,7 +346,6 @@ const Thread = () => {
   }, [isVoting])
 
   function handleDownvote() {
-    console.log(this)
     setIsVoted(this.id_post)
     setDownvote(true);
     setIsVoting(true);
@@ -404,19 +361,17 @@ const Thread = () => {
     return 0;
   }
 
-  function Alert() { alert('Le message à été supprimé'); };
-  function DelayAlert() { setInterval(Alert, 2000); }
+  // function Alert() { alert('Le message à été supprimé'); };
+  // function DelayAlert() { setInterval(Alert, 2000); }
 
-  const btnOuvrir = () => {
-    setOpenModal(true);
-  }
+  // const btnOuvrir = () => {
+  //   setOpenModal(true);
+  // }
 
-  const btnFermer = () => {
-    setOpenModal(false);
-  }
+  // const btnFermer = () => {
+  //   setOpenModal(false);
+  // }
   const modal = useRef(null);
-  const modalUser = useRef(null);
-  const modalUserPost = useRef(null);
 
   function handleModal() {
     setOpenModal(true);
@@ -428,15 +383,15 @@ const Thread = () => {
     setModalItemUser(this);
   }
 
-  function handleModalUserPost() {
-    setOpenModalUserPost(true);
-    setModalItemUserPost(this);
-  }
+  // function handleModalUserPost() {
+  //   setOpenModalUserPost(true);
+  //   setModalItemUserPost(this);
+  // }
 
-  const [user, setUser] = useState({
-    username: '',
-    bio: ''
-  });
+  // const [user, setUser] = useState({
+  //   username: '',
+  //   bio: ''
+  // });
 
   const [openModalReport, setOpenModalReport] = useState(false);
   const [reportedId, setReportedId] = useState(0);
@@ -453,7 +408,6 @@ const Thread = () => {
   }
 
   const handleReportPost = () => {
-    console.log("Suppression du post n°" + reportedId);
     // setOpenModalSupp(false);
     fetch('https://benef-app.fr/api-report.php', {
       method: "POST",
@@ -464,7 +418,6 @@ const Thread = () => {
       body: JSON.stringify({ id_post: reportedId })
     })
       .then((data) => {
-        console.log(data);
         setConfirmedReport(true)
       })
       .catch(err => {
@@ -473,29 +426,26 @@ const Thread = () => {
   }
 
 
-  useEffect(() => {
-    console.log({ id_user: modalItem.id_user })
-    fetch('https://benef-app.fr/api-infos-utilisateur.php', {
-      method: "POST",
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({ id_user: modalItem.id_user })
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        console.log(data);
-        setUser({
-          username: data.username,
-          bio: data.bio
-        })
-        console.log(user)
-      })
-      .catch(err => {
-        console.log("Error Reading data " + err);
-      });
-  }, [])
+  // useEffect(() => {
+  //   fetch('https://benef-app.fr/api-infos-utilisateur.php', {
+  //     method: "POST",
+  //     headers: {
+  //       'Accept': 'application/json',
+  //       'Content-Type': 'application/json'
+  //     },
+  //     body: JSON.stringify({ id_user: modalItem.id_user })
+  //   })
+  //     .then((response) => response.json())
+  //     .then((data) => {
+  //       setUser({
+  //         username: data.username,
+  //         bio: data.bio
+  //       })
+  //     })
+  //     .catch(err => {
+  //       console.log("Error Reading data " + err);
+  //     });
+  // }, [])
 
   if (error) {
     return <div>Erreur : {error.message}</div>;
@@ -524,8 +474,8 @@ const Thread = () => {
                     Es-tu vraiment sûr de vouloir signaler ce post ?</h1>
                   <div className="flex w-full justify-evenly mt-5 mb-8">
 
-                    <button onClick={() => setOpenModalReport(false)} className="block px-4 hover:underline hover:underline-offset-8 text-red-450 font-semibold dark:hover:underline dark:hover:underline-offset-8 dark:hover:text-black transition duration-300 ease-in-out" type="submit">Annuler</button>
-                    <button onClick={() => handleReportPost()} className="block px-4 font-semibold py-2 bg-red-650 hover:bg-white-0 hover:text-red-650 hover:border-red-650 border-2 border-red-650 dark:hover:bg-white-150 dark:hover:text-gray-550 active:bg-red-200 dark:bg-white-0 dark:border-black dark:text-black rounded-full transition duration-300 ease-in-out text-white-0" type="submit">Signaler</button>
+                    <button onClick={() => setOpenModalReport(false)} name='bouton annuler' className="block px-4 hover:underline hover:underline-offset-8 text-red-450 font-semibold dark:hover:underline dark:hover:underline-offset-8 dark:hover:text-black transition duration-300 ease-in-out" type="submit">Annuler</button>
+                    <button onClick={() => handleReportPost()} name='bouton signaler' className="block px-4 font-semibold py-2 bg-red-650 hover:bg-white-0 hover:text-red-650 hover:border-red-650 border-2 border-red-650 dark:hover:bg-white-150 dark:hover:text-gray-550 active:bg-red-200 dark:bg-white-0 dark:border-black dark:text-black rounded-full transition duration-300 ease-in-out text-white-0" type="submit">Signaler</button>
 
 
                   </div>
@@ -537,11 +487,11 @@ const Thread = () => {
 
               <div className="w-full xl:w-2/6  mb-10 xl:mb-0 relative flex flex-col justify-center items-center rounded-3xl bg-white-0 overflow-auto dark:bg-gray-550 dark:text-white-0">
                 <div className="mb-5 mt-5 mx-3 flex flex-col items-center text-center">
-                  <img className="mb-5 w-20" src={pouce} alt='' />
+                  <img className="mb-5 w-20" src={pouce} alt='emoji pouce' />
                   <h1 className="text-lg xl:text-xl font-semibold max-w-md mt-2">Merci d'avoir signalé ce post !<br></br>
                     <span className="font-light xl:text-base">L'équipe BENEF va maintenant se charger de la suite.</span></h1>
                   <div className="flex w-full justify-evenly mt-5 mb-3">
-                    <button onClick={() => resetReport()} className="block px-4 font-semibold py-2 bg-red-450 hover:bg-white-0 hover:text-red-450 hover:border-red-450 border-2 border-red-450 dark:hover:bg-white-150 dark:hover:text-gray-550 active:bg-red-200 dark:bg-white-0 dark:border-black dark:text-black rounded-full transition duration-300 ease-in-out text-white-0" type="submit">Retour</button>
+                    <button onClick={() => resetReport()} name='bouton retour' className="block px-4 font-semibold py-2 bg-red-450 hover:bg-white-0 hover:text-red-450 hover:border-red-450 border-2 border-red-450 dark:hover:bg-white-150 dark:hover:text-gray-550 active:bg-red-200 dark:bg-white-0 dark:border-black dark:text-black rounded-full transition duration-300 ease-in-out text-white-0" type="submit">Retour</button>
 
                   </div>
                 </div>
@@ -552,7 +502,7 @@ const Thread = () => {
 
 
         {/* <motion.div className="">
-          <img src={upvoteHautplein} />
+          <img src={upvoteHautplein} alt="icon upvote plein"/>
         </motion.div> */}
         <ul className="h-full xl:w-2/6 bg-white-0 xl:dark:bg-gray-550 relative top-14">
           <div className="mt-7 ml-6 mr-6 pb-24 xl:pb-10 xl:dark:bg-gray-550">
@@ -564,28 +514,28 @@ const Thread = () => {
                 <div className="w-full xl:w-2/6 h-90vh xl:h-90vh mb-10 xl:mb-0 xl:relative xl:bottom-3 flex flex-col justify-start items-center xl:rounded-xl bg-white-0 overflow-auto dark:bg-gray-550 dark:text-white-0">
                   <div className="mb-5 mt-3 mx-3 flex flex-col">
                     <div className="w-full h-250px">
-                      <img className="object-cover rounded-lg h-full w-full" src={modalItem.image} alt="" />
+                      <img className="object-cover rounded-lg h-full w-full" src={modalItem.image} alt="post" />
                     </div>
                     {/* <h1 className="text-lg xl:text-xl font-semibold mx-2 max-w-md">{modalItem.image}</h1> */}
                     <div className="ml-2">
                       <h1 className="text-xl font-semibold max-w-md mt-2">{modalItem.title}</h1>
                       <h1 className="text-base px-4 max-w-max py-1 text-red-450 dark:text-white-0 rounded-full border-2 border-red-450 dark:border-white-0 font-base mt-3">{modalItem.category}</h1>
                       <div className="flex w-92vw max-w-md mt-7 text-sm">
-                        <img id="loca" src={localisation} className="opacity-100 h-20px"></img><div className='ml-3'>{modalItem.address}{", "}{modalItem.postal}</div>
+                        <img id="loca" src={localisation} className="opacity-100 h-20px" alt='icon localisation'></img><div className='ml-3'>{modalItem.address}{", "}{modalItem.postal}</div>
                       </div>
                       <div className="flex mt-2 w-92vw max-w-md text-sm">
-                        <motion.img animate={{ rotate: 180 }} transition={{ repeat: Infinity, duration: 0.75, ease: "easeOut", repeatDelay: 1 }} id="sablier" src={sablier} className="opacity-100 h-20px"></motion.img>
-                        {modalItem.expiration != '0000-00-00' ? <div className='ml-4'>{modalItem.expiration}</div> : <div className='ml-4'>À vie</div>}
+                        <motion.img animate={{ rotate: 180 }} transition={{ repeat: Infinity, duration: 0.75, ease: "easeOut", repeatDelay: 1 }} id="sablier" src={sablier} className="opacity-100 h-20px" alt="icon sablier"></motion.img>
+                        {modalItem.expiration !== '0000-00-00' ? <div className='ml-4'>{modalItem.expiration}</div> : <div className='ml-4'>À vie</div>}
                       </div>
                       <h1 className="text-base max-w-md mt-5">{modalItem.description}</h1>
                       </div>
                       <div className='flex self-end items-center text-sm max-w-md mt-7 mr-2'>
                          Posté par <span className="font-semibold cursor-pointer ml-1 mr-2" onClick={handleModalUser.bind(modalItem)}>{modalItem.user_pseudo}</span>
-                          <img className="h-8 w-8 xl:border-2 xl:h-8 xl:w-8 rounded-full xl:rounded-full border-2 border-red-450 cursor-pointer" onClick={handleModalUser.bind(modalItem)} src={modalItem.file} alt="image de profil" />
+                          <img className="h-8 w-8 xl:border-2 xl:h-8 xl:w-8 rounded-full xl:rounded-full border-2 border-red-450 cursor-pointer" onClick={handleModalUser.bind(modalItem)} src={modalItem.file} alt="profil" />
                       
                       </div>
                     <div className="flex w-full justify-evenly mt-7 mb-10">
-                      <button onClick={() => setOpenModal(false)} className="block px-4 font-semibold py-2 bg-red-450 hover:bg-white-0 hover:text-red-450 hover:border-red-450 border-2 border-red-450 dark:hover:bg-white-150 dark:hover:text-gray-550 active:bg-red-200 dark:bg-white-0 dark:border-black dark:text-black rounded-full transition duration-300 ease-in-out text-white-0" type="submit">Fermer</button>
+                      <button onClick={() => setOpenModal(false)} name='bouton fermer' className="block px-4 font-semibold py-2 bg-red-450 hover:bg-white-0 hover:text-red-450 hover:border-red-450 border-2 border-red-450 dark:hover:bg-white-150 dark:hover:text-gray-550 active:bg-red-200 dark:bg-white-0 dark:border-black dark:text-black rounded-full transition duration-300 ease-in-out text-white-0" type="submit">Fermer</button>
 
                     </div>
                   </div>
@@ -596,43 +546,43 @@ const Thread = () => {
             
 
             {items.sort(compare).map(item => (
-              <motion.div className="w-92vw xl:w-full relative bg-red-450 dark:bg-black rounded-lg text-white-0 mb-4 xl:mb-5 shadow-customm"
+              <motion.div key={item.id_post} className="w-92vw xl:w-full relative bg-red-450 dark:bg-black rounded-lg text-white-0 mb-4 xl:mb-5 shadow-customm"
                 whileHover={{ scale: 1.01 }}>
                 <div className="w-full h-250px relative" onClick={handleModal.bind(item)}>
-                  <img className="object-cover rounded-t-lg h-full w-full" src={item.image} alt="" />
+                  <img className="object-cover rounded-t-lg h-full w-full" src={item.image} alt="post" />
                 </div>
                 <div className="w-full min-h-max pb-4 md:cursor-pointer" onClick={handleModal.bind(item)} >
                   <h1 className="text-lg font-semibold mx-2 max-w-md mt-2	">{item.title}</h1>
                   <div className="flex mt-2 text-sm w-92vw max-w-md">
-                    <img src={adresse} className="ml-2 mr-1 w-3.5"></img> {item.address} <div className="absolute right-3">{item.postal}</div>
+                    <img src={adresse} className="ml-2 mr-1 w-3.5" alt='icon adresse'></img> {item.address} <div className="absolute right-3">{item.postal}</div>
                   </div>
 
                 </div>
                 <li key={item.id_post} className="mt-1 w-92vw max-w-md">
                   <div>
                     <div className="bg-white-0 h-10 w-10 text-black absolute flex justify-center items-center top-3 right-2 rounded-full">
-                      <button className="upvote text-red-450 dark:text-black"
+                      <button name='bouton favoris' className="upvote text-red-450 dark:text-black"
                         onClick={handleFav.bind(item.id_post)}>
                         {
-                          isFav.find(x => x == item.id_post) == item.id_post ? <img className='h-20px fill-current cursor-pointer' src={coeurPlein} alt='' /> :
-                            <img className='h-20px fill-current cursor-pointer' src={coeur} alt='' />
+                          isFav.find(x => x === item.id_post) === item.id_post ? <img className='h-20px fill-current cursor-pointer' src={coeurPlein} alt='icon coeur rempli' /> :
+                            <img className='h-20px fill-current cursor-pointer' src={coeur} alt='icon coeur' />
                         }
 
                       </button>
                     </div>
-                    <button className="bg-white-0 h-10 w-10 text-black absolute z-30 flex justify-center items-center top-3 right-16 rounded-full" onClick={handleReport.bind(item.id_post)}>
-                      <img src={signaler} className="h-22px"></img>
+                    <button name='bouton signaler' className="bg-white-0 h-10 w-10 text-black absolute z-30 flex justify-center items-center top-3 right-16 rounded-full" onClick={handleReport.bind(item.id_post)}>
+                      <img src={signaler} className="h-22px" alt='icon signaler'></img>
                     </button>
                     <div className="bg-white-0 text-black absolute top-44 text-xl font-bold flex w-max py-1 rounded-lg -left-2 pl-2">
-                      <button onClick={handleUpvote.bind(item)} className="pl-2 relative">
-                        <motion.img whileTap={{ scale: 0.85 }} id="upvote_haut" src={upvoteHaut} className="opacity-100 h-28px"></motion.img>
-                        {/* <img src={upvoteorange} className="absolute top-0 h-30px dark:opacity-0"></img> */}
+                      <button onClick={handleUpvote.bind(item)} name='bouton upvote haut' className="pl-2 relative">
+                        <motion.img whileTap={{ scale: 0.85 }} id="upvote_haut" src={upvoteHaut} className="opacity-100 h-28px" alt="icon upvote haut"></motion.img>
+                        {/* <img src={upvoteorange} className="absolute top-0 h-30px dark:opacity-0" alt="icon upvote"></img> */}
                       </button>
 
                       <span id='nb_upvote' ref={nbUpvote} className="px-2 upvote text-red-450 dark:text-black">{item.upvote}</span>
-                      <button onClick={handleDownvote.bind(item)} className="pr-2 relative">
-                        <motion.img whileTap={{ scale: 0.85 }} id="upvote_bas" src={upvoteBas} className="opacity-100 dark:opacity-100 h-28px"></motion.img>
-                        {/* <img src={upvoteorange} className="transform rotate-180 absolute top-0 h-30px dark:opacity-0"></img> */}
+                      <button onClick={handleDownvote.bind(item)} name='bouton upvote bas' className="pr-2 relative">
+                        <motion.img whileTap={{ scale: 0.85 }} id="upvote_bas" src={upvoteBas} className="opacity-100 dark:opacity-100 h-28px" alt="icon upvote bas"></motion.img>
+                        {/* <img src={upvoteorange} className="transform rotate-180 absolute top-0 h-30px dark:opacity-0" alt="icon upvote bas"></img> */}
                       </button>
                     </div>
                   </div>

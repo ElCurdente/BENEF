@@ -1,14 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom'
-import coeur from './images/icon/icon_coeur.svg';
-import coeurplein from './images/icon/icon_coeur_rempli.svg';
 import { useState } from 'react';
 import { useRef } from 'react';
 import { useEffect } from 'react';
 import plus from './images/icon/icon_plus.svg';
 import plusblanc from './images/icon/icon_plus_blanc.svg';
 import plusrouge from './images/icon/icon_plus_rouge.svg';
-import ToggleLike from './toggle-like.js';
 import lottie from 'lottie-web';
 import Lottie from 'react-lottie';
 import animationData from './images/animation/like.json';
@@ -18,11 +15,9 @@ import adresse from './images/icon/adress.svg';
 import localisation from './images/icon/icon_localisation.svg';
 import sablier from './images/icon/icon_sablier.svg';
 import { AES, enc } from 'crypto-js';
-import { useHistory } from "react-router-dom";
 
 const Profil = () => {
 
-    const [state, setState] = useState(false);
     const [items, setItems] = useState([]);
     const [error, setError] = useState(null);
     const [isLoaded, setIsLoaded] = useState(false);
@@ -37,8 +32,6 @@ const Profil = () => {
       decrypted = AES.decrypt(sessionStorage.getItem('id_user'), 'MYKEY4DEMO');
     }
         const id_user = decrypted.toString(enc.Utf8);
-
-        let history = useHistory();
 
 
     useEffect(() => {
@@ -55,7 +48,6 @@ const Profil = () => {
                 (result) => {
                     setIsLoaded(true);
                     setItems(result.items);
-                    console.log(items);
                 },
                 (error) => {
                     setIsLoaded(true);
@@ -69,14 +61,14 @@ const Profil = () => {
         setModalItem(this);
     }
 
-    const defaultOptions = {
-        loop: false,
-        autoplay: true,
-        animationData: animationData,
-        rendererSettings: {
-            preserveAspectRatio: 'xMidYMid slice'
-        }
-    };
+    // const defaultOptions = {
+    //     loop: false,
+    //     autoplay: true,
+    //     animationData: animationData,
+    //     rendererSettings: {
+    //         preserveAspectRatio: 'xMidYMid slice'
+    //     }
+    // };
 
     const container = useRef(null)
 
@@ -97,11 +89,7 @@ const Profil = () => {
         image: undefined
     });
 
-
-    console.log(id_user);
-
     useEffect(() => {
-        console.log({ id_user: id_user })
         fetch('https://benef-app.fr/api-infos-utilisateur.php', {
             method: "POST",
             headers: {
@@ -112,41 +100,39 @@ const Profil = () => {
         })
             .then((response) => response.json())
             .then((data) => {
-                console.log(data);
                 setUser({
                     id: data.id_user,
                     username: data.username,
                     bio: data.bio,
                     image: data.image
                 })
-                console.log(user)
             })
             .catch(err => {
                 console.log("Error Reading data " + err);
             });
     }, [successPdp])
 
-    const [etat, setEtat] = useState({
-        isStopped: true,
-        isPaused: false,
-        speed: 1,
-        direction: 1,
-        isLiked: false,
-    });
+    // const [etat, setEtat] = useState({
+    //     isStopped: true,
+    //     isPaused: false,
+    //     speed: 1,
+    //     direction: 1,
+    //     isLiked: false,
+    // });
 
-    const clickHandler = () => {
-        if (!etat.isStopped) {
-            setEtat({
-                ...etat,
-                direction: etat.direction * -1
-            });
-        }
-        setEtat({
-            ...etat,
-            isStopped: false,
-            isLike: !etat.isLike
-        });
-    }
+    // const clickHandler = () => {
+    //     if (!etat.isStopped) {
+    //         setEtat({
+    //             ...etat,
+    //             direction: etat.direction * -1
+    //         });
+    //     }
+    //     setEtat({
+    //         ...etat,
+    //         isStopped: false,
+    //         isLike: !etat.isLike
+    //     });
+    // }
 
     const [values, setValues] = useState({
         id_user: id_user,
@@ -197,12 +183,10 @@ const Profil = () => {
         formData.append('username', values.username);
         formData.append('bio', values.bio);
 
-        console.log(picture.pictureAsFile);
+        // for (var key of formData.entries()) {
+        //     // console.log(key[0] + ", " + key[1]);
+        // }
 
-        for (var key of formData.entries()) {
-            console.log(key[0] + ", " + key[1]);
-        }
-        console.log(formData)
         const data = await fetch("https://benef-app.fr/api-modif-profil.php", {
             method: "post",
             // headers: { "Content-Type": "multipart/form-data" },
@@ -211,7 +195,6 @@ const Profil = () => {
         const uploadedImage = await data.json();
         if (uploadedImage) {
             console.log("Successfully uploaded image");
-            console.log(data);
             modifbio(false);
             setSuccessPdp(true);
         } else {
@@ -226,7 +209,6 @@ const Profil = () => {
 
 
     const handleDeletePost = () => {
-        console.log("Suppression du post n°" + deleteId);
         setOpenModalSupp(false);
         fetch('https://benef-app.fr/api-post-sup.php', {
             method: "POST",
@@ -237,7 +219,6 @@ const Profil = () => {
             body: JSON.stringify({ id_post: deleteId })
         })
             .then((data) => {
-                console.log(data);
                 setSuppr(true)
             })
             .catch(err => {
@@ -274,7 +255,6 @@ const Profil = () => {
 
         } else {
             setPreview(null);
-            console.log("ça marche")
         }
     }, [image]);
 
@@ -284,12 +264,10 @@ const Profil = () => {
         const file = e.target.files[0];
         if (file) {
             setImage(file);
-            console.log("ça marche pas")
         } else {
             setImage(null);
         }
 
-        console.log(file)
         setPicture({
             /* contains the preview, if you want to show the picture to the user
                  you can access it with this.state.currentPicture
@@ -310,17 +288,13 @@ const Profil = () => {
         modifbio(true);
     };
 
-    function handleDeconnexion() {
-        sessionStorage.clear();
-        window.location.reload();
-    }
+    // function handleDeconnexion() {
+    //     sessionStorage.clear();
+    //     window.location.reload();
+    // }
 
     const modal = useRef(null);
 
-    function handleModal() {
-        setOpenModal(true);
-        setModalItem(this);
-    }
 
     const defaultOptions2 = {
         loop: true,
@@ -351,19 +325,19 @@ const Profil = () => {
                         <div className="w-full xl:w-2/6 h-90% xl:h-90% mb-10 xl:mb-0 relative flex flex-col justify-start items-center rounded-t-3xl bg-white-0 overflow-auto dark:bg-gray-550 dark:text-white-0">
                             <div className="mb-5 mx-3 flex mt-5 flex-col">
                                 <div className="w-full h-250px relative">
-                                    <img className="object-cover rounded-t-lg h-full w-full" src={modalItem.image} alt="" />
+                                    <img className="object-cover rounded-t-lg h-full w-full" src={modalItem.image} alt="post" />
                                 </div>
                                 {/* <h1 className="text-lg xl:text-xl font-semibold mx-2 max-w-md">{modalItem.image}</h1> */}
                                 <h1 className="text-lg xl:text-xl font-semibold max-w-md mt-2">{modalItem.title}</h1>
                                 <h1 className="text-base xl:text-lg px-4 max-w-max py-1 text-red-450 dark:text-white-0 rounded-full border-2 border-red-450 dark:border-white-0 font-semibold mt-4">{modalItem.category}</h1>
 
                                 <div className="flex w-92vw max-w-md mt-4">
-                                    <motion.img animate={{ y: ["-10%", "-40%"] }} transition={{ yoyo: Infinity, duration: 0.4, ease: "easeOut", repeatDelay: 1 }} id="loca" src={localisation} className="opacity-100 h-20px"></motion.img><div className='ml-6'>{modalItem.address}{", "}{modalItem.postal}</div>
+                                    <motion.img animate={{ y: ["-10%", "-40%"] }} transition={{ yoyo: Infinity, duration: 0.4, ease: "easeOut", repeatDelay: 1 }} id="loca" src={localisation} className="opacity-100 h-20px" alt="icon localisation"></motion.img><div className='ml-6'>{modalItem.address}{", "}{modalItem.postal}</div>
                                 </div>
 
                                 <div className="flex mt-2 w-92vw max-w-md">
-                                    <motion.img animate={{ rotate: 180 }} transition={{ repeat: Infinity, duration: 0.4, ease: "easeOut", repeatDelay: 1 }} id="sablier" src={sablier} className="opacity-100 h-20px "></motion.img>
-                                    {modalItem.expiration != '0000-00-00' ? <div className='ml-7'>{modalItem.expiration}</div> : <div className='ml-7'>À vie</div>}
+                                    <motion.img animate={{ rotate: 180 }} transition={{ repeat: Infinity, duration: 0.4, ease: "easeOut", repeatDelay: 1 }} id="sablier" src={sablier} className="opacity-100 h-20px " alt="icon sablier"></motion.img>
+                                    {modalItem.expiration !== '0000-00-00' ? <div className='ml-7'>{modalItem.expiration}</div> : <div className='ml-7'>À vie</div>}
 
                                 </div>
 
@@ -372,7 +346,7 @@ const Profil = () => {
                                 {/* <h1 className="self-end text-sm mt-4"> Posté par <span className="font-semibold">{modalItem.user_pseudo}</span></h1> */}
 
                                 <div className="flex w-full justify-evenly mt-5 mb-10">
-                                    <button onClick={() => setOpenModal(false)} className="block px-4 font-semibold py-2 bg-red-450 hover:bg-white-0 hover:text-red-450 hover:border-red-450 border-2 border-red-450 dark:hover:bg-white-150 dark:hover:text-gray-550 active:bg-red-200 dark:bg-white-0 dark:border-black dark:text-black rounded-full transition duration-300 ease-in-out text-white-0" type="submit">Fermer</button>
+                                    <button onClick={() => setOpenModal(false)} name='bouton fermer' className="block px-4 font-semibold py-2 bg-red-450 hover:bg-white-0 hover:text-red-450 hover:border-red-450 border-2 border-red-450 dark:hover:bg-white-150 dark:hover:text-gray-550 active:bg-red-200 dark:bg-white-0 dark:border-black dark:text-black rounded-full transition duration-300 ease-in-out text-white-0" type="submit">Fermer</button>
 
                                 </div>
                             </div>
@@ -389,8 +363,8 @@ const Profil = () => {
                                 <h1 className="text-lg xl:text-xl text-red-650 font-semibold max-w-md mb-2 text-center">Supprimer ce post</h1>
                                 <h1 className="text-lg xl:text-sm font-light max-w-md mt-2">Es-tu vraiment sûr de vouloir supprimer ce post ?</h1>
                                 <div className="flex w-full justify-evenly mt-7 mb-8">
-                                    <button onClick={() => setOpenModalSupp(false)} className="block px-4 hover:underline hover:underline-offset-8 text-red-450 font-semibold dark:hover:underline dark:hover:underline-offset-8 dark:hover:text-black transition duration-300 ease-in-out" type="submit">Annuler</button>
-                                    <button onClick={() => handleDeletePost()} className="block px-4 font-semibold py-2 bg-red-650 hover:bg-white-0 hover:text-red-650 hover:border-red-650 border-2 border-red-650 dark:hover:bg-white-150 dark:hover:text-gray-550 active:bg-red-200 dark:bg-white-0 dark:border-black dark:text-black rounded-full transition duration-300 ease-in-out text-white-0" type="submit">Supprimer</button>
+                                    <button onClick={() => setOpenModalSupp(false)} name='bouton annuler' className="block px-4 hover:underline hover:underline-offset-8 text-red-450 font-semibold dark:hover:underline dark:hover:underline-offset-8 dark:hover:text-black transition duration-300 ease-in-out" type="submit">Annuler</button>
+                                    <button onClick={() => handleDeletePost()} name='bouton supprimer' className="block px-4 font-semibold py-2 bg-red-650 hover:bg-white-0 hover:text-red-650 hover:border-red-650 border-2 border-red-650 dark:hover:bg-white-150 dark:hover:text-gray-550 active:bg-red-200 dark:bg-white-0 dark:border-black dark:text-black rounded-full transition duration-300 ease-in-out text-white-0" type="submit">Supprimer</button>
 
                                 </div>
                             </div>
@@ -398,16 +372,16 @@ const Profil = () => {
                     </div>
                 </div>
 
-                <div id="infos" className="relative xl:w-2/6 w-95vw px-4 xl:-px-0 relative top-10">
+                <div id="infos" className="relative xl:w-2/6 w-95vw px-4 xl:-px-0 top-10">
                     <div className="flex items-center">
-                        <img src={user.image} className="w-100px h-100px bg-transparent dark:bg-gray-650 border-3 border-red-450 dark:border-black rounded-full object-cover" />
+                        <img src={user.image} className="w-100px h-100px bg-transparent dark:bg-gray-650 border-3 border-red-450 dark:border-black rounded-full object-cover" alt='profil'/>
                         <h1 className="ml-3 text-xl font-semibold">{user.username}</h1>
                     </div>
                     <p className="col-span-2 mt-4">{user.bio}</p>
                     <div className="flex items-center justify-between col-span-2 h-16 pt-8">
-                        <button onClick={handleModify} className="flex items-center h-10 bg-red-450 py-2 px-4 rounded-3xl text-white-0 dark:text-black hover:bg-white-0 hover:text-red-450 hover:border-red-450 border-2 border-red-450 dark:bg-white-0 dark:border-white-0 transition duration-300 ease-in-out">Modifie ton profil</button>
-                        {user.id == 38 &&
-                            <Link to="/backoffice"><button className="flex items-center text-red-450 dark:text-white-0 hover:underline">Accéder aux signalements</button></Link>
+                        <button name='bouton modifie ton profil' onClick={handleModify} className="flex items-center h-10 bg-red-450 py-2 px-4 rounded-3xl text-white-0 dark:text-black hover:bg-white-0 hover:text-red-450 hover:border-red-450 border-2 border-red-450 dark:bg-white-0 dark:border-white-0 transition duration-300 ease-in-out">Modifie ton profil</button>
+                        {user.id === 38 &&
+                            <Link to="/backoffice"><button name='bouton backoffice' className="flex items-center text-red-450 dark:text-white-0 hover:underline">Accéder aux signalements</button></Link>
                         }
 
 
@@ -415,22 +389,19 @@ const Profil = () => {
                     </div>
 
                 </div>
-                <div id="barre1" className="h-1px w-95vw xl:w-2/6 mt-7 bg-gray-200"></div>
-                <div id="badges" className="w-95vw h-100px xl:w-2/6">
-                    <h3 className="font-bold pt-4 pl-4 relative top-10">Badges</h3>
-                </div>
-                <div id="barre1" className="h-1px w-95vw mt-10 bg-gray-200 xl:w-2/6"></div>
-                <div id="bp_perso" className="w-95vw xl:w-2/6">
-                    <h3 className="font-bold pt-4 pl-4 relative top-10">Bons plans publiés</h3>
-                    <div className='w-full h-full flex flex-col items-center mt-5 relative top-10'>
+                                
+                <div id="bp_perso" className="w-95vw xl:w-2/6 relative">
+                <div id="barre1" className="h-1px w-95vw xl:w-full mt-16 bg-gray-200"></div>
+                    <h3 className="font-bold pt-5 pl-4 relative">Bons plans publiés</h3>
+                    <div className='w-full h-full flex flex-col items-center mt-0 relative top-10'>
                         {items.map(item => (
-                            <motion.div className="w-92vw xl:w-full relative bg-red-450 dark:bg-black rounded-lg text-white-0 mb-4 xl:mb-5 shadow-customm"
+                            <motion.div key={item.id_post} className="w-92vw xl:w-full relative bg-red-450 dark:bg-black rounded-lg text-white-0 mb-4 xl:mb-5 shadow-customm"
                                 whileHover={{ scale: 1.01 }}>
-                                <button className="bg-white-0 h-10 w-10 text-black absolute z-30 flex justify-center items-center top-3 right-2 rounded-full" onClick={handlePostSupp.bind(item.id_post)}>
-                                    <img src={plusrouge} className="transform rotate-45 h-6 w-6 hover:animate-pulse"></img>
+                                <button name='bouton supprimer' className="bg-white-0 h-10 w-10 text-black absolute z-30 flex justify-center items-center top-3 right-2 rounded-full" onClick={handlePostSupp.bind(item.id_post)}>
+                                    <img src={plusrouge} className="transform rotate-45 h-6 w-6 hover:animate-pulse" alt='icon sup'></img>
                                 </button>
                                 <div className="w-full h-250px relative" onClick={handleModal.bind(item)}>
-                                    <img className="object-cover rounded-t-lg h-full w-full" src={item.image} alt="" />
+                                    <img className="object-cover rounded-t-lg h-full w-full" src={item.image} alt="post" />
                                 </div>
                                 <div className="bg-white-0 text-black text-xl font-bold absolute right-3 bottom-24 w-max rounded-lg">
                                     <span className="px-2 upvote">{item.upvote}</span>
@@ -438,7 +409,7 @@ const Profil = () => {
                                 <div className="w-full min-h-max pb-4 md:cursor-pointer" onClick={handleModal.bind(item)} >
                                     <h1 className="text-lg font-semibold mx-2 max-w-md mt-2	">{item.title}</h1>
                                     <div className="flex mt-2 text-sm w-92vw max-w-md">
-                                        <img src={adresse} className="ml-2 mr-1 w-3.5"></img> {item.address} <div className="absolute right-3">{item.postal}</div>
+                                        <img src={adresse} className="ml-2 mr-1 w-3.5" alt='icon adresse'></img> {item.address} <div className="absolute right-3">{item.postal}</div>
                                     </div>
 
                                 </div>
@@ -460,15 +431,15 @@ const Profil = () => {
                                     onClick={() => {
                                         setImage(null);
                                     }}
-                                    className="w-100px h-100px bg-transparent dark:bg-gray-650 cursor-pointer border-3 border-red-450 dark:border-black rounded-full object-cover " />
+                                    className="w-100px h-100px bg-transparent dark:bg-gray-650 cursor-pointer border-3 border-red-450 dark:border-black rounded-full object-cover " alt='previsualisation'/>
                             ) : (
                                 <button onClick={(e) => {
                                     e.preventDefault();
                                     fileInputRef.current.click();
 
-                                }} className="w-100px h-100px rounded-full border-3 border-red-450 cursor-pointer bg-white-0 text-red-450 dark:text-white-0 text-xl leading-loose dark:bg-gray-650 dark:border-black">
-                                    <img className="h-40px m-auto dark:hidden" src={plus} alt="" />
-                                    <img className="h-40px m-auto hidden dark:block" src={plusblanc} alt="" />
+                                }} name='bouton modifier la photo de profil' className="w-100px h-100px rounded-full border-3 border-red-450 cursor-pointer bg-white-0 text-red-450 dark:text-white-0 text-xl leading-loose dark:bg-gray-650 dark:border-black">
+                                    <img className="h-40px m-auto dark:hidden" src={plus} alt="icon plus" />
+                                    <img className="h-40px m-auto hidden dark:block" src={plusblanc} alt="icon plus" />
                                 </button>)}
                             <h3 className="font-semibold text-red-450 mt-2">Modifie ta photo de profil</h3>
                             <input id="image"
@@ -515,10 +486,10 @@ const Profil = () => {
 
                         <div className="flex justify-center pt-5">
                             <div className="flex justify-end items-center py-5 mr-20">
-                                <button onClick={handleConnexion} className="text-lg block px-4 hover:underline hover:underline-offset-8 text-red-450 font-semibold dark:hover:underline dark:hover:underline-offset-8 dark:hover:text-black transition duration-300 ease-in-out">Annuler</button>
+                                <button onClick={handleConnexion} name='bouton annuler' className="text-lg block px-4 hover:underline hover:underline-offset-8 text-red-450 font-semibold dark:hover:underline dark:hover:underline-offset-8 dark:hover:text-black transition duration-300 ease-in-out">Annuler</button>
                             </div>
                             <div className="flex justify-end items-center py-5">
-                                <button className="block px-5 py-2 text-white-0 text-lg font-semibold bg-red-450 hover:bg-white-0 hover:text-red-450 hover:border-red-450 border-2 border-red-450 dark:hover:bg-white-150 dark:hover:text-gray-550 active:bg-red-200 dark:bg-white-0 dark:text-black rounded-full transition duration-300 ease-in-out" type="submit">Enregistrer</button>
+                                <button name='bouton enregistrer' className="block px-5 py-2 text-white-0 text-lg font-semibold bg-red-450 hover:bg-white-0 hover:text-red-450 hover:border-red-450 border-2 border-red-450 dark:hover:bg-white-150 dark:hover:text-gray-550 active:bg-red-200 dark:bg-white-0 dark:text-black rounded-full transition duration-300 ease-in-out" type="submit">Enregistrer</button>
                             </div>
                         </div>
 
