@@ -87,7 +87,6 @@ const Nav = ({ searchValue, setSearchValue }) => {
                         <Link to="/recherche" className="justify-self-center">
                             <motion.div whileHover={{ scale: 1.03 }}>
                                 <li><img className="h-25px xl:hidden" src={recherche} alt="" /></li>
-
                                 <div className="relative text-gray-650 focus-within:text-gray-650 sm:hidden hidden xl:block">
                                     <span className="absolute inset-y-0 left-0 flex items-center pl-2">
                                         <button type="submit" className="p-1 focus:outline-none focus:shadow-outline">
