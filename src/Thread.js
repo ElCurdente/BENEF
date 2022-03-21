@@ -57,6 +57,14 @@ const Thread = () => {
   const [openModalUser, setOpenModalUser] = useState(false);
   // const [openModalUserPost, setOpenModalUserPost] = useState(false);
   const [isFav, setIsFav] = useState([]);
+
+  const [filters, setFilters] = useState({
+    filtered: false,
+    category: '',
+    postal: '',
+    filter_by: 'upvote',
+  })
+
   let decrypted;
   if (localStorage.getItem('isConnected')) {
     decrypted = AES.decrypt(localStorage.getItem('id_user'), 'MYKEY4DEMO');
@@ -64,6 +72,8 @@ const Thread = () => {
     decrypted = AES.decrypt(sessionStorage.getItem('id_user'), 'MYKEY4DEMO');
   }
   const id_user = decrypted.toString(enc.Utf8);
+
+  const [triRecent, setTriRecent] = useState(false);
 
   useEffect(() => {
     fetch("https://benef-app.fr/api-post-render.php")
@@ -425,6 +435,45 @@ const Thread = () => {
       });
   }
 
+  function compareUpvote(a, b) {
+    if (parseInt(a.upvote) < parseInt(b.upvote)) {
+      return 1;
+    }
+    if (parseInt(a.upvote) > parseInt(b.upvote)) {
+      return -1;
+    }
+    return 0;
+  }
+
+  function compareDate(a, b) {
+    if (parseInt(a.id_post) < parseInt(b.id_post)) {
+      return 1;
+    }
+    if (parseInt(a.id_post) > parseInt(b.id_post)) {
+      return -1;
+    }
+    return 0;
+  }
+
+  const handleSubmitFiltered = e => {
+    e.preventDefault();
+    setFilters(prevState => ({
+      ...prevState,
+      filtered: true,
+      filter_by: 'date',
+    }));
+    setTriRecent(true);
+  }
+
+  const handleSubmitFiltered2 = e => {
+    e.preventDefault();
+    setFilters(prevState => ({
+      ...prevState,
+      filtered: false,
+      filter_by: 'upvote',
+    }));
+    setTriRecent(false);
+  }
 
   // useEffect(() => {
   //   fetch('https://benef-app.fr/api-infos-utilisateur.php', {
@@ -458,6 +507,13 @@ const Thread = () => {
       </div>
     </div>;
   } else {
+
+    if (filters.filter_by === "upvote") {
+      items.sort(compareUpvote);
+    } else if (filters.filter_by === "date") {
+      items.sort(compareDate);
+    }
+
     return (
 
       <div className="h-screen w-screen flex justify-center xl:justify-center overflow-x-hidden items-center bg-white-0 xl:dark:bg-gray-550">
@@ -505,6 +561,9 @@ const Thread = () => {
           <img src={upvoteHautplein} alt="icon upvote plein"/>
         </motion.div> */}
         <ul className="h-full xl:w-2/6 bg-white-0 xl:dark:bg-gray-550 relative top-14">
+
+          <div className='w-full flex justify-center items-center'>{triRecent ? <button onClick={(e) => handleSubmitFiltered2(e)} className="block px-4 font-semibold py-2 bg-red-450 hover:bg-white-0 hover:text-red-450 hover:border-red-450 border-2 border-red-450 dark:hover:bg-white-150 dark:hover:text-gray-550 active:bg-red-200 dark:bg-white-0 dark:border-black dark:text-black rounded-full transition duration-300 ease-in-out text-white-0">Trier par Upvote</button> : <button onClick={(e) => handleSubmitFiltered(e)} className="block px-4 font-semibold py-2 bg-red-450 hover:bg-white-0 hover:text-red-450 hover:border-red-450 border-2 border-red-450 dark:hover:bg-white-150 dark:hover:text-gray-550 active:bg-red-200 dark:bg-white-0 dark:border-black dark:text-black rounded-full transition duration-300 ease-in-out text-white-0">Trier par date de publication</button>}</div>
+
           <div className="mt-7 ml-6 mr-6 pb-24 xl:pb-10 xl:dark:bg-gray-550">
 
 
