@@ -392,8 +392,8 @@ const Profil = () => {
                                 
                 <div id="bp_perso" className="w-95vw xl:w-2/6 relative">
                 <div id="barre1" className="h-1px w-95vw xl:w-full mt-16 bg-gray-200"></div>
-                    <h3 className="font-bold pt-4 pl-4 relative">Bons plans publiés</h3>
-                    <div className='w-full h-full flex flex-col items-center mt-5 relative top-10'>
+                    <h3 className="font-bold pt-5 pl-4 relative">Bons plans publiés</h3>
+                    <div className='w-full h-full flex flex-col items-center mt-0 relative top-10'>
                         {items.map(item => (
                             <motion.div key={item.id_post} className="w-92vw xl:w-full relative bg-red-450 dark:bg-black rounded-lg text-white-0 mb-4 xl:mb-5 shadow-customm"
                                 whileHover={{ scale: 1.01 }}>
