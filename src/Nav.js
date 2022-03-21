@@ -80,7 +80,7 @@ const Nav = ({ searchValue, setSearchValue }) => {
                                         </button>
                                     </span>
                                     <input type="text" name="q" className="py-2 text-sm text-gray-650 xl:bg-white h-9 rounded-lg pl-12 focus:outline-none focus:bg-white focus:text-gray-550"
-                                        placeholder="Recherche" autoComplete="off" value={searchValue} onChange={event => setSearchValue(event.target.value)}>
+                                        placeholder="Recherche par titre" autoComplete="off" value={searchValue} onChange={event => setSearchValue(event.target.value)}>
                                     </input>
                                 </div>
 

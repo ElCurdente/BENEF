@@ -241,7 +241,7 @@ const Filter = ({ searchValue, setSearchValue }) => {
                           <option value="Expos">Expos</option>
                           <option value="Bars">Bars</option>
                           <option value="Soirées">Soirées</option>
-                          <option value="Étudiants">Étudiants</option>
+                          <option value="Étudiants">Tarifs étudiants</option>
                           <option value="Autres">Autres</option>
                         </select>
                         <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
@@ -288,7 +288,7 @@ const Filter = ({ searchValue, setSearchValue }) => {
                       <div className="flex">
                         <div className="flex relative items-center mt-3 ml-3">
                           {/* <h4 className="text-black pl-2">{filters.filter_by}</h4> */}
-                          <label htmlFor="certified" className="text-black pl-2">
+                          <label htmlFor="certified" className="text-black">
                             <input id="filter_by_date"
                               type="radio"
                               name="filter_by"
@@ -297,7 +297,7 @@ const Filter = ({ searchValue, setSearchValue }) => {
                               value="upvote"
                               onChange={handleChange}
                             />
-                            Upvotes
+                            <span className="pl-2">Les plus populaires</span>
                           </label>
                         </div>
                         <div className="flex relative items-center mt-3 ml-3">
@@ -310,7 +310,7 @@ const Filter = ({ searchValue, setSearchValue }) => {
                               value="date"
                               onChange={handleChange}
                             />
-                            Récent
+                            <span className="pl-2">Les plus récents</span>
                           </label>
                         </div>
                       </div>
