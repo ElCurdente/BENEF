@@ -219,7 +219,7 @@ const Filter = ({ searchValue, setSearchValue }) => {
               </div>
               <div className="flex relative justify-center items-center mx-auto w-65% xl:hidden">
                 <div className="flex border-b-2 border-black required:w-65% h-8 mt-2 mb-14">
-                  <input value={searchValue} className=" required:w-65% px-6 bg-white-150 placeholder-black focus:outline-none" placeholder="Rechercher par nom..." onChange={event => setSearchValue(event.target.value)} />
+                  <input value={searchValue} className=" required:w-65% px-6 bg-white-150 placeholder-black focus:outline-none" placeholder="Rechercher par titre..." onChange={event => setSearchValue(event.target.value)} />
                   <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1" viewBox="0 0 20 20" className="w-5 h-5 mt-1 mr-3 xl:hidden"><path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
                 </div>
               </div>
