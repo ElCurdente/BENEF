@@ -372,7 +372,7 @@ const Profil = () => {
                     </div>
                 </div>
 
-                <div id="infos" className="relative xl:w-2/6 w-95vw px-4 xl:-px-0 relative top-10">
+                <div id="infos" className="relative xl:w-2/6 w-95vw px-4 xl:-px-0 top-10">
                     <div className="flex items-center">
                         <img src={user.image} className="w-100px h-100px bg-transparent dark:bg-gray-650 border-3 border-red-450 dark:border-black rounded-full object-cover" alt='profil'/>
                         <h1 className="ml-3 text-xl font-semibold">{user.username}</h1>
@@ -389,11 +389,10 @@ const Profil = () => {
                     </div>
 
                 </div>
-                <div id="barre1" className="h-1px w-95vw xl:w-2/6 mt-7 bg-gray-200"></div>
-                
-                <div id="barre1" className="h-1px w-95vw mt-2 bg-gray-200 xl:w-2/6"></div>
-                <div id="bp_perso" className="w-95vw xl:w-2/6">
-                    <h3 className="font-bold pt-4 pl-4 relative top-10">Bons plans publiés</h3>
+                                
+                <div id="bp_perso" className="w-95vw xl:w-2/6 relative">
+                <div id="barre1" className="h-1px w-95vw xl:w-full mt-16 bg-gray-200"></div>
+                    <h3 className="font-bold pt-4 pl-4 relative">Bons plans publiés</h3>
                     <div className='w-full h-full flex flex-col items-center mt-5 relative top-10'>
                         {items.map(item => (
                             <motion.div key={item.id_post} className="w-92vw xl:w-full relative bg-red-450 dark:bg-black rounded-lg text-white-0 mb-4 xl:mb-5 shadow-customm"

@@ -20,9 +20,9 @@ const Profil2 = () => {
     const [openModal, setOpenModal] = useState(false);
     const [successPdp, setSuccessPdp] = useState(false);
     let decrypted;
-    
-    
-        let id_user;
+
+
+    let id_user;
 
 
 
@@ -296,23 +296,23 @@ const Profil2 = () => {
         autoplay: true,
         animationData: animationData2,
         rendererSettings: {
-          preserveAspectRatio: 'xMidYMid slice'
+            preserveAspectRatio: 'xMidYMid slice'
         }
-      };
+    };
 
     if (error) {
         return <div>Erreur : {error.message}</div>;
-      } else if (!isLoaded) {
+    } else if (!isLoaded) {
         return <div className='h-screen w-screen flex justify-center items-center bg-red-450 xl:bg-white-0'>
-        <div className='pt-36 flex justify-center items-center h-400px w-400px rounded-full bg-red-450'>
-          <Lottie options={defaultOptions2}
-            height={500}
-            width={500} className=""/>
-        </div>  
-      </div>;
-      } else {
+            <div className='pt-36 flex justify-center items-center h-400px w-400px rounded-full bg-red-450'>
+                <Lottie options={defaultOptions2}
+                    height={500}
+                    width={500} className="" />
+            </div>
+        </div>;
+    } else {
         return (
-            <div className="overflow-auto flex flex-col justify-start pt-7 items-center h-screen w-screen bg-white-0 xl:dark:bg-gray-550 dark:text-white-0">
+            <div className="overflow-auto flex flex-col justify-start pt-16 items-center h-screen w-screen bg-white-0 xl:dark:bg-gray-550 dark:text-white-0">
 
                 <div id="containerModal" className={openModal ? "block" : "hidden"}>
                     <div id="modal" ref={modal} className="flex w-screen h-screen bg-black bg-opacity-30 fixed bottom-0 left-0 justify-center z-40 items-end mt-5">
@@ -369,7 +369,7 @@ const Profil2 = () => {
 
                 <div id="infos" className="relative xl:w-2/6 w-95vw px-4 xl:-px-0">
                     <div className="flex items-center">
-                        <img src={user.image} className="w-100px h-100px bg-transparent dark:bg-gray-650 border-3 border-red-450 dark:border-black rounded-full object-cover" alt='profil'/>
+                        <img src={user.image} className="w-100px h-100px bg-transparent dark:bg-gray-650 border-3 border-red-450 dark:border-black rounded-full object-cover" alt='profil' />
                         <h1 className="ml-3 text-xl font-semibold">{user.username}</h1>
                     </div>
                     <p className="col-span-2 mt-4">{user.bio}</p>
@@ -384,13 +384,10 @@ const Profil2 = () => {
                     </div> */}
 
                 </div>
-                <div id="barre1" className="h-1px w-95vw xl:w-2/6 mt-7 bg-gray-200"></div>
-                <div id="badges" className="w-95vw h-100px xl:w-2/6">
-                    <h3 className="font-bold pt-4 pl-4">Badges</h3>
-                </div>
-                <div id="barre1" className="h-1px w-95vw mt-10 bg-gray-200 xl:w-2/6"></div>
+
                 <div id="bp_perso" className="w-95vw xl:w-2/6">
-                    <h3 className="font-bold pt-4 pl-4 ">Bons plans publiés</h3>
+                    <div id="barre1" className="h-1px w-95vw xl:w-full mt-16 bg-gray-200"></div>
+                    <h3 className="font-bold pt-4 pl-4 relative">Bons plans publiés</h3>
                     <div className='w-full h-full flex flex-col items-center mt-5 pb-14'>
                         {items.map(item => (
                             <motion.div key={item.id_post} className="w-92vw xl:w-full relative bg-red-450 dark:bg-black rounded-lg text-white-0 mb-4 xl:mb-5 shadow-customm"
@@ -417,7 +414,7 @@ const Profil2 = () => {
                 </div>
             </div>
         )
-    } 
+    }
 }
 
 export default Profil2
