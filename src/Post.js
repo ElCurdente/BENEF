@@ -148,7 +148,7 @@ const Post = () => {
                         </div>
                     </div>
                 </div>
-            <div className="bg-red-450 xl:bg-white-0 dark:bg-black xl:mt-32  xl:w-2/6 mt-32 h-auto xl:h-90vh overflow-y-auto rounded-lg xl:shadow-merwan w-95vw">
+            <div className="bg-red-450 xl:bg-white-0 dark:bg-black xl:mt-32  xl:w-2/6 mt-32 h-auto pb-20 xl:pb-0 h-90vh overflow-y-auto rounded-lg xl:shadow-merwan w-95vw">
                 <form className="post flex flex-col justify-center" onSubmit={(e) => handleSubmit(e)} id="post_form" ref={myForm}>
                     <div className="flex relative justify-center items-center">
                         {preview ? (
