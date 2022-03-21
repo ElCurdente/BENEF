@@ -148,7 +148,7 @@ const Post = () => {
                         </div>
                     </div>
                 </div>
-            <div className="bg-red-450 xl:bg-white-0 dark:bg-black xl:mt-32 xl:w-2/6 h-90vh overflow-y-auto rounded-lg xl:shadow-merwan w-95vw">
+            <div className="bg-red-450 xl:bg-white-0 dark:bg-black xl:mt-32  xl:w-2/6 mt-32 h-auto xl:h-90vh overflow-y-auto rounded-lg xl:shadow-merwan w-95vw">
                 <form className="post flex flex-col justify-center" onSubmit={(e) => handleSubmit(e)} id="post_form" ref={myForm}>
                     <div className="flex relative justify-center items-center">
                         {preview ? (
@@ -207,7 +207,7 @@ const Post = () => {
                             type="text"
                             name="title"
                             maxLength="60"
-                            placeholder="Votre titre" className="placeholder-white-150 text-white-150 border-b-2 bg-transparent w-4/5 my-2 h-12 pt-5 text-left focus:outline-none  focus:placeholder-transparent  xl:placeholder-gray-650 xl:text-black xl:border-red-450"
+                            placeholder="Titre du bon plan" className="placeholder-white-150 text-white-150 border-b-2 bg-transparent w-4/5 my-2 h-12 pt-5 text-left focus:outline-none  focus:placeholder-transparent  xl:placeholder-gray-650 xl:text-black xl:border-red-450"
                             value={values.title}
                             onChange={handleChange}
                         />
@@ -222,7 +222,7 @@ const Post = () => {
                                 rows="40"
                                 maxLength="255"
                                 className=" resize-y placeholder-white-150 text-white-150 border-b-2 bg-transparent w-4/5 my-2 h-24 pt-5 text-left focus:outline-none  focus:placeholder-transparent  xl:text-black xl:placeholder-gray-650 xl:border-red-450"
-                                placeholder="Description"
+                                placeholder="Précisions, détails..."
                                 value={values.desc}
                                 onChange={handleChange}
                             ></textarea>
@@ -236,7 +236,7 @@ const Post = () => {
                             type="text"
                             name="address"
 
-                            placeholder="Adresse" className="placeholder-white-150 text-white-150 border-b-2 bg-transparent w-4/5 my-2 h-12 pt-5 text-left focus:outline-none  focus:placeholder-transparent  xl:placeholder-gray-650 xl:text-black xl:border-red-450"
+                            placeholder="Adresse du bon plan" className="placeholder-white-150 text-white-150 border-b-2 bg-transparent w-4/5 my-2 h-12 pt-5 text-left focus:outline-none  focus:placeholder-transparent  xl:placeholder-gray-650 xl:text-black xl:border-red-450"
                             value={values.address}
                             onChange={handleChange}
                         />
@@ -262,7 +262,7 @@ const Post = () => {
                         <input id="place"
                             type="text"
                             name="place"
-                            placeholder="Lieu" className="placeholder-white-150 text-white-150 border-b-2 bg-transparent w-4/5 my-2 h-12 pt-5 text-left focus:outline-none  focus:placeholder-transparent  xl:placeholder-gray-650 xl:text-black xl:border-red-450"
+                            placeholder="Nom de l'enseigne" className="placeholder-white-150 text-white-150 border-b-2 bg-transparent w-4/5 my-2 h-12 pt-5 text-left focus:outline-none  focus:placeholder-transparent  xl:placeholder-gray-650 xl:text-black xl:border-red-450"
                             value={values.place}
                             onChange={handleChange}
                             required
@@ -282,7 +282,7 @@ const Post = () => {
                         />
                     </div>
 
-                    <div className="flex relative items-center mt-6 xl:justify-center">
+                    <div className="flex relative items-center mt-6 justify-center xl:justify-center">
                         <input id="certified"
                             type="checkbox"
                             name="certified"
@@ -296,7 +296,7 @@ const Post = () => {
 
                     </div>
 
-                    <div className="flex relative items-center xl:justify-center">
+                    <div className="flex relative items-center justify-center xl:justify-center">
                         <input id="cgu"
                             type="checkbox"
                             name="cgu"
@@ -310,7 +310,7 @@ const Post = () => {
 
                     </div>
                     <div className="flex justify-end xl:justify-center items-center py-5 mr-5">
-                        <button name='bouton publier' className="block w-24 h-9 bg-red-450 hover:bg-white-0 hover:text-red-450 hover:border-red-450 border-2 border-red-450 dark:hover:bg-white-150 dark:hover:text-gray-550 active:bg-red-200 dark:bg-white-0 dark:border-black dark:text-black rounded-full transition duration-300 ease-in-out text-white-0" type="submit">Publier</button>
+                        <button name='bouton publier' className="block w-24 h-9 bg-white-O hover:bg-red-450 hover:text-white-0 hover:border-white-0 border-2 border-red-white-0 dark:hover:bg-white-150 dark:hover:text-gray-550 active:bg-red-200 dark:bg-white-0 dark:border-black dark:text-black rounded-full transition duration-300 ease-in-out text-white-0" type="submit">Publier</button>
                     </div>
 
                 </form>
