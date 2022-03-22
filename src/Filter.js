@@ -238,7 +238,7 @@ const Filter = ({ searchValue, setSearchValue }) => {
               </div>
               <div className="flex relative justify-center items-center mx-auto w-65% xl:hidden">
                 <div className="flex border-b-2 border-black required:w-65% h-8 mt-2 mb-14">
-                  <input value={searchValue} className=" required:w-65% px-6 bg-white-150 placeholder-black focus:outline-none" placeholder="Rechercher par nom..." onChange={event => setSearchValue(event.target.value)} />
+                  <input value={searchValue} className=" required:w-65% px-6 bg-white-150 placeholder-black focus:outline-none" placeholder="Rechercher par titre..." onChange={event => setSearchValue(event.target.value)} />
                   <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1" viewBox="0 0 20 20" className="w-5 h-5 mt-1 mr-3 xl:hidden"><path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
                 </div>
               </div>
@@ -260,7 +260,7 @@ const Filter = ({ searchValue, setSearchValue }) => {
                           <option value="Expos">Expos</option>
                           <option value="Bars">Bars</option>
                           <option value="Soirées">Soirées</option>
-                          <option value="Étudiants">Étudiants</option>
+                          <option value="Étudiants">Tarifs étudiants</option>
                           <option value="Autres">Autres</option>
                         </select>
                         <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
@@ -307,7 +307,7 @@ const Filter = ({ searchValue, setSearchValue }) => {
                       <div className="flex">
                         <div className="flex relative items-center mt-3 ml-3">
                           {/* <h4 className="text-black pl-2">{filters.filter_by}</h4> */}
-                          <label htmlFor="certified" className="text-black pl-2">
+                          <label htmlFor="certified" className="text-black">
                             <input id="filter_by_date"
                               type="radio"
                               name="filter_by"
@@ -316,7 +316,7 @@ const Filter = ({ searchValue, setSearchValue }) => {
                               value="upvote"
                               onChange={handleChange}
                             />
-                            Nombres de votes
+                            <span className="pl-2">Les plus populaires</span>
                           </label>
                         </div>
                         <div className="flex relative items-center mt-3 ml-3">
@@ -329,7 +329,7 @@ const Filter = ({ searchValue, setSearchValue }) => {
                               value="date"
                               onChange={handleChange}
                             />
-                            Date de Publication
+                            <span className="pl-2">Les plus récents</span>
                           </label>
                         </div>
                       </div>
