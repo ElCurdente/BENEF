@@ -10,6 +10,7 @@ import sablier from './images/icon/icon_sablier.svg';
 import { motion } from 'framer-motion/dist/framer-motion';
 import coeur from './images/icon/icon_coeur.svg';
 import coeurPlein from './images/icon/icon_coeur_rempli.svg';
+import pleure from './images/illustrations/pleure.png';
 import { AES, enc } from 'crypto-js';
 import animationData2 from './images/animation/loading.json';
 import Lottie from 'react-lottie';
@@ -399,7 +400,14 @@ function Favoris() {
               </div>
             </div>
 
-            {items.length === 0 ? <h1>Pas de plan favoris enregistré</h1>
+            {items.length === 0 ?
+                <div className="mb-5 mt-5 mx-3 flex flex-col items-center text-center">
+                  <img className="mt-5 mb-5 w-20" src={pleure} alt='emoji pleure' />
+                  <h1 className="text-lg xl:text-xl font-semibold max-w-md mt-2">
+                    Oups... tu n'as aucun bon plan favori<br></br>
+                    <div className="font-light xl:text-base flex flex-wrap justify-center mt-2"><span className="w-fit">Il te suffit de cliquer sur</span> <img className="h-6 mx-2" src={coeur} alt='icone coeur' /><span className="w-fit"> des bons plans qui</span><span className="w-fit">t'intéressent et ils s'afficheront ici !</span></div>
+                  </h1>
+                </div>
           
           :
 
