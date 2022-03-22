@@ -12,6 +12,9 @@ import VisibilityOff from "@material-ui/icons/VisibilityOff";
 import { useState } from 'react';
 
 const FormSignup = ({ submitForm }) => {
+
+    /* on récupères les fonctions et states de useForm */
+
     const { handleChange, handleClickShowPassword, handleClickShowPassword2, handleMouseDownPassword, values, handleSubmit, errors, handleSubmitConnexion, handleChangeCo, valuesConnexion, handleStayConnected, stayConnected, errorsConnexion, errorDoublon } = useForm(submitForm, validate);
     const [openModal, setOpenModal] = useState(false);
     const [hasAccount, setHasAccount] = useState(false);
@@ -26,12 +29,14 @@ const FormSignup = ({ submitForm }) => {
         setHasAccount(false);
     };
 
+    /* Permet d'afficher les cgu */
+
     function handleCGU() {
         console.log('cgu');
         setOpenModal(true);
     }
 
-    if (hasAccount === true) {
+    if (hasAccount === true) { /* Si l'utilisateur déclare qu'il possède déjà un compte, le formulaire suivant s'affiche. Sinon c'est le formulaire d'inscription qui s'affichera */
         return (
             <div className="flex justify-center items-center bg-red-450 box-border h-screen w-full dark:bg-black">
                 <div className="w-96">
@@ -245,6 +250,9 @@ const FormSignup = ({ submitForm }) => {
                     <img src={logodark} alt="Logo" className="w-64 hidden dark:block" />
                 </div>
                 <div className="bg-white-0 p-7 rounded-xl">
+
+            {/* Formulaire typique en React*/}
+
                     <form className="form" action="api.php" method="GET" onSubmit={handleSubmit}>
                         <div className="flex relative justify-center items-center">
                             <label htmlFor="username" className="">

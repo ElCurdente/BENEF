@@ -3,7 +3,7 @@ import Thread from "./Thread";
 
 function Home() {
   return (
-    <Thread/>
+    <Thread/> /* Affiche le component Thread */
   )
 }
 

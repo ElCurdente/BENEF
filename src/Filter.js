@@ -37,6 +37,8 @@ const Filter = ({ searchValue, setSearchValue }) => {
   const [openModal, setOpenModal] = useState(false);
   const [openModal2, setOpenModal2] = useState(false);
 
+  /* Permet de vider le state Filter */
+
   const handleReset = () => {
     setFilters({
       filtered: false,
@@ -47,6 +49,8 @@ const Filter = ({ searchValue, setSearchValue }) => {
     setOpenModal(false);
   }
 
+  /* Permet de stocker dans filter */
+
   const handleChange = e => {
     const { name, value } = e.target;
     setFilters({
@@ -54,6 +58,8 @@ const Filter = ({ searchValue, setSearchValue }) => {
       [name]: value
     });
   };
+
+  /* Permet de récupérer les posts pour les stocker dans le state item sous forme d'un tableau d'objets */
 
   useEffect(() => {
     fetch("https://benef-app.fr/api-post-render.php")
@@ -78,6 +84,8 @@ const Filter = ({ searchValue, setSearchValue }) => {
     }));
   }
 
+  /* Trier en fonction des votes */
+
   function compareUpvote(a, b) {
     if (parseInt(a.upvote) < parseInt(b.upvote)) {
       return 1;
@@ -87,6 +95,8 @@ const Filter = ({ searchValue, setSearchValue }) => {
     }
     return 0;
   }
+
+  /* Trier en fonction de la date de publication (grâce à l'id)*/
 
   function compareDate(a, b) {
     if (parseInt(a.id_post) < parseInt(b.id_post)) {
@@ -105,6 +115,8 @@ const Filter = ({ searchValue, setSearchValue }) => {
     setOpenModal2(true);
     setModalItem(this);
   }
+
+  /* Fetch pour afficher infos de l'utilisateur qui a posté le bon plan */
 
   useEffect(() => {
     if (openModal2) {
@@ -144,18 +156,25 @@ const Filter = ({ searchValue, setSearchValue }) => {
   };
 
   if (error) {
+
+    /* Affichage d'erreur */
+
     return <div>Erreur : {error.message}</div>;
   } else if (!isLoaded) {
+
+    /* Loader */
+
     return <div className='h-screen w-screen flex justify-center items-center bg-red-450 xl:bg-white-0'>
       <div className='pt-36 flex justify-center items-center h-400px w-400px rounded-full bg-red-450'>
         <Lottie options={defaultOptions2}
           height={500}
           width={500} className=""/>
       </div>
-
-
     </div>;
   } else {
+
+    /* Constante pour gérer les filtres (désolé pour les noms) */
+
     const regexp = new RegExp(searchValue, 'i');
     const regexp_postal = new RegExp(filters.postal, 'i');
     const regexp_category = new RegExp(filters.category, 'i');

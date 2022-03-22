@@ -15,7 +15,7 @@ const Form = () => {
   
     return (
         <div>
-                
+            {/* Affichage conditionnel*/}
             {!sessionStorage.getItem("isConnected") ? <FormSignup submitForm={submitForm} /> : (<Accueil />)}            
     
         </div>

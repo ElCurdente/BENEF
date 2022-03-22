@@ -27,6 +27,8 @@ function Favoris() {
     }
   };
 
+  /* Permet de décrypter l'id_user présent dans le Storage du client */
+
   let decrypted;
   if (localStorage.getItem('isConnected')) {
     decrypted = AES.decrypt(localStorage.getItem('id_user'), 'MYKEY4DEMO');
@@ -34,7 +36,6 @@ function Favoris() {
     decrypted = AES.decrypt(sessionStorage.getItem('id_user'), 'MYKEY4DEMO');
   }
   const id_user = decrypted.toString(enc.Utf8);
-
   const [error, setError] = useState(null);
   const [isLoaded, setIsLoaded] = useState(false);
   const [items, setItems] = useState([]);
@@ -51,6 +52,7 @@ function Favoris() {
   const [downvote, setDownvote] = useState(false);
   const nbUpvote = useRef(null);
 
+  /* Fetch permettant de récuprérer les posts favoris de l'utilisateur */
 
   useEffect(() => {
     fetch("https://benef-app.fr/api-favoris-render.php", {
@@ -74,6 +76,8 @@ function Favoris() {
       )
   }, [isLoaded])
 
+  /* Fonction permettant de supprimer un post favoris côté serveur */
+
   function handleFav() {
     setIsSuppr(this);
     fetch('https://benef-app.fr/api-favoris-sup.php', {
@@ -93,6 +97,8 @@ function Favoris() {
       });
   }
 
+  /* Fonction permettant de supprimer un post favoris côté client */
+
   useEffect(() => {
     for (var i = 0; i < items.length; i++) {
       if (items[i].id_post === isSuppr) {
@@ -102,6 +108,9 @@ function Favoris() {
       }
     }
   }, [suppr])
+
+
+  /* Fonction permettant d'ajouter un vote côté serveur */
 
   function handleUpvote() {
     fetch('https://benef-app.fr/api-upvote.php', {
@@ -121,6 +130,8 @@ function Favoris() {
       });
   }
 
+  /* Fonction permettant de retirer un vote côté serveur */
+
   function handleDownvote() {
     fetch('https://benef-app.fr/api-downvote.php', {
       method: "POST",
@@ -137,6 +148,8 @@ function Favoris() {
         console.log("Error Reading data " + err);
       });
   }
+
+  /* Fonction qui permet de trier les posts selon les votes */
 
   function compare(a, b) {
     if (parseInt(a.upvote) < parseInt(b.upvote)) {
@@ -168,11 +181,15 @@ function Favoris() {
       )
   }, [isLoaded])
 
+  /* Stock les valeurs dans les states */
+
   function handleUpvote() {
     setIsVoted(this.id_post)
     setUpvote(true);
     setIsVoting(true);
   }
+
+  /* Grosse fonction pour gérer les votes côté client */
 
   useEffect(() => {
     if (upvote) {
@@ -290,6 +307,8 @@ function Favoris() {
     setModalItem(this);
   }
 
+  /* Récupère les infos utilisateurs pour la modale */
+
   useEffect(() => {
     if (openModal) {
       fetch('https://benef-app.fr/api-infos-utilisateur.php', {
@@ -318,8 +337,10 @@ function Favoris() {
   }, [openModal])
 
   if (error) {
+    /* S'affiche si l'on arrive pas à fetch (problème de connexion par exemple) */ 
     return <div>Erreur : {error.message}</div>;
   } else if (!isLoaded) {
+    /* S'affiche pendant le chargement des donnés (loader) */ 
     return <div className='h-screen w-screen flex justify-center items-center bg-red-450 xl:bg-white-0'>
       <div className='pt-36 flex justify-center items-center h-400px w-400px rounded-full bg-red-450'>
         <Lottie options={defaultOptions2}
