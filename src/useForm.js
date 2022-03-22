@@ -5,6 +5,7 @@ import {AES}from 'crypto-js';
 
 const useForm = (callback, validate) => {
   
+  //Valeurs du formulaire d'inscription à envoyer au serveur
 
   const [values, setValues] = useState({
     username:'',
@@ -72,13 +73,9 @@ const useForm = (callback, validate) => {
     e.preventDefault();
     setErrors(validate(values));
     setIsSubmitting(true);
-    // if (Object.keys(errors).length === 0 && isSubmitting) {
-    //   console.log("pas d'erreur");
-    // }else{
-    //   console.log("pleins d'erreurs")
-    // }
-  
 };
+
+// Script pour vérifier la connexion
 
 const handleSubmitConnexion = e => {
   e.preventDefault();
@@ -94,12 +91,13 @@ body: JSON.stringify(valuesConnexion)
 })
 .then((response) => response.json())
 .then((data) => {
-  // setIdUser(data.id_user);
-  const envryptedString = AES.encrypt(data.id_user,'MYKEY4DEMO');// console.log(stayConnected)
-  
-// const decrypted = AES.decrypt(sessionStorage.getItem('id_user'), 'MYKEY4DEMO');
-// const decryptedString = decrypted.toString(enc.Utf8);
-// sessionStorage.setItem('decryptedHello', decryptedString)
+
+  // Cryptage de l'id_user pour le stocker ensuite dans le storage, afin que l'utilisateur ne puisse pas le manipuler
+
+  const envryptedString = AES.encrypt(data.id_user,'MYKEY4DEMO');
+
+ // Stockage de l'id_user crypté dans le storage, dans le local ou le session selon s'il veut rester connecté ou non.
+
  if(stayConnected){
   localStorage.setItem('id_user', envryptedString.toString());
   localStorage.setItem("isConnected", true)
@@ -121,6 +119,7 @@ setErrorsConnexion({
 });
 };
 
+  // Script d'inscription. Se lance seulement si toutes les conditions (disponibles dans validateInfo) ont été vérifiées et que l'utilisateur appuye sur le bouton submit
 
   useEffect(
     () => {
@@ -152,12 +151,12 @@ setErrorsConnexion({
             .then((response) => response.json())
             .then((data) => {
               sessionStorage.setItem("isConnected", true);
-              sessionStorage.setItem("id_user", data.id_user);
+              const envryptedString = AES.encrypt(data.id_user,'MYKEY4DEMO');
+              sessionStorage.setItem('id_user', envryptedString.toString());
               window.location.reload();
           })
         } 
       }).catch(err => {
-        // Do something for an error here
         console.log("Error Reading data " + err);
       });
       }
