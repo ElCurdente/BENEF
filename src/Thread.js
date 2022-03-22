@@ -63,7 +63,8 @@ const Thread = () => {
     category: '',
     postal: '',
     filter_by: 'upvote',
-  })
+  });
+
 
   let decrypted;
   if (localStorage.getItem('isConnected')) {
@@ -587,12 +588,12 @@ const Thread = () => {
                         {modalItem.expiration !== '0000-00-00' ? <div className='ml-4'>{modalItem.expiration}</div> : <div className='ml-4'>À vie</div>}
                       </div>
                       <h1 className="text-base max-w-md mt-5">{modalItem.description}</h1>
-                      </div>
-                      <div className='flex self-end items-center text-sm max-w-md mt-7 mr-2'>
-                         Posté par <span className="font-semibold cursor-pointer ml-1 mr-2" onClick={handleModalUser.bind(modalItem)}>{modalItem.user_pseudo}</span>
-                          <img className="h-8 w-8 xl:border-2 xl:h-8 xl:w-8 rounded-full xl:rounded-full border-2 border-red-450 cursor-pointer" onClick={handleModalUser.bind(modalItem)} src={modalItem.file} alt="profil" />
-                      
-                      </div>
+                    </div>
+                    <div className='flex self-end items-center text-sm max-w-md mt-7 mr-2'>
+                      Posté par <span className="font-semibold cursor-pointer ml-1 mr-2" onClick={handleModalUser.bind(modalItem)}>{modalItem.user_pseudo}</span>
+                      <img className="h-8 w-8 xl:border-2 xl:h-8 xl:w-8 rounded-full xl:rounded-full border-2 border-red-450 cursor-pointer" onClick={handleModalUser.bind(modalItem)} src={modalItem.file} alt="profil" />
+
+                    </div>
                     <div className="flex w-full justify-evenly mt-7 mb-10">
                       <button onClick={() => setOpenModal(false)} name='bouton fermer' className="block px-4 font-semibold py-2 bg-red-450 hover:bg-white-0 hover:text-red-450 hover:border-red-450 border-2 border-red-450 dark:hover:bg-white-150 dark:hover:text-gray-550 active:bg-red-200 dark:bg-white-0 dark:border-black dark:text-black rounded-full transition duration-300 ease-in-out text-white-0" type="submit">Fermer</button>
 
@@ -602,52 +603,97 @@ const Thread = () => {
               </div>
             </div>
 
-            
+            {triRecent ?
 
-            {items.sort(compare).map(item => (
-              <motion.div key={item.id_post} className="w-92vw xl:w-full relative bg-red-450 dark:bg-black rounded-lg text-white-0 mb-4 xl:mb-5 shadow-customm"
-                whileHover={{ scale: 1.01 }}>
-                <div className="w-full h-250px relative" onClick={handleModal.bind(item)}>
-                  <img className="object-cover rounded-t-lg h-full w-full" src={item.image} alt="post" />
-                </div>
-                <div className="w-full min-h-max pb-4 md:cursor-pointer" onClick={handleModal.bind(item)} >
-                  <h1 className="text-lg font-semibold mx-2 max-w-md mt-2	">{item.title}</h1>
-                  <div className="flex mt-2 text-sm w-92vw max-w-md">
-                    <img src={adresse} className="ml-2 mr-1 w-3.5" alt='icon adresse'></img> {item.address} <div className="absolute right-3">{item.postal}</div>
+              items.sort(compareDate).map(item => (
+                <motion.div key={item.id_post} className="w-92vw xl:w-full relative bg-red-450 dark:bg-black rounded-lg text-white-0 mb-4 xl:mb-5 shadow-customm"
+                  whileHover={{ scale: 1.01 }}>
+                  <div className="w-full h-250px relative" onClick={handleModal.bind(item)}>
+                    <img className="object-cover rounded-t-lg h-full w-full" src={item.image} alt="post" />
                   </div>
-
-                </div>
-                <li key={item.id_post} className="mt-1 w-92vw max-w-md">
-                  <div>
-                    <div className="bg-white-0 h-10 w-10 text-black absolute flex justify-center items-center top-3 right-2 rounded-full">
-                      <button name='bouton favoris' className="upvote text-red-450 dark:text-black"
-                        onClick={handleFav.bind(item.id_post)}>
-                        {
-                          isFav.find(x => x === item.id_post) === item.id_post ? <img className='h-20px fill-current cursor-pointer' src={coeurPlein} alt='icon coeur rempli' /> :
-                            <img className='h-20px fill-current cursor-pointer' src={coeur} alt='icon coeur' />
-                        }
-
-                      </button>
+                  <div className="w-full min-h-max pb-4 md:cursor-pointer" onClick={handleModal.bind(item)} >
+                    <h1 className="text-lg font-semibold mx-2 max-w-md mt-2	">{item.title}</h1>
+                    <div className="flex mt-2 text-sm w-92vw max-w-md">
+                      <img src={adresse} className="ml-2 mr-1 w-3.5" alt='icon adresse'></img> {item.address} <div className="absolute right-3">{item.postal}</div>
                     </div>
-                    <button name='bouton signaler' className="bg-white-0 h-10 w-10 text-black absolute z-30 flex justify-center items-center top-3 right-16 rounded-full" onClick={handleReport.bind(item.id_post)}>
-                      <img src={signaler} className="h-22px" alt='icon signaler'></img>
-                    </button>
-                    <div className="bg-white-0 text-black absolute top-44 text-xl font-bold flex w-max py-1 rounded-lg -left-2 pl-2">
-                      <button onClick={handleUpvote.bind(item)} name='bouton upvote haut' className="pl-2 relative">
-                        <motion.img whileTap={{ scale: 0.85 }} id="upvote_haut" src={upvoteHaut} className="opacity-100 h-28px" alt="icon upvote haut"></motion.img>
-                        {/* <img src={upvoteorange} className="absolute top-0 h-30px dark:opacity-0" alt="icon upvote"></img> */}
-                      </button>
 
-                      <span id='nb_upvote' ref={nbUpvote} className="px-2 upvote text-red-450 dark:text-black">{item.upvote}</span>
-                      <button onClick={handleDownvote.bind(item)} name='bouton upvote bas' className="pr-2 relative">
-                        <motion.img whileTap={{ scale: 0.85 }} id="upvote_bas" src={upvoteBas} className="opacity-100 dark:opacity-100 h-28px" alt="icon upvote bas"></motion.img>
-                        {/* <img src={upvoteorange} className="transform rotate-180 absolute top-0 h-30px dark:opacity-0" alt="icon upvote bas"></img> */}
-                      </button>
-                    </div>
                   </div>
-                </li>
-              </motion.div>
-            ))}
+                  <li key={item.id_post} className="mt-1 w-92vw max-w-md">
+                    <div>
+                      <div className="bg-white-0 h-10 w-10 text-black absolute flex justify-center items-center top-3 right-2 rounded-full">
+                        <button name='bouton favoris' className="upvote text-red-450 dark:text-black"
+                          onClick={handleFav.bind(item.id_post)}>
+                          {
+                            isFav.find(x => x === item.id_post) === item.id_post ? <img className='h-20px fill-current cursor-pointer' src={coeurPlein} alt='icon coeur rempli' /> :
+                              <img className='h-20px fill-current cursor-pointer' src={coeur} alt='icon coeur' />
+                          }
+
+                        </button>
+                      </div>
+                      <button name='bouton signaler' className="bg-white-0 h-10 w-10 text-black absolute z-30 flex justify-center items-center top-3 right-16 rounded-full" onClick={handleReport.bind(item.id_post)}>
+                        <img src={signaler} className="h-22px" alt='icon signaler'></img>
+                      </button>
+                      <div className="bg-white-0 text-black absolute top-44 text-xl font-bold flex w-max py-1 rounded-lg -left-2 pl-2">
+                        <button onClick={handleUpvote.bind(item)} name='bouton upvote haut' className="pl-2 relative">
+                          <motion.img whileTap={{ scale: 0.85 }} id="upvote_haut" src={upvoteHaut} className="opacity-100 h-28px" alt="icon upvote haut"></motion.img>
+                          {/* <img src={upvoteorange} className="absolute top-0 h-30px dark:opacity-0" alt="icon upvote"></img> */}
+                        </button>
+
+                        <span id='nb_upvote' ref={nbUpvote} className="px-2 upvote text-red-450 dark:text-black">{item.upvote}</span>
+                        <button onClick={handleDownvote.bind(item)} name='bouton upvote bas' className="pr-2 relative">
+                          <motion.img whileTap={{ scale: 0.85 }} id="upvote_bas" src={upvoteBas} className="opacity-100 dark:opacity-100 h-28px" alt="icon upvote bas"></motion.img>
+                          {/* <img src={upvoteorange} className="transform rotate-180 absolute top-0 h-30px dark:opacity-0" alt="icon upvote bas"></img> */}
+                        </button>
+                      </div>
+                    </div>
+                  </li>
+                </motion.div>
+              )) :
+              items.sort(compareUpvote).map(item => (
+                <motion.div key={item.id_post} className="w-92vw xl:w-full relative bg-red-450 dark:bg-black rounded-lg text-white-0 mb-4 xl:mb-5 shadow-customm"
+                  whileHover={{ scale: 1.01 }}>
+                  <div className="w-full h-250px relative" onClick={handleModal.bind(item)}>
+                    <img className="object-cover rounded-t-lg h-full w-full" src={item.image} alt="post" />
+                  </div>
+                  <div className="w-full min-h-max pb-4 md:cursor-pointer" onClick={handleModal.bind(item)} >
+                    <h1 className="text-lg font-semibold mx-2 max-w-md mt-2	">{item.title}</h1>
+                    <div className="flex mt-2 text-sm w-92vw max-w-md">
+                      <img src={adresse} className="ml-2 mr-1 w-3.5" alt='icon adresse'></img> {item.address} <div className="absolute right-3">{item.postal}</div>
+                    </div>
+
+                  </div>
+                  <li key={item.id_post} className="mt-1 w-92vw max-w-md">
+                    <div>
+                      <div className="bg-white-0 h-10 w-10 text-black absolute flex justify-center items-center top-3 right-2 rounded-full">
+                        <button name='bouton favoris' className="upvote text-red-450 dark:text-black"
+                          onClick={handleFav.bind(item.id_post)}>
+                          {
+                            isFav.find(x => x === item.id_post) === item.id_post ? <img className='h-20px fill-current cursor-pointer' src={coeurPlein} alt='icon coeur rempli' /> :
+                              <img className='h-20px fill-current cursor-pointer' src={coeur} alt='icon coeur' />
+                          }
+
+                        </button>
+                      </div>
+                      <button name='bouton signaler' className="bg-white-0 h-10 w-10 text-black absolute z-30 flex justify-center items-center top-3 right-16 rounded-full" onClick={handleReport.bind(item.id_post)}>
+                        <img src={signaler} className="h-22px" alt='icon signaler'></img>
+                      </button>
+                      <div className="bg-white-0 text-black absolute top-44 text-xl font-bold flex w-max py-1 rounded-lg -left-2 pl-2">
+                        <button onClick={handleUpvote.bind(item)} name='bouton upvote haut' className="pl-2 relative">
+                          <motion.img whileTap={{ scale: 0.85 }} id="upvote_haut" src={upvoteHaut} className="opacity-100 h-28px" alt="icon upvote haut"></motion.img>
+                          {/* <img src={upvoteorange} className="absolute top-0 h-30px dark:opacity-0" alt="icon upvote"></img> */}
+                        </button>
+
+                        <span id='nb_upvote' ref={nbUpvote} className="px-2 upvote text-red-450 dark:text-black">{item.upvote}</span>
+                        <button onClick={handleDownvote.bind(item)} name='bouton upvote bas' className="pr-2 relative">
+                          <motion.img whileTap={{ scale: 0.85 }} id="upvote_bas" src={upvoteBas} className="opacity-100 dark:opacity-100 h-28px" alt="icon upvote bas"></motion.img>
+                          {/* <img src={upvoteorange} className="transform rotate-180 absolute top-0 h-30px dark:opacity-0" alt="icon upvote bas"></img> */}
+                        </button>
+                      </div>
+                    </div>
+                  </li>
+                </motion.div>
+              ))
+            }
 
           </div>
         </ul>
