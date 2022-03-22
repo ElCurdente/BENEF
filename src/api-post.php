@@ -34,7 +34,75 @@
     $requete = "INSERT INTO post (image, title, description, address, postal, expiration, category, id_user, upvote, place) VALUES (:image, :title, :description, :address, :postal, :expiration, :category, :id_user, 0, :place)";
     $stmt = $db ->prepare($requete);
     $stmt -> execute(array(
-      ":image" => 'https://benef-app.fr/img/expos_benef.png',
+      ":image" => 'https://benef-app.fr/img/benef_expos.png',
+      ":title" => $_POST['title'],
+      ":description" => $_POST['desc'],
+      ":address" => $_POST['address'],
+      ":postal" => $_POST['postal'],
+      ":expiration" => $_POST['expiration'],
+      ":category" => $_POST['category'],
+      ":id_user" => $_POST['id_user'],
+      "place" => $_POST['place'],
+    ));
+   }else if($_POST['category'] == 'Restos') {
+    echo '"Aucun fichier détexté. Image par défaut pour les expos sélectionnée"';
+    //  echo $_POST['title'];
+     $db = new PDO('mysql:host=db5005161444.hosting-data.io;dbname=dbs4318125', 'dbu1522474', 'lesoussol06092021', array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8"));
+    $requete = "INSERT INTO post (image, title, description, address, postal, expiration, category, id_user, upvote, place) VALUES (:image, :title, :description, :address, :postal, :expiration, :category, :id_user, 0, :place)";
+    $stmt = $db ->prepare($requete);
+    $stmt -> execute(array(
+      ":image" => 'https://benef-app.fr/img/benef_restos.png',
+      ":title" => $_POST['title'],
+      ":description" => $_POST['desc'],
+      ":address" => $_POST['address'],
+      ":postal" => $_POST['postal'],
+      ":expiration" => $_POST['expiration'],
+      ":category" => $_POST['category'],
+      ":id_user" => $_POST['id_user'],
+      "place" => $_POST['place'],
+    ));
+   }else if($_POST['category'] == 'Bars') {
+    echo '"Aucun fichier détexté. Image par défaut pour les expos sélectionnée"';
+    //  echo $_POST['title'];
+     $db = new PDO('mysql:host=db5005161444.hosting-data.io;dbname=dbs4318125', 'dbu1522474', 'lesoussol06092021', array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8"));
+    $requete = "INSERT INTO post (image, title, description, address, postal, expiration, category, id_user, upvote, place) VALUES (:image, :title, :description, :address, :postal, :expiration, :category, :id_user, 0, :place)";
+    $stmt = $db ->prepare($requete);
+    $stmt -> execute(array(
+      ":image" => 'https://benef-app.fr/img/benef_bars.png',
+      ":title" => $_POST['title'],
+      ":description" => $_POST['desc'],
+      ":address" => $_POST['address'],
+      ":postal" => $_POST['postal'],
+      ":expiration" => $_POST['expiration'],
+      ":category" => $_POST['category'],
+      ":id_user" => $_POST['id_user'],
+      "place" => $_POST['place'],
+    ));
+   }else if($_POST['category'] == 'Soirées') {
+    echo '"Aucun fichier détexté. Image par défaut pour les expos sélectionnée"';
+    //  echo $_POST['title'];
+     $db = new PDO('mysql:host=db5005161444.hosting-data.io;dbname=dbs4318125', 'dbu1522474', 'lesoussol06092021', array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8"));
+    $requete = "INSERT INTO post (image, title, description, address, postal, expiration, category, id_user, upvote, place) VALUES (:image, :title, :description, :address, :postal, :expiration, :category, :id_user, 0, :place)";
+    $stmt = $db ->prepare($requete);
+    $stmt -> execute(array(
+      ":image" => 'https://benef-app.fr/img/benef_soiree.png',
+      ":title" => $_POST['title'],
+      ":description" => $_POST['desc'],
+      ":address" => $_POST['address'],
+      ":postal" => $_POST['postal'],
+      ":expiration" => $_POST['expiration'],
+      ":category" => $_POST['category'],
+      ":id_user" => $_POST['id_user'],
+      "place" => $_POST['place'],
+    ));
+   } else if($_POST['category'] == 'Étudiants') {
+    echo '"Aucun fichier détexté. Image par défaut pour les expos sélectionnée"';
+    //  echo $_POST['title'];
+     $db = new PDO('mysql:host=db5005161444.hosting-data.io;dbname=dbs4318125', 'dbu1522474', 'lesoussol06092021', array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8"));
+    $requete = "INSERT INTO post (image, title, description, address, postal, expiration, category, id_user, upvote, place) VALUES (:image, :title, :description, :address, :postal, :expiration, :category, :id_user, 0, :place)";
+    $stmt = $db ->prepare($requete);
+    $stmt -> execute(array(
+      ":image" => 'https://benef-app.fr/img/benef_etudiants.png',
       ":title" => $_POST['title'],
       ":description" => $_POST['desc'],
       ":address" => $_POST['address'],
