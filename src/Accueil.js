@@ -28,6 +28,11 @@ const Accueil = () => {
 
     return (
 
+        /*-*-*-*-*-*-*-*-*--*-*-*-*-*-*-*-*-*-*--*-*-*-*/
+        /*                  Bandeau                    */
+        /*-*-*-*-*-*-*-*-*--*-*-*-*-*-*-*-*-*-*--*-*-*-*/
+
+
         <div className="dark:bg-gray-550 xl:bg-white-0 xl:overflow-x-hidden">
 
             <div className="flex justify-center z-50 relative xl:hidden">
@@ -59,6 +64,11 @@ const Accueil = () => {
                     </div>
                 </div>
             </div>
+
+            {/*-*-*-*-*-*-*-*-*--*-*-*-*-*-*-*-*-*-*--*-*-*-*/
+            /*            Modale de Bienvenue               */
+            /*-*-*-*-*-*-*-*-*--*-*-*-*-*-*-*-*-*-*--*-*-*-*/}
+
             {openModal &&
                 <div id="modal" className="flex w-screen h-screen bg-black bg-opacity-30 fixed bottom-0 left-0 justify-center overflow-auto z-40 items-center">
                     <div className="w-95vw xl:w-2/6 max-h-max mb-10 xl:mb-0 relative flex flex-col justify-center items-center rounded-3xl bg-white-0  dark:bg-gray-550 dark:text-white-0">
@@ -84,6 +94,11 @@ const Accueil = () => {
 
                 </div>
             }
+
+            {/*-*-*-*-*-*-*-*-*--*-*-*-*-*-*-*-*-*-*--*-*-*-*/
+            /*    Routeur - Permet de créer des liens       */
+            /*-*-*-*-*-*-*-*-*--*-*-*-*-*-*-*-*-*-*--*-*-*-*/}
+
             <Router>
 
                 <div>
@@ -116,12 +131,5 @@ const Accueil = () => {
     )
 
 }
-
-// const Home = () => (
-//     <div>
-//         <h1>Page d'accueil</h1>
-//     </div>
-// )
-
 
 export default Accueil;

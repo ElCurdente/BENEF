@@ -13,6 +13,9 @@ import { AES, enc } from 'crypto-js';
 import { useState } from 'react';
 import { useEffect } from 'react';
 
+{/*-*-*-*-*-*-*-*-*--*-*-*-*-*-*-*-*-*-*--*-*-*-*/
+/*              Bandeau inférieur               */
+/*-*-*-*-*-*-*-*-*--*-*-*-*-*-*-*-*-*-*--*-*-*-*/}
 
 const Nav = ({ searchValue, setSearchValue }) => {
 

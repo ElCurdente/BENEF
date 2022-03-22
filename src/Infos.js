@@ -22,6 +22,8 @@ const Parametre = () => {
         birth:''
     })
 
+    /* Réupère les informations de l'utilisateur */
+
     useEffect(() => {
         fetch('https://benef-app.fr/api-infos-utilisateur.php', {
             method: "POST",

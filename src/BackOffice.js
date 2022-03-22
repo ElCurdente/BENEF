@@ -12,20 +12,27 @@ import {AES, enc}from 'crypto-js';
 
 const BackOffice = () => {
 
-    const decrypted = AES.decrypt(sessionStorage.getItem('id_user'), 'MYKEY4DEMO');
-  const id_user = decrypted.toString(enc.Utf8);
+// States / Variables
 
-    const [error, setError] = useState(null);
+const decrypted = AES.decrypt(sessionStorage.getItem('id_user'), 'MYKEY4DEMO');
+const id_user = decrypted.toString(enc.Utf8);
+const [error, setError] = useState(null);
 const [isLoaded, setIsLoaded] = useState(false);
 const [items, setItems] = useState([]);
 const [modalItem, setModalItem] = useState([]);
 const modal2 = useRef(null);
 const [openModal2, setOpenModal2] = useState(false);
+const [user, setUser] = useState(0);
+const [suppr, setSuppr] = useState(false)
+const [deleteId, setDeleteId] = useState(0)
 
 function handleModal() {
+  //Permet de déclarer la modal et de déclencher un useEffect
     setOpenModal2(true);
     setModalItem(this);
   }
+
+  /* Fetch permettant de récupérer les informations de l'utilisateur pour afficher sa page */
 
   useEffect(() => {
     if (openModal2) {
@@ -50,6 +57,7 @@ function handleModal() {
     }
   }, [openModal2])
 
+ /* Fetch permettant de récupérer les post qui ont été signalés au chargement de la page */
 
 useEffect(() => {
     fetch("https://benef-app.fr/api-reported-posts-render.php")
@@ -66,7 +74,7 @@ useEffect(() => {
       )
   }, [])
 
-  const [user, setUser] = useState(0);
+  /* Permet de récupérer l'id de l'utilisateur au chargement de la page*/
 
 useEffect(() => {
     fetch('https://benef-app.fr/api-infos-utilisateur.php', {
@@ -87,8 +95,7 @@ useEffect(() => {
 
 }, [])
 
-const [suppr, setSuppr] = useState(false)
-const [deleteId, setDeleteId] = useState(0)
+/* Fonction permettant de supprimer un post dans la base de donnée*/
 
 function handleDelete() {
   setDeleteId(this)
@@ -109,6 +116,8 @@ function handleDelete() {
       });
 }
 
+/* Fonction permettant de supprimer un post côté client lors de chaque suppression en base de données */
+
 useEffect(() => {
   for (var i = 0; i < items.length; i++) {
     if (items[i].id_post === deleteId) {
@@ -122,6 +131,9 @@ useEffect(() => {
 
   return (
     <div className="h-screen w-screen  bg-white-0 xl:dark:bg-gray-550 flex justify-center overflow-auto items-center">
+
+      {/* Modal pour accéder aux détails d'un post lors du clic sur celui-ci*/}
+
         <div id="containerModal" className={openModal2 ? "block" : "hidden"}>
           <div id="modal" ref={modal2} className="flex w-screen h-screen bg-black bg-opacity-30 fixed bottom-0 left-0 justify-center z-40 items-end">
 
@@ -160,6 +172,9 @@ useEffect(() => {
     <div className="flex h-100px relative justify-center items-center w-full mb-5 pt-7">
     <h1 className="text-center text-2xl font-bold pt-7 dark:text-gray-50">Posts Signalés</h1>
     </div>
+
+    {/* Map des posts signalés */}
+
     {items.map(item => (
         <motion.div className="w-92vw h-150px relative flex justify-between items-center bg-red-450 xl:w-full dark:bg-black rounded-lg text-white-0 mb-5 shadow-customm"
           whileHover={{ scale: 1.01 }}>
