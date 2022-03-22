@@ -164,8 +164,8 @@ const Filter = ({ searchValue, setSearchValue }) => {
 
     /* Loader */
 
-    return <div className='h-screen w-screen flex justify-center items-center bg-red-450 xl:bg-white-0'>
-      <div className='pt-36 flex justify-center items-center h-400px w-400px rounded-full bg-red-450'>
+    return <div className='h-screen w-screen flex justify-center items-center bg-red-450 dark:bg-black xl:bg-white-0 xl:dark:bg-white-0'>
+      <div className='pt-36 flex justify-center items-center h-400px w-400px rounded-full bg-red-450 dark:bg-black'>
         <Lottie options={defaultOptions2}
           height={500}
           width={500} className=""/>
@@ -218,7 +218,7 @@ const Filter = ({ searchValue, setSearchValue }) => {
                 <div className='flex self-end items-center text-sm max-w-md mt-4'>
                   <Link to="/profil2" className='flex items-center'>
                   Posté par <span className="font-semibold cursor-pointer ml-1 mr-2" onClick={handleModal.bind(modalItem)}>{modalItem.user_pseudo}</span>
-                  <img className="h-8 w-8 xl:border-2 cursor-pointer xl:h-8 xl:w-8 rounded-full xl:rounded-full border-2 border-red-450" src={modalItem.file} alt="profil" /></Link>
+                  <img className="h-8 w-8 xl:border-2 cursor-pointer xl:h-8 xl:w-8 rounded-full xl:rounded-full border-2 border-red-450 dark:border-white-0" src={modalItem.file} alt="profil" /></Link>
                 </div>
 
                 <div className="flex w-full justify-evenly mt-5 mb-10">

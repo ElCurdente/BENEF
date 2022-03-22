@@ -500,8 +500,8 @@ const Thread = () => {
   if (error) {
     return <div>Erreur : {error.message}</div>;
   } else if (!isLoaded) {
-    return <div className='h-screen w-screen flex justify-center items-center bg-red-450 xl:bg-white-0'>
-      <div className='pt-36 flex justify-center items-center h-400px w-400px rounded-full bg-red-450'>
+    return <div className='h-screen w-screen flex justify-center items-center bg-red-450 dark:bg-black xl:bg-white-0 xl:dark:bg-white-0'>
+      <div className='pt-36 flex justify-center items-center h-400px w-400px rounded-full bg-red-450 dark:bg-black'>
         <Lottie options={defaultOptions2}
           height={500}
           width={500} className="" />
@@ -591,7 +591,7 @@ const Thread = () => {
                     </div>
                     <div className='flex self-end items-center text-sm max-w-md mt-7 mr-2'>
                       Posté par <span className="font-semibold cursor-pointer ml-1 mr-2" onClick={handleModalUser.bind(modalItem)}>{modalItem.user_pseudo}</span>
-                      <img className="h-8 w-8 xl:border-2 xl:h-8 xl:w-8 rounded-full xl:rounded-full border-2 border-red-450 cursor-pointer" onClick={handleModalUser.bind(modalItem)} src={modalItem.file} alt="profil" />
+                      <img className="h-8 w-8 xl:border-2 xl:h-8 xl:w-8 rounded-full xl:rounded-full border-2 border-red-450 dark:border-white-0 cursor-pointer" onClick={handleModalUser.bind(modalItem)} src={modalItem.file} alt="profil" />
 
                     </div>
                     <div className="flex w-full justify-evenly mt-7 mb-10">

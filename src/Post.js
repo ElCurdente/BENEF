@@ -149,7 +149,7 @@ const Post = () => {
                         </div>
                     </div>
                 </div>
-            <div className="bg-red-450 xl:bg-white-0 dark:bg-black xl:mt-32  xl:w-2/6 mt-32 h-auto pb-20 xl:pb-0 h-90vh overflow-y-auto rounded-lg xl:shadow-merwan w-95vw">
+            <div className="bg-red-450 xl:bg-white-0 dark:bg-black xl:mt-32  xl:w-2/6 mt-32 pb-20 xl:pb-0 h-90vh overflow-y-auto rounded-lg xl:shadow-merwan w-95vw">
                 <form className="post flex flex-col justify-center" onSubmit={(e) => handleSubmit(e)} id="post_form" ref={myForm}>
                     <div className="flex relative justify-center items-center">
                         {preview ? (
@@ -186,14 +186,14 @@ const Post = () => {
 
                     <div className="flex h-100px relative justify-center items-center w-4/5">
                         <div className="w-full h-80px flex justify-center items-center">
-                            <select name="category" id="category" onChange={handleChange} className="block appearance-none bg-red-450 xl:bg-white-0 text-white-0 border-gray-400 hover:border-gray-500 px-4 py-2 pr-12 ml-12 shadow leading-tight focus:outline-none focus:shadow-outline xl:text-gray-650">
+                            <select name="category" id="category" onChange={handleChange} className="block appearance-none bg-red-450 dark:bg-black xl:bg-white-0 text-white-0 border-gray-400 hover:border-gray-500 px-4 py-2 pr-12 ml-12 shadow leading-tight focus:outline-none focus:shadow-outline xl:text-gray-650">
                                 <option value="select">--Catégorie du bon plan--</option>
-                                <option value="Restos" className="bg-white-0 text-red-450">Restos</option>
-                                <option value="Expos" className="bg-white-0 text-red-450">Expos</option>
-                                <option value="Bars" className="bg-white-0 text-red-450">Bars</option>
-                                <option value="Soirées" className="bg-white-0 text-red-450">Soirées</option>
-                                <option value="Étudiants" className="bg-white-0 text-red-450">Tarifs étudiants</option>
-                                <option value="Autres" className="bg-white-0 text-red-450">Autres</option>
+                                <option value="Restos" className="bg-white-0 text-red-450 dark:text-black">Restos</option>
+                                <option value="Expos" className="bg-white-0 text-red-450 dark:text-black">Expos</option>
+                                <option value="Bars" className="bg-white-0 text-red-450 dark:text-black">Bars</option>
+                                <option value="Soirées" className="bg-white-0 text-red-450 dark:text-black">Soirées</option>
+                                <option value="Étudiants" className="bg-white-0 text-red-450 dark:text-black">Tarifs étudiants</option>
+                                <option value="Autres" className="bg-white-0 text-red-450 dark:text-black">Autres</option>
                             </select>
                         </div>
                         <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
@@ -208,7 +208,7 @@ const Post = () => {
                             type="text"
                             name="title"
                             maxLength="60"
-                            placeholder="Titre du bon plan (ex: Tapas maison de 2 à 5€)" className="placeholder-white-150 text-white-150 border-b-2 bg-transparent w-4/5 my-2 h-12 pt-5 text-left focus:outline-none  focus:placeholder-transparent  xl:placeholder-gray-650 xl:text-black xl:border-red-450"
+                            placeholder="Titre du bon plan (ex: Tapas maison de 2 à 5€)" className="placeholder-white-150 text-white-150 border-b-2 bg-transparent w-4/5 my-2 h-12 pt-5 text-left focus:outline-none  focus:placeholder-transparent  xl:placeholder-gray-650 xl:text-black xl:dark:text-white-0 xl:border-red-450 xl:dark:border-white-0"
                             value={values.title}
                             onChange={handleChange}
                         />
@@ -222,7 +222,7 @@ const Post = () => {
                                 name="desc"
                                 rows="40"
                                 maxLength="255"
-                                className=" resize-y placeholder-white-150 text-white-150 border-b-2 bg-transparent w-4/5 my-2 h-12 pt-5 text-left focus:outline-none  focus:placeholder-transparent  xl:text-black xl:placeholder-gray-650 xl:border-red-450"
+                                className=" resize-y placeholder-white-150 text-white-150 border-b-2 bg-transparent w-4/5 my-2 h-12 pt-5 text-left focus:outline-none  focus:placeholder-transparent  xl:text-black xl:dark:text-white-0 xl:placeholder-gray-650 xl:border-red-450 xl:dark:border-white-0"
                                 placeholder="Précisions, détails..."
                                 value={values.desc}
                                 onChange={handleChange}
@@ -237,7 +237,7 @@ const Post = () => {
                             type="text"
                             name="address"
 
-                            placeholder="Adresse du bon plan" className="placeholder-white-150 text-white-150 border-b-2 bg-transparent w-4/5 my-2 h-12 pt-5 text-left focus:outline-none  focus:placeholder-transparent  xl:placeholder-gray-650 xl:text-black xl:border-red-450"
+                            placeholder="Adresse du bon plan" className="placeholder-white-150 text-white-150 border-b-2 bg-transparent w-4/5 my-2 h-12 pt-5 text-left focus:outline-none  focus:placeholder-transparent  xl:placeholder-gray-650 xl:text-black xl:dark:text-white-0 xl:border-red-450 xl:dark:border-white-0"
                             value={values.address}
                             onChange={handleChange}
                         />
@@ -250,7 +250,7 @@ const Post = () => {
                             type="number"
                             name="postal"
                             maxLength="5"
-                            placeholder="Code Postal" className="placeholder-white-150 text-white-150 border-b-2 bg-transparent w-4/5 my-2 h-12 pt-5 text-left focus:outline-none  focus:placeholder-transparent  xl:placeholder-gray-650 xl:text-black xl:border-red-450"
+                            placeholder="Code Postal" className="placeholder-white-150 text-white-150 border-b-2 bg-transparent w-4/5 my-2 h-12 pt-5 text-left focus:outline-none  focus:placeholder-transparent  xl:placeholder-gray-650 xl:text-black xl:dark:text-white-0 xl:border-red-450 xl:dark:border-white-0"
                             value={values.postal}
                             onChange={handleChange}
                         />
@@ -263,7 +263,7 @@ const Post = () => {
                         <input id="place"
                             type="text"
                             name="place"
-                            placeholder="Nom de l'enseigne" className="placeholder-white-150 text-white-150 border-b-2 bg-transparent w-4/5 my-2 h-12 pt-5 text-left focus:outline-none focus:placeholder-transparent  xl:placeholder-gray-650 xl:text-black xl:border-red-450"
+                            placeholder="Nom de l'enseigne" className="placeholder-white-150 text-white-150 border-b-2 bg-transparent w-4/5 my-2 h-12 pt-5 text-left focus:outline-none focus:placeholder-transparent  xl:placeholder-gray-650 xl:text-black xl:dark:text-white-0 xl:border-red-450 xl:dark:border-white-0"
                             value={values.place}
                             onChange={handleChange}
                             required
@@ -280,7 +280,7 @@ const Post = () => {
                             onBlur={() => (ref.current.type = "text")}
                             name="expiration"
                             maxLength="30"
-                            placeholder="Date d'expiration" className="appearance-none placeholder-white-150 text-white-150 border-b-2 bg-transparent w-4/5 my-2 h-12 pt-5 text-left focus:outline-none focus:placeholder-transparent  xl:placeholder-gray-650 xl:text-black xl:border-red-450"
+                            placeholder="Date d'expiration" className="appearance-none placeholder-white-150 text-white-150 border-b-2 bg-transparent w-4/5 my-2 h-12 pt-5 text-left focus:outline-none focus:placeholder-transparent  xl:placeholder-gray-650 xl:text-black xl:dark:text-white-0 xl:border-red-450 xl:dark:border-white-0"
                             value={values.expiration}
                             onChange={handleChange}
                         />
@@ -291,12 +291,12 @@ const Post = () => {
                             type="checkbox"
                             name="certified"
                             maxLength="30"
-                            className="form-checkbox rounded-sm bg-transparent border-white-0 border-2 text-transparent focus:ring-transparent checked:border-white-0 xl:border-red-450 xl:checked:border-red-450 xl:text-red-450"
+                            className="form-checkbox rounded-sm bg-transparent border-white-0 border-2 text-transparent focus:ring-transparent checked:border-white-0 xl:border-red-450 xl:checked:border-red-450 xl:text-red-450 xl:dark:border-white-0"
                             value={values.certified}
                             onChange={handleChange}
                             required
                         />
-                        <label  htmlFor="certified" className="text-white-150 pl-2 xl:text-red-450" >Je certifie que ce bon plan existe
+                        <label  htmlFor="certified" className="text-white-150 pl-2 xl:text-red-450 xl:dark:text-white-0" >Je certifie que ce bon plan existe
                         </label>
 
                     </div>
@@ -306,12 +306,12 @@ const Post = () => {
                             type="checkbox"
                             name="cgu"
                             maxLength="30"
-                            className="form-checkbox rounded-sm bg-transparent border-white-0 border-2 text-transparent focus:ring-transparent xl:focus:ring-black checked:border-white-0 xl:border-red-450 xl:checked:border-red-450 xl:text-red-450"
+                            className="form-checkbox rounded-sm bg-transparent border-white-0 border-2 text-transparent focus:ring-transparent xl:focus:ring-black checked:border-white-0 xl:border-red-450 xl:checked:border-red-450 xl:text-red-450  xl:dark:border-white-0"
                             value={values.cgu}
                             onChange={handleChange}
                             required
                         />
-                        <label htmlFor="cgu" className="text-white-150 pl-2 xl:text-red-450" >Je certifie avoir pris connaissance des CGU
+                        <label htmlFor="cgu" className="text-white-150 pl-2 xl:text-red-450 xl:dark:text-white-0" >Je certifie avoir pris connaissance des CGU
                         </label>
 
                     </div>

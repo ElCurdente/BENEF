@@ -303,8 +303,8 @@ const Profil2 = () => {
     if (error) {
         return <div>Erreur : {error.message}</div>;
     } else if (!isLoaded) {
-        return <div className='h-screen w-screen flex justify-center items-center bg-red-450 xl:bg-white-0'>
-            <div className='pt-36 flex justify-center items-center h-400px w-400px rounded-full bg-red-450'>
+        return <div className='h-screen w-screen flex justify-center items-center bg-red-450 dark:bg-black xl:bg-white-0 xl:dark:bg-white-0'>
+            <div className='pt-36 flex justify-center items-center h-400px w-400px rounded-full bg-red-450 dark:bg-black'>
                 <Lottie options={defaultOptions2}
                     height={500}
                     width={500} className="" />
@@ -370,9 +370,9 @@ const Profil2 = () => {
                 <div id="infos" className="relative xl:w-2/6 w-95vw px-4 xl:-px-0">
                     <div className="flex items-center">
                         <img src={user.image} className="w-100px h-100px bg-transparent dark:bg-gray-650 border-3 border-red-450 dark:border-black rounded-full object-cover" alt='profil' />
-                        <h1 className="ml-3 text-xl font-semibold">{user.username}</h1>
+                        <h1 className="ml-3 text-xl font-semibold dark:text-black xl:dark:text-white-0">{user.username}</h1>
                     </div>
-                    <p className="col-span-2 mt-4">{user.bio}</p>
+                    <p className="col-span-2 mt-4 dark:text-black xl:dark:text-white-0">{user.bio}</p>
                     {/* <div className="flex items-center justify-between col-span-2 h-16 pt-8">
                         <button onClick={handleModify} name='bouton modifie ton profil' className="flex items-center h-10 bg-red-450 py-2 px-4 rounded-3xl text-white-0 dark:text-black hover:bg-white-0 hover:text-red-450 hover:border-red-450 border-2 border-red-450 dark:bg-white-0 dark:border-white-0 transition duration-300 ease-in-out">Modifie ton profil</button>
                         {user.id == 38 &&
