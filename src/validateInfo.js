@@ -1,6 +1,8 @@
 export default function validateInfo(values){
     let errors = {}
 
+    // Récupère les informations du formulaire d'inscription et renvoie de potentielles erreurs
+
     if(!values.username.trim()){
         errors.username  = "Nom d'utilisateur requis"
     }
