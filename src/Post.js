@@ -291,7 +291,7 @@ const Post = () => {
                             type="checkbox"
                             name="certified"
                             maxLength="30"
-                            className="form-checkbox rounded-sm bg-transparent border-white-0 border-2 text-transparent focus:ring-transparent checked:border-white-0 xl:border-red-450 xl:checked:border-red-450 xl:text-red-450 xl:dark:border-white-0"
+                            className="form-checkbox rounded-sm bg-transparent border-white-0 border-2 text-transparent focus:ring-transparent checked:border-white-0 xl:border-red-450 xl:checked:border-red-450 xl:text-red-450 xl:dark:border-white-0 xl:dark:checked:border-white-0 xl:dark:text-gray-550"
                             value={values.certified}
                             onChange={handleChange}
                             required
@@ -306,7 +306,7 @@ const Post = () => {
                             type="checkbox"
                             name="cgu"
                             maxLength="30"
-                            className="form-checkbox rounded-sm bg-transparent border-white-0 border-2 text-transparent focus:ring-transparent xl:focus:ring-black checked:border-white-0 xl:border-red-450 xl:checked:border-red-450 xl:text-red-450  xl:dark:border-white-0"
+                            className="form-checkbox rounded-sm bg-transparent border-white-0 border-2 text-transparent focus:ring-transparent xl:focus:ring-transparent checked:border-white-0 xl:border-red-450 xl:checked:border-red-450 xl:text-red-450 xl:dark:border-white-0 xl:dark:checked:border-white-0 xl:dark:text-gray-550"
                             value={values.cgu}
                             onChange={handleChange}
                             required
@@ -316,7 +316,7 @@ const Post = () => {
 
                     </div>
                     <div className="flex justify-end xl:justify-center items-center py-5 mr-5">
-                        <button name='bouton publier' className="block w-24 h-9 bg-white-O hover:bg-red-450 hover:text-white-0 hover:border-white-0 border-2 border-red-white-0 dark:hover:bg-white-150 dark:hover:text-gray-550 active:bg-red-200 dark:bg-white-0 dark:border-black dark:text-black rounded-full transition duration-300 ease-in-out text-white-0 xl:bg-red-450 xl:hover:bg-white-0 xl:hover:text-red-450 xl:hover:border-red-450" type="submit">Publier</button>
+                        <button name='bouton publier' className="block w-32 h-12 font-semibold text-lg bg-white-O hover:bg-red-450 hover:text-white-0 hover:border-white-0 border-2 border-red-white-0 dark:hover:bg-white-150 dark:hover:text-gray-550 active:bg-red-200 dark:bg-white-0 dark:border-black dark:text-black rounded-full transition duration-300 ease-in-out text-white-0 xl:bg-red-450 xl:hover:bg-white-0 xl:hover:text-red-450 xl:hover:border-red-450 xl:dark:hover:border-white-0 xl:dark:hover:text-white-0 xl:dark:hover:bg-transparent" type="submit">Publier</button>
                     </div>
 
                 </form>
