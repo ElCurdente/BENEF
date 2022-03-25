@@ -565,7 +565,7 @@ const Thread = () => {
         </motion.div> */}
         <ul className="h-full xl:w-2/6 bg-white-0 xl:dark:bg-gray-550 relative top-14">
 
-          <div className='w-full flex justify-center items-center'>{triRecent ? <button onClick={(e) => handleSubmitFiltered2(e)} className="block px-4 font-semibold py-2 bg-red-450 hover:bg-white-0 hover:text-red-450 hover:border-red-450 border-2 border-red-450 dark:hover:bg-white-150 dark:hover:text-gray-550 active:bg-red-200 dark:bg-white-0 dark:border-black dark:text-black rounded-full transition duration-300 ease-in-out text-white-0">Trier par Upvote</button> : <button onClick={(e) => handleSubmitFiltered(e)} className="block px-4 font-semibold py-2 bg-red-450 hover:bg-white-0 hover:text-red-450 hover:border-red-450 border-2 border-red-450 dark:hover:bg-white-150 dark:hover:text-gray-550 active:bg-red-200 dark:bg-white-0 dark:border-black dark:text-black rounded-full transition duration-300 ease-in-out text-white-0">Trier par date de publication</button>}</div>
+          <div className='w-full flex justify-center items-center'>{triRecent ? <button onClick={(e) => handleSubmitFiltered2(e)} className="block mt-2 px-4 font-semibold py-2 bg-red-450 hover:bg-white-0 hover:text-red-450 hover:border-red-450 border-2 border-red-450 dark:hover:bg-white-150 dark:hover:text-gray-550 active:bg-red-200 dark:bg-white-0 dark:border-black dark:text-black rounded-full transition duration-300 ease-in-out text-white-0">Trier par Upvote</button> : <button onClick={(e) => handleSubmitFiltered(e)} className="block mt-2 px-4 font-semibold py-2 bg-red-450 hover:bg-white-0 hover:text-red-450 hover:border-red-450 border-2 border-red-450 dark:hover:bg-white-150 dark:hover:text-gray-550 active:bg-red-200 dark:bg-white-0 dark:border-black dark:text-black rounded-full transition duration-300 ease-in-out text-white-0">Trier par date de publication</button>}</div>
 
           <div className="mt-7 ml-6 mr-6 pb-24 xl:pb-10 xl:dark:bg-gray-550">
 
@@ -637,14 +637,14 @@ const Thread = () => {
                       </button>
                       <div className="bg-white-0 text-black absolute top-44 text-xl font-bold flex w-max py-1 rounded-lg -left-2 pl-2">
                         <button onClick={handleUpvote.bind(item)} name='bouton upvote haut' className="pl-2 relative">
-                          <motion.img whileTap={{ scale: 0.85 }} id="upvote_haut" src={upvoteHaut} className="opacity-100 h-28px" alt="icon upvote haut"></motion.img>
-
+                          <motion.img whileTap={{ scale: 0.85 }} id="upvote_haut" src={upvoteHaut} className="block dark:hidden h-28px" alt="icon upvote haut"></motion.img>
+                          <motion.img whileTap={{ scale: 0.85 }} id="upvote_bas" src={upvoteHautDark} className="hidden dark:block h-28px" alt="icon upvote bas"></motion.img>
                         </button>
 
                         <span id='nb_upvote' ref={nbUpvote} className="px-2 upvote text-red-450 dark:text-black">{item.upvote}</span>
                         <button onClick={handleDownvote.bind(item)} name='bouton upvote bas' className="pr-2 relative">
-                          <motion.img whileTap={{ scale: 0.85 }} id="upvote_bas" src={upvoteBas} className="opacity-100 dark:opacity-0 h-28px" alt="icon upvote bas"></motion.img>
-
+                          <motion.img whileTap={{ scale: 0.85 }} id="upvote_bas" src={upvoteBas} className="block dark:hidden h-28px" alt="icon upvote bas"></motion.img>
+                          <motion.img whileTap={{ scale: 0.85 }} id="upvote_bas" src={upvoteBasDark} className="hidden dark:block h-28px" alt="icon upvote bas"></motion.img>
                         </button>
                       </div>
                     </div>
