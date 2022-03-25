@@ -374,7 +374,7 @@ const Profil = () => {
 
                 <div id="infos" className="relative xl:w-2/6 w-95vw px-4 xl:-px-0 top-10">
                     <div className="flex items-center">
-                        <img src={user.image} className="w-100px h-100px bg-transparent dark:bg-gray-650 border-3 border-red-450 dark:border-black rounded-full object-cover" alt='profil'/>
+                        <img src={user.image} className="w-100px h-100px bg-transparent dark:bg-gray-650 border-3 border-red-450 dark:border-white-0 rounded-full object-cover" alt='profil'/>
                         <h1 className="ml-3 text-xl font-semibold dark:text-black xl:dark:text-white-0">{user.username}</h1>
                     </div>
                     <p className="col-span-2 mt-4 dark:text-black xl:dark:text-white-0">{user.bio}</p>
@@ -441,7 +441,7 @@ const Profil = () => {
                                     <img className="h-40px m-auto dark:hidden" src={plus} alt="icon plus" />
                                     <img className="h-40px m-auto hidden dark:block" src={plusblanc} alt="icon plus" />
                                 </button>)}
-                            <h3 className="font-semibold text-red-450 mt-2">Modifie ta photo de profil</h3>
+                            <h3 className="font-semibold text-red-450 dark:text-white-0 mt-2">Modifie ta photo de profil</h3>
                             <input id="image"
                                 type="file"
                                 accept="image/png, image/jpeg"
@@ -477,7 +477,7 @@ const Profil = () => {
                                 type="textarea"
                                 name="bio"
                                 rows="40"
-                                className="resize-y relative bottom-6 placeholder-gray-500 text-black dark:text-white-0 border-b-2 bg-transparent w-4/5 h-24 text-left focus:outline-none  focus:placeholder-transparent"
+                                className="resize-y relative bottom-6 placeholder-gray-500 text-black dark:text-white-0 border-b-2 bg-transparent w-4/5 h-24 text-left focus:outline-none focus:placeholder-transparent"
                                 placeholder={user.bio}
                                 value={values.bio}
                                 onChange={handleChange}
@@ -486,10 +486,10 @@ const Profil = () => {
 
                         <div className="flex justify-center pt-5">
                             <div className="flex justify-end items-center py-5 mr-20">
-                                <button onClick={handleConnexion} name='bouton annuler' className="text-lg block px-4 hover:underline hover:underline-offset-8 text-red-450 font-semibold dark:hover:underline dark:hover:underline-offset-8 dark:hover:text-black transition duration-300 ease-in-out">Annuler</button>
+                                <button onClick={handleConnexion} name='bouton annuler' className="text-lg block px-4 hover:underline hover:underline-offset-8 text-red-450 font-semibold dark:text-white-0 dark:hover:underline dark:hover:underline-offset-8 transition duration-300 ease-in-out">Annuler</button>
                             </div>
                             <div className="flex justify-end items-center py-5">
-                                <button name='bouton enregistrer' className="block px-5 py-2 text-white-0 text-lg font-semibold bg-red-450 hover:bg-white-0 hover:text-red-450 hover:border-red-450 border-2 border-red-450 dark:hover:bg-white-150 dark:hover:text-gray-550 active:bg-red-200 dark:bg-white-0 dark:text-black rounded-full transition duration-300 ease-in-out" type="submit">Enregistrer</button>
+                                <button name='bouton enregistrer' className="block px-5 py-2 text-white-0 text-lg font-semibold bg-red-450 hover:bg-white-0 hover:text-red-450 hover:border-red-450 border-2 border-red-450 dark:border-white-0 dark:hover:text-white-0 dark:hover:bg-transparent active:bg-red-200 dark:bg-white-0 dark:text-black rounded-full transition duration-300 ease-in-out" type="submit">Enregistrer</button>
                             </div>
                         </div>
 
