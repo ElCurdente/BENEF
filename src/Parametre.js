@@ -1,5 +1,6 @@
 import React from 'react';
 import fleche from './images/icon/icon_fleche_noire.svg';
+import flecheDark from './images/icon/icon_fleche_blanche.svg';
 import ToggleBtn from './toggleBtn';
 import { Link } from 'react-router-dom';
 import './index.css';
@@ -50,15 +51,9 @@ const Parametre = () => {
                             <Link to="/Infos" className="flex justify-between cursor-pointer font-normal hover:font-semibold">
     
                                 Informations du compte
-                                <img src={fleche} alt="fleche" className="w-2 transform rotate-180 mr-2"/>
-    
+                                <img src={fleche} alt="fleche" className="block dark:hidden w-2 transform rotate-180 mr-2"/>
+                                <img src={flecheDark} alt="fleche" className="hidden dark:block w-2 transform rotate-180 mr-2"/>
                             </Link>
-                        </ul>
-                        <ul className="pb-2">
-                            <a className="flex justify-between cursor-pointer font-normal" href='/#/parametre'>
-                                Changer son mot de passe
-                                <img src={fleche} alt="fleche" className="w-2 transform rotate-180 mr-2"/>
-                            </a>
                         </ul>
                         {/* <ul>
                             <a className="flex justify-between cursor-pointer font-normal" href='#'>
