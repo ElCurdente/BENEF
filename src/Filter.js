@@ -7,6 +7,7 @@ import filtre from './images/icon/icon_filtre.svg';
 import filtreNoir from './images/icon/icon_filtre_n.svg';
 import localisation from './images/icon/icon_localisation.svg';
 import sablier from './images/icon/icon_sablier.svg';
+import pleure from './images/illustrations/pleure.png';
 import { motion } from 'framer-motion/dist/framer-motion';
 import animationData2 from './images/animation/loading.json';
 import Lottie from 'react-lottie';
@@ -159,7 +160,13 @@ const Filter = ({ searchValue, setSearchValue }) => {
 
     /* Affichage d'erreur */
 
-    return <div>Erreur : {error.message}</div>;
+    return <div className="mb-5 mt-5 mx-3 flex flex-col items-center text-center">
+    <img className="mt-5 mb-5 w-20" src={pleure} alt='emoji pleure' />
+    <h1 className="text-lg xl:text-xl font-semibold max-w-md mt-2">
+      Mince, il y a un petit problème<br></br>
+      <div className="font-light xl:text-base flex flex-wrap justify-center mt-2"><span>Nous te conseillons de rafraîchir la page !</span></div>
+    </h1>
+  </div>;
   } else if (!isLoaded) {
 
     /* Loader */

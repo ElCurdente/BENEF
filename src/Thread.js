@@ -17,6 +17,7 @@ import animationData2 from './images/animation/loading.json';
 import coeur from './images/icon/icon_coeur.svg';
 import coeurPlein from './images/icon/icon_coeur_rempli.svg';
 import pouce from './images/illustrations/pouce.png';
+import pleure from './images/illustrations/pleure.png';
 import { AES, enc } from 'crypto-js';
 
 import signaler from './images/icon/icon_signaler.svg';
@@ -500,7 +501,13 @@ const Thread = () => {
   // }, [])
 
   if (error) {
-    return <div>Erreur : {error.message}</div>;
+    return <div className="mb-5 mt-5 mx-3 flex flex-col items-center text-center">
+    <img className="mt-5 mb-5 w-20" src={pleure} alt='emoji pleure' />
+    <h1 className="text-lg xl:text-xl font-semibold max-w-md mt-2">
+      Mince, il y a un petit problème<br></br>
+      <div className="font-light xl:text-base flex flex-wrap justify-center mt-2"><span>Nous te conseillons de rafraîchir la page !</span></div>
+    </h1>
+  </div>;
   } else if (!isLoaded) {
     return <div className='h-screen w-screen flex justify-center items-center bg-red-450 dark:bg-black xl:bg-white-0 xl:dark:bg-white-0'>
       <div className='pt-36 flex justify-center items-center h-400px w-400px rounded-full bg-red-450 dark:bg-black'>

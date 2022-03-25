@@ -341,7 +341,13 @@ function Favoris() {
 
   if (error) {
     /* S'affiche si l'on arrive pas à fetch (problème de connexion par exemple) */ 
-    return <div>Erreur : {error.message}</div>;
+    return <div className="mb-5 mt-5 mx-3 flex flex-col items-center text-center">
+    <img className="mt-5 mb-5 w-20" src={pleure} alt='emoji pleure' />
+    <h1 className="text-lg xl:text-xl font-semibold max-w-md mt-2">
+      Mince, il y a un petit problème<br></br>
+      <div className="font-light xl:text-base flex flex-wrap justify-center mt-2"><span>Nous te conseillons de rafraîchir la page !</span></div>
+    </h1>
+  </div>;
   } else if (!isLoaded) {
     /* S'affiche pendant le chargement des donnés (loader) */ 
     return <div className='h-screen w-screen flex justify-center items-center bg-red-450 dark:bg-black xl:bg-white-0 xl:dark:bg-white-0'>

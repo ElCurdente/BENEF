@@ -6,6 +6,7 @@ import { useEffect } from 'react';
 import plus from './images/icon/icon_plus.svg';
 import plusblanc from './images/icon/icon_plus_blanc.svg';
 import plusrouge from './images/icon/icon_plus_rouge.svg';
+import pleure from './images/illustrations/pleure.png';
 import lottie from 'lottie-web';
 import Lottie from 'react-lottie';
 import animationData from './images/animation/like.json';
@@ -306,7 +307,13 @@ const Profil = () => {
       };
 
     if (error) {
-        return <div>Erreur : {error.message}</div>;
+        return <div className="mb-5 mt-5 mx-3 flex flex-col items-center text-center">
+        <img className="mt-5 mb-5 w-20" src={pleure} alt='emoji pleure' />
+        <h1 className="text-lg xl:text-xl font-semibold max-w-md mt-2">
+          Mince, il y a un petit problème<br></br>
+          <div className="font-light xl:text-base flex flex-wrap justify-center mt-2"><span>Nous te conseillons de rafraîchir la page !</span></div>
+        </h1>
+      </div>;
       } else if (!isLoaded) {
         return <div className='h-screen w-screen flex justify-center items-center bg-red-450 dark:bg-black xl:bg-white-0 xl:dark:bg-white-0'>
         <div className='pt-36 flex justify-center items-center h-400px w-400px rounded-full bg-red-450 dark:bg-black'>
