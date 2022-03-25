@@ -9,6 +9,8 @@ import localisation from './images/icon/icon_localisation.svg';
 import sablier from './images/icon/icon_sablier.svg';
 import upvoteBas from './images/icon/upvote.svg';
 import upvoteHaut from './images/icon/upvote2.svg';
+import upvoteBasDark from './images/icon/upvote_dark.svg';
+import upvoteHautDark from './images/icon/upvote2_dark.svg';
 import { motion } from 'framer-motion/dist/framer-motion';
 import Lottie from 'react-lottie';
 import animationData2 from './images/animation/loading.json';
@@ -636,13 +638,13 @@ const Thread = () => {
                       <div className="bg-white-0 text-black absolute top-44 text-xl font-bold flex w-max py-1 rounded-lg -left-2 pl-2">
                         <button onClick={handleUpvote.bind(item)} name='bouton upvote haut' className="pl-2 relative">
                           <motion.img whileTap={{ scale: 0.85 }} id="upvote_haut" src={upvoteHaut} className="opacity-100 h-28px" alt="icon upvote haut"></motion.img>
-                          {/* <img src={upvoteorange} className="absolute top-0 h-30px dark:opacity-0" alt="icon upvote"></img> */}
+
                         </button>
 
                         <span id='nb_upvote' ref={nbUpvote} className="px-2 upvote text-red-450 dark:text-black">{item.upvote}</span>
                         <button onClick={handleDownvote.bind(item)} name='bouton upvote bas' className="pr-2 relative">
-                          <motion.img whileTap={{ scale: 0.85 }} id="upvote_bas" src={upvoteBas} className="opacity-100 dark:opacity-100 h-28px" alt="icon upvote bas"></motion.img>
-                          {/* <img src={upvoteorange} className="transform rotate-180 absolute top-0 h-30px dark:opacity-0" alt="icon upvote bas"></img> */}
+                          <motion.img whileTap={{ scale: 0.85 }} id="upvote_bas" src={upvoteBas} className="opacity-100 dark:opacity-0 h-28px" alt="icon upvote bas"></motion.img>
+
                         </button>
                       </div>
                     </div>
@@ -679,14 +681,14 @@ const Thread = () => {
                       </button>
                       <div className="bg-white-0 text-black absolute top-44 text-xl font-bold flex w-max py-1 rounded-lg -left-2 pl-2">
                         <button onClick={handleUpvote.bind(item)} name='bouton upvote haut' className="pl-2 relative">
-                          <motion.img whileTap={{ scale: 0.85 }} id="upvote_haut" src={upvoteHaut} className="opacity-100 h-28px" alt="icon upvote haut"></motion.img>
-                          {/* <img src={upvoteorange} className="absolute top-0 h-30px dark:opacity-0" alt="icon upvote"></img> */}
+                          <motion.img whileTap={{ scale: 0.85 }} id="upvote_haut" src={upvoteHaut} className="block dark:hidden h-28px" alt="icon upvote haut"></motion.img>
+                          <motion.img whileTap={{ scale: 0.85 }} id="upvote_haut" src={upvoteHautDark} className="hidden dark:block h-28px" alt="icon upvote haut"></motion.img>
                         </button>
 
                         <span id='nb_upvote' ref={nbUpvote} className="px-2 upvote text-red-450 dark:text-black">{item.upvote}</span>
                         <button onClick={handleDownvote.bind(item)} name='bouton upvote bas' className="pr-2 relative">
-                          <motion.img whileTap={{ scale: 0.85 }} id="upvote_bas" src={upvoteBas} className="opacity-100 dark:opacity-100 h-28px" alt="icon upvote bas"></motion.img>
-                          {/* <img src={upvoteorange} className="transform rotate-180 absolute top-0 h-30px dark:opacity-0" alt="icon upvote bas"></img> */}
+                          <motion.img whileTap={{ scale: 0.85 }} id="upvote_bas" src={upvoteBas} className="block dark:hidden h-28px" alt="icon upvote bas"></motion.img>
+                          <motion.img whileTap={{ scale: 0.85 }} id="upvote_bas" src={upvoteBasDark} className="hidden dark:block h-28px" alt="icon upvote bas"></motion.img>
                         </button>
                       </div>
                     </div>
