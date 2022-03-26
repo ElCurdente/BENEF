@@ -386,7 +386,7 @@ const Profil = () => {
                     </div>
                     <p className="col-span-2 mt-4 dark:text-black xl:dark:text-white-0">{user.bio}</p>
                     <div className="flex items-center justify-between col-span-2 h-16 pt-8">
-                        <button name='bouton modifie ton profil' onClick={handleModify} className="flex relative items-center h-10 bg-red-450 py-2 px-4 rounded-3xl text-white-0 dark:text-black hover:bg-white-0 hover:text-red-450 hover:border-red-450 border-2 border-red-450 dark:bg-white-0 dark:border-white-0 transition duration-300 ease-in-out z-50">Modifie ton profil</button>
+                        <button name='bouton modifie ton profil' onClick={handleModify} className="flex relative items-center h-10 bg-red-450 py-2 px-4 rounded-3xl text-white-0 dark:text-black hover:bg-white-0 hover:text-red-450 hover:border-red-450 border-2 border-red-450 dark:bg-white-0 dark:border-white-0 transition duration-300 ease-in-out z-30">Modifie ton profil</button>
                         {user.id === 38 &&
                             <Link to="/backoffice"><button name='bouton backoffice' className="flex items-center text-red-450 dark:text-white-0 hover:underline">Accéder aux signalements</button></Link>
                         }

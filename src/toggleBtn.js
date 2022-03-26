@@ -14,16 +14,17 @@ const ToggleBtn = () => {
     const toggleDarkMode = function () {
         if (checked) {
            html.classList.remove("dark");
-           localStorage.setItem('theme', "dark"); 
+           localStorage.setItem('theme', "light"); 
         } else {
             html.classList.add("dark");
-            localStorage.setItem('theme', "light");
+            localStorage.setItem('theme', "dark");
         }
     }
 
     useEffect(() => {
-        if (html.classList.contains("dark")) {
+        if (localStorage.getItem('theme') == 'dark') {
             setChecked(true);
+            html.classList.add("dark");
             // dragswitch.style.transform = "translateX(20px)";
         } else {
             setChecked(false);

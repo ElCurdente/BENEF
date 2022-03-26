@@ -58,7 +58,7 @@ const Parametre = () => {
             <Link to="/Parametre">
               <img className="block dark:hidden absolute left-0 mt-10 xl:mt-0 w-4" src={fleche} alt="fleche"  />
               <img className="hidden dark:block absolute left-0 mt-10 xl:mt-0 w-4" src={flecheDark} alt="fleche"  />
-                </Link>
+            </Link>
                   <span className="text-center text-2xl mt-20 font-bold xl:mt-8">Informations du compte</span>
                 </div>
 
