@@ -7,6 +7,7 @@ import illus_images from './images/icon/icon_images.svg';
 import content from './images/illustrations/content.png';
 import { BrowserRouter as Link} from 'react-router-dom';
 import {AES, enc} from 'crypto-js';
+import { useHistory } from 'react-router-dom';
 
 
 const Post = () => {
@@ -22,6 +23,7 @@ const Post = () => {
       decrypted = AES.decrypt(sessionStorage.getItem('id_user'), 'MYKEY4DEMO');
     }
     const id_user = decrypted.toString(enc.Utf8);
+    let history = useHistory();
 
     const [values, setValues] = useState({
         image: undefined,
@@ -141,9 +143,7 @@ const Post = () => {
                                 </h1>
                                 <h1 className="text-lg xl:text-sm font-light max-w-md mt-2">L'équipe BENEF te remercie de faire vivre l'application !</h1>
                                 <div className="flex w-full justify-evenly mt-7 mb-8">
-                                <Link to="/" onClick={() => {}}>
-                                    <button onClick={() => setOpenModal(false)} name='bouton fermer' className="block px-4 font-semibold py-2 bg-red-450 hover:bg-white-0 hover:text-red-450 hover:border-red-450 border-2 border-red-450 dark:hover:bg-white-150 dark:hover:text-gray-550 active:bg-red-200 dark:bg-white-0 dark:border-black dark:text-black rounded-full transition duration-300 ease-in-out text-white-0" type="submit">Fermer</button>
-                                </Link>
+                                    <button onClick={() => { setOpenModal(false); history.push('/');}} name='bouton fermer' className="block px-4 font-semibold py-2 bg-red-450 hover:bg-white-0 hover:text-red-450 hover:border-red-450 border-2 border-red-450 dark:hover:bg-white-150 dark:hover:text-gray-550 active:bg-red-200 dark:bg-white-0 dark:border-black dark:text-black rounded-full transition duration-300 ease-in-out text-white-0" type="submit">Fermer</button>
                                 </div>
                             </div>
                         </div>

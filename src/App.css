@@ -41,20 +41,20 @@
   /* Firefox */
   * {
     scrollbar-width: auto;
-    scrollbar-color: #ff5640 #ffffff;
+    scrollbar-color: #ff5640 transparent;
   }
 
   /* Chrome, Edge, and Safari */
   *::-webkit-scrollbar {
-    width: 12px;
+    width: 8px;
   }
 
   *::-webkit-scrollbar-track {
-    background: #ffffff;
+    background: transparent;
   }
 
   *::-webkit-scrollbar-thumb {
     background-color: #ff5640;
     border-radius: 10px;
-    border: 3px solid #ffffff;
+    border: 1px solid #ffffff;
   }
