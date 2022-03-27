@@ -13,7 +13,7 @@ import upvoteBasDark from './images/icon/upvote_dark.svg';
 import upvoteHautDark from './images/icon/upvote2_dark.svg';
 import { motion } from 'framer-motion/dist/framer-motion';
 import Lottie from 'react-lottie';
-import animationData2 from './images/animation/loading.json';
+import animationData2 from './images/animation/loader_light.json';
 import coeur from './images/icon/icon_coeur.svg';
 import coeurPlein from './images/icon/icon_coeur_rempli.svg';
 import pouce from './images/illustrations/pouce.png';
