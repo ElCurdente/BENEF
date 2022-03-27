@@ -113,7 +113,7 @@ const FormSignup = ({ submitForm }) => {
     } else {
         return (
 
-            <div className="flex justify-center items-center bg-red-450 box-border h-screen w-full dark:bg-black">
+            <div className="flex justify-center items-center bg-red-450 box-border h-screen w-screen dark:bg-black">
                 {openModal &&
                     <div id="modal" className="flex w-screen h-screen bg-black bg-opacity-30 fixed bottom-0 left-0 justify-center overflow-auto z-40 items-start">
                         <div className="w-95vw xl:w-2/6 max-h-max mb-0 relative flex flex-col justify-center items-center rounded-3xl bg-white-0  dark:bg-gray-550 dark:text-white-0">
@@ -246,12 +246,12 @@ const FormSignup = ({ submitForm }) => {
 
                     </div>
                 }
-                <div className="w-96">
-                    <div className="flex justify-center items-center mb-5">
+                <div className="w-96 max-h-max">
+                    <div className="flex justify-center items-center mt-5 mb-5">
                         <img src={logo} alt="Logo" className="w-64 dark:hidden" />
                         <img src={logodark} alt="Logo" className="w-64 hidden dark:block" />
                     </div>
-                    <div className="bg-white-0 p-7 rounded-xl">
+                    <div className="bg-white-0 p-7 rounded-xl overflow-y-auto h-60%">
 
                         {/* Formulaire typique en React*/}
 

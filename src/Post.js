@@ -5,8 +5,8 @@ import { useEffect } from 'react';
 import plusblanc from './images/icon/icon_plus_blanc.svg';
 import illus_images from './images/icon/icon_images.svg';
 import content from './images/illustrations/content.png';
-import { BrowserRouter as Link} from 'react-router-dom';
-import {AES, enc} from 'crypto-js';
+import { BrowserRouter as Link } from 'react-router-dom';
+import { AES, enc } from 'crypto-js';
 import { useHistory } from 'react-router-dom';
 import fleche from './images/icon/icon_fleche_blanche.svg';
 
@@ -18,10 +18,10 @@ const Post = () => {
     const ref = useRef();
     const [openModal, setOpenModal] = useState(false);
     let decrypted;
-    if(localStorage.getItem('isConnected')){
-      decrypted = AES.decrypt(localStorage.getItem('id_user'), 'MYKEY4DEMO');
-    }else{
-      decrypted = AES.decrypt(sessionStorage.getItem('id_user'), 'MYKEY4DEMO');
+    if (localStorage.getItem('isConnected')) {
+        decrypted = AES.decrypt(localStorage.getItem('id_user'), 'MYKEY4DEMO');
+    } else {
+        decrypted = AES.decrypt(sessionStorage.getItem('id_user'), 'MYKEY4DEMO');
     }
     const id_user = decrypted.toString(enc.Utf8);
     let history = useHistory();
@@ -108,7 +108,7 @@ const Post = () => {
         formData.append('category', values.category);
         formData.append('place', values.place);
         formData.append('certified', values.certified);
-        formData.append('cgu',  values.cgu);
+        formData.append('cgu', values.cgu);
         formData.append('id_user', id_user);
 
         for (var key of formData.entries()) {
@@ -133,23 +133,23 @@ const Post = () => {
     return (
         <div className="flex justify-center items-center h-screen pb-20 w-full bg-white-0 dark:bg-gray-550 ">
             <div id="containerModal" className={openModal ? "block" : "hidden"}>
-                    <div id="modal" ref={modal} className="flex w-screen h-screen bg-black bg-opacity-30 fixed bottom-0 left-0 justify-center z-40 items-center">
+                <div id="modal" ref={modal} className="flex w-screen h-screen bg-black bg-opacity-30 fixed bottom-0 left-0 justify-center z-40 items-center">
 
-                        <div className="w-full xl:w-2/6 xl:mb-0 relative flex flex-col justify-start items-center rounded-3xl bg-white-0 overflow-auto dark:bg-gray-550 dark:text-white-0">
-                            <div className="mt-7 mx-3 flex flex-col items-center text-center">
-                                {/* <h1 className="text-lg xl:text-xl font-semibold mx-2 max-w-md">{modalItem.image}</h1> */}
-                                <img className="mb-5 w-20" src={content} alt='emoji content'/> 
-                                <h1 className="text-lg xl:text-xl font-semibold max-w-md mt-2">
-                                    Ton bon plan a bien été publié !
-                                </h1>
-                                <h1 className="text-lg xl:text-sm font-light max-w-md mt-2">L'équipe BENEF te remercie de faire vivre l'application !</h1>
-                                <div className="flex w-full justify-evenly mt-7 mb-8">
-                                    <button onClick={() => { setOpenModal(false); history.push('/');}} name='bouton fermer' className="block px-4 font-semibold py-2 bg-red-450 hover:bg-white-0 hover:text-red-450 hover:border-red-450 border-2 border-red-450 dark:hover:bg-white-150 dark:hover:text-gray-550 active:bg-red-200 dark:bg-white-0 dark:border-black dark:text-black rounded-full transition duration-300 ease-in-out text-white-0" type="submit">Fermer</button>
-                                </div>
+                    <div className="w-full xl:w-2/6 xl:mb-0 relative flex flex-col justify-start items-center rounded-3xl bg-white-0 overflow-auto dark:bg-gray-550 dark:text-white-0">
+                        <div className="mt-7 mx-3 flex flex-col items-center text-center">
+                            {/* <h1 className="text-lg xl:text-xl font-semibold mx-2 max-w-md">{modalItem.image}</h1> */}
+                            <img className="mb-5 w-20" src={content} alt='emoji content' />
+                            <h1 className="text-lg xl:text-xl font-semibold max-w-md mt-2">
+                                Ton bon plan a bien été publié !
+                            </h1>
+                            <h1 className="text-lg xl:text-sm font-light max-w-md mt-2">L'équipe BENEF te remercie de faire vivre l'application !</h1>
+                            <div className="flex w-full justify-evenly mt-7 mb-8">
+                                <button onClick={() => { setOpenModal(false); history.push('/'); }} name='bouton fermer' className="block px-4 font-semibold py-2 bg-red-450 hover:bg-white-0 hover:text-red-450 hover:border-red-450 border-2 border-red-450 dark:hover:bg-white-150 dark:hover:text-gray-550 active:bg-red-200 dark:bg-white-0 dark:border-black dark:text-black rounded-full transition duration-300 ease-in-out text-white-0" type="submit">Fermer</button>
                             </div>
                         </div>
                     </div>
                 </div>
+            </div>
             <div className="bg-red-450 xl:bg-white-0 dark:bg-black xl:mt-32  xl:w-2/6 mt-32 pb-20 xl:pb-0 h-90vh overflow-y-auto rounded-lg xl:shadow-merwan w-95vw">
                 <form className="post flex flex-col justify-center" onSubmit={(e) => handleSubmit(e)} id="post_form" ref={myForm}>
                     <div className="flex relative justify-center items-center">
@@ -159,12 +159,12 @@ const Post = () => {
                                 onClick={() => {
                                     setImage(null);
                                 }}
-                                className="w-100vw h-30vh bg-white-0 dark:bg-gray-650 xl:border-none cursor-pointer border-2 border-red-450 dark:border-black rounded-t-md object-contain " alt='previsualisation'/>
+                                className="w-100vw h-30vh bg-white-0 dark:bg-gray-650 xl:border-none cursor-pointer border-2 border-red-450 dark:border-black rounded-t-md object-contain " alt='previsualisation' />
                         ) : (
                             <button onClick={(e) => {
                                 e.preventDefault();
                                 fileInputRef.current.click();
-                                
+
 
                             }} name='bouton sélectionner une image' className="w-100vw h-30vh rounded-t-md border-2 border-red-450  xl:border-dashed cursor-pointer bg-white-0 text-red-450 dark:text-white-0 text-xl leading-loose dark:bg-gray-650 dark:border-black">
                                 <img className="h-50px m-auto dark:hidden" src={illus_images} alt="illustration" />
@@ -198,7 +198,7 @@ const Post = () => {
                             </select>
                         </div>
                         <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700 transform rotate-90">
-                            <img src={fleche} className='h-3 transform rotate-180'/>
+                            <img src={fleche} className='h-3 transform rotate-180' />
                         </div>
                     </div>
 
@@ -222,7 +222,7 @@ const Post = () => {
                                 type="text"
                                 name="desc"
                                 rows="40"
-                                maxLength="255"
+                                maxLength="500"
                                 className=" resize-y placeholder-white-150 text-white-150 border-b-2 bg-transparent w-4/5 my-2 h-12 pt-5 text-left focus:outline-none  focus:placeholder-transparent  xl:text-black xl:dark:text-white-0 xl:placeholder-gray-650 xl:border-red-450 xl:dark:border-white-0"
                                 placeholder="Précisions, détails..."
                                 value={values.desc}
@@ -297,7 +297,7 @@ const Post = () => {
                             onChange={handleChange}
                             required
                         />
-                        <label  htmlFor="certified" className="text-white-150 pl-2 xl:text-red-450 xl:dark:text-white-0" >Je certifie que ce bon plan existe
+                        <label htmlFor="certified" className="text-white-150 pl-2 xl:text-red-450 xl:dark:text-white-0" >Je certifie que ce bon plan existe
                         </label>
 
                     </div>
@@ -327,9 +327,9 @@ const Post = () => {
         </div>
 
 
-        
-        
-        
+
+
+
     )
 
 }
