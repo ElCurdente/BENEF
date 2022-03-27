@@ -54,13 +54,13 @@ const Parametre = () => {
         <div className="flex flex-col justify-center items-center h-screen w-screen dark:bg-gray-550 bg-gray-100 xl:bg-white-0 dark:text-white-0">
             <div id="infos" className="overflow-y-auto w-95vw h-full dark:bg-gray-550 xl:bg-white-0 xl:w-1/3 xl:p-5">
 
-          <div className="flex relative flex-row justify-center items-center pt-7">
+          <div className="flex relative flex-row justify-center items-center mt-20">
             <Link to="/Parametre">
-              <img className="block dark:hidden absolute left-0 mt-10 xl:mt-0 w-4" src={fleche} alt="fleche"  />
-              <img className="hidden dark:block absolute left-0 mt-10 xl:mt-0 w-4" src={flecheDark} alt="fleche"  />
+              <img className="block dark:hidden absolute left-0 top-0 xl:mt-0 w-4" src={fleche} alt="fleche"  />
+              <img className="hidden dark:block absolute left-0 top-0 xl:mt-0 w-4" src={flecheDark} alt="fleche"  />
             </Link>
-                  <span className="text-center text-2xl mt-20 font-bold xl:mt-8">Informations du compte</span>
-                </div>
+                  <span className="text-center text-xl font-bold">Informations du compte</span>
+          </div>
 
                 <h2 className=" text-base pt-7 font-bold ">Nom d'utilisateur</h2>
                 <li className='mt-2 list-none'>

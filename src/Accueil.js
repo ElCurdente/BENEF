@@ -16,10 +16,18 @@ import BackOffice from './BackOffice'
 import logo from './images/logo/logo_benef.svg';
 import logodark from './images/logo/logo_benef_dark.svg';
 import plus from './images/icon/icon_plus.svg';
-import plusnoir from './images/icon/icon_plus_noir.svg';
-import etiquettedark from './images/icon/icon_etiquette_dark.svg';
-import favorisdark from './images/icon/icon_coeur_dark.svg';
-import recherchedark from './images/icon/icon_recherche_dark.svg';
+import plusNoir from './images/icon/icon_plus_noir.svg';
+import plusBlanc from './images/icon/icon_plus_blanc.svg';
+import etiquette from './images/icon/icon_etiquette.svg';
+import etiquetteDark from './images/icon/icon_etiquette_dark.svg';
+import favorisDark from './images/icon/icon_coeur_dark.svg';
+import favoris from './images/icon/icon_coeur_b.svg';
+import rechercheDark from './images/icon/icon_recherche_dark.svg';
+import recherche from './images/icon/icon_recherche.svg';
+import upvoteBasDark from './images/icon/upvote_dark.svg';
+import upvoteHautDark from './images/icon/upvote2_dark.svg';
+import upvoteBas from './images/icon/upvote_b.svg';
+import upvoteHaut from './images/icon/upvote2_b.svg';
 import { useState } from "react";
 
 
@@ -60,7 +68,7 @@ const Accueil = () => {
                         </form>
                         <div className="relative flex justify-center items-center h-14 w-14 ml-48 bg-white-0 rounded-full shadow-custom">
                             <img className="h-25px dark:hidden" src={plus} alt="logo plus" />
-                            <img className="h-25px hidden dark:block" src={plusnoir} alt="logo plus" />
+                            <img className="h-25px hidden dark:block" src={plusNoir} alt="logo plus" />
                         </div>
                         <img className="w-14 h-14 ml-6 bg-black dark:bg-gray-650 border-3 border-white dark:border-black rounded-full object-cover transition ease-in-out duration-500" alt='img' />
 
@@ -73,10 +81,10 @@ const Accueil = () => {
             /*-*-*-*-*-*-*-*-*--*-*-*-*-*-*-*-*-*-*--*-*-*-*/}
 
             {openModal &&
-                <div id="modal" className="flex w-screen h-screen bg-black bg-opacity-30 fixed bottom-0 left-0 justify-center overflow-auto z-40 items-center">
-                    <div className="w-95vw xl:w-2/6 mb-10 xl:mb-0 relative flex flex-col justify-center items-center rounded-3xl bg-white-0 dark:bg-gray-550 dark:text-white-0  xl:h-auto overflow-y-auto mt-96 xl:mt-10 pb-20 xl:pb-10 ">
-                        <div className="mt-7 xl:mt-0 flex flex-col">
-                            <h1 className="text-xl xl:text-xl text-red-650 font-semibold max-w-md mb-2 pt-20 xl:pt-10 text-center">Bienvenue sur BENEF !</h1>
+                <div id="modal" className="flex w-screen h-screen bg-black bg-opacity-30 fixed bottom-0 left-0 justify-center overflow-auto z-40 items-start">
+                    <div className="w-95vw xl:w-2/6 max-h-max mb-10 xl:mb-0 relative flex flex-col justify-start items-center rounded-3xl bg-white-0 dark:bg-gray-550 dark:text-white-0  xl:h-auto overflow-y-auto xl:mt-10 pb-20 xl:pb-10 ">
+                        <div className="mt-7 mx-5 xl:mt-0 flex flex-col">
+                            <h1 className="text-xl xl:text-xl text-red-650 font-semibold max-w-md mb-2 pt-10 text-center">Bienvenue sur BENEF !</h1>
                             <h1 className="text-lg xl:text-base max-w-md font-semibold mt-2">C'est quoi Benef ?</h1>
                             <p className="text-lg xl:text-base font-light max-w-md mt-2">Benef est une “Application Web” unique en son genre.<br></br>
                              Elle permet te permet d’échanger des bons plans en Île-de-France avec la communauté sur différentes catégories comme des soirées, des expositions ou encore des restaurants pour vous inviter à sortir plus malin.<br></br><br></br>
@@ -86,20 +94,39 @@ const Accueil = () => {
                             <h1 className="text-lg xl:text-base max-w-md mt-2 font-semibold">Voici quelques explications :</h1>
                             <div className='max-w-d mt-3'>
                                 <div className='flex mb-3 font-light'>
-                                    <img className="h-24px xl:h-20px dark:hidden xl:hidden" src={etiquettedark} alt="logo plus" />
+                                    <img className="h-24px xl:h-20px dark:hidden xl:hidden" src={etiquetteDark} alt="logo plus" />
+                                    <img className="h-24px xl:h-20px hidden dark:block xl:hidden" src={etiquette} alt="logo plus" />
                                     <img className="h-24px xl:h-20px dark:hidden hidden xl:block" src={logo} alt="logo plus" /> <p className='ml-2'> est la page d'accueil</p>
                                 </div>
 
                                 <div className='flex mb-3 font-light'>
-                                    <img className="h-24px xl:h-20px dark:hidden" src={recherchedark} alt="logo plus" /> <p className='ml-2'>est la page recherche</p> 
+                                    <img className="h-24px xl:h-20px dark:hidden" src={rechercheDark} alt="logo plus" /> 
+                                    <img className="h-24px xl:h-20px hidden dark:block xl:hidden" src={recherche} alt="logo plus" />
+                                    <p className='ml-2'>est la page recherche</p> 
                                 </div>
 
                                 <div className="flex mb-3 font-light">
-                                    <img className="h-24px xl:h-20px dark:hidden" src={plus} alt="logo plus" /> <p className='ml-2'>te permet de créer ton bon plan</p> 
+                                    <img className="h-24px xl:h-20px dark:hidden" src={plus} alt="logo plus" /> 
+                                    <img className="h-24px xl:h-20px hidden dark:block xl:hidden" src={plusBlanc} alt="logo plus" />
+                                    <p className='ml-2'>te permet de créer ton bon plan</p> 
                                 </div>
 
                                 <div className='flex mb-3 font-light'>
-                                <img className="h-24px xl:h-20px dark:hidden" src={favorisdark} alt="logo plus" /> <p className='ml-2'>affiche tes favoris</p> 
+                                <img className="h-24px xl:h-20px dark:hidden" src={favorisDark} alt="logo plus" />
+                                <img className="h-24px xl:h-20px hidden dark:block xl:hidden" src={favoris} alt="logo plus" />
+                                <p className='ml-2'>affiche tes favoris</p> 
+                                </div>
+
+                                <div className='flex items-center mb-3 font-light'>
+                                <img className="h-32px xl:h-28px dark:hidden" src={upvoteHautDark} alt="logo plus" />
+                                <img className="h-32px xl:h-28px hidden dark:block xl:hidden" src={upvoteHaut} alt="logo plus" />
+                                <p className='ml-2'>augmente de 1 le nombre de "Upvote" d'un post</p> 
+                                </div>
+
+                                <div className='flex items-center mb-3 font-light'>
+                                <img className="h-32px xl:h-28px dark:hidden" src={upvoteBasDark} alt="logo plus" />
+                                <img className="h-32px xl:h-28px hidden dark:block xl:hidden" src={upvoteBas} alt="logo plus" />
+                                <p className='ml-2'>diminue de 1 le nombre de "Upvote" d'un post</p> 
                                 </div>
                             </div>
 
