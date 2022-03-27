@@ -36,6 +36,11 @@ const Accueil = () => {
     const [searchValue, setSearchValue] = useState("");
     const [openModal, setOpenModal] = useState(true);
 
+    function handleWelcome () {
+        setOpenModal(false);
+        localStorage.setItem("hasSeenWelcome", true);
+    }
+
 
     return (
 
@@ -80,7 +85,7 @@ const Accueil = () => {
             /*            Modale de Bienvenue               */
             /*-*-*-*-*-*-*-*-*--*-*-*-*-*-*-*-*-*-*--*-*-*-*/}
 
-            {openModal &&
+            {openModal && (!localStorage.getItem("hasSeenWelcome") == true) &&
                 <div id="modal" className="flex w-screen h-screen bg-black bg-opacity-30 fixed bottom-0 left-0 justify-center overflow-auto z-40 items-start">
                     <div className="w-95vw xl:w-2/6 max-h-max mb-10 xl:mb-0 relative flex flex-col justify-start items-center rounded-3xl bg-white-0 dark:bg-gray-550 dark:text-white-0  xl:h-auto overflow-y-auto xl:mt-10 pb-20 xl:pb-10 ">
                         <div className="mt-7 mx-5 xl:mt-0 flex flex-col">
@@ -150,7 +155,7 @@ const Accueil = () => {
                             </div>
                             <div className="flex w-full justify-evenly mt-7 mb-8">
 
-                                <button onClick={() => setOpenModal(false)} className="block px-4 hover:underline hover:underline-offset-8 text-red-450 font-semibold dark:hover:underline dark:hover:underline-offset-8 dark:hover:text-black transition duration-300 ease-in-out" type="submit" name='bouton fermer'>Fermer</button>
+                                <button onClick={handleWelcome} className="block px-4 hover:underline hover:underline-offset-8 text-red-450 font-semibold dark:hover:underline dark:hover:underline-offset-8 dark:hover:text-black transition duration-300 ease-in-out" type="submit" name='bouton fermer'>Fermer</button>
                             </div>
                         </div>
                     </div>
