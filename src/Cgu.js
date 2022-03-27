@@ -122,7 +122,7 @@ const Cgu = () => {
 
                         Les administrateurs se gardent le droit de supprimer de façon unilatérale et sans justification le bon plan de toute personne ne respectant pas les règles.<br></br><br></br>
 
-                        Si un utilisateur abuse des fonctions de signalement (spam, signalement de contenus respectant les CGU…) les administratifs de BENEF se gardent le droit de suspendre de manière indéterminée le compte de l’utilisateur.
+                        Si un utilisateur abuse des fonctions de signalement (spam, signalement de contenus respectant les CGU…) les administrateurs de BENEF se gardent le droit de suspendre de manière indéterminée le compte de l’utilisateur.
                         <br></br>
 
 

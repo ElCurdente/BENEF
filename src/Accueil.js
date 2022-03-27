@@ -92,7 +92,7 @@ const Accueil = () => {
                             <h1 className="text-xl xl:text-xl text-red-650 font-semibold max-w-md mb-2 pt-10 text-center">Bienvenue sur BENEF !</h1>
                             <h1 className="text-lg xl:text-base max-w-md font-semibold mt-2">C'est quoi Benef ?</h1>
                             <p className="text-lg xl:text-base font-light max-w-md mt-2">Benef est une “Application Web” unique en son genre.<br></br>
-                             Elle permet te permet d’échanger des bons plans en Île-de-France avec la communauté sur différentes catégories comme des soirées, des expositions ou encore des restaurants pour vous inviter à sortir plus malin.<br></br><br></br>
+                             Elle te permet d’échanger des bons plans en Île-de-France avec la communauté sur différentes catégories comme des soirées, des expositions ou encore des restaurants pour vous inviter à sortir plus malin.<br></br><br></br>
                              Pour une immersion totale nous te demandons de partager uniquement des offres authentiques et donc de respecter nos CGU.<br></br> <br></br>
                             Alors n'attends plus et profite des bons plans, partages-en et personnalise ton profil pour te faire reconnaître !
 </p><br></br>
