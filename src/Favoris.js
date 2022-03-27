@@ -353,8 +353,8 @@ function Favoris() {
 
   if (error) {
     /* S'affiche si l'on arrive pas à fetch (problème de connexion par exemple) */ 
-    return <div className="mb-5 mt-5 mx-3 flex flex-col items-center text-center">
-    <img className="mt-5 mb-5 w-20" src={pleure} alt='emoji pleure' />
+    return <div className="flex flex-col justify-center items-center text-center h-screen w-screen">
+    <img className="mb-5 w-20" src={pleure} alt='emoji pleure' />
     <h1 className="text-lg xl:text-xl font-semibold max-w-md mt-2">
       Mince, il y a un petit problème<br></br>
       <div className="font-light xl:text-base flex flex-wrap justify-center mt-2"><span>Nous te conseillons de rafraîchir la page !</span></div>
