@@ -514,12 +514,12 @@ const Thread = () => {
 
   if (error) {
     return <div className="mb-5 mt-5 mx-3 flex flex-col items-center text-center">
-    <img className="mt-5 mb-5 w-20" src={pleure} alt='emoji pleure' />
-    <h1 className="text-lg xl:text-xl font-semibold max-w-md mt-2">
-      Mince, il y a un petit problème<br></br>
-      <div className="font-light xl:text-base flex flex-wrap justify-center mt-2"><span>Nous te conseillons de rafraîchir la page !</span></div>
-    </h1>
-  </div>;
+      <img className="mt-5 mb-5 w-20" src={pleure} alt='emoji pleure' />
+      <h1 className="text-lg xl:text-xl font-semibold max-w-md mt-2">
+        Mince, il y a un petit problème<br></br>
+        <div className="font-light xl:text-base flex flex-wrap justify-center mt-2"><span>Nous te conseillons de rafraîchir la page !</span></div>
+      </h1>
+    </div>;
   } else if (!isLoaded) {
     return <div className='h-screen w-screen flex justify-center items-center bg-red-450 dark:bg-black xl:bg-white-0 xl:dark:bg-white-0'>
       <div className='flex justify-center items-center dark:hidden'>
@@ -589,7 +589,7 @@ const Thread = () => {
         </motion.div> */}
         <ul className="h-full xl:w-2/6 bg-white-0 dark:bg-gray-550 relative top-14">
 
-          <div className='w-full flex justify-center items-center mt-1'>{triRecent ? <button onClick={(e) => handleSubmitFiltered2(e)} className="block mt-2 px-4 font-semibold py-2 bg-red-450 hover:bg-white-0 hover:text-red-450 hover:border-red-450 border-2 border-red-450 dark:hover:bg-white-150 dark:hover:text-gray-550 active:bg-red-200 dark:bg-white-0 dark:border-black dark:text-black rounded-full transition duration-300 ease-in-out text-white-0">Trier par popularité</button> : <button onClick={(e) => handleSubmitFiltered(e)} className="block mt-2 px-4 font-semibold py-2 bg-red-450 hover:bg-white-0 hover:text-red-450 hover:border-red-450 border-2 border-red-450 dark:hover:bg-white-150 dark:hover:text-gray-550 active:bg-red-200 dark:bg-white-0 dark:border-black dark:text-black rounded-full transition duration-300 ease-in-out text-white-0">Trier par date de publication</button>}</div>
+          <div className='w-full flex justify-center items-center mt-1'>{triRecent ? <button onClick={(e) => handleSubmitFiltered2(e)} className="block mt-2 px-4 font-semibold py-2 bg-red-450 hover:bg-white-0 hover:text-red-450 hover:border-red-450 border-2 border-red-450 dark:hover:bg-white-150 dark:hover:text-gray-550 active:bg-red-200 dark:bg-white-0 dark:border-black dark:text-black rounded-full transition duration-300 ease-in-out text-white-0">Trié par date de publication</button> : <button onClick={(e) => handleSubmitFiltered(e)} className="block mt-2 px-4 font-semibold py-2 bg-red-450 hover:bg-white-0 hover:text-red-450 hover:border-red-450 border-2 border-red-450 dark:hover:bg-white-150 dark:hover:text-gray-550 active:bg-red-200 dark:bg-white-0 dark:border-black dark:text-black rounded-full transition duration-300 ease-in-out text-white-0">Trié par popularité</button>}</div>
 
           <div className="mt-5 ml-6 mr-6 pb-24 xl:pb-10 xl:dark:bg-gray-550">
 
