@@ -353,7 +353,7 @@ const Profil2 = () => {
                                 <div className="flex w-92vw max-w-md mt-4">
                                     <motion.img animate={{ y: ["-10%", "-40%"] }} transition={{ yoyo: Infinity, duration: 0.4, ease: "easeOut", repeatDelay: 1 }} id="loca" src={localisation} className="opacity-100 h-20px dark:hidden" alt="icon localisation"></motion.img>
                                     <motion.img animate={{ y: ["-10%", "-40%"] }} transition={{ yoyo: Infinity, duration: 0.4, ease: "easeOut", repeatDelay: 1 }} id="loca" src={adresse} className="opacity-100 h-20px hidden dark:block" alt="icon localisation"></motion.img>
-                                    <div className='ml-6'>{modalItem.address}{", "}{modalItem.postal}</div>
+                                    <div className='ml-6'>{modalItem.place}{", "}{modalItem.address}{", "}{modalItem.postal}</div>
                                 </div>
 
                                 <div className="flex mt-2 w-92vw max-w-md">

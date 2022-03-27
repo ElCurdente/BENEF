@@ -402,7 +402,7 @@ function Favoris() {
                     <div className="flex w-92vw max-w-md mt-4">
                       <motion.img animate={{ y: ["-10%", "-40%"] }} transition={{ yoyo: Infinity, duration: 0.4, ease: "easeOut", repeatDelay: 1 }} id="loca" src={localisation} className="opacity-100 h-20px dark:hidden" alt="icon localisation"></motion.img>
                       <motion.img animate={{ y: ["-10%", "-40%"] }} transition={{ yoyo: Infinity, duration: 0.4, ease: "easeOut", repeatDelay: 1 }} id="loca" src={adresse} className="opacity-100 h-20px hidden dark:block" alt="icon localisation"></motion.img>
-                      <div className='ml-6'>{modalItem.address}{", "}{modalItem.postal}</div>
+                      <div className='ml-6'>{modalItem.place}{", "}{modalItem.address}{", "}{modalItem.postal}</div>
                     </div>
 
                     <div className="flex mt-2 w-92vw max-w-md">
@@ -434,7 +434,7 @@ function Favoris() {
                   <img className="mb-5 w-20" src={pleure} alt='emoji pleure' />
                   <h1 className="text-lg xl:text-xl font-semibold max-w-md mt-2 dark:text-white-0">
                     Oups... tu n'as aucun bon plan favori<br></br>
-                    <div className="font-light xl:text-base flex flex-wrap justify-center mt-2 dark:text-white-0"><span className="w-fit">Il te suffit de cliquer sur</span> <img className="h-6 mx-2" src={coeurB} alt='icone coeur' /><span className="w-fit"> des bons plans qui</span><span className="w-fit">t'intéressent et ils s'afficheront ici !</span></div>
+                    <div className="font-light xl:text-base flex flex-wrap justify-center mt-2 dark:text-white-0"><span className="w-fit">Il te suffit de cliquer sur</span> <img className="h-6 mx-2 hidden dark:block" src={coeurB} alt='icone coeur' /><img className="h-6 mx-2 dark:hidden" src={coeur} alt='icone coeur' /><span className="w-fit"> des bons plans qui</span><span className="w-fit">t'intéressent et ils s'afficheront ici !</span></div>
                   </h1>
                 </div>
           

@@ -609,7 +609,7 @@ const Thread = () => {
                       <div className="flex w-92vw max-w-md mt-7 text-sm">
                         <img id="loca" src={localisation} className="opacity-100 h-20px dark:hidden" alt='icon localisation'></img>
                         <img id="loca" src={adresse} className="opacity-100 h-20px hidden dark:block" alt='icon localisation'></img>
-                        <div className='ml-3'>{modalItem.address}{", "}{modalItem.postal}</div>
+                        <div className='ml-3'>{modalItem.place}{", "}{modalItem.address}{", "}{modalItem.postal}</div>
                       </div>
                       <div className="flex mt-2 w-92vw max-w-md text-sm">
                         <motion.img animate={{ rotate: 180 }} transition={{ repeat: Infinity, duration: 0.75, ease: "easeOut", repeatDelay: 1 }} id="sablier" src={sablier} className="opacity-100 h-20px dark:hidden" alt="icon sablier"></motion.img>
