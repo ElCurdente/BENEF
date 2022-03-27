@@ -17,6 +17,7 @@ import { AES, enc } from 'crypto-js';
 import animationData2 from './images/animation/loading.json';
 import animationData3 from './images/animation/loader_light.json';
 import animationData4 from './images/animation/loader_dark.json';
+import sablierB from './images/icon/icon_sablier_b.svg';
 import Lottie from 'react-lottie';
 import { Link } from 'react-router-dom';
 
@@ -377,13 +378,13 @@ function Favoris() {
 
     return (
       
-      <div className=" h-screen w-screen flex flex-col justify-center xl:justify-center overflow-x-hidden overflow-auto items-center bg-white-0 xl:dark:bg-gray-550 xl:p-5">
+      <div className=" h-screen w-screen flex flex-col justify-center xl:justify-center overflow-x-hidden overflow-auto items-center bg-white-0 dark:bg-gray-550 xl:p-5">
         {/* <motion.div className="">
               <img src={upvoteHautplein} alt='icon upvote'/>
             </motion.div> */}
-        <ul className="h-full xl:w-2/6 bg-white-0 xl:dark:bg-gray-550 relative top-10">
+        <ul className="h-full xl:w-2/6 bg-white-0 dark:bg-gray-550 relative top-10">
         <h1 className="text-center dark:text-white-0 text-2xl font-bold mt-5">Bons plans favoris</h1>
-          <div className="mt-5 ml-4 mr-4 pb-24 xl:pb-12 xl:dark:bg-gray-550">
+          <div className="mt-5 ml-4 mr-4 pb-24 xl:pb-12 dark:bg-gray-550">
 
             <div id="containerModal" className={openModal ? "block" : "hidden"}>
               <div id="modal" ref={modal} className="flex w-screen h-screen bg-black bg-opacity-30 fixed bottom-0 left-0 justify-center z-40 items-end">
@@ -398,11 +399,14 @@ function Favoris() {
                     <h1 className="text-base xl:text-lg px-4 max-w-max py-1 text-red-450 dark:text-white-0 rounded-full border-2 border-red-450 dark:border-white-0 font-semibold mt-4">{modalItem.category}</h1>
 
                     <div className="flex w-92vw max-w-md mt-4">
-                      <motion.img animate={{ y: ["-10%", "-40%"] }} transition={{ yoyo: Infinity, duration: 0.4, ease: "easeOut", repeatDelay: 1 }} id="loca" src={localisation} className="opacity-100 h-20px" alt="icon localisation"></motion.img><div className='ml-6'>{modalItem.address}{", "}{modalItem.postal}</div>
+                      <motion.img animate={{ y: ["-10%", "-40%"] }} transition={{ yoyo: Infinity, duration: 0.4, ease: "easeOut", repeatDelay: 1 }} id="loca" src={localisation} className="opacity-100 h-20px dark:hidden" alt="icon localisation"></motion.img>
+                      <motion.img animate={{ y: ["-10%", "-40%"] }} transition={{ yoyo: Infinity, duration: 0.4, ease: "easeOut", repeatDelay: 1 }} id="loca" src={adresse} className="opacity-100 h-20px hidden dark:block" alt="icon localisation"></motion.img>
+                      <div className='ml-6'>{modalItem.address}{", "}{modalItem.postal}</div>
                     </div>
 
                     <div className="flex mt-2 w-92vw max-w-md">
-                      <motion.img animate={{ rotate: 180 }} transition={{ repeat: Infinity, duration: 0.4, ease: "easeOut", repeatDelay: 1 }} id="sablier" src={sablier} className="opacity-100 h-20px " alt="icon sablier"></motion.img>
+                      <motion.img animate={{ rotate: 180 }} transition={{ repeat: Infinity, duration: 0.4, ease: "easeOut", repeatDelay: 1 }} id="sablier" src={sablier} className="opacity-100 h-20px dark:hidden" alt="icon sablier"></motion.img>
+                      <motion.img animate={{ rotate: 180 }} transition={{ repeat: Infinity, duration: 0.4, ease: "easeOut", repeatDelay: 1 }} id="sablier" src={sablierB} className="opacity-100 h-20px hidden dark:block" alt="icon sablier"></motion.img>
                       {modalItem.expiration !== '0000-00-00' ? <div className='ml-7'>{modalItem.expiration}</div> : <div className='ml-7'>A vie</div>}
 
                     </div>

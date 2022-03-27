@@ -12,6 +12,7 @@ import adresse from './images/icon/adress.svg';
 import localisation from './images/icon/icon_localisation.svg';
 import pleure from './images/illustrations/pleure.png';
 import sablier from './images/icon/icon_sablier.svg';
+import sablierB from './images/icon/icon_sablier_b.svg';
 import { AES, enc } from 'crypto-js';
 
 const Profil2 = () => {
@@ -335,7 +336,7 @@ const Profil2 = () => {
         </div>;
     } else {
         return (
-            <div className="overflow-auto flex flex-col justify-start pt-16 items-center h-screen w-screen bg-white-0 xl:dark:bg-gray-550 dark:text-white-0">
+            <div className="overflow-auto flex flex-col justify-start pt-16 items-center h-screen w-screen bg-white-0 dark:bg-gray-550 dark:text-white-0">
 
                 <div id="containerModal" className={openModal ? "block" : "hidden"}>
                     <div id="modal" ref={modal} className="flex w-screen h-screen bg-black bg-opacity-30 fixed bottom-0 left-0 justify-center z-40 items-end mt-5">
@@ -350,11 +351,14 @@ const Profil2 = () => {
                                 <h1 className="text-base xl:text-lg px-4 max-w-max py-1 text-red-450 dark:text-white-0 rounded-full border-2 border-red-450 dark:border-white-0 font-semibold mt-4">{modalItem.category}</h1>
 
                                 <div className="flex w-92vw max-w-md mt-4">
-                                    <motion.img animate={{ y: ["-10%", "-40%"] }} transition={{ yoyo: Infinity, duration: 0.4, ease: "easeOut", repeatDelay: 1 }} id="loca" src={localisation} className="opacity-100 h-20px" alt="icon localisation"></motion.img><div className='ml-6'>{modalItem.address}{", "}{modalItem.postal}</div>
+                                    <motion.img animate={{ y: ["-10%", "-40%"] }} transition={{ yoyo: Infinity, duration: 0.4, ease: "easeOut", repeatDelay: 1 }} id="loca" src={localisation} className="opacity-100 h-20px dark:hidden" alt="icon localisation"></motion.img>
+                                    <motion.img animate={{ y: ["-10%", "-40%"] }} transition={{ yoyo: Infinity, duration: 0.4, ease: "easeOut", repeatDelay: 1 }} id="loca" src={adresse} className="opacity-100 h-20px hidden dark:block" alt="icon localisation"></motion.img>
+                                    <div className='ml-6'>{modalItem.address}{", "}{modalItem.postal}</div>
                                 </div>
 
                                 <div className="flex mt-2 w-92vw max-w-md">
-                                    <motion.img animate={{ rotate: 180 }} transition={{ repeat: Infinity, duration: 0.4, ease: "easeOut", repeatDelay: 1 }} id="sablier" src={sablier} className="opacity-100 h-20px " alt="icon sablier"></motion.img>
+                                    <motion.img animate={{ rotate: 180 }} transition={{ repeat: Infinity, duration: 0.4, ease: "easeOut", repeatDelay: 1 }} id="sablier" src={sablier} className="opacity-100 h-20px dark:hidden" alt="icon sablier"></motion.img>
+                                    <motion.img animate={{ rotate: 180 }} transition={{ repeat: Infinity, duration: 0.4, ease: "easeOut", repeatDelay: 1 }} id="sablier" src={sablierB} className="opacity-100 h-20px hidden dark:block" alt="icon sablier"></motion.img>
                                     {modalItem.expiration !== '0000-00-00' ? <div className='ml-7'>{modalItem.expiration}</div> : <div className='ml-7'>À vie</div>}
 
                                 </div>
@@ -393,9 +397,9 @@ const Profil2 = () => {
                 <div id="infos" className="relative xl:w-2/6 w-95vw px-4 xl:-px-0">
                     <div className="flex items-center">
                         <img src={user.image} className="w-100px h-100px bg-transparent dark:bg-gray-650 border-3 border-red-450 dark:border-black rounded-full object-cover" alt='profil' />
-                        <h1 className="ml-3 text-xl font-semibold dark:text-black xl:dark:text-white-0">{user.username}</h1>
+                        <h1 className="ml-3 text-xl font-semibold text-black dark:text-white-0">{user.username}</h1>
                     </div>
-                    <p className="col-span-2 mt-4 dark:text-black xl:dark:text-white-0">{user.bio}</p>
+                    <p className="col-span-2 mt-4 text-black dark:text-white-0">{user.bio}</p>
                     {/* <div className="flex items-center justify-between col-span-2 h-16 pt-8">
                         <button onClick={handleModify} name='bouton modifie ton profil' className="flex items-center h-10 bg-red-450 py-2 px-4 rounded-3xl text-white-0 dark:text-black hover:bg-white-0 hover:text-red-450 hover:border-red-450 border-2 border-red-450 dark:bg-white-0 dark:border-white-0 transition duration-300 ease-in-out">Modifie ton profil</button>
                         {user.id == 38 &&
@@ -409,7 +413,7 @@ const Profil2 = () => {
                 </div>
 
                 <div id="bp_perso" className="w-95vw xl:w-2/6">
-                    <div id="barre1" className="h-1px w-95vw xl:w-full mt-16 bg-gray-200"></div>
+                    <div id="barre1" className="h-1px w-95vw xl:w-full mt-8 bg-gray-200"></div>
                     <h3 className="font-bold pt-4 pl-4 relative">Bons plans publiés</h3>
                     <div className='w-full h-full flex flex-col items-center mt-5 pb-14'>
                         {items.map(item => (

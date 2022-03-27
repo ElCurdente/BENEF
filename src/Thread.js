@@ -7,6 +7,7 @@ import { Link } from 'react-router-dom';
 import adresse from './images/icon/adress.svg';
 import localisation from './images/icon/icon_localisation.svg';
 import sablier from './images/icon/icon_sablier.svg';
+import sablierB from './images/icon/icon_sablier_b.svg';
 import upvoteBas from './images/icon/upvote.svg';
 import upvoteHaut from './images/icon/upvote2.svg';
 import upvoteBasDark from './images/icon/upvote_dark.svg';
@@ -542,7 +543,7 @@ const Thread = () => {
 
     return (
 
-      <div className="h-screen w-screen flex justify-center xl:justify-center overflow-x-hidden items-center bg-white-0 xl:dark:bg-gray-550">
+      <div className="h-screen w-screen flex justify-center xl:justify-center overflow-x-hidden items-center bg-white-0 dark:bg-gray-550">
         <div id="containerModal" className={openModalReport ? "block" : "hidden"}>
           {!confirmedReport ?
             <div id="modal" ref={modal} className="flex w-screen h-screen bg-black bg-opacity-30 fixed bottom-0 left-0 justify-center z-40 items-center">
@@ -586,7 +587,7 @@ const Thread = () => {
         {/* <motion.div className="">
           <img src={upvoteHautplein} alt="icon upvote plein"/>
         </motion.div> */}
-        <ul className="h-full xl:w-2/6 bg-white-0 xl:dark:bg-gray-550 relative top-14">
+        <ul className="h-full xl:w-2/6 bg-white-0 dark:bg-gray-550 relative top-14">
 
           <div className='w-full flex justify-center items-center mt-1'>{triRecent ? <button onClick={(e) => handleSubmitFiltered2(e)} className="block mt-2 px-4 font-semibold py-2 bg-red-450 hover:bg-white-0 hover:text-red-450 hover:border-red-450 border-2 border-red-450 dark:hover:bg-white-150 dark:hover:text-gray-550 active:bg-red-200 dark:bg-white-0 dark:border-black dark:text-black rounded-full transition duration-300 ease-in-out text-white-0">Trier par popularité</button> : <button onClick={(e) => handleSubmitFiltered(e)} className="block mt-2 px-4 font-semibold py-2 bg-red-450 hover:bg-white-0 hover:text-red-450 hover:border-red-450 border-2 border-red-450 dark:hover:bg-white-150 dark:hover:text-gray-550 active:bg-red-200 dark:bg-white-0 dark:border-black dark:text-black rounded-full transition duration-300 ease-in-out text-white-0">Trier par date de publication</button>}</div>
 
@@ -606,10 +607,13 @@ const Thread = () => {
                       <h1 className="text-xl font-semibold max-w-md mt-2">{modalItem.title}</h1>
                       <h1 className="text-base px-4 max-w-max py-1 text-red-450 dark:text-white-0 rounded-full border-2 border-red-450 dark:border-white-0 font-base mt-3">{modalItem.category}</h1>
                       <div className="flex w-92vw max-w-md mt-7 text-sm">
-                        <img id="loca" src={localisation} className="opacity-100 h-20px" alt='icon localisation'></img><div className='ml-3'>{modalItem.address}{", "}{modalItem.postal}</div>
+                        <img id="loca" src={localisation} className="opacity-100 h-20px dark:hidden" alt='icon localisation'></img>
+                        <img id="loca" src={adresse} className="opacity-100 h-20px hidden dark:block" alt='icon localisation'></img>
+                        <div className='ml-3'>{modalItem.address}{", "}{modalItem.postal}</div>
                       </div>
                       <div className="flex mt-2 w-92vw max-w-md text-sm">
-                        <motion.img animate={{ rotate: 180 }} transition={{ repeat: Infinity, duration: 0.75, ease: "easeOut", repeatDelay: 1 }} id="sablier" src={sablier} className="opacity-100 h-20px" alt="icon sablier"></motion.img>
+                        <motion.img animate={{ rotate: 180 }} transition={{ repeat: Infinity, duration: 0.75, ease: "easeOut", repeatDelay: 1 }} id="sablier" src={sablier} className="opacity-100 h-20px dark:hidden" alt="icon sablier"></motion.img>
+                        <motion.img animate={{ rotate: 180 }} transition={{ repeat: Infinity, duration: 0.75, ease: "easeOut", repeatDelay: 1 }} id="sablier" src={sablierB} className="opacity-100 h-20px hidden dark:block" alt="icon sablier"></motion.img>
                         {modalItem.expiration !== '0000-00-00' ? <div className='ml-4'>{modalItem.expiration}</div> : <div className='ml-4'>À vie</div>}
                       </div>
                       <h1 className="text-base max-w-md mt-5">{modalItem.description}</h1>

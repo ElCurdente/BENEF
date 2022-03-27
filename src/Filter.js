@@ -7,6 +7,8 @@ import filtre from './images/icon/icon_filtre.svg';
 import filtreNoir from './images/icon/icon_filtre_n.svg';
 import localisation from './images/icon/icon_localisation.svg';
 import sablier from './images/icon/icon_sablier.svg';
+import sablierB from './images/icon/icon_sablier_b.svg';
+import Recherche from './images/icon/icon_recherche.svg';
 import pleure from './images/illustrations/pleure.png';
 import { motion } from 'framer-motion/dist/framer-motion';
 import animationData2 from './images/animation/loading.json';
@@ -212,7 +214,7 @@ const Filter = ({ searchValue, setSearchValue }) => {
     }
 
     return (
-      <div className="h-screen w-screen  bg-white-0 xl:dark:bg-gray-550 flex justify-center overflow-auto items-center">
+      <div className="h-screen w-screen  bg-white-0 dark:bg-gray-550 flex justify-center overflow-auto items-center">
 
         <div id="containerModal" className={openModal2 ? "block" : "hidden"}>
           <div id="modal" ref={modal2} className="flex w-screen h-screen bg-black bg-opacity-30 fixed bottom-0 left-0 justify-center z-40 items-end">
@@ -227,11 +229,14 @@ const Filter = ({ searchValue, setSearchValue }) => {
                 <h1 className="text-base xl:text-lg px-4 max-w-max py-1 text-red-450 dark:text-white-0 rounded-full border-2 border-red-450 dark:border-white-0 font-semibold mt-4">{modalItem.category}</h1>
 
                 <div className="flex w-92vw max-w-md mt-4">
-                  <motion.img animate={{ y: ["-10%", "-40%"] }} transition={{ yoyo: Infinity, duration: 0.4, ease: "easeOut", repeatDelay: 1 }} id="loca" src={localisation} className="opacity-100 h-20px" alt="icon localisation"></motion.img><div className='ml-6'>{modalItem.address}{", "}{modalItem.postal}</div>
+                  <motion.img animate={{ y: ["-10%", "-40%"] }} transition={{ yoyo: Infinity, duration: 0.4, ease: "easeOut", repeatDelay: 1 }} id="loca" src={localisation} className="opacity-100 h-20px dark:hidden" alt="icon localisation"></motion.img>
+                  <motion.img animate={{ y: ["-10%", "-40%"] }} transition={{ yoyo: Infinity, duration: 0.4, ease: "easeOut", repeatDelay: 1 }} id="loca" src={adresse} className="opacity-100 h-20px hidden dark:block" alt="icon localisation"></motion.img>
+                  <div className='ml-6'>{modalItem.address}{", "}{modalItem.postal}</div>
                 </div>
 
                 <div className="flex mt-2 w-92vw max-w-md">
-                  <motion.img animate={{ rotate: 180 }} transition={{ repeat: Infinity, duration: 0.4, ease: "easeOut", repeatDelay: 1 }} id="sablier" src={sablier} className="opacity-100 h-20px " alt="icon sablier"></motion.img>
+                  <motion.img animate={{ rotate: 180 }} transition={{ repeat: Infinity, duration: 0.4, ease: "easeOut", repeatDelay: 1 }} id="sablier" src={sablier} className="opacity-100 h-20px dark:hidden" alt="icon sablier"></motion.img>
+                  <motion.img animate={{ rotate: 180 }} transition={{ repeat: Infinity, duration: 0.4, ease: "easeOut", repeatDelay: 1 }} id="sablier" src={sablierB} className="opacity-100 h-20px hidden dark:block" alt="icon sablier"></motion.img>
                   {modalItem.expiration !== '0000-00-00' ? <div className='ml-7'>{modalItem.expiration}</div> : <div className='ml-7'>A vie</div>}
 
                 </div>
@@ -253,16 +258,17 @@ const Filter = ({ searchValue, setSearchValue }) => {
           </div>
         </div>
 
-        <ul className="h-full bg-white-0 xl:w-2/6 xl:dark:bg-gray-550 relative top-10">
+        <ul className="h-full bg-white-0 xl:w-2/6 dark:bg-gray-550 relative top-10">
           <div className="xl:pl-5 xl:pr-5 mt-7 pb-24 xl:pb-10">
             <form className="post flex flex-col justify-center mb-3" onSubmit={(e) => handleSubmitFiltered(e)} id="filter_form">
               <div className="flex h-50px relative justify-center items-center w-full">
                 <h1 className="text-center text-2xl font-bold dark:text-gray-50">Recherche</h1>
               </div>
               <div className="flex relative justify-center items-center mx-auto w-65% xl:hidden">
-                <div className="flex border-b-2 border-black required:w-65% h-8 mt-2 mb-14">
-                  <input value={searchValue} className=" required:w-65% px-6 bg-white-150 placeholder-black focus:outline-none" placeholder="Rechercher par titre..." onChange={event => setSearchValue(event.target.value)} />
-                  <svg fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1" viewBox="0 0 20 20" className="w-5 h-5 mt-1 mr-3 xl:hidden"><path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+                <div className="flex items-center border-b-2 border-black dark:border-white-0 required:w-65% h-8 mt-2 mb-14">
+                  <input value={searchValue} className=" required:w-65% px-6 bg-white-150 dark:bg-gray-550 placeholder-black dark:placeholder-white-0 focus:outline-none" placeholder="Rechercher par titre..." onChange={event => setSearchValue(event.target.value)} />
+                  <svg fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1" viewBox="0 0 20 20" className="w-5 h-5 mt-1 mr-3 dark:hidden xl:hidden"><path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+                  <img src={Recherche} className='h-5 hidden dark:block xl:hidden'></img>
                 </div>
               </div>
 
