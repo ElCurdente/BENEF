@@ -37,11 +37,13 @@
   }
 }
 
+
 /* ===== Scrollbar CSS ===== */
   /* Firefox */
   * {
     scrollbar-width: auto;
     scrollbar-color: #ff5640 transparent;
+    box-sizing: border-box;
   }
 
   /* Chrome, Edge, and Safari */

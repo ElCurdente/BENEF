@@ -572,9 +572,9 @@ const Thread = () => {
         </motion.div> */}
         <ul className="h-full xl:w-2/6 bg-white-0 xl:dark:bg-gray-550 relative top-14">
 
-          <div className='w-full flex justify-center items-center'>{triRecent ? <button onClick={(e) => handleSubmitFiltered2(e)} className="block mt-2 px-4 font-semibold py-2 bg-red-450 hover:bg-white-0 hover:text-red-450 hover:border-red-450 border-2 border-red-450 dark:hover:bg-white-150 dark:hover:text-gray-550 active:bg-red-200 dark:bg-white-0 dark:border-black dark:text-black rounded-full transition duration-300 ease-in-out text-white-0">Trier par Upvote</button> : <button onClick={(e) => handleSubmitFiltered(e)} className="block mt-2 px-4 font-semibold py-2 bg-red-450 hover:bg-white-0 hover:text-red-450 hover:border-red-450 border-2 border-red-450 dark:hover:bg-white-150 dark:hover:text-gray-550 active:bg-red-200 dark:bg-white-0 dark:border-black dark:text-black rounded-full transition duration-300 ease-in-out text-white-0">Trier par date de publication</button>}</div>
+          <div className='w-full flex justify-center items-center mt-1'>{triRecent ? <button onClick={(e) => handleSubmitFiltered2(e)} className="block mt-2 px-4 font-semibold py-2 bg-red-450 hover:bg-white-0 hover:text-red-450 hover:border-red-450 border-2 border-red-450 dark:hover:bg-white-150 dark:hover:text-gray-550 active:bg-red-200 dark:bg-white-0 dark:border-black dark:text-black rounded-full transition duration-300 ease-in-out text-white-0">Trier par popularité</button> : <button onClick={(e) => handleSubmitFiltered(e)} className="block mt-2 px-4 font-semibold py-2 bg-red-450 hover:bg-white-0 hover:text-red-450 hover:border-red-450 border-2 border-red-450 dark:hover:bg-white-150 dark:hover:text-gray-550 active:bg-red-200 dark:bg-white-0 dark:border-black dark:text-black rounded-full transition duration-300 ease-in-out text-white-0">Trier par date de publication</button>}</div>
 
-          <div className="mt-7 ml-6 mr-6 pb-24 xl:pb-10 xl:dark:bg-gray-550">
+          <div className="mt-5 ml-6 mr-6 pb-24 xl:pb-10 xl:dark:bg-gray-550">
 
 
             <div id="containerModal" className={openModal ? "block" : "hidden"}>

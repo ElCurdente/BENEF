@@ -8,6 +8,7 @@ import content from './images/illustrations/content.png';
 import { BrowserRouter as Link} from 'react-router-dom';
 import {AES, enc} from 'crypto-js';
 import { useHistory } from 'react-router-dom';
+import fleche from './images/icon/icon_fleche_blanche.svg';
 
 
 const Post = () => {
@@ -196,8 +197,8 @@ const Post = () => {
                                 <option value="Autres" className="bg-white-0 text-red-450 dark:text-black">Autres</option>
                             </select>
                         </div>
-                        <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
-                            <svg className="fill-white h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" /></svg>
+                        <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700 transform rotate-90">
+                            <img src={fleche} className='h-3 transform rotate-180'/>
                         </div>
                     </div>
 
@@ -280,7 +281,7 @@ const Post = () => {
                             onBlur={() => (ref.current.type = "text")}
                             name="expiration"
                             maxLength="30"
-                            placeholder="Date d'expiration" className="appearance-none placeholder-white-150 text-white-150 border-b-2 bg-transparent w-4/5 my-2 h-12 pt-5 text-left focus:outline-none focus:placeholder-transparent  xl:placeholder-gray-650 xl:text-black xl:dark:text-white-0 xl:border-red-450 xl:dark:border-white-0"
+                            placeholder="Date d'expiration du bon plan" className="appearance-none placeholder-white-150 text-white-150 border-b-2 bg-transparent w-4/5 my-2 h-12 pt-5 text-left focus:outline-none focus:placeholder-transparent  xl:placeholder-gray-650 xl:text-black xl:dark:text-white-0 xl:border-red-450 xl:dark:border-white-0"
                             value={values.expiration}
                             onChange={handleChange}
                         />
