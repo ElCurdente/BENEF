@@ -167,7 +167,7 @@ const Post = () => {
 
                             }} name='bouton sélectionner une image' className="w-100vw h-30vh rounded-t-md border-2 border-red-450  xl:border-dashed cursor-pointer bg-white-0 text-red-450 dark:text-white-0 text-xl leading-loose dark:bg-gray-650 dark:border-black">
                                 <img className="h-50px m-auto dark:hidden" src={illus_images} alt="illustration" />
-                                <img className="h-40px m-auto hidden dark:block" src={plusblanc} alt="icon plus" /> <span className='xl:hidden'>Ajouter une photo</span> <span className='hidden xl:block xl:mt-2'>Sélectionner sur l'ordinateur</span>
+                                <img className="h-40px m-auto hidden dark:block" src={plusblanc} alt="icon plus" /> <span className='xl:hidden'>Ajoute une photo de ton bon plan</span> <span className='hidden xl:block xl:mt-2'>Ajoute une photo de ton bon plan</span>
                             </button>)}
 
                         <input id="image"
