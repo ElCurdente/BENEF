@@ -20,7 +20,7 @@
             $req = "SELECT * FROM benef_bdd WHERE username='{$decoded['username']}'";
             $stmt=$db->query($req);
             if($stmt->rowcount()==0){
-              $requete = "INSERT INTO benef_bdd (username, email, birth, postal, mdp, bio) VALUES (:username, :email, :birth, :postal, :mdp, :bio)";
+              $requete = "INSERT INTO benef_bdd (username, email, birth, postal, mdp, bio, image) VALUES (:username, :email, :birth, :postal, :mdp, :bio, :image)";
             $stmt2 = $db ->prepare($requete);
             $stmt2 -> execute(array(
               ":username" => $decoded['username'],
@@ -28,7 +28,8 @@
               ":birth" => $decoded['birth'],
               ":postal" => $decoded['postal'],
               ":mdp" => $hash,
-              ":bio" => ''
+              ":bio" => '',
+              ":image" => 'https://benef-app.fr/img/pp_default.png'
             ));
             echo '{"doublon" : false}';
            }else{
