@@ -246,12 +246,12 @@ const FormSignup = ({ submitForm }) => {
 
                     </div>
                 }
-                <div className="w-96 max-h-max">
+                <div className="w-96 max-h-full">
                     <div className="flex justify-center items-center mt-5 mb-5">
                         <img src={logo} alt="Logo" className="w-64 dark:hidden" />
                         <img src={logodark} alt="Logo" className="w-64 hidden dark:block" />
                     </div>
-                    <div className="bg-white-0 p-7 rounded-xl overflow-y-auto h-60%">
+                    <div className="bg-white-0 p-7 rounded-xl overflow-y-auto h-80vh">
 
                         {/* Formulaire typique en React*/}
 
