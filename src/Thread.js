@@ -13,7 +13,9 @@ import upvoteBasDark from './images/icon/upvote_dark.svg';
 import upvoteHautDark from './images/icon/upvote2_dark.svg';
 import { motion } from 'framer-motion/dist/framer-motion';
 import Lottie from 'react-lottie';
-import animationData2 from './images/animation/loader_light.json';
+import animationData2 from './images/animation/loading.json';
+import animationData3 from './images/animation/loader_light.json';
+import animationData4 from './images/animation/loader_dark.json';
 import coeur from './images/icon/icon_coeur.svg';
 import coeurPlein from './images/icon/icon_coeur_rempli.svg';
 import pouce from './images/illustrations/pouce.png';
@@ -37,7 +39,16 @@ const Thread = () => {
   const defaultOptions2 = {
     loop: true,
     autoplay: true,
-    animationData: animationData2,
+    animationData: animationData3,
+    rendererSettings: {
+      preserveAspectRatio: 'xMidYMid slice'
+    }
+  };
+
+  const defaultOptions3 = {
+    loop: true,
+    autoplay: true,
+    animationData: animationData4,
     rendererSettings: {
       preserveAspectRatio: 'xMidYMid slice'
     }
@@ -510,8 +521,13 @@ const Thread = () => {
   </div>;
   } else if (!isLoaded) {
     return <div className='h-screen w-screen flex justify-center items-center bg-red-450 dark:bg-black xl:bg-white-0 xl:dark:bg-white-0'>
-      <div className='pt-36 flex justify-center items-center h-400px w-400px rounded-full bg-red-450 dark:bg-black'>
+      <div className='flex justify-center items-center dark:hidden'>
         <Lottie options={defaultOptions2}
+          height={500}
+          width={500} className="" />
+      </div>
+      <div className='justify-center items-center hidden dark:flex'>
+        <Lottie options={defaultOptions3}
           height={500}
           width={500} className="" />
       </div>

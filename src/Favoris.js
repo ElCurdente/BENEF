@@ -15,6 +15,8 @@ import coeurPlein from './images/icon/icon_coeur_rempli.svg';
 import pleure from './images/illustrations/pleure.png';
 import { AES, enc } from 'crypto-js';
 import animationData2 from './images/animation/loading.json';
+import animationData3 from './images/animation/loader_light.json';
+import animationData4 from './images/animation/loader_dark.json';
 import Lottie from 'react-lottie';
 import { Link } from 'react-router-dom';
 
@@ -24,7 +26,16 @@ function Favoris() {
   const defaultOptions2 = {
     loop: true,
     autoplay: true,
-    animationData: animationData2,
+    animationData: animationData3,
+    rendererSettings: {
+      preserveAspectRatio: 'xMidYMid slice'
+    }
+  };
+
+  const defaultOptions3 = {
+    loop: true,
+    autoplay: true,
+    animationData: animationData4,
     rendererSettings: {
       preserveAspectRatio: 'xMidYMid slice'
     }
@@ -351,8 +362,13 @@ function Favoris() {
   } else if (!isLoaded) {
     /* S'affiche pendant le chargement des donnés (loader) */ 
     return <div className='h-screen w-screen flex justify-center items-center bg-red-450 dark:bg-black xl:bg-white-0 xl:dark:bg-white-0'>
-      <div className='pt-36 flex justify-center items-center h-400px w-400px rounded-full bg-red-450 dark:bg-black'>
+      <div className='flex justify-center items-center dark:hidden'>
         <Lottie options={defaultOptions2}
+          height={500}
+          width={500} className="" />
+      </div>
+      <div className='justify-center items-center hidden dark:flex'>
+        <Lottie options={defaultOptions3}
           height={500}
           width={500} className="" />
       </div>

@@ -5,6 +5,8 @@ import { useEffect } from 'react';
 import lottie from 'lottie-web';
 import Lottie from 'react-lottie';
 import animationData2 from './images/animation/loading.json';
+import animationData3 from './images/animation/loader_light.json';
+import animationData4 from './images/animation/loader_dark.json';
 import { motion } from 'framer-motion/dist/framer-motion';
 import adresse from './images/icon/adress.svg';
 import localisation from './images/icon/icon_localisation.svg';
@@ -295,24 +297,38 @@ const Profil2 = () => {
     const defaultOptions2 = {
         loop: true,
         autoplay: true,
-        animationData: animationData2,
+        animationData: animationData3,
         rendererSettings: {
-            preserveAspectRatio: 'xMidYMid slice'
+          preserveAspectRatio: 'xMidYMid slice'
         }
-    };
+      };
+    
+      const defaultOptions3 = {
+        loop: true,
+        autoplay: true,
+        animationData: animationData4,
+        rendererSettings: {
+          preserveAspectRatio: 'xMidYMid slice'
+        }
+      };
 
     if (error) {
         return <div className="mb-5 mt-5 mx-3 flex flex-col items-center text-center">
-        <img className="mt-5 mb-5 w-20" src={pleure} alt='emoji pleure' />
-        <h1 className="text-lg xl:text-xl font-semibold max-w-md mt-2">
-          Mince, il y a un petit problème<br></br>
-          <div className="font-light xl:text-base flex flex-wrap justify-center mt-2"><span>Nous te conseillons de rafraîchir la page !</span></div>
-        </h1>
-      </div>;
+            <img className="mt-5 mb-5 w-20" src={pleure} alt='emoji pleure' />
+            <h1 className="text-lg xl:text-xl font-semibold max-w-md mt-2">
+                Mince, il y a un petit problème<br></br>
+                <div className="font-light xl:text-base flex flex-wrap justify-center mt-2"><span>Nous te conseillons de rafraîchir la page !</span></div>
+            </h1>
+        </div>;
     } else if (!isLoaded) {
         return <div className='h-screen w-screen flex justify-center items-center bg-red-450 dark:bg-black xl:bg-white-0 xl:dark:bg-white-0'>
-            <div className='pt-36 flex justify-center items-center h-400px w-400px rounded-full bg-red-450 dark:bg-black'>
+            <div className='flex justify-center items-center dark:hidden'>
                 <Lottie options={defaultOptions2}
+                    height={500}
+                    width={500} className="" />
+            </div>
+            <div className='justify-center items-center hidden dark:flex'>
+                <Lottie options={defaultOptions3}
                     height={500}
                     width={500} className="" />
             </div>
