@@ -272,7 +272,7 @@ const Post = () => {
                     </div>
 
                     <div className="flex relative justify-center items-center">
-                        <label htmlFor="expiration" className="placeholder-white-150 text-white-150 bg-transparent w-4/5 mt-2 h-12 pt-5 text-left focus:outline-none  xl:placeholder-gray-650 xl:text-black xl:dark:text-white-0 ">Date d'expiration du bon plan :
+                        <label htmlFor="expiration" className="placeholder-white-150 text-white-150 bg-transparent w-4/5 mt-2 h-8 pt-5 text-left focus:outline-none  xl:placeholder-gray-650 xl:text-black xl:dark:text-white-0 ">Date d'expiration du bon plan :
                         </label>
                     </div>
 
