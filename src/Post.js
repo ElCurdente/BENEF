@@ -188,7 +188,7 @@ const Post = () => {
 
                     <div className="flex h-100px relative justify-center items-center w-4/5">
                         <div className="w-full h-80px flex justify-center items-center">
-                            <select name="category" id="category" onChange={handleChange} className="block appearance-none bg-red-450 dark:bg-black xl:bg-white-0 text-white-0 border-gray-400 hover:border-gray-500 px-4 py-2 pr-12 xl:pr-0 ml-12 shadow leading-tight focus:outline-none focus:shadow-outline xl:text-gray-650">
+                            <select required name="category" id="category" onChange={handleChange} className="block appearance-none bg-red-450 dark:bg-black xl:bg-white-0 text-white-0 border-gray-400 hover:border-gray-500 px-4 py-2 pr-12 xl:pr-0 ml-12 shadow leading-tight focus:outline-none focus:shadow-outline xl:text-gray-650">
                                 <option value="select">--Catégorie du bon plan--</option>
                                 <option value="Restos" className="bg-white-0 text-red-450 dark:text-black">Restos</option>
                                 <option value="Expos" className="bg-white-0 text-red-450 dark:text-black">Expos</option>
