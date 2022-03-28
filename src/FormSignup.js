@@ -278,7 +278,7 @@ const FormSignup = ({ submitForm }) => {
                                     onFocus={() => (ref.current.type = "date")}
                                     onBlur={() => (ref.current.type = "text")}
                                     name="birth"
-                                    className="bg-transparent border-b-2 border-red-450 w-4/5 my-2 h-12 text-left text-gray-550 focus:outline-none pt-5 focus:placeholder-gray-650 "
+                                    className="bg-transparent border-b-2 border-red-450 w-4/5 my-2 h-12 text-left text-gray-650 focus:outline-none pt-5 focus:placeholder-gray-650"
                                     placeholder="Date de naissance"
                                     value={values.birth}
                                     onChange={handleChange} />
