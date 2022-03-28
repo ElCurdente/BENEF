@@ -271,7 +271,7 @@ const FormSignup = ({ submitForm }) => {
                             </div>
 
                             <div className="flex relative justify-center items-center">
-                                <label htmlFor="birth" className="placeholder-white-150 text-gray-650 bg-transparent w-4/5 mt-2 h-8 pt-5 text-left focus:outline-none  xl:placeholder-gray-650 xl:text-black xl:dark:text-white-0 ">Date de naissance :
+                                <label htmlFor="birth" className="placeholder-white-150 text-gray-650 bg-transparent w-4/5 mt-2 h-8 pt-5 text-left focus:outline-none  xl:placeholder-gray-650 xl:dark:text-white-0 ">Date de naissance :
                                 </label>
                             </div>
 
