@@ -273,7 +273,7 @@ const FormSignup = ({ submitForm }) => {
                                 <label htmlFor="birth" className="form-label">
                                 </label>
                                 <input id="birth"
-                                    type="text"
+                                    type="date"
                                     ref={ref}
                                     onFocus={() => (ref.current.type = "date")}
                                     onBlur={() => (ref.current.type = "text")}

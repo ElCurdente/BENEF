@@ -168,7 +168,7 @@ const Post = () => {
 
                             }} name='bouton sélectionner une image' className="w-100vw h-30vh rounded-t-md border-2 border-red-450  xl:border-dashed cursor-pointer bg-white-0 text-red-450 dark:text-white-0 text-xl leading-loose dark:bg-gray-650 dark:border-black">
                                 <img className="h-50px m-auto dark:hidden" src={illus_images} alt="illustration" />
-                                <img className="h-40px m-auto hidden dark:block" src={plusblanc} alt="icon plus" /> <span className='xl:hidden'>Ajoute une photo de ton bon plan</span> <span className='hidden xl:block xl:mt-2'>Ajoute une photo de ton bon plan</span>
+                                <img className="h-40px m-auto hidden dark:block" src={plusblanc} alt="icon plus" /> <span className='xl:hidden'>(Optionnel) Ajoute une photo de ton bon plan</span> <span className='hidden xl:block xl:mt-2'>(Optionnel) Ajoute une photo de ton bon plan</span>
                             </button>)}
 
                         <input id="image"
@@ -272,16 +272,18 @@ const Post = () => {
                     </div>
 
                     <div className="flex relative justify-center items-center">
+                        <label htmlFor="expiration" className="placeholder-white-150 text-white-150 bg-transparent w-4/5 mt-2 h-12 pt-5 text-left focus:outline-none  xl:placeholder-gray-650 xl:text-black xl:dark:text-white-0 ">Date d'expiration du bon plan :
+                        </label>
+                    </div>
+
+                    <div className="flex relative justify-center items-center">
                         <label htmlFor="expiration" className="">
                         </label>
                         <input id="expiration"
-                            type="text"
-                            ref={ref}
-                            onFocus={() => (ref.current.type = "date")}
-                            onBlur={() => (ref.current.type = "text")}
+                            type="date"
                             name="expiration"
                             maxLength="30"
-                            placeholder="Date d'expiration du bon plan" className="appearance-none placeholder-white-150 text-white-150 border-b-2 bg-transparent w-4/5 my-2 h-12 pt-5 text-left focus:outline-none focus:placeholder-transparent  xl:placeholder-gray-650 xl:text-black xl:dark:text-white-0 xl:border-red-450 xl:dark:border-white-0"
+                            className="placeholder-white-150 text-white-150 border-b-2 bg-transparent w-4/5 mb-2 h-12 pt-5 text-left focus:outline-none  xl:placeholder-gray-650 xl:text-black xl:dark:text-white-0 xl:border-red-450 xl:dark:border-white-0"
                             value={values.expiration}
                             onChange={handleChange}
                         />
