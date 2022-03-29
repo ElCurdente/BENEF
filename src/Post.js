@@ -9,6 +9,7 @@ import { BrowserRouter as Link } from 'react-router-dom';
 import { AES, enc } from 'crypto-js';
 import { useHistory } from 'react-router-dom';
 import fleche from './images/icon/icon_fleche_blanche.svg';
+import flechenoir from './images/icon/icon_fleche_noire.svg';
 
 
 const Post = () => {
@@ -187,7 +188,7 @@ const Post = () => {
 
                     <div className="flex h-100px relative justify-center items-center w-4/5">
                         <div className="w-full h-80px flex justify-center items-center">
-                            <select name="category" id="category" onChange={handleChange} className="block appearance-none bg-red-450 dark:bg-black xl:bg-white-0 text-white-0 border-gray-400 hover:border-gray-500 px-4 py-2 pr-12 ml-12 shadow leading-tight focus:outline-none focus:shadow-outline xl:text-gray-650">
+                            <select required name="category" id="category" onChange={handleChange} className="block appearance-none bg-red-450 dark:bg-black xl:bg-white-0 text-white-0 border-gray-400 hover:border-gray-500 px-4 py-2 pr-12 xl:pr-0 ml-12 shadow leading-tight focus:outline-none focus:shadow-outline xl:text-gray-650">
                                 <option value="select">--Catégorie du bon plan--</option>
                                 <option value="Restos" className="bg-white-0 text-red-450 dark:text-black">Restos</option>
                                 <option value="Expos" className="bg-white-0 text-red-450 dark:text-black">Expos</option>
@@ -198,7 +199,8 @@ const Post = () => {
                             </select>
                         </div>
                         <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700 transform rotate-90">
-                            <img src={fleche} className='h-3 transform rotate-180' />
+                            <img src={fleche} className='h-3 transform rotate-180 xl:hidden' />
+                            <img src={flechenoir} className='h-3 transform rotate-180 hidden xl:block' />
                         </div>
                     </div>
 
@@ -272,7 +274,7 @@ const Post = () => {
                     </div>
 
                     <div className="flex relative justify-center items-center">
-                        <label htmlFor="expiration" className="placeholder-white-150 text-white-150 bg-transparent w-4/5 mt-2 h-12 pt-5 text-left focus:outline-none  xl:placeholder-gray-650 xl:text-black xl:dark:text-white-0 ">Date d'expiration du bon plan :
+                        <label htmlFor="expiration" className="placeholder-white-150 text-white-150 bg-transparent w-4/5 mt-2 h-8 pt-5 text-left focus:outline-none  xl:placeholder-gray-650 xl:text-black xl:dark:text-white-0 ">Date d'expiration du bon plan :
                         </label>
                     </div>
 
