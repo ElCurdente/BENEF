@@ -10,7 +10,6 @@ import Profil2 from './Profil2'
 import Recherche from './Recherche'
 import Infos from './Infos'
 import Cgu from './Cgu'
-import LandingPage from './testImage'
 import Favoris from './Favoris'
 import BackOffice from './BackOffice'
 import logo from './images/logo/logo_benef.svg';
@@ -188,7 +187,6 @@ const Accueil = () => {
                         <Route path="/parametre" component={Parametre} />
                         <Route path="/infos" component={Infos} />
                         <Route path="/cgu" component={Cgu} />
-                        <Route path="/testImage" component={LandingPage} />
                         <Route path="/favoris" component={Favoris} />
                         <Route path="/backoffice" component={BackOffice} />
 
