@@ -12,11 +12,17 @@
           $decoded = json_decode($content, true);
 
           if(is_array($decoded)) {
-            foreach ($decoded as $v) {
-                echo "Valeur courante : $v.\n";
-            }
+            // foreach ($decoded as $v) {
+            //     echo "Valeur courante : $v.\n";
+            // }
+
+              // On déclare une nouvelle variable avec l'upvote incrémenté
+
             $newUpvote =  $decoded["upvote"] - 1;
-            echo $newUpvote;
+            // echo $newUpvote;
+
+              // On insère
+
             $db = new PDO('mysql:host=db5005161444.hosting-data.io;dbname=dbs4318125', 'dbu1522474', 'lesoussol06092021', array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8"));
             $requete = "UPDATE post SET upvote = :newUpvote WHERE id_post =".$decoded['id_post']."";
             $stmt = $db ->prepare($requete);

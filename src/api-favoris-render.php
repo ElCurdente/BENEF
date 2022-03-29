@@ -18,11 +18,17 @@ $contentType = isset($_SERVER["CONTENT_TYPE"]) ? trim($_SERVER["CONTENT_TYPE"]) 
             $req = "SELECT * FROM favoris WHERE ext_id_user = {$decoded['id_user']} ORDER BY id desc";
       $stmt=$db->query($req);
       $posts=$stmt->fetchAll(PDO::FETCH_ASSOC);
+
+            // Pareil que dans api-favoris-render-2
+
       $ids = array();
       foreach($posts as $key){
         array_push($ids, $key['ext_id_post']);
-      }   
-      $id_posts = join(",",$ids);   
+      }    // On stocke les id dans une nouvelle variable sous forme de chaîne de caractère "1,2,5,20"..
+      $id_posts = join(",",$ids);  
+      
+            // On récupère les post favoris avec IN 
+            
       $req2 = "SELECT * FROM post WHERE id_post IN ($id_posts) ORDER BY id_post desc";
       $stmt2=$db->query($req2);
       $favs=$stmt2->fetchAll(PDO::FETCH_ASSOC);

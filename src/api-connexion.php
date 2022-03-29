@@ -7,6 +7,8 @@
               
         $contentType = isset($_SERVER["CONTENT_TYPE"]) ? trim($_SERVER["CONTENT_TYPE"]) : '';
 
+        // Reçois le contenu, si c'est en JSON, on décode le JSON qu'on insère dans une variable. 
+
         if ($contentType === "application/json") {
           //Receive the RAW post data.
           $content = trim(file_get_contents("php://input"));
@@ -17,6 +19,8 @@
             // foreach ($decoded as $v) {
             //     echo "Valeur courante : $v.\n";
             // }
+
+            //Connexion BDD
             
             $db = new PDO('mysql:host=db5005161444.hosting-data.io;dbname=dbs4318125', 'dbu1522474', 'lesoussol06092021', array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8"));
             $req = "SELECT * FROM benef_bdd WHERE username='{$decoded['username']}'";
@@ -26,23 +30,12 @@
 
                 $result=$stmt->fetch(PDO::FETCH_ASSOC);
                 if(password_verify($decoded["mdp"], $result["mdp"])){
-                    // echo('C bon');
-                    $encoded = json_encode($result);
-                    echo($encoded);
-                    // $issuedAt   = new DateTimeImmutable();
-                    // // $key = md5(microtime().rand());
-                    // $secretKey  = 'bGS6lzFqvvSQ8ALbOxatm7/Vk7mLQyzqaS34Q4oR1ew=';
-                    // $data = [
-                    //   'iat'  => $issuedAt->getTimestamp(),         // Issued at:  : heure à laquelle le jeton a été généré
-                    //   'id_user'  => $result['id_user'],         // ID USER
-                    //   'username' => $result['username']                    // Nom d'utilisateur
-                //   ];
 
-                //   echo JWT::encode(
-                //     $data,
-                //     $secretKey,
-                //     'HS512'
-                // );
+                    $encoded = json_encode($result);
+
+                  // On renvoie en JSON les informations du compte si le nom d'utilisateur et le mot de passe correspond.
+
+                    echo($encoded);
                     
                 } else{
                    echo('Mdp pas bon');
